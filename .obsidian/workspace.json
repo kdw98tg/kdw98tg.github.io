@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2024-01-02-옵시디언 연동 테스트.md",
+                "file": "_posts/2024-02-26-MVVM.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2024-01-02-옵시디언 연동 테스트.md",
+                "file": "_posts/2024-02-26-MVVM.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2024-01-02-옵시디언 연동 테스트.md",
+                "file": "_posts/2024-02-26-MVVM.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/2024-01-02-옵시디언 연동 테스트.md"
+                "file": "_posts/2024-02-26-MVVM.md"
               }
             }
           }
@@ -150,8 +150,11 @@
   "lastOpenFiles": [
     "_posts/2024-02-26-first.md",
     "_posts/2024-01-02-옵시디언 연동 테스트.md",
-    "_posts/2024-02-26-MVVM.md",
     "_posts/2022-01-02-eee.md",
+    "CHANGELOG.md",
+    "Pasted image 20240226170645.png",
+    "Pasted image 20240226170753.png",
+    "_posts/2024-02-26-MVVM.md",
     "images/2024-01-02-옵시디언 연동 테스트-20240226172827969.png",
     "images/2024-01-02-옵시디언 연동 테스트-20240226172640741.png",
     "images/2024-01-02-옵시디언 연동 테스트-20240226172636643.png",
@@ -160,8 +163,6 @@
     "images/2024-01-02-옵시디언 연동 테스트-20240226172445600.png",
     "images/2024-01-02-옵시디언 연동 테스트-20240226172403003.webp",
     "images/Pasted image 20240226172111.png",
-    "images/Pasted image 20240226170929.png",
-    "images/Pasted image 20240226170908.png",
     "_post/images.md",
     "_post"
   ]
