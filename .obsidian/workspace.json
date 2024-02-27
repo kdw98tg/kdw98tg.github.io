@@ -148,6 +148,8 @@
   },
   "active": "e2be8b881a9971ff",
   "lastOpenFiles": [
+    "_pages/category-archive.md",
+    "_pages",
     "test/_pages/category-archives.md",
     "_site/assets/images/logo1.png",
     "_site/assets/images",
@@ -168,7 +170,6 @@
     "_site/옵시디언-연동-테스트",
     "_site/MVVM/index.html",
     "_site/MVVM",
-    "_site/images",
     "_posts/2024-02-26-first.md",
     "_posts/2024-01-02-옵시디언 연동 테스트.md",
     "_posts/2022-01-02-eee.md",
