@@ -3,5 +3,6 @@
   "useMarkdownLinks": true,
   "showUnsupportedFiles": false,
   "promptDelete": false,
-  "spellcheck": false
+  "spellcheck": false,
+  "propertiesInDocument": "source"
 }

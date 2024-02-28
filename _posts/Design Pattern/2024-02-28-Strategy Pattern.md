@@ -3,16 +3,13 @@ sidebar:
   nav: docs
 author_profile: false
 toc: true
-tags:
-  - python
-  - blog
-  - jekyll
+tags: [python, blog, jekyll]
 categories: 코딩
 title: "[디자인 패턴] Strategy Pattern"
 layout: single
 ---
 
-![왜안돼](../images/Pasted%20image%2020240228200824.png)
+![Strategy Pattern](/images/Pasted%20image%2020240228200824.png)
 
 전략 패턴(Strategy Pattern)은 객체지향 디자인 패턴 중 하나로, 동일한 문제를 해결하기 위한 여러 알고리즘(전략)을 정의하고 각각을 캡슐화하여 교환 가능하게 만드는 패턴 이다.
 
@@ -42,7 +39,6 @@ layout: single
 - 유연성 : 전략 패턴은 알고리즘을 쉽게 교체할 수 있도록 해준다. 클라이언트는 알고리즘의 구체적인 세부 사항을 알 필요 없이 전략 인터페이스와 상호작용 할 수 있다.
     
 
-​
 
 - 확장성 : 새로운 전략을 추가하기가 쉽다. 전략 인터페이스를 구현하는 클래스를 작성하고, 컨텍스트에서 해당 전략을 사용하도록 설정하기만 하면 된다.
     
@@ -155,8 +151,38 @@ import java.rmi.MarshalException; public class MallardDuck extends Duck { public
 flyBehaviour 와 quackBehaviour를 세팅해주는 세터를 설정한다.
 
 ​
+```java
+public abstract class Duck  
+{  
+    FlyBehaviour flyBehaviour;  
+    QuackBehaviour quackBehaviour;  
+  
+    public Duck(){}; //생성자  
+  
+    public abstract void display();  
+    public void performFly()  
+    {  
+       flyBehaviour.fly();  
+    }  
+    public void performQuack()  
+    {  
+       quackBehaviour.quack();  
+    }  
+    public void swim()  
+    {  
+       System.out.println("모든 오리는 물에 뜹니다. 가짜 오리도 뜨죠");  
+    }  
+    public void setFlyBehavior(FlyBehaviour _fb)  
+    {  
+       flyBehaviour = _fb;  
+    }  
+    public void setQuackBehaviour(QuackBehaviour _qb)  
+    {  
+       quackBehaviour = _qb;  
+    }  
+}
+```
 
-public abstract class Duck { FlyBehaviour flyBehaviour; QuackBehaviour quackBehaviour; public Duck(){}; //생성자 public abstract void display(); public void performFly() { flyBehaviour.fly(); } public void performQuack() { quackBehaviour.quack(); } public void swim() { System.out.println("모든 오리는 물에 뜹니다. 가짜 오리도 뜨죠"); } public void setFlyBehavior(FlyBehaviour _fb) { flyBehaviour = _fb; } public void setQuackBehaviour(QuackBehaviour _qb) { quackBehaviour = _qb; } }
 
 그리고 ModelDuck을 만든다.
 
