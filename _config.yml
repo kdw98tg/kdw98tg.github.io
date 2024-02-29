@@ -12,7 +12,7 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "mint" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "contrast" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "ko-KR"
@@ -105,7 +105,7 @@ analytics:
 # Site Author
 author:
   name             : "마시남"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/logo1.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "마시남의 블로그 입니다."
   location         : "South Korea"
   email            : "kdw98tg@gmail.com"
@@ -291,6 +291,13 @@ defaults:
       share: true
       related: true
       show_date: true
+      toc: true
+      # search: false
+      author_profile: false
+      read_time: false
+      toc_icon: "fas fa-won-sign" #https://fontawesome.com/v5/search?s=solid&m=free
+      # sidebar: 
+      #     nav: "docs"
 
 
 
