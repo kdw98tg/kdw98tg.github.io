@@ -472,6 +472,7 @@
     font-size: $type-size-3;
     font-family: $cute;
     color: mix(#fff,$primary-color,80%);
+    //color: #000;
 
     &:hover {
       text-decoration: underline;
@@ -521,13 +522,14 @@
   font-weight: bold;
 }
 
-.nav__sub-title {
+.nav__sub-title {//여기가 카테고리 색상 정하는 부분
   display: block;
   margin: 0.5rem 0;
   padding: 0.25rem 0;
   font-size: $type-size-3;
   font-family: $serif;
   color: mix(#fff,$primary-color,35%);
+  //color: #000;
   border-bottom: 1px solid $border-color;
 }
 
