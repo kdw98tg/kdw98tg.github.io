@@ -1,12 +1,16 @@
 ---
-sidebar:
-  nav: docs
-author_profile: false
+title: "MVVM" 
+
+categories:
+  -  Design Pattern
+tags:
+  - [Programming, C Sharp]
+
 toc: true
-tags: [python, blog, jekyll]
-categories: 코딩
-title: "[디자인 패턴] Strategy Pattern"
-layout: single
+toc_sticky: true
+
+date: 2020-11-20
+last_modified_at: 2020-11-20
 ---
 
 ![Strategy Pattern](/images/Pasted%20image%2020240228200824.png)
