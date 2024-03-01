@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "33842a62659f04b3",
+        "id": "fbe52769eed436d0",
         "type": "tabs",
         "children": [
           {
-            "id": "e2be8b881a9971ff",
+            "id": "e5d99aef17991b68",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -146,8 +146,12 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "e2be8b881a9971ff",
+  "active": "e5d99aef17991b68",
   "lastOpenFiles": [
+    "_posts/2024-02-26-MVVM.md",
+    "images/Pasted image 20240228200529.png",
+    "images/Pasted image 20240228200824.png",
+    "_posts/Design Pattern/2024-02-28-Strategy Pattern.md",
     "_site/design pattern/first/index.html",
     "_site/design pattern/first",
     "_site/design pattern/옵시디언-연동-테스트/index.html",
@@ -158,7 +162,6 @@
     "_site/design pattern/Strategy-Pattern",
     "_site/-design/pattern/Strategy-Pattern/index.html",
     "_site/-design/pattern/Strategy-Pattern",
-    "_site/-design/pattern",
     "_site/_pages/categories/category-design_pattern.md",
     "_pages/categories/category-design_pattern.md",
     "_pages/categories/category-blender.md",
@@ -166,14 +169,10 @@
     "_pages/categories/category-algorithm.md",
     "_pages/categories/category-algorithm-lesson-2.md",
     "_pages/categories/category-algorithm-lesson-1.md",
-    "_posts/2024-02-26-MVVM.md",
     "_posts/2024-02-26-first.md",
     "_posts/2024-01-02-옵시디언 연동 테스트.md",
     "_posts/2022-01-02-eee.md",
-    "_posts/Design Pattern/2024-02-28-Strategy Pattern.md",
     "_site/images/Pasted image 20240228200824.png",
-    "images/Pasted image 20240228200824.png",
-    "images/Pasted image 20240228200529.png",
     "images/Pasted image 20240228200742.png",
     "images/Pasted image 20240228200610.png",
     "_site/images/Pasted image 20240228200742.png",
