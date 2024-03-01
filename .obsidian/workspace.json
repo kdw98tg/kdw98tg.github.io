@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Design Pattern/2024-02-28-Strategy Pattern.md",
+                "file": "_posts/C#/2024-03-01-Linq.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Design Pattern/2024-02-28-Strategy Pattern.md",
+                "file": "_posts/C#/2024-03-01-Linq.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Design Pattern/2024-02-28-Strategy Pattern.md",
+                "file": "_posts/C#/2024-03-01-Linq.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Design Pattern/2024-02-28-Strategy Pattern.md"
+                "file": "_posts/C#/2024-03-01-Linq.md"
               }
             }
           }
@@ -148,22 +148,28 @@
   },
   "active": "e5d99aef17991b68",
   "lastOpenFiles": [
+    "_site/categories/c-sharp.html",
+    "_site/categories/c#.html",
+    "_pages/categories/category-c#.md",
+    "_pages/categories/c#.md",
+    "_pages/categories/category-design_pattern copy.md",
+    "_posts/Design Pattern/2024-02-28-StrategyPattern.md",
+    "_site/c#/Linq/index.html",
+    "_site/c#/Linq",
+    "_site/c#",
+    "_site/design pattern/Linq/index.html",
+    "_site/design pattern/Linq",
+    "_site/Linq/index.html",
+    "_site/Linq",
+    "_posts/C#/2024-03-01-Linq.md",
+    "_site/design pattern/StrategyPattern/index.html",
+    "_site/design pattern/StrategyPattern",
+    "_posts/Design Pattern/2024-02-28-Strategy Pattern.md",
     "_site/images/Pasted image 20240301201656.png",
     "images/Pasted image 20240301201656.png",
     "_posts/2024-02-26-MVVM.md",
     "images/Pasted image 20240228200529.png",
     "images/Pasted image 20240228200824.png",
-    "_posts/Design Pattern/2024-02-28-Strategy Pattern.md",
-    "_site/design pattern/first/index.html",
-    "_site/design pattern/first",
-    "_site/design pattern/옵시디언-연동-테스트/index.html",
-    "_site/design pattern/옵시디언-연동-테스트",
-    "_site/design pattern/eee/index.html",
-    "_site/design pattern/eee",
-    "_site/design pattern/Strategy-Pattern/index.html",
-    "_site/design pattern/Strategy-Pattern",
-    "_site/-design/pattern/Strategy-Pattern/index.html",
-    "_site/-design/pattern/Strategy-Pattern",
     "_site/_pages/categories/category-design_pattern.md",
     "_pages/categories/category-design_pattern.md",
     "_pages/categories/category-blender.md",
@@ -180,7 +186,6 @@
     "_site/images/Pasted image 20240228200742.png",
     "_site/images/Pasted image 20240228200610.png",
     "_site/images/Pasted image 20240228200529.png",
-    "images/2024-01-02-옵시디언 연동 테스트-20240226172448310.png",
     "_pages/tag-archive.md",
     "_pages/category-archive.md",
     "test/_pages/category-archives.md",

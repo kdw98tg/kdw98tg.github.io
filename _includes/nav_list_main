@@ -28,8 +28,21 @@
 
         <li>
             <!-- 대제목 -->
-            <span class="nav__sub-title">Design Pattern</span>
+            <span class="nav__sub-title">Languages</span>
             <!-- 소제목 1-->
+
+            <!-- 소제목 1-->
+            <ul>
+                {% for category in site.categories %}
+                {% if category[0] == "C#" %} <!-- 카테고리가 ... 라면 -->
+                <!-- 아래 이름으로 sidebar 에 생성후 bind-->
+                <li><a href="/categories/c-sharp" class="">C#</a> ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            <!-- 소제목 1-->
+
+            <span class="nav__sub-title">Design Pattern</span>
             <ul>
                 {% for category in site.categories %}
                 {% if category[0] == "Design Pattern" %} <!-- 카테고리가 ... 라면 -->
@@ -38,9 +51,6 @@
                 {% endif %}
                 {% endfor %}
             </ul>
-            <!-- 소제목 1-->
-
-            <!-- 소제목 2-->
             <ul>
                 {% for category in site.categories %}
                 {% if category[0] == "Design 원칙" %}
@@ -48,8 +58,6 @@
                 {% endif %}
                 {% endfor %}
             </ul>
-            <!-- 소제목 2-->
-
         </li>
     </ul>
 </nav>
