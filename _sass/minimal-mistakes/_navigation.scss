@@ -471,8 +471,8 @@
     color: inherit;
     font-size: $type-size-3;
     font-family: $cute;
-    color: mix(#fff,$primary-color,80%);
-    //color: #000;
+    //color: mix(#fff,$primary-color,80%);
+    color: #000;
 
     &:hover {
       text-decoration: underline;

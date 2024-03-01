@@ -57,24 +57,191 @@ last_modified_at: 2024-03-01
 
 그렇기 때문에 전략패턴을 구현해서, 해당 로직을 구현합니다.
 
-이때, `객체지향의 다형성` 을 이용하여 전략 패턴을 구현합니다.
+이때, 핵심은 `객체지향의 다형성` 을 이용하여 전략 패턴을 구현합니다. 즉, 실제 실행 시에 쓰이는 객체가 코드에 고정되지 않도록 상위 형식에 맞춰 프로그래밍해서 다형성을 활용해야 한다는 것입니다.
 
+각각 다른 오리의 `나는 행동(fly behavior)`, `우는 행동(quack behavior)` 를 구현해 봅시다.
 
+### 행동에 따른 인터페이스 정의
+
+우선 각각의 행동에 따른 인터페이스를 생성해 줍니다.
+
+🗅 **interface FlyBehavior.java**
 ```java
-public interface 123123 {
-	fun duck();
+package src.strategy.behavior.interfaces;  
+  
+//오리가 날아다니는 행동을 정의할 인터페이스  
+public interface FlyBehavior {  
+    public void fly();  
 }
+```
 
-public class FlyNoWay implements FlyBehaviour
-{
-	@override
-	public void fly(){
-	System.out.print("123");
-	}
+🗅 **interface QuackBehavior**
+```java
+package src.strategy.behavior.interfaces;  
+  
+//오리가 우는 소리를 정의할 인터페이스  
+public interface QuackBehavior {  
+    public void quack();  
 }
 ```
 
 
+위와같이 정의하면, 각기 다른 Duck이 호출하여, 자신만의 `fly()`, `quack()` 메소드를 재정의 해주기만 하면 됩니다.
 
 
 
+### 인터페이스를 상속받아 구현할 구상 클래스 정의
+
+이제 인터페이스를 상속받아 실제 행동을 구현한 클래스를 만듭니다.
+
+간단하게 `fly with wings`, `quack` 두가지 행동을 구현해 봅니다.
+
+🗅 **class FlyWithWings**
+```java
+package src.strategy.behavior;  
+  
+import src.strategy.behavior.interfaces.FlyBehavior;  
+  
+public class FlyWithWings implements FlyBehavior {  
+    @Override  
+    public void fly() {  
+        System.out.println("날고 있어요!");  
+    }  
+}
+```
+
+🗅 **class Quack**
+```java
+package src.strategy.behavior;  
+  
+import src.strategy.behavior.interfaces.QuackBehavior;  
+  
+public class Quack implements QuackBehavior {  
+    @Override  
+    public void quack() {  
+        System.out.println("꽥");  
+    }  
+}
+```
+
+### 오리의 추상 클래스 제작
+
+이제 이 행동들을 할 오리를 정의해 봅니다.
+
+오리 역시 여러가지 형태로 존재할 수 있기에 추상 클래스로 구현을 합니다.
+
+어떤 오리를 구현하든 Duck을 상속받아 구현합니다.
+
+그때에, 앞서 정의한 행동들을 자식 클래스에 주입시켜, 행동하도록 합니다.
+
+🗅 **class Duck**
+```java
+package src.strategy.duck;  
+  
+import src.strategy.behavior.interfaces.FlyBehavior;  
+import src.strategy.behavior.interfaces.QuackBehavior;  
+  
+public abstract class Duck {  
+  
+    //행동의 인터페이스 구현  
+    FlyBehavior flyBehavior = null;  
+    QuackBehavior quackBehavior = null;  
+  
+    public void setFlyBehavior(FlyBehavior _flyBehavior){  
+        flyBehavior = _flyBehavior;  
+    }  
+    public void setQuackBehavior(QuackBehavior _quackBehavior){  
+        quackBehavior = _quackBehavior;  
+    }  
+  
+    //오리의 행동을 출력할 추상함수  
+    public abstract void display();  
+  
+    //나는 행동 실행부  
+    public void performFly(){  
+        flyBehavior.fly();  
+    }  
+      
+    //우는 행동 실행부  
+    public void performQuack(){  
+        quackBehavior.quack();  
+    }  
+      
+    //재구현할 필요 없는 메서드  
+    public void swim(){  
+        System.out.println("모든 오리는 물에 뜸");  
+    }  
+}
+```
+
+### 실제 인스턴스로 사용할 오리 제작
+
+이제 실제로 인스턴스화 시킬 오리 클래스를 만들어 봅니다.
+
+오리는 `MallardDuck`, `ModelDuck` 두종류를 만들어 보겠습니다.
+
+부모 클래스에서 정의한 인터페이스 변수에 `다형성`을 이용하여 각자의 클래스에 구현해야 할 행동을 정의한 클래스를 생성 합니다.
+
+
+🗅 **class MallardDuck**
+```java
+public class MallardDuck extends Duck{  
+  
+    public MallardDuck(){  
+        quackBehavior = new Quack();  
+        flyBehavior = new FlyWithWings();  
+    }  
+  
+    @Override  
+    public void display() {  
+        System.out.println("저는 물오리 입니다.");  
+    }  
+}
+```
+
+🗅 **class ModelDuck**
+```java
+public class MallardDuck extends Duck{  
+  
+    public MallardDuck(){  
+        quackBehavior = new Quack();  
+        flyBehavior = new FlyWithWings();  
+    }  
+  
+    @Override  
+    public void display() {  
+        System.out.println("저는 물오리 입니다.");  
+    }  
+}
+```
+
+### Duck 실행
+
+이제 각자 행동을 구현한 후 Main 함수에서 구동시켜 봅니다.
+
+Main 함수에서도 `다형성`을 활용하여 Duck을 생성하고, 행동해야할 함수를 호출 합니다.
+
+🗅 **class ModelDuck**
+```java
+public class Main {  
+    public static void main(String[] args) {  
+        Duck mallard = new MallardDuck();  
+        mallard.display();  
+        mallard.performQuack();  
+        mallard.performFly();  
+  
+        System.out.println("\n");  
+  
+        Duck modelDuck  = new ModelDuck();  
+        modelDuck.display();  
+        //생성자로 넣으면 행동을 동적으로 정의할 수 있음  
+        modelDuck.setFlyBehavior(new FlyRocketPowered());  
+        modelDuck.performQuack();  
+        modelDuck.performFly();  
+    }  
+}
+```
+
+![](/images/Pasted%20image%2020240301201656.png)
+
+다음과 같이 각자 정의한 클래스를 호출하여 다른 오리 객체가 생성된 것을 확인할 수 있습니다.
