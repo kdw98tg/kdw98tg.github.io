@@ -1,5 +1,5 @@
 ---
-title: "C"
+title: "Android Errors"
 layout: archive
 permalink: categories/android-errors
 author_profile: true
