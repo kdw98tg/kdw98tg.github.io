@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/C#/2024-03-01-Linq.md",
+                "file": "_posts/Android Errors/2024-03-01-Google-Login-Errors.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/C#/2024-03-01-Linq.md",
+                "file": "_posts/Android Errors/2024-03-01-Google-Login-Errors.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/C#/2024-03-01-Linq.md",
+                "file": "_posts/Android Errors/2024-03-01-Google-Login-Errors.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/C#/2024-03-01-Linq.md"
+                "file": "_posts/Android Errors/2024-03-01-Google-Login-Errors.md"
               }
             }
           }
@@ -148,22 +148,38 @@
   },
   "active": "e5d99aef17991b68",
   "lastOpenFiles": [
-    "_site/categories/c-sharp.html",
-    "_site/categories/c#.html",
+    "_site/android errors/Google-Login-Errors/index.html",
+    "_site/android errors/Google-Login-Errors",
+    "_site/android errors",
+    "_posts/C/C.md",
+    "_posts/C#/2024-03-01-linq.md",
+    "_posts/Android Errors/2024-03-01-Google-Login-Errors.md",
+    "_posts/Android Modules",
+    "_posts/Android Errors",
+    "_posts/Android Studio",
+    "_posts/C",
+    "_posts/Design Pattern/2024-02-28-StrategyPattern.md",
+    "_site/categories/android-modlues.html",
+    "_pages/categories/category-android copy.md",
+    "_site/categories/android-errors.html",
+    "_pages/categories/category-android-errors.md",
+    "_site/categories/android.html",
+    "_pages/categories/category-android.md",
+    "_site/categories/kotlin.html",
+    "_pages/categories/category-kotlin.md",
+    "_pages/categories/category-c copy 2.md",
+    "_pages/categories/category-c copy.md",
+    "_pages/categories/category-c.md",
+    "_pages/categories/category-C.md",
+    "_pages/categories/category-java copy.md",
+    "_pages/categories/category-java.md",
+    "_pages/categories/category-blog copy.md",
+    "_pages/categories/category-csharp.md",
+    "_posts/C#/linq.md",
+    "_posts/C#/2024-03-01-Linq.md",
     "_pages/categories/category-c#.md",
     "_pages/categories/c#.md",
     "_pages/categories/category-design_pattern copy.md",
-    "_posts/Design Pattern/2024-02-28-StrategyPattern.md",
-    "_site/c#/Linq/index.html",
-    "_site/c#/Linq",
-    "_site/c#",
-    "_site/design pattern/Linq/index.html",
-    "_site/design pattern/Linq",
-    "_site/Linq/index.html",
-    "_site/Linq",
-    "_posts/C#/2024-03-01-Linq.md",
-    "_site/design pattern/StrategyPattern/index.html",
-    "_site/design pattern/StrategyPattern",
     "_posts/Design Pattern/2024-02-28-Strategy Pattern.md",
     "_site/images/Pasted image 20240301201656.png",
     "images/Pasted image 20240301201656.png",
@@ -172,24 +188,11 @@
     "images/Pasted image 20240228200824.png",
     "_site/_pages/categories/category-design_pattern.md",
     "_pages/categories/category-design_pattern.md",
-    "_pages/categories/category-blender.md",
-    "_pages/categories/category-bitcoin.md",
-    "_pages/categories/category-algorithm.md",
-    "_pages/categories/category-algorithm-lesson-2.md",
-    "_pages/categories/category-algorithm-lesson-1.md",
-    "_posts/2024-02-26-first.md",
-    "_posts/2024-01-02-옵시디언 연동 테스트.md",
-    "_posts/2022-01-02-eee.md",
     "_site/images/Pasted image 20240228200824.png",
     "images/Pasted image 20240228200742.png",
     "images/Pasted image 20240228200610.png",
     "_site/images/Pasted image 20240228200742.png",
     "_site/images/Pasted image 20240228200610.png",
-    "_site/images/Pasted image 20240228200529.png",
-    "_pages/tag-archive.md",
-    "_pages/category-archive.md",
-    "test/_pages/category-archives.md",
-    "CHANGELOG.md",
-    "_post/images.md"
+    "_site/images/Pasted image 20240228200529.png"
   ]
 }

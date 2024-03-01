@@ -1,10 +1,10 @@
 ---
-title:  "[C#] LINQ" 
+title:  "[Android Errors] Google Login Errors" 
 
 categories:
-  -  C Sharp
+  -  Android Errors
 tags:
-  - [Programming, C Sharp]
+  - [Programming, Android]
 
 toc: true
 toc_sticky: true
@@ -12,5 +12,3 @@ toc_sticky: true
 date: 2020-07-13
 last_modified_at: 2020-07-13
 ---
-
-123123123123123

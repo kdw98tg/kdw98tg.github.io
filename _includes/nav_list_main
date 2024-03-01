@@ -34,13 +34,60 @@
             <!-- 소제목 1-->
             <ul>
                 {% for category in site.categories %}
-                {% if category[0] == "C#" %} <!-- 카테고리가 ... 라면 -->
-                <!-- 아래 이름으로 sidebar 에 생성후 bind-->
-                <li><a href="/categories/c-sharp" class="">C#</a> ({{category[1].size}})</a></li>
-                {% endif %}
+                    {% if category[0] == "C" %}
+                        <li><a href="/categories/c" class="">C ({{category[1].size}})</a></li>
+                    {% endif %}
                 {% endfor %}
             </ul>
             <!-- 소제목 1-->
+
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Java" %}
+                        <li><a href="/categories/java" class="">Java ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "C Sharp" %}
+                        <li><a href="/categories/csharp" class="">C# ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+            <span class="nav__sub-title">Git</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Kotlin" %}
+                        <li><a href="/categories/kotlin" class="">Kotlin ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+            <span class="nav__sub-title">Android</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Android Studio" %}
+                        <li><a href="/categories/android" class="">Android Codes ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Android Modules" %}
+                        <li><a href="/categories/android-modules" class="">Modules ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Android Errors" %}
+                        <li><a href="/categories/android-errors" class="">Errors ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
 
             <span class="nav__sub-title">Design Pattern</span>
             <ul>
@@ -54,7 +101,7 @@
             <ul>
                 {% for category in site.categories %}
                 {% if category[0] == "Design 원칙" %}
-                <li><a href="/categories/stl" class="">C++ STL & 표준 ({{category[1].size}})</a></li>
+                <li><a href="/categories/stl" class="">디자인 원칙 ({{category[1].size}})</a></li>
                 {% endif %}
                 {% endfor %}
             </ul>
