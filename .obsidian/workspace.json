@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Design Pattern/2024-03-02-Observer Pattern.md",
+                "file": "_posts/Design Pattern/2024-03-02-Decorator Pattern.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Design Pattern/2024-03-02-Observer Pattern.md",
+                "file": "_posts/Design Pattern/2024-03-02-Decorator Pattern.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Design Pattern/2024-03-02-Observer Pattern.md",
+                "file": "_posts/Design Pattern/2024-03-02-Decorator Pattern.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Design Pattern/2024-03-02-Observer Pattern.md"
+                "file": "_posts/Design Pattern/2024-03-02-Decorator Pattern.md"
               }
             }
           }
@@ -148,24 +148,37 @@
   },
   "active": "e5d99aef17991b68",
   "lastOpenFiles": [
-    "_posts/Design Pattern/2024-02-28-StrategyPattern.md",
     "_posts/Design Pattern/2024-03-02-Observer Pattern.md",
+    "_posts/Common.md",
+    "_site/images/Pasted image 20240302132137.png",
+    "images/Pasted image 20240302132137.png",
+    "_site/images/Pasted image 20240302132108.png",
+    "images/Pasted image 20240302132108.png",
+    "_posts/Design Pattern/2024-02-28-StrategyPattern.md",
+    "_posts/Design Pattern/2024-03-02-Design Principle.md",
+    "_posts/Design Pattern/2024-03-02-Decorator Pattern.md",
+    "_site/images/Pasted image 20240302131201.png",
+    "images/Pasted image 20240302131201.png",
+    "_pages/categories/category-design-principle.md",
+    "_site/categories/design-principle.html",
+    "_site/categories/design-prin.html",
+    "_pages/categories/category-design_pattern.md",
+    "_site/_pages/categories/category-design-principle.md",
+    "_site/_pages/categories/무제 파일.md",
+    "_site/_pages/categories",
+    "_site/_pages",
+    "_site/design principle/Design-Principle/index.html",
+    "_site/design principle/Design-Principle",
+    "_site/design principle",
+    "_site/design prin/Design-Principle/index.html",
+    "_site/design prin/Design-Principle",
+    "_site/design prin",
     "_site/images/Pasted image 20240302010538.png",
     "images/Pasted image 20240302010538.png",
-    "_site/design pattern/Observer-Pattern/index.html",
-    "_site/design pattern/Observer-Pattern",
     "_posts/Android Errors/2024-03-01-Google-Login-Errors.md",
     "_pages/categories/category-android-modules.md",
-    "_site/android errors/Google-Login-Errors/index.html",
-    "_site/android errors/Google-Login-Errors",
-    "_site/android errors",
     "_posts/C/C.md",
     "_posts/C#/2024-03-01-linq.md",
-    "_posts/Android Modules",
-    "_posts/Android Errors",
-    "_posts/Android Studio",
-    "_posts/C",
-    "_site/categories/android-modlues.html",
     "_pages/categories/category-android copy.md",
     "_pages/categories/category-android-errors.md",
     "_pages/categories/category-android.md",
@@ -178,20 +191,7 @@
     "_pages/categories/category-java.md",
     "_pages/categories/category-blog copy.md",
     "_pages/categories/category-csharp.md",
-    "_posts/C#/linq.md",
-    "_posts/C#/2024-03-01-Linq.md",
-    "_pages/categories/category-c#.md",
-    "_pages/categories/c#.md",
-    "_pages/categories/category-design_pattern copy.md",
-    "_posts/Design Pattern/2024-02-28-Strategy Pattern.md",
     "_site/images/Pasted image 20240301201656.png",
-    "images/Pasted image 20240301201656.png",
-    "_posts/2024-02-26-MVVM.md",
-    "images/Pasted image 20240228200529.png",
-    "images/Pasted image 20240228200824.png",
-    "_site/images/Pasted image 20240228200824.png",
-    "images/Pasted image 20240228200742.png",
-    "images/Pasted image 20240228200610.png",
-    "_site/images/Pasted image 20240228200742.png"
+    "images/Pasted image 20240301201656.png"
   ]
 }

@@ -100,8 +100,8 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                {% if category[0] == "Design 원칙" %}
-                <li><a href="/categories/stl" class="">디자인 원칙 ({{category[1].size}})</a></li>
+                {% if category[0] == "Design Principle" %}
+                <li><a href="/categories/design-principle" class="">디자인 원칙 ({{category[1].size}})</a></li>
                 {% endif %}
                 {% endfor %}
             </ul>
