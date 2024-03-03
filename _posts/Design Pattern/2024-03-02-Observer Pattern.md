@@ -312,7 +312,7 @@ public class Main {
 }
 ```
 
-![](/images/Pasted%20image%2020240302131201.png)
+![실행결과](/images/Pasted%20image%2020240302131201.png)
 
 정상적으로 정보를 가져오는것을 확인할 수 있습니다.
 

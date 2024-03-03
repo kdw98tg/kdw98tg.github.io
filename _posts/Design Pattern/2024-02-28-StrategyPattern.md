@@ -243,6 +243,6 @@ public class Main {
 }
 ```
 
-![](/images/Pasted%20image%2020240301201656.png)
+![실행 결과](/images/Pasted%20image%2020240301201656.png)
 
 다음과 같이 각자 정의한 클래스를 호출하여 다른 오리 객체가 생성된 것을 확인할 수 있습니다.

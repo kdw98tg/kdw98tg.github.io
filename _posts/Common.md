@@ -1,6 +1,6 @@
 
 ## classes
-🗅 **class Main**
+🗅 **<span style="color: #c03a92">class Main</span>**
 
 
 ## color codes
@@ -13,6 +13,9 @@
 <span style="color: #2D3748; background-color:#fff5b1;"> Strong</span>
 <span style="color: #808080">그레이</span>
 <span style="color: #ffd33d">노랑</span>
+<span style="color: #921c96">보라</span>
+<span style="color: #c03a92">보라빛 핑크</span>
+
 ````
 
 ![](Pasted%20image%2020240302132108.png)

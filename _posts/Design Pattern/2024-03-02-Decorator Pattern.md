@@ -229,7 +229,7 @@ public class StarbuzzCoffee {
 }
 ```
 
-![](/images/Pasted%20image%2020240303165702.png)
+![실행결과](/images/Pasted%20image%2020240303165702.png)
 
 위와같이 첨가한 모든 첨가물과 그에 해당하는 가격이 출력되는것을 볼 수 있습니다.
 
