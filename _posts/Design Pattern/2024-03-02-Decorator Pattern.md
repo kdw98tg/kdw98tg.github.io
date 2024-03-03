@@ -125,3 +125,112 @@ public class HouseBlend extends Beverage{
 ```
 
 
+### Beverage 첨가물 구현하기
+
+이제 기본 음료들을 구현했으니, 음료에 들어갈 첨가물들을 구현해 봅니다.
+
+`Mocha` 와 `Whip` 총 2가지를 구현해 보겠습니다.
+
+우선 첨가물들도 여러가지가 생길 수 있기 때문에, 추상클래스를 만들어 이들을 묶어 줍니다.
+
+이때, 주의해야 할 점은 **첨가물 클래스는 음료 클래스를 상속받게 된다는 것입니다.**
+
+이는 생성자에서 `Beverage`를 받기 위함 입니다.
+
+생성자에서 `Beverage`를 받아 그 `Beverage`에 추가 로직을 구현해, 장식하는 것이죠.
+
+🗅 **abstract class CondimentDecorator**
+```java
+public abstract class CondimentDecorator extends Beverage//Beverage가 들어갈 자리에 들어갈 수 있도록 상속받음  
+{  
+    //각 데코레이터가 감쌀 음료를 나타내는 Beverage 객체를 여기에 지정  
+    Beverage beverage;  
+      
+    //모든 첨가물에서 getDescription 메소드를 재구현  
+    public abstract String getDescription();  
+    public Size getSize(){return beverage.getSize();}  
+}
+```
+
+그 후, `CondimentDecorator`를 상속받아 구상하는 클래스를 만들도록 합니다.
+
+구현클래스에는 `cost()`라는 함수를 통해 첨가물만큼의 가격을 결정하도록 합니다.
+
+🗅 **class Mocha**
+```java
+//데코레이터  
+public class Mocha extends CondimentDecorator {  
+  
+    public Mocha(Beverage beverage) {  
+        this.beverage = beverage;  
+    }  
+  
+    @Override  
+    public double cost() {  
+        double cost = beverage.cost();  
+        if (beverage.getSize() == Size.TALL) {  
+            cost += .20;  
+        } else if (beverage.getSize() == Size.GRANDE) {  
+            cost += .30;  
+        } else if (beverage.getSize() == Size.VENTI) {  
+            cost += .40;  
+        }  
+        return cost;  
+    }  
+  
+    @Override  
+    public String getDescription() {  
+        return beverage.getDescription() + ", 모카";  
+    }  
+}
+```
+
+🗅 **class Mocha**
+```java
+public class Whip extends CondimentDecorator{  
+  
+    public Whip (Beverage beverage){  
+        this.beverage = beverage;  
+    }  
+    @Override  
+    public double cost() {  
+        return beverage.cost() + .50;
+    }  
+  
+    @Override  
+    public String getDescription() {  
+        return beverage.getDescription() + ", 휘핑크림";  
+    }  
+}
+```
+
+### Main 함수 실행
+
+이제 `Beverage`와 `CondimentDecorator` 들이 완성되었으니, Main 클래스에서 작동을 해보도록 합니다.
+
+저는 `DarkRoat`커피에 `Whip` 2개와, `Mocha` 1개를 첨가해 보겠습니다.
+
+우선, `Beverage`를 생성한 후, 넣고싶은 첨가물을 생성하고, 생성자로 `Beverage`를 넣어주는 방식 입니다.
+
+🗅 **class Mocha**
+```java
+public class StarbuzzCoffee {  
+  
+    public static void main(String[] args) {   
+  
+        Beverage beverage2 = new DarkRoast();  
+        beverage2 = new Mocha(beverage2);  
+        beverage2 = new Mocha(beverage2);  
+        beverage2 = new Whip(beverage2);  
+        System.out.println(beverage2.getDescription()+" $"+String.format("%.2f",beverage2.cost()));  
+    }  
+  
+}
+}
+```
+
+![](/images/Pasted%20image%2020240303165702.png)
+
+위와같이 첨가한 모든 첨가물과 그에 해당하는 가격이 출력되는것을 볼 수 있습니다.
+
+여담이지만, `Java`의 `java.io` 패키지는 데코레이터 패턴으로 만들어져 있다고 합니다.
