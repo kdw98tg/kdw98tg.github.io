@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/C#/2024-03-01-Linq.md",
+                "file": "_posts/Common.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/C#/2024-03-01-Linq.md",
+                "file": "_posts/Common.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/C#/2024-03-01-Linq.md",
+                "file": "_posts/Common.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/C#/2024-03-01-Linq.md"
+                "file": "_posts/Common.md"
               }
             }
           }
@@ -160,6 +160,7 @@
   },
   "active": "06ace2ac8f13ae04",
   "lastOpenFiles": [
+    "_posts/C#/2024-03-01-Linq.md",
     "_posts/C/2024-03-06-C_자료형.md",
     "_site/c/C_자료형/index.html",
     "_site/c/C_자료형",
@@ -168,7 +169,6 @@
     "_site/2024-03-06-C_자료형",
     "_site/images/Pasted image 20240304233316.png",
     "_posts/C/C.md",
-    "_posts/C#/2024-03-01-Linq.md",
     "_posts/Design Pattern/2024-03-02-Decorator Pattern.md",
     "_posts/Common.md",
     "_posts/Design Pattern/2024-03-04-Singleton Pattern.md",
