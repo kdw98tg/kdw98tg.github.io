@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Common.md",
+                "file": "docs/_docs/14-helpers.md",
                 "mode": "source",
                 "source": false
               }
@@ -60,7 +60,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "nav_",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -77,7 +77,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -97,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Common.md",
+                "file": "docs/_docs/14-helpers.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Common.md",
+                "file": "docs/_docs/14-helpers.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Common.md"
+                "file": "docs/_docs/14-helpers.md"
               }
             }
           }
@@ -160,6 +161,12 @@
   },
   "active": "06ace2ac8f13ae04",
   "lastOpenFiles": [
+    "_pages/categories/category-AI.md",
+    "_pages/categories/category-android.md",
+    "_pages/categories/무제 파일.md",
+    "_posts/AI/2024-03-09 산업 AI.md",
+    "_posts/Common.md",
+    "_posts/AI",
     "_posts/C#/2024-03-01-Linq.md",
     "_posts/C/2024-03-06-C_자료형.md",
     "_site/c/C_자료형/index.html",
@@ -170,7 +177,6 @@
     "_site/images/Pasted image 20240304233316.png",
     "_posts/C/C.md",
     "_posts/Design Pattern/2024-03-02-Decorator Pattern.md",
-    "_posts/Common.md",
     "_posts/Design Pattern/2024-03-04-Singleton Pattern.md",
     "images/Pasted image 20240304233316.png",
     "_posts/Design Pattern/2024-03-03-Factory Pattern.md",
@@ -189,7 +195,6 @@
     "_posts/Design Pattern/2024-02-28-StrategyPattern.md",
     "_posts/Design Pattern/2024-03-02-Design Principle.md",
     "_posts/Design Pattern/2024-03-02-Observer Pattern.md",
-    "_site/design pattern/Factory-Pattern/index.html",
     "_pages/categories/category-design-principle.md",
     "_pages/categories/category-design_pattern.md",
     "_site/_pages/categories/category-design-principle.md",
@@ -199,11 +204,8 @@
     "_posts/C#/2024-03-01-linq.md",
     "_pages/categories/category-android copy.md",
     "_pages/categories/category-android-errors.md",
-    "_pages/categories/category-android.md",
     "_pages/categories/category-kotlin.md",
     "_pages/categories/category-c copy 2.md",
-    "_pages/categories/category-c copy.md",
-    "_pages/categories/category-c.md",
-    "_pages/categories/category-C.md"
+    "_pages/categories/category-c copy.md"
   ]
 }
