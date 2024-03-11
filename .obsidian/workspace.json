@@ -163,6 +163,10 @@
     "_posts/C#/2024-03-01-Linq.md",
     "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
     "_posts/Common.md",
+    "_site/c#/C-sharp-코딩-컨벤션/index.html",
+    "_site/c#/C-sharp-코딩-컨벤션",
+    "_site/c#",
+    "_site/categories/ai.html",
     "docs/_docs/14-helpers.md",
     "_pages/categories/category-AI.md",
     "_pages/categories/category-android.md",
@@ -181,10 +185,6 @@
     "_posts/Design Pattern/2024-03-04-Singleton Pattern.md",
     "images/Pasted image 20240304233316.png",
     "_posts/Design Pattern/2024-03-03-Factory Pattern.md",
-    "_site/categories/Singleton-Pattern/index.html",
-    "_site/categories/Singleton-Pattern",
-    "_site/2024-03-04-Singleton-Pattern/index.html",
-    "_site/2024-03-04-Singleton-Pattern",
     "_site/images/Pasted image 20240303213744.png",
     "images/Pasted image 20240303213744.png",
     "_site/images/Pasted image 20240303210052.png",
@@ -204,7 +204,6 @@
     "_pages/categories/category-android-modules.md",
     "_posts/C#/2024-03-01-linq.md",
     "_pages/categories/category-android copy.md",
-    "_pages/categories/category-android-errors.md",
-    "_pages/categories/category-kotlin.md"
+    "_pages/categories/category-android-errors.md"
   ]
 }
