@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/_docs/14-helpers.md",
+                "file": "_posts/C#/2024-03-11 C-sharp 코딩 컨벤션.md",
                 "mode": "source",
                 "source": false
               }
@@ -60,7 +60,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "nav_",
+                "query": "path:",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -77,8 +77,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -98,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/_docs/14-helpers.md",
+                "file": "_posts/C#/2024-03-11 C-sharp 코딩 컨벤션.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/_docs/14-helpers.md",
+                "file": "_posts/C#/2024-03-11 C-sharp 코딩 컨벤션.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/_docs/14-helpers.md"
+                "file": "_posts/C#/2024-03-11 C-sharp 코딩 컨벤션.md"
               }
             }
           }
@@ -161,13 +160,15 @@
   },
   "active": "06ace2ac8f13ae04",
   "lastOpenFiles": [
+    "_posts/C#/2024-03-01-Linq.md",
+    "_posts/C#/2024-03-11 C-sharp 코딩 컨벤션.md",
+    "_posts/Common.md",
+    "docs/_docs/14-helpers.md",
     "_pages/categories/category-AI.md",
     "_pages/categories/category-android.md",
     "_pages/categories/무제 파일.md",
     "_posts/AI/2024-03-09 산업 AI.md",
-    "_posts/Common.md",
     "_posts/AI",
-    "_posts/C#/2024-03-01-Linq.md",
     "_posts/C/2024-03-06-C_자료형.md",
     "_site/c/C_자료형/index.html",
     "_site/c/C_자료형",
@@ -204,8 +205,6 @@
     "_posts/C#/2024-03-01-linq.md",
     "_pages/categories/category-android copy.md",
     "_pages/categories/category-android-errors.md",
-    "_pages/categories/category-kotlin.md",
-    "_pages/categories/category-c copy 2.md",
-    "_pages/categories/category-c copy.md"
+    "_pages/categories/category-kotlin.md"
   ]
 }
