@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
+                "file": "_posts/AI/2024-03-14-산업 AI 강의.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
+                "file": "_posts/AI/2024-03-14-산업 AI 강의.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
+                "file": "_posts/AI/2024-03-14-산업 AI 강의.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md"
+                "file": "_posts/AI/2024-03-14-산업 AI 강의.md"
               }
             }
           }
@@ -160,46 +160,47 @@
   },
   "active": "06ace2ac8f13ae04",
   "lastOpenFiles": [
-    "_posts/Common.md",
+    "_site/images/Pasted image 20240314150743.png",
+    "images/Pasted image 20240314150743.png",
+    "_site/images/Pasted image 20240314150714.png",
+    "images/Pasted image 20240314150714.png",
+    "_site/images/Pasted image 20240314150620.png",
+    "images/Pasted image 20240314150620.png",
+    "_site/images/Pasted image 20240314150501.png",
+    "images/Pasted image 20240314150501.png",
+    "_site/images/Pasted image 20240314145224.png",
+    "images/Pasted image 20240314145224.png",
     "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
+    "_posts/Common.md",
+    "_posts/AI/2024-03-14-산업 AI 강의.md",
+    "_site/ai/산업-AI-강의/index.html",
+    "_site/ai/산업-AI-강의",
+    "_site/ai",
+    "_site/page3/index.html",
+    "_site/page3",
     "_site/c sharp/C-sharp-코딩-컨벤션/index.html",
     "_site/c sharp/C-sharp-코딩-컨벤션",
+    "_site/categories/Singleton-Pattern/index.html",
+    "_site/categories/Singleton-Pattern",
+    "_site/c/C_자료형/index.html",
+    "_site/images/Pasted image 20240304233316.png",
+    "_site/_pages/categories/무제 파일.md",
     "_posts/C#/2024-03-01-Linq.md",
-    "_site/c sharp/Linq/index.html",
-    "_site/c sharp/Linq",
-    "_site/c sharp",
-    "_site/c#/Linq/index.html",
-    "_site/c#/Linq",
-    "_site/c#/C-sharp-코딩-컨벤션/index.html",
-    "_site/c#/C-sharp-코딩-컨벤션",
-    "_site/c#",
     "docs/_docs/14-helpers.md",
     "_pages/categories/category-AI.md",
     "_pages/categories/category-android.md",
     "_pages/categories/무제 파일.md",
-    "_posts/AI/2024-03-09 산업 AI.md",
     "_posts/C/2024-03-06-C_자료형.md",
-    "_site/images/Pasted image 20240304233316.png",
     "_posts/C/C.md",
     "_posts/Design Pattern/2024-03-02-Decorator Pattern.md",
     "_posts/Design Pattern/2024-03-04-Singleton Pattern.md",
-    "images/Pasted image 20240304233316.png",
     "_posts/Design Pattern/2024-03-03-Factory Pattern.md",
-    "_site/images/Pasted image 20240303213744.png",
-    "images/Pasted image 20240303213744.png",
-    "_site/images/Pasted image 20240303210052.png",
-    "images/Pasted image 20240303210052.png",
-    "_site/images/Pasted image 20240303210001.png",
-    "images/Pasted image 20240303210001.png",
-    "_site/images/Pasted image 20240303183928.png",
-    "images/Pasted image 20240303183928.png",
     "_posts/Design Pattern/2024-02-28-StrategyPattern.md",
     "_posts/Design Pattern/2024-03-02-Design Principle.md",
     "_posts/Design Pattern/2024-03-02-Observer Pattern.md",
     "_pages/categories/category-design-principle.md",
     "_pages/categories/category-design_pattern.md",
     "_site/_pages/categories/category-design-principle.md",
-    "_site/_pages/categories/무제 파일.md",
     "_posts/Android Errors/2024-03-01-Google-Login-Errors.md",
     "_pages/categories/category-android-modules.md",
     "_posts/C#/2024-03-01-linq.md",
