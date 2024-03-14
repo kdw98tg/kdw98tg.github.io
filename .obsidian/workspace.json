@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/대학원 강의/AI프로그래밍기초/2024-03-09-AI 프로그래밍 기초.md",
+                "file": "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/대학원 강의/AI프로그래밍기초/2024-03-09-AI 프로그래밍 기초.md",
+                "file": "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/대학원 강의/AI프로그래밍기초/2024-03-09-AI 프로그래밍 기초.md",
+                "file": "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/대학원 강의/AI프로그래밍기초/2024-03-09-AI 프로그래밍 기초.md"
+                "file": "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md"
               }
             }
           }
@@ -160,12 +160,12 @@
   },
   "active": "06ace2ac8f13ae04",
   "lastOpenFiles": [
+    "_posts/대학원 강의/AI프로그래밍기초/2024-03-09-AI 프로그래밍 기초.md",
     "_site/collage/AI-프로그래밍-기초/index.html",
     "_site/collage/AI-프로그래밍-기초",
     "_site/collage/AI프로그래밍-기초/index.html",
     "_site/collage/AI프로그래밍-기초",
     "_posts/대학원 강의/산업AI/2024-03-09-산업 AI 강의.md",
-    "_posts/대학원 강의/AI프로그래밍기초/2024-03-09-AI 프로그래밍 기초.md",
     "_site/images/Pasted image 20240314152904.png",
     "images/Pasted image 20240314152904.png",
     "_site/images/Pasted image 20240314152154.png",
@@ -178,7 +178,6 @@
     "_site/categories/collage.html",
     "_posts/Common.md",
     "_site/collage/산업-AI-강의/index.html",
-    "_site/collage/산업-AI-강의",
     "_pages/categories/category-AI.md",
     "_site/_pages/categories/category-대학원 강의 요약.md",
     "_pages/categories/무제 파일 1.md",
