@@ -105,6 +105,16 @@
                 {% endif %}
                 {% endfor %}
             </ul>
+
+            <span class="nav__sub-title">Server</span>
+            <ul>
+                {% for category in site.categories %}
+                {% if category[0] == "Server" %} <!-- 카테고리가 ... 라면 -->
+                <!-- 아래 이름으로 sidebar 에 생성후 bind-->
+                <li><a href="/categories/server" class="">Server</a> ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
         </li>
     </ul>
 </nav>

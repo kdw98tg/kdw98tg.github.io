@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/2024-03-15-Docker.md",
+                "file": "_pages/categories/category-Server.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/2024-03-15-Docker.md",
+                "file": "_pages/categories/category-Server.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/2024-03-15-Docker.md",
+                "file": "_pages/categories/category-Server.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/2024-03-15-Docker.md"
+                "file": "_pages/categories/category-Server.md"
               }
             }
           }
@@ -160,6 +160,14 @@
   },
   "active": "06ace2ac8f13ae04",
   "lastOpenFiles": [
+    "_site/categories/server.html",
+    "_pages/404.md",
+    "_pages/categories/category-대학원 강의 요약.md",
+    "_pages/categories/category-Server.md",
+    "_site/_pages/categories/무제 파일.md",
+    "_site/_pages/categories",
+    "_site/_pages",
+    "_posts/2024-03-15-Docker.md",
     "_site/images/Pasted image 20240315171107.png",
     "images/Pasted image 20240315171107.png",
     "_site/images/Pasted image 20240315162433.png",
@@ -174,10 +182,7 @@
     "_site/collage/산업-AI-강의",
     "_site/collage/AI-프로그래밍-기초",
     "_site/collage",
-    "_site/page3/index.html",
-    "_site/page3",
     "_posts/Common.md",
-    "_posts/2024-03-15-Docker.md",
     "_posts/대학원 강의/AI프로그래밍기초/2024-03-09-AI 프로그래밍 기초.md",
     "_posts/C#/2024-03-01-Linq.md",
     "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
@@ -185,13 +190,10 @@
     "images/Pasted image 20240314152154.png",
     "images/Pasted image 20240314150743.png",
     "images/Pasted image 20240314150714.png",
-    "images/Pasted image 20240314150620.png",
     "_posts/대학원 강의/산업AI/2024-03-09-산업 AI 강의.md",
-    "_pages/categories/category-대학원 강의 요약.md",
     "docs/_docs/14-helpers.md",
     "_pages/categories/category-AI.md",
     "_pages/categories/category-android.md",
-    "_pages/categories/무제 파일.md",
     "_posts/AI/2024-03-09 산업 AI.md",
     "_posts/C/2024-03-06-C_자료형.md",
     "_posts/C/C.md",
@@ -203,8 +205,6 @@
     "_posts/Design Pattern/2024-03-02-Observer Pattern.md",
     "_pages/categories/category-design-principle.md",
     "_pages/categories/category-design_pattern.md",
-    "_site/_pages/categories/category-design-principle.md",
-    "_site/_pages/categories/무제 파일.md",
-    "_posts/Android Errors/2024-03-01-Google-Login-Errors.md"
+    "_site/_pages/categories/category-design-principle.md"
   ]
 }
