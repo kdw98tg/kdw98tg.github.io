@@ -8,19 +8,19 @@
         "type": "tabs",
         "children": [
           {
-            "id": "06ace2ac8f13ae04",
+            "id": "3f30443a2e966205",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_pages/categories/category-Server.md",
+                "file": "_posts/Unity/2024-03-19-Coroutine 활용법.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "3f30443a2e966205",
+            "id": "06ace2ac8f13ae04",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_pages/categories/category-Server.md",
+                "file": "_posts/Unity/2024-03-19-Coroutine 활용법.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_pages/categories/category-Server.md",
+                "file": "_posts/Unity/2024-03-19-Coroutine 활용법.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_pages/categories/category-Server.md"
+                "file": "_posts/Unity/2024-03-19-Coroutine 활용법.md"
               }
             }
           }
@@ -158,41 +158,44 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "06ace2ac8f13ae04",
+  "active": "3f30443a2e966205",
   "lastOpenFiles": [
-    "_site/categories/server.html",
-    "_pages/404.md",
-    "_pages/categories/category-대학원 강의 요약.md",
-    "_pages/categories/category-Server.md",
+    "_site/images/Pasted image 20240319152309.png",
+    "images/Pasted image 20240319152309.png",
+    "_posts/Common.md",
+    "CHANGELOG.md",
+    "_posts/Unity/2024-03-19-Coroutine 활용법.md",
+    "_pages/categories/category-unity.md",
+    "_site/categories/unity.html",
+    "_pages/categories/category-AI.md",
     "_site/_pages/categories/무제 파일.md",
     "_site/_pages/categories",
     "_site/_pages",
-    "_posts/2024-03-15-Docker.md",
+    "_site/unity/Coroutine-활용법/index.html",
+    "_site/unity/Coroutine-활용법",
+    "_site/unity",
+    "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
+    "_site/Coroutine-활용법/index.html",
+    "_site/Coroutine-활용법",
+    "_posts/Server/2024-03-15-Docker.md",
+    "_posts/Unity",
+    "_posts/Server",
+    "_posts/C#/2024-03-01-Linq.md",
+    "_pages/categories/category-Server.md",
+    "_pages/404.md",
+    "_pages/categories/category-대학원 강의 요약.md",
     "_site/images/Pasted image 20240315171107.png",
     "images/Pasted image 20240315171107.png",
     "_site/images/Pasted image 20240315162433.png",
     "images/Pasted image 20240315162433.png",
     "_site/images/Pasted image 20240315162407.png",
     "images/Pasted image 20240315162407.png",
-    "_site/server/Docker/index.html",
-    "_site/server/Docker",
-    "_site/server",
-    "_site/collage/산업-AI-강의/index.html",
-    "_site/collage/AI-프로그래밍-기초/index.html",
-    "_site/collage/산업-AI-강의",
-    "_site/collage/AI-프로그래밍-기초",
-    "_site/collage",
-    "_posts/Common.md",
     "_posts/대학원 강의/AI프로그래밍기초/2024-03-09-AI 프로그래밍 기초.md",
-    "_posts/C#/2024-03-01-Linq.md",
-    "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
     "images/Pasted image 20240314152904.png",
     "images/Pasted image 20240314152154.png",
     "images/Pasted image 20240314150743.png",
-    "images/Pasted image 20240314150714.png",
     "_posts/대학원 강의/산업AI/2024-03-09-산업 AI 강의.md",
     "docs/_docs/14-helpers.md",
-    "_pages/categories/category-AI.md",
     "_pages/categories/category-android.md",
     "_posts/AI/2024-03-09 산업 AI.md",
     "_posts/C/2024-03-06-C_자료형.md",
@@ -202,9 +205,6 @@
     "_posts/Design Pattern/2024-03-03-Factory Pattern.md",
     "_posts/Design Pattern/2024-02-28-StrategyPattern.md",
     "_posts/Design Pattern/2024-03-02-Design Principle.md",
-    "_posts/Design Pattern/2024-03-02-Observer Pattern.md",
-    "_pages/categories/category-design-principle.md",
-    "_pages/categories/category-design_pattern.md",
-    "_site/_pages/categories/category-design-principle.md"
+    "_posts/Design Pattern/2024-03-02-Observer Pattern.md"
   ]
 }

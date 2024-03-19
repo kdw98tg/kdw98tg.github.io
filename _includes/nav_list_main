@@ -57,15 +57,6 @@
                 {% endfor %}
             </ul>
 
-            <span class="nav__sub-title">Git</span>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "Kotlin" %}
-                        <li><a href="/categories/kotlin" class="">Kotlin ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-
             <span class="nav__sub-title">Android</span>
             <ul>
                 {% for category in site.categories %}
@@ -89,6 +80,15 @@
                 {% endfor %}
             </ul>
 
+            <span class="nav__sub-title">Unity</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Unity" %}
+                        <li><a href="/categories/kotlin" class="">Unity ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
             <span class="nav__sub-title">Design Pattern</span>
             <ul>
                 {% for category in site.categories %}
@@ -103,6 +103,15 @@
                 {% if category[0] == "Design Principle" %}
                 <li><a href="/categories/design-principle" class="">디자인 원칙 ({{category[1].size}})</a></li>
                 {% endif %}
+                {% endfor %}
+            </ul>
+
+            <span class="nav__sub-title">Git</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Kotlin" %}
+                        <li><a href="/categories/kotlin" class="">Kotlin ({{category[1].size}})</a></li>
+                    {% endif %}
                 {% endfor %}
             </ul>
 
