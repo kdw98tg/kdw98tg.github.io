@@ -216,7 +216,7 @@ yield return new WaitForEndOfFrame();
 프레임 끝날 때 호출됩니다.
 
 
-### 코루틴 체인 활용
+### 4. 코루틴 체인 활용
 
 코루틴을 활용하여 서로 연관되어 있는 코드들을 실행시킬 수 있습니다.
 그것을 `코루틴 체인`이라고 하더라고요.
@@ -279,7 +279,7 @@ public class Test : MonoBehaviour
 위와같이 코루틴을 서로 연결하여 `코루틴 체인`을 만들 수 있습니다.
 `yield return StartCoroutine()`을 하면 코루틴을 실행하고, 해당 코루틴이 끝날 때 까지 기다리게 됩니다.
 
-### 코루틴변수 할당
+### 5. 코루틴변수 할당
 
 `StartCoroutine()`의 인자에 `IEnumerator` 형식을 넣게 되어있습니다. 그런데, 여기서 `IEnumerator`를 반환하는 함수를 넣었을 때, 같은 코루틴이 호출되는 것은 아닙니다.
 
@@ -319,7 +319,7 @@ public class Test : MonoBehaviour
 
 이렇게하면, 동일한 `IEnumerator`로 코루틴을 호출할 수 있습니다.
 
-### Action을 통해 콜백 구현
+### 6. Action을 통해 콜백 구현
 
 유니티의 `UnityWebRequest()` 를 사용할 때, 코루틴을 사용하여 구현하는 것을 권장합니다.
 
