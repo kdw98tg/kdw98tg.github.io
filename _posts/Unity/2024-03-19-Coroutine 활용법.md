@@ -350,6 +350,7 @@ public class Test : MonoBehaviour
         yield return new WaitForSeconds(1f);
         _numAction(UnityEngine.Random.Range(1, 10),new PlayerModel());
     }
+    
     public class PlayerModel
     {
 

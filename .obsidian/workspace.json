@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Unity/2024-03-19-Coroutine 활용법.md",
+                "file": "_posts/Unity/2024-03-19-Unity SoundManager.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Unity/2024-03-19-Coroutine 활용법.md",
+                "file": "_posts/Unity/2024-03-19-Unity SoundManager.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Unity/2024-03-19-Coroutine 활용법.md",
+                "file": "_posts/Unity/2024-03-19-Unity SoundManager.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Unity/2024-03-19-Coroutine 활용법.md"
+                "file": "_posts/Unity/2024-03-19-Unity SoundManager.md"
               }
             }
           }
@@ -160,26 +160,31 @@
   },
   "active": "3f30443a2e966205",
   "lastOpenFiles": [
+    "_site/images/Pasted image 20240319162404.png",
+    "images/Pasted image 20240319162404.png",
+    "_site/unity/Unity-SoundManager/index.html",
+    "_site/unity/Unity-SoundManager",
+    "_site/categories/Unity-SoundManager/index.html",
+    "_site/categories/Unity-SoundManager",
+    "_posts/Common.md",
+    "_posts/Unity/2024-03-19-Unity SoundManager.md",
+    "_site/images/Pasted image 20240319160234.png",
+    "images/Pasted image 20240319160234.png",
+    "_site/Unity-SoundManager/index.html",
+    "_site/Unity-SoundManager",
+    "_site/Unity-SoundManager-모듈/index.html",
+    "_site/Unity-SoundManager-모듈",
+    "_site/Unity-SoundManager-활용/index.html",
+    "_site/Unity-SoundManager-활용",
+    "_posts/Unity/2024-03-19-Coroutine 활용법.md",
     "_site/images/Pasted image 20240319152309.png",
     "images/Pasted image 20240319152309.png",
-    "_posts/Common.md",
     "CHANGELOG.md",
-    "_posts/Unity/2024-03-19-Coroutine 활용법.md",
     "_pages/categories/category-unity.md",
-    "_site/categories/unity.html",
     "_pages/categories/category-AI.md",
     "_site/_pages/categories/무제 파일.md",
-    "_site/_pages/categories",
-    "_site/_pages",
-    "_site/unity/Coroutine-활용법/index.html",
-    "_site/unity/Coroutine-활용법",
-    "_site/unity",
     "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
-    "_site/Coroutine-활용법/index.html",
-    "_site/Coroutine-활용법",
     "_posts/Server/2024-03-15-Docker.md",
-    "_posts/Unity",
-    "_posts/Server",
     "_posts/C#/2024-03-01-Linq.md",
     "_pages/categories/category-Server.md",
     "_pages/404.md",
@@ -189,11 +194,7 @@
     "_site/images/Pasted image 20240315162433.png",
     "images/Pasted image 20240315162433.png",
     "_site/images/Pasted image 20240315162407.png",
-    "images/Pasted image 20240315162407.png",
     "_posts/대학원 강의/AI프로그래밍기초/2024-03-09-AI 프로그래밍 기초.md",
-    "images/Pasted image 20240314152904.png",
-    "images/Pasted image 20240314152154.png",
-    "images/Pasted image 20240314150743.png",
     "_posts/대학원 강의/산업AI/2024-03-09-산업 AI 강의.md",
     "docs/_docs/14-helpers.md",
     "_pages/categories/category-android.md",
@@ -204,7 +205,6 @@
     "_posts/Design Pattern/2024-03-04-Singleton Pattern.md",
     "_posts/Design Pattern/2024-03-03-Factory Pattern.md",
     "_posts/Design Pattern/2024-02-28-StrategyPattern.md",
-    "_posts/Design Pattern/2024-03-02-Design Principle.md",
-    "_posts/Design Pattern/2024-03-02-Observer Pattern.md"
+    "_posts/Design Pattern/2024-03-02-Design Principle.md"
   ]
 }
