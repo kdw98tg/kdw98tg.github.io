@@ -13,9 +13,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_pages/categories/category-Server.md",
+                "file": "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의.md",
                 "mode": "source",
                 "source": false
+              }
+            }
+          },
+          {
+            "id": "178486f93dbe1895",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.5.11"
               }
             }
           },
@@ -31,7 +41,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -97,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_pages/categories/category-Server.md",
+                "file": "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +125,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_pages/categories/category-Server.md",
+                "file": "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +148,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_pages/categories/category-Server.md"
+                "file": "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의.md"
               }
             }
           }
@@ -158,43 +169,44 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "06ace2ac8f13ae04",
+  "active": "178486f93dbe1895",
   "lastOpenFiles": [
+    "_site/images/Pasted image 20240320100519.png",
+    "images/Pasted image 20240320100519.png",
+    "_site/images/Pasted image 20240320100350.png",
+    "images/Pasted image 20240320100350.png",
+    "_site/images/Pasted image 20240320095517.png",
+    "images/Pasted image 20240320095517.png",
+    "_site/images/Pasted image 20240320095250.png",
+    "images/Pasted image 20240320095250.png",
+    "_posts/대학원 강의/산업AI/2024-03-09-산업 AI 강의.md",
+    "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의.md",
+    "_site/images/Pasted image 20240320094130.png",
+    "images/Pasted image 20240320094130.png",
+    "_posts/Common.md",
+    "_site/산업-AI-강의/index.html",
+    "_site/산업-AI-강의",
+    "_site/page4/index.html",
+    "_site/page4",
+    "_pages/categories/category-Server.md",
     "_site/unity/Unity-SoundManager/index.html",
     "_site/unity/Coroutine-활용법/index.html",
     "_site/unity/Unity-SoundManager",
     "_site/unity/Coroutine-활용법",
     "_site/unity",
     "_site/server/Docker/index.html",
-    "_site/server/Docker",
-    "_site/server",
-    "_site/categories/unity.html",
-    "_site/categories/server.html",
     "images/Pasted image 20240319162404.png",
-    "images/Pasted image 20240319160234.png",
-    "images/Pasted image 20240319152309.png",
     "_posts/Unity/2024-03-19-Unity SoundManager.md",
     "_posts/Unity/2024-03-19-Coroutine 활용법.md",
-    "_posts/Unity",
     "_posts/Server/2024-03-15-Docker.md",
     "_pages/categories/category-unity.md",
     "_pages/404.md",
     "_pages/categories/category-대학원 강의 요약.md",
-    "_pages/categories/category-Server.md",
     "_site/_pages/categories/무제 파일.md",
     "_posts/2024-03-15-Docker.md",
-    "_site/images/Pasted image 20240315171107.png",
-    "images/Pasted image 20240315171107.png",
-    "_site/images/Pasted image 20240315162433.png",
-    "images/Pasted image 20240315162433.png",
-    "_site/images/Pasted image 20240315162407.png",
-    "images/Pasted image 20240315162407.png",
-    "_posts/Common.md",
     "_posts/대학원 강의/AI프로그래밍기초/2024-03-09-AI 프로그래밍 기초.md",
     "_posts/C#/2024-03-01-Linq.md",
     "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
-    "images/Pasted image 20240314152904.png",
-    "_posts/대학원 강의/산업AI/2024-03-09-산업 AI 강의.md",
     "docs/_docs/14-helpers.md",
     "_pages/categories/category-AI.md",
     "_pages/categories/category-android.md",
@@ -204,7 +216,6 @@
     "_posts/Design Pattern/2024-03-02-Decorator Pattern.md",
     "_posts/Design Pattern/2024-03-04-Singleton Pattern.md",
     "_posts/Design Pattern/2024-03-03-Factory Pattern.md",
-    "_posts/Design Pattern/2024-02-28-StrategyPattern.md",
-    "_posts/Design Pattern/2024-03-02-Design Principle.md"
+    "_posts/Design Pattern/2024-02-28-StrategyPattern.md"
   ]
 }
