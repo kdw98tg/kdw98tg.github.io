@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의.md",
+                "file": "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의2.md",
                 "mode": "source",
                 "source": false
               }
@@ -23,9 +23,11 @@
             "id": "178486f93dbe1895",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.5.11"
+                "file": "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의2.md",
+                "mode": "source",
+                "source": false
               }
             }
           },
@@ -108,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의.md",
+                "file": "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -125,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의.md",
+                "file": "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의2.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -148,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의.md"
+                "file": "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의2.md"
               }
             }
           }
@@ -171,6 +173,8 @@
   },
   "active": "178486f93dbe1895",
   "lastOpenFiles": [
+    "_posts/대학원 강의/산업AI/2024-03-09-산업 AI 강의1.md",
+    "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의2.md",
     "_site/images/Pasted image 20240320100519.png",
     "images/Pasted image 20240320100519.png",
     "_site/images/Pasted image 20240320100350.png",
@@ -179,8 +183,6 @@
     "images/Pasted image 20240320095517.png",
     "_site/images/Pasted image 20240320095250.png",
     "images/Pasted image 20240320095250.png",
-    "_posts/대학원 강의/산업AI/2024-03-09-산업 AI 강의.md",
-    "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의.md",
     "_site/images/Pasted image 20240320094130.png",
     "images/Pasted image 20240320094130.png",
     "_posts/Common.md",
@@ -195,7 +197,6 @@
     "_site/unity/Coroutine-활용법",
     "_site/unity",
     "_site/server/Docker/index.html",
-    "images/Pasted image 20240319162404.png",
     "_posts/Unity/2024-03-19-Unity SoundManager.md",
     "_posts/Unity/2024-03-19-Coroutine 활용법.md",
     "_posts/Server/2024-03-15-Docker.md",
