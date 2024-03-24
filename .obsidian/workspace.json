@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의2.md",
+                "file": "_posts/대학원 강의/산업AI/2024-03-23-산업 AI 강의3.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의2.md",
+                "file": "_posts/대학원 강의/산업AI/2024-03-23-산업 AI 강의3.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의2.md",
+                "file": "_posts/대학원 강의/산업AI/2024-03-23-산업 AI 강의3.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의2.md"
+                "file": "_posts/대학원 강의/산업AI/2024-03-23-산업 AI 강의3.md"
               }
             }
           }
@@ -160,8 +160,13 @@
   },
   "active": "06ace2ac8f13ae04",
   "lastOpenFiles": [
+    "images/Pasted image 20240324225820.png",
+    "images/Pasted image 20240324225355.png",
+    "images/Pasted image 20240324225136.png",
     "_posts/대학원 강의/AI프로그래밍기초/무제 파일.md",
+    "_posts/대학원 강의/산업AI/2024-03-23-산업 AI 강의3.md",
     "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의2.md",
+    "_posts/Common.md",
     "_posts/대학원 강의/산업AI/2024-03-09-산업 AI 강의1.md",
     "_site/images/Pasted image 20240320100519.png",
     "images/Pasted image 20240320100519.png",
@@ -171,9 +176,6 @@
     "images/Pasted image 20240320095517.png",
     "_site/images/Pasted image 20240320095250.png",
     "images/Pasted image 20240320095250.png",
-    "_site/images/Pasted image 20240320094130.png",
-    "images/Pasted image 20240320094130.png",
-    "_posts/Common.md",
     "_site/산업-AI-강의/index.html",
     "_site/산업-AI-강의",
     "_site/page4/index.html",
@@ -203,8 +205,6 @@
     "_posts/C/2024-03-06-C_자료형.md",
     "_posts/C/C.md",
     "_posts/Design Pattern/2024-03-02-Decorator Pattern.md",
-    "_posts/Design Pattern/2024-03-04-Singleton Pattern.md",
-    "_posts/Design Pattern/2024-03-03-Factory Pattern.md",
-    "_posts/Design Pattern/2024-02-28-StrategyPattern.md"
+    "_posts/Design Pattern/2024-03-04-Singleton Pattern.md"
   ]
 }
