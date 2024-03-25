@@ -8,19 +8,19 @@
         "type": "tabs",
         "children": [
           {
-            "id": "06ace2ac8f13ae04",
+            "id": "3f30443a2e966205",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/대학원 강의/산업AI/2024-03-23-산업 AI 강의3.md",
+                "file": "_posts/Unity/2024-03-25-Http 통신(UnityWebRequset).md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "3f30443a2e966205",
+            "id": "06ace2ac8f13ae04",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/대학원 강의/산업AI/2024-03-23-산업 AI 강의3.md",
+                "file": "_posts/Unity/2024-03-25-Http 통신(UnityWebRequset).md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/대학원 강의/산업AI/2024-03-23-산업 AI 강의3.md",
+                "file": "_posts/Unity/2024-03-25-Http 통신(UnityWebRequset).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/대학원 강의/산업AI/2024-03-23-산업 AI 강의3.md"
+                "file": "_posts/Unity/2024-03-25-Http 통신(UnityWebRequset).md"
               }
             }
           }
@@ -158,16 +158,19 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "06ace2ac8f13ae04",
+  "active": "3f30443a2e966205",
   "lastOpenFiles": [
+    "_posts/Common.md",
+    "_posts/Unity/2024-03-25-Http 통신(UnityWebRequset).md",
+    "_posts/Unity/2024-03-19-Unity SoundManager.md",
+    "_posts/대학원 강의/산업AI/2024-03-09-산업 AI 강의1.md",
+    "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
+    "_posts/대학원 강의/산업AI/2024-03-23-산업 AI 강의3.md",
     "images/Pasted image 20240324225820.png",
     "images/Pasted image 20240324225355.png",
     "images/Pasted image 20240324225136.png",
     "_posts/대학원 강의/AI프로그래밍기초/무제 파일.md",
-    "_posts/대학원 강의/산업AI/2024-03-23-산업 AI 강의3.md",
     "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의2.md",
-    "_posts/Common.md",
-    "_posts/대학원 강의/산업AI/2024-03-09-산업 AI 강의1.md",
     "_site/images/Pasted image 20240320100519.png",
     "images/Pasted image 20240320100519.png",
     "_site/images/Pasted image 20240320100350.png",
@@ -175,7 +178,6 @@
     "_site/images/Pasted image 20240320095517.png",
     "images/Pasted image 20240320095517.png",
     "_site/images/Pasted image 20240320095250.png",
-    "images/Pasted image 20240320095250.png",
     "_site/산업-AI-강의/index.html",
     "_site/산업-AI-강의",
     "_site/page4/index.html",
@@ -187,7 +189,6 @@
     "_site/unity/Coroutine-활용법",
     "_site/unity",
     "_site/server/Docker/index.html",
-    "_posts/Unity/2024-03-19-Unity SoundManager.md",
     "_posts/Unity/2024-03-19-Coroutine 활용법.md",
     "_posts/Server/2024-03-15-Docker.md",
     "_pages/categories/category-unity.md",
@@ -197,7 +198,6 @@
     "_posts/2024-03-15-Docker.md",
     "_posts/대학원 강의/AI프로그래밍기초/2024-03-09-AI 프로그래밍 기초.md",
     "_posts/C#/2024-03-01-Linq.md",
-    "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
     "docs/_docs/14-helpers.md",
     "_pages/categories/category-AI.md",
     "_pages/categories/category-android.md",
