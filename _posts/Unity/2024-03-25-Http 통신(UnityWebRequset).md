@@ -76,21 +76,30 @@ namespace Model.Result
 
 경로는 Asset/Script/DataAccess/User 입니다.
 
+여기서 `CheckNull`함수는 디비에서 넘어올 때 값이 `NULL`이면 빈 문자열을 반환하는 메서드 입니다.
+
+아래에는 `DeserializeObject()`를 사용하여 클래에 바로매핑하는 방식과, `JsonObject` 를 받아서 해체하는 방식 두가지로 작성하였습니다.
+
 🗅 **<span style="color: #c03a92">class UserRepository</span>**
 ```cs
 using Model.Result;
 using Model.User;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UIElements;
+using Common.Method;
 
 namespace DataAccess.User
 {
 
-    public class UserRepository : MonoBehaviour
+    public class UserRepository
     {
+        private CommonMethod method = new CommonMethod();
+
         private string url = "https://successlist.mycafe24.com/successlist/php/SELECT_USER.php";
 
         public IEnumerator SELECT_USER(string _userCode, Action<bool, UserModel> _action)
@@ -104,8 +113,6 @@ namespace DataAccess.User
 
                 if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
                 {
-                    //Debug.Log("실패!");
-                    //Debug.Log(request.error.ToString());
                     _action(false, null);
                     //로깅작업 생략
                 }
@@ -114,26 +121,40 @@ namespace DataAccess.User
                     try
                     {
                         //결과 json
-                        string jsonResponse = request.downloadHandler.text;
+                        JObject jsonResponse = JObject.Parse(request.downloadHandler.text);
 
-                        ResultModel<UserModel> jsonResult = JsonConvert.DeserializeObject<ResultModel<UserModel>>(jsonResponse);
+                        //하나씩 뜯는 경우
+                        JArray resultsArray = (JArray)jsonResponse["results"];
+
+                        UserModel model = new UserModel();
+
+                        string userCode = method.CheckNull(resultsArray[0]["user_code"].ToString());
+                        string nickName = method.CheckNull(resultsArray[0]["user_nick"].ToString());
+
+                        model.UserCode = userCode;
+                        model.UserNick = nickName;
+
+                        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                        //클래스에 바로 대입하는 경우
+                        string jsonResponse1 = request.downloadHandler.text;
+                        ResultModel<UserModel> jsonResult = JsonConvert.DeserializeObject<ResultModel<UserModel>>(jsonResponse1);
 
                         // 결과 확인
                         UserModel userModel = new UserModel();
 
+
                         //json 배열로 들어왔을 때 foreach 사용
                         foreach (var user in jsonResult.results)
                         {
-                            //Debug.Log($"User Code: {user.UserCode}, User Nick: {user.UserNick}");
                             userModel.UserCode = user.UserCode;
                             userModel.UserNick = user.UserNick;
                         }
 
-                        _action(true,userModel);
+                        _action(true, model);
                     }
                     catch (Exception ex)
                     {
-                        //Debug.Log(ex.Message);
                         _action(false, null);
                         //로깅작업 생략
                     }
