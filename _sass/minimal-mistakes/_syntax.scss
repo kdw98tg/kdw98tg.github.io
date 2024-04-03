@@ -35,6 +35,7 @@
     &.code,
     &.rouge-code {
       padding-left: 1em;
+      
     }
 }
 }
@@ -42,7 +43,8 @@
 // 모바일 환경을 위한 코드 폰트 크기 조정
 @media (max-width: 768px) {
   .highlight {
-    font-size: 5px; // 원하는 폰트 크기로 조정
+    font-size: 0.7em; // 원하는 폰트 크기로 조정
+    line-height: 1.0em;
   }
 }
 
