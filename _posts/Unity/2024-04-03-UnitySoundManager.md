@@ -18,7 +18,7 @@ last_modified_at: 2024-04-03
 
 이전 `SoundManager` 를 만들었을 때의 문제점을 보완해서 다시 만들게 되었습니다.
 
-[마시남의 블로그 SoundManager](https://kdw98tg.github.io/unity/Unity-SoundManager/)
+👉[마시남의 기술 블로그 - 이전 SoundManager](https://kdw98tg.github.io/unity/Unity-SoundManager/)👈
 
 
 위 사운드메니저에는 다음과 같은 문제가 있었습니다.
