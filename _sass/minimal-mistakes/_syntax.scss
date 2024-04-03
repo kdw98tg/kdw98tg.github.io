@@ -5,12 +5,12 @@
   background-color: #161b22;
   padding-left: 1em;
   padding-top: 0.5em;
-  font-size: 0.85em;
+  padding-bottom: 0.5em;
   border-radius: 0.5em;
   line-height: 1.7em;
+  font-size: 1em;
   position: relative;
 }
-
 .highlight table{
   margin-bottom: 0;
   font-size: 1em;
@@ -36,6 +36,7 @@
     &.rouge-code {
       padding-left: 1em;
     }
+}
 }
 
 .highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
@@ -143,5 +144,4 @@
 .highlight .gs {
   color: #c9d1d9;
   font-weight: bold;
-}
 }
