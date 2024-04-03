@@ -7,7 +7,7 @@
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   border-radius: 0.5em;
-  line-height: 1.7em;
+  line-height: 1.5em;
   font-size: 1em;
   position: relative;
 }
@@ -38,26 +38,7 @@
     }
 }
 }
-@media (max-width: 767px) {
-  div.highlighter-rouge,
-  figure.highlight {
-    font-size: $type-size-mobile; /* 모바일 화면에 적합한 글꼴 크기 */
-    padding: 0.5em; /* 모바일 화면에 적합한 패딩 */
-    line-height: 1.2; /* 모바일 화면에 적합한 줄간격 */
-  }
 
-  .highlight table td {
-    /* 모바일 화면에서의 테이블 셀 스타일링 조정 */
-    padding: 0.5em; /* 셀 패딩 조정 */
-    width: auto; /* 셀 너비를 자동으로 조정 */
-  }
-
-  .highlight table td.gutter,
-  .highlight table td.rouge-gutter {
-    padding-right: 0.5em; /* 줄 번호 셀의 패딩 조정 */
-    width: auto; /* 줄 번호 셀의 너비를 자동으로 조정 */
-  }
-}
 
 .highlight .k, .highlight .kd, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kt, .highlight .kv {
   color: #569cd6;
