@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Unity/2024-04-03-UnitySoundManager.md",
+                "file": "_posts/Unity/2024-03-19-Unity SoundManager.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Unity/2024-04-03-UnitySoundManager.md",
+                "file": "_posts/Unity/2024-03-19-Unity SoundManager.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Unity/2024-04-03-UnitySoundManager.md",
+                "file": "_posts/Unity/2024-03-19-Unity SoundManager.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Unity/2024-04-03-UnitySoundManager.md"
+                "file": "_posts/Unity/2024-03-19-Unity SoundManager.md"
               }
             }
           }
@@ -160,34 +160,33 @@
   },
   "active": "3f30443a2e966205",
   "lastOpenFiles": [
-    "_site/assets/css/temp.css",
-    "assets/css/temp.css",
-    "_site/images/Pasted image 20240403141632.png",
-    "_site/unity/UnitySoundManager/index.html",
-    "_site/unity/UnitySoundManager",
-    "_posts/Common.md",
-    "_posts/Unity/2024-04-03-UnitySoundManager.md",
-    "images/Pasted image 20240403141632.png",
-    "_posts/Unity/2024-03-19-Unity SoundManager.md",
-    "_posts/Unity/2024-03-25-Http 통신(UnityWebRequset).md",
-    "_site/unity/Http-통신(UnityWebRequset)/index.html",
-    "_site/unity/Http-통신(UnityWebRequset)",
     "_site/collage/산업-AI-강의3/index.html",
     "_site/collage/산업-AI-강의3",
+    "_site/unity/UnitySoundManager/index.html",
+    "_site/unity/UnitySoundManager",
+    "_site/unity/Http-통신(UnityWebRequset)/index.html",
+    "_site/unity/Http-통신(UnityWebRequset)",
+    "images/Pasted image 20240403141632.png",
+    "images/Pasted image 20240325132253.png",
+    "images/Pasted image 20240324225820.png",
+    "images/Pasted image 20240324225355.png",
+    "images/Pasted image 20240324225136.png",
+    "assets/css/temp.css",
+    "_posts/대학원 강의/산업AI/2024-03-23-산업 AI 강의3.md",
+    "_posts/Unity/2024-04-03-UnitySoundManager.md",
+    "_posts/Unity/2024-03-25-Http 통신(UnityWebRequset).md",
+    "_site/assets/css/temp.css",
+    "_site/images/Pasted image 20240403141632.png",
+    "_posts/Common.md",
+    "_posts/Unity/2024-03-19-Unity SoundManager.md",
     "_site/collage/산업-AI-강의2/index.html",
     "_site/collage/산업-AI-강의2",
-    "_site/collage/산업-AI-강의1/index.html",
     "_site/images/Pasted image 20240325132253.png",
     "_site/images/Pasted image 20240324225820.png",
     "_site/images/Pasted image 20240324225355.png",
     "_site/images/Pasted image 20240324225136.png",
-    "images/Pasted image 20240325132253.png",
     "_posts/대학원 강의/산업AI/2024-03-09-산업 AI 강의1.md",
     "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
-    "_posts/대학원 강의/산업AI/2024-03-23-산업 AI 강의3.md",
-    "images/Pasted image 20240324225820.png",
-    "images/Pasted image 20240324225355.png",
-    "images/Pasted image 20240324225136.png",
     "_posts/대학원 강의/AI프로그래밍기초/무제 파일.md",
     "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의2.md",
     "_pages/categories/category-Server.md",
