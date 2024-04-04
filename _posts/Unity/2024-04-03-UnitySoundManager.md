@@ -1,5 +1,5 @@
 ---
-title: "SoundPooling 과 Resource 관리를 통한 SoundManager 만들기"
+title: "[Unity] SoundPooling 과 Resource 관리를 통한 SoundManager 만들기"
 
 categories:
   -  Unity
@@ -495,7 +495,7 @@ public class PoolManager : MonoBehaviour
     public AudioPlayer GetAudioPlayer(BGMS _bgm)
     {
         AudioPlayer result = null;
-        var availablePlayer = audioPool.FirstOrDefault(x => x.IsPlaying());
+        var availablePlayer = audioPool.FirstOrDefault(player => player.IsPlaying());
 
         if (availablePlayer != null)
         {
@@ -511,10 +511,10 @@ public class PoolManager : MonoBehaviour
                 GameObject go = Instantiate(prefab, transform);
                 AudioClip audioClip = ResourceManager.Instance.GetAudioClip(_bgm);
 
-                AudioPlayer audioPlayer = go.GetComponent<AudioPlayer>();
-                audioPlayer.SetClip(audioClip);
-                audioPool.Add(audioPlayer);
-                result = audioPlayer;
+                AudioPlayer newAudioPlayer = go.GetComponent<AudioPlayer>();
+                newAudioPlayer.SetClip(audioClip);
+                audioPool.Add(newAudioPlayer);
+                result = newAudioPlayer;
             }
         }
         return result;
@@ -537,10 +537,10 @@ public class PoolManager : MonoBehaviour
             if (prefab != null)
             {
                 GameObject go = Instantiate(prefab, transform);
-                AudioClip audioClip = ResourceManager.Instance.GetAudioClip(_bgm);
+                AudioClip newAudioClip = ResourceManager.Instance.GetAudioClip(_bgm);
 
                 AudioPlayer audioPlayer = go.GetComponent<AudioPlayer>();
-                audioPlayer.SetClip(audioClip);
+                audioPlayer.SetClip(newAudioClip);
                 audioPool.Add(audioPlayer);
                 result = audioPlayer;
             }
