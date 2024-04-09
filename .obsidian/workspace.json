@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_pages/categories/category-ASP.NET Core.md",
+                "file": "_posts/Unity/2024-04-04-ASP.Net Core API 서버.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_pages/categories/category-ASP.NET Core.md",
+                "file": "_posts/Unity/2024-04-04-ASP.Net Core API 서버.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_pages/categories/category-ASP.NET Core.md",
+                "file": "_posts/Unity/2024-04-04-ASP.Net Core API 서버.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_pages/categories/category-ASP.NET Core.md"
+                "file": "_posts/Unity/2024-04-04-ASP.Net Core API 서버.md"
               }
             }
           }
@@ -160,12 +160,13 @@
   },
   "active": "3f30443a2e966205",
   "lastOpenFiles": [
+    "_pages/categories/category-asp-net-core.md",
+    "_pages/categories/category-android-errors.md",
     "_pages/categories/category-AI.md",
     "_pages/categories/category-대학원 강의 요약.md",
     "_pages/categories/category-unity.md",
     "_pages/categories/category-design_pattern.md",
     "_pages/categories/category-design-principle.md",
-    "_pages/categories/category-ASP.NET Core.md",
     "_posts/Unity/2024-04-04-ASP.Net Core API 서버.md",
     "images/Pasted image 20240409151438.png",
     "_posts/Common.md",
@@ -204,7 +205,6 @@
     "_site/_pages/categories/무제 파일.md",
     "_posts/2024-03-15-Docker.md",
     "_posts/대학원 강의/AI프로그래밍기초/2024-03-09-AI 프로그래밍 기초.md",
-    "_posts/C#/2024-03-01-Linq.md",
-    "docs/_docs/14-helpers.md"
+    "_posts/C#/2024-03-01-Linq.md"
   ]
 }
