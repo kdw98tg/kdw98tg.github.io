@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Unity/2024-04-04-ASP.Net Core API 서버.md",
+                "file": "_pages/categories/category-ASP.NET Core.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Unity/2024-04-04-ASP.Net Core API 서버.md",
+                "file": "_pages/categories/category-ASP.NET Core.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Unity/2024-04-04-ASP.Net Core API 서버.md",
+                "file": "_pages/categories/category-ASP.NET Core.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Unity/2024-04-04-ASP.Net Core API 서버.md"
+                "file": "_pages/categories/category-ASP.NET Core.md"
               }
             }
           }
@@ -160,8 +160,15 @@
   },
   "active": "3f30443a2e966205",
   "lastOpenFiles": [
-    "_posts/Common.md",
+    "_pages/categories/category-AI.md",
+    "_pages/categories/category-대학원 강의 요약.md",
+    "_pages/categories/category-unity.md",
+    "_pages/categories/category-design_pattern.md",
+    "_pages/categories/category-design-principle.md",
+    "_pages/categories/category-ASP.NET Core.md",
     "_posts/Unity/2024-04-04-ASP.Net Core API 서버.md",
+    "images/Pasted image 20240409151438.png",
+    "_posts/Common.md",
     "_posts/Unity/2024-03-19-Unity SoundManager.md",
     "_site/assets/css/temp.scss",
     "assets/css/temp.scss",
@@ -186,7 +193,6 @@
     "_site/images/Pasted image 20240320095250.png",
     "_site/images/Pasted image 20240320094130.png",
     "_posts/대학원 강의/AI프로그래밍기초/무제 파일.md",
-    "images/Pasted image 20240320100519.png",
     "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의2.md",
     "_posts/대학원 강의/산업AI/2024-03-09-산업 AI 강의1.md",
     "_posts/대학원 강의/산업AI/2024-03-09-산업 AI 강의.md",
@@ -194,17 +200,11 @@
     "_pages/categories/category-Server.md",
     "_posts/Unity/2024-03-19-Coroutine 활용법.md",
     "_posts/Server/2024-03-15-Docker.md",
-    "_pages/categories/category-unity.md",
     "_pages/404.md",
-    "_pages/categories/category-대학원 강의 요약.md",
     "_site/_pages/categories/무제 파일.md",
     "_posts/2024-03-15-Docker.md",
     "_posts/대학원 강의/AI프로그래밍기초/2024-03-09-AI 프로그래밍 기초.md",
     "_posts/C#/2024-03-01-Linq.md",
-    "docs/_docs/14-helpers.md",
-    "_pages/categories/category-AI.md",
-    "_pages/categories/category-android.md",
-    "_posts/AI/2024-03-09 산업 AI.md",
-    "_posts/C/2024-03-06-C_자료형.md"
+    "docs/_docs/14-helpers.md"
   ]
 }
