@@ -126,3 +126,6 @@ Eidt->Virtual Network Editor 로 들어가시면 `VMnet8`이라는 속성이 있
 `Add`를 눌러 VMWare 안의 운영체제의 포트번호를 넣고, 80포트로 설정해주면됩니다.
 
 이렇게하면 외부에서 접근이 가능합니다.
+
+
+![iis 접속 성공](/images/Pasted%20image%2020240416124304.png)
