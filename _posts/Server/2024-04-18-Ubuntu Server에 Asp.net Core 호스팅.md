@@ -88,7 +88,7 @@ server {
 ```
 
 
- dmswovka12!@
+
 
 포트 뚫었음
 
