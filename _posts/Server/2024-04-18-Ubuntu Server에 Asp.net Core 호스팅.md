@@ -1,11 +1,11 @@
 ---
-title: "Ubuntu Server에 Asp.net Core 호스팅 설정 및 phpmyadmin 설정"
+title: "[Ubuntu] Ubuntu Server에 Asp.net Core 호스팅 설정 및 phpmyadmin 설정"
 
 categories:
-  -  Categories
+  -  Server
   
 tags:
-  - [Tags1, Tags2]
+  - [Ubuntu, nginx, asp.net core, phpmyadmin]
 
 toc: true
 toc_sticky: true
