@@ -1,20 +1,22 @@
 ---
-title: "[Ubuntu] Ubuntu Server Asp.net core 배포 설정하기"
+title: "[Ubuntu] Ubuntu Server에 Asp.net 호스팅 설정하기"
 
 categories:
-  -  Server
+  -  Ubuntu
   
 tags:
-  - [Ubuntu, nginx, asp.net core, phpmyadmin]
+  - [Ubuntu, Server, nginx, phpmyadmin]
 
 toc: true
 toc_sticky: true
 
 published: true
 
-date: 2024-04-15
+date: 2024-04-20
 last_modified_at: 2024-05-14
 ---
+
+
 Ubuntu 22.0.4 LTS 버전을 활용하여 서버를 구성하였습니다.
 
 웹서버는 `nginx`를 사용하였습니다.
