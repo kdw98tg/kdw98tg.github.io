@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md",
+                "file": "_posts/2024-05-14-데이터베이스 테이블 한번에 삭제.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md",
+                "file": "_posts/2024-05-14-데이터베이스 테이블 한번에 삭제.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md",
+                "file": "_posts/2024-05-14-데이터베이스 테이블 한번에 삭제.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md"
+                "file": "_posts/2024-05-14-데이터베이스 테이블 한번에 삭제.md"
               }
             }
           }
@@ -160,9 +160,12 @@
   },
   "active": "3f30443a2e966205",
   "lastOpenFiles": [
+    "_posts/Unity/2024-04-04-ASP.Net Core API 서버.md",
+    "_posts/2024-05-14-데이터베이스 테이블 한번에 삭제.md",
+    "_posts/Common.md",
+    "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md",
     "_posts/Server/2024-04-17-Ubuntu Server 부팅 USB 만들기.md",
     "_posts/Server/2024-04-11-Ngrok.md",
-    "_posts/Unity/2024-04-04-ASP.Net Core API 서버.md",
     "images/Pasted image 20240417141947.png",
     "images/Pasted image 20240417141611.png",
     "images/Pasted image 20240417141532.png",
@@ -173,11 +176,9 @@
     "images/Pasted image 20240417134536.png",
     "images/Pasted image 20240417133123.png",
     "images/Pasted image 20240416124304.png",
-    "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md",
     "_posts/Server/2024-04-17-쉬운코드 인터넷 강의 1.md",
     "_posts/Server/2024-04-16-PortForwarding.md",
     "_pages/categories/category-asp-net-core.md",
-    "_posts/Common.md",
     "_posts/Unity/2024-03-19-Unity SoundManager.md",
     "_site/assets/css/temp.scss",
     "assets/css/temp.scss",
