@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md",
+                "file": "_posts/Database/2024-05-14-데이터베이스 테이블 한번에 삭제.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md",
+                "file": "_posts/Database/2024-05-14-데이터베이스 테이블 한번에 삭제.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md",
+                "file": "_posts/Database/2024-05-14-데이터베이스 테이블 한번에 삭제.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md"
+                "file": "_posts/Database/2024-05-14-데이터베이스 테이블 한번에 삭제.md"
               }
             }
           }
@@ -158,11 +158,12 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "3f30443a2e966205",
+  "active": "95f1480089cf5cc1",
   "lastOpenFiles": [
-    "_posts/Common.md",
+    "_posts/Database",
     "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md",
-    "_posts/2024-05-14-데이터베이스 테이블 한번에 삭제.md",
+    "_posts/Common.md",
+    "_posts/Database/2024-05-14-데이터베이스 테이블 한번에 삭제.md",
     "_posts/Unity/2024-04-04-ASP.Net Core API 서버.md",
     "_posts/Server/2024-04-17-Ubuntu Server 부팅 USB 만들기.md",
     "_posts/Server/2024-04-11-Ngrok.md",
@@ -204,7 +205,6 @@
     "_pages/categories/category-unity.md",
     "_pages/404.md",
     "_pages/categories/category-대학원 강의 요약.md",
-    "_site/_pages/categories/무제 파일.md",
-    "_posts/2024-03-15-Docker.md"
+    "_site/_pages/categories/무제 파일.md"
   ]
 }

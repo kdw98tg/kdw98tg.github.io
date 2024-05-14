@@ -1,5 +1,5 @@
 ---
-title: "[Ubuntu] Ubuntu Server에 Asp.net Core 호스팅 설정 및 phpmyadmin 설정"
+title: "[Ubuntu] Ubuntu Server Asp.net core 배포 설정하기"
 
 categories:
   -  Server
@@ -61,7 +61,6 @@ server {
                     fastcgi_index index.php;
                     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
                     include /etc/nginx/fastcgi_params;
-
         }
 }
 
