@@ -12,8 +12,8 @@ toc_sticky: true
 
 published: true
 
-date: 2024-00-00
-last_modified_at: 2024-00-00
+date: 2024-04-15
+last_modified_at: 2024-05-14
 ---
 Ubuntu 22.0.4 LTS 버전을 활용하여 서버를 구성하였습니다.
 
