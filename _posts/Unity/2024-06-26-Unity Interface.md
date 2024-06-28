@@ -37,7 +37,7 @@ interface, inherit  등등 객체지향에서 등장하는 개념들은 처음�
 우선, Item 은 `Use()` 라는 함수를 공통으로 사용한다고 가정하겠습니다.
 그것을 바탕으로 인터페이스`IItem`을 만듭니다. (보통 Interface를 만들면 이름 앞에 'I'를 붙이는 것이 보통입니다. Java 진영에서는 이름 뒤에 Impl 을 붙이는 것으로 알고 있습니다.)
 
-🗅 **<span style="color: #c03a92">Interface IItem</span>
+🗅 **<span style="color: #c03a92">Interface IItem</span>**
 
 ```csharp
 public interface IItem
@@ -51,7 +51,7 @@ Item 들이 공통적으로 사용할 `Use()` 함수를 만듭니다. Interface 
 
 Item의 종류는 `HealItem`, `SpeedItem`, `BombItem` 이렇게 3가지만 만들겠습니다.
 
-🗅 **<span style="color: #c03a92">class HealItem</span>
+🗅 **<span style="color: #c03a92">class HealItem</span>**
 
 ```csharp
 public class HealItem : MonoBehaviour, IItem
@@ -63,7 +63,7 @@ public class HealItem : MonoBehaviour, IItem
 }
 ```
 
-🗅 **<span style="color: #c03a92">class SpeedItem</span>
+🗅 **<span style="color: #c03a92">class SpeedItem</span>**
 
 ```csharp
 public class SpeedItem : MonoBehaviour, IItem
@@ -75,7 +75,7 @@ public class SpeedItem : MonoBehaviour, IItem
 }
 ```
 
-🗅 **<span style="color: #c03a92">class BombItem</span>
+🗅 **<span style="color: #c03a92">class BombItem</span>**
 
 ```csharp
 public class BombItem : MonoBehaviour, IItem
@@ -91,7 +91,7 @@ public class BombItem : MonoBehaviour, IItem
 그리고 나서, Player를 생성해서 해당 아이템과 충돌 시 , 해당 아이템을 사용할 수 있도록 코드를 짭니다.
 그리고 Item 들은 Trigger로 구현되어 있어서, OnTriggerEnter 에서 사용합니다.
 
-🗅 **<span style="color: #c03a92">class Player</span>
+🗅 **<span style="color: #c03a92">class Player</span>**
 
 ```csharp
 public class Player : MonoBehaviour
