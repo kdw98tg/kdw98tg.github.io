@@ -1,5 +1,5 @@
 ---
-title: "C"
+title: "Android"
 layout: archive
 permalink: categories/android
 author_profile: true

@@ -57,6 +57,14 @@
                 {% endfor %}
             </ul>
 
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Kotlin" %}
+                        <li><a href="/categories/kotlin" class="">Kotlin ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
             <span class="nav__sub-title">Android</span>
             <ul>
                 {% for category in site.categories %}
@@ -106,15 +114,7 @@
                 {% endfor %}
             </ul>
 
-            <span class="nav__sub-title">Database</span>
-            <ul>
-                {% for category in site.categories %}
-                {% if category[0] == "Database" %} <!-- ì¹´í…Œê³ ë¦¬ê°? ... ?¼ë©? -->
-                <!-- ?•„?ž˜ ?´ë¦„ìœ¼ë¡? sidebar ?— ?ƒ?„±?›„ bind-->
-                <li><a href="/categories/db" class="">Database</a> ({{category[1].size}})</a></li>
-                {% endif %}
-                {% endfor %}
-            </ul>
+            
 
             <span class="nav__sub-title">Web</span>
             <ul>
@@ -129,8 +129,8 @@
             <span class="nav__sub-title">Git</span>
             <ul>
                 {% for category in site.categories %}
-                    {% if category[0] == "Kotlin" %}
-                        <li><a href="/categories/kotlin" class="">Kotlin ({{category[1].size}})</a></li>
+                    {% if category[0] == "Git" %}
+                        <li><a href="/categories/git" class="">Git ({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>
@@ -141,6 +141,16 @@
                 {% if category[0] == "Server" %} <!-- ì¹´í…Œê³ ë¦¬ê°? ... ?¼ë©? -->
                 <!-- ?•„?ž˜ ?´ë¦„ìœ¼ë¡? sidebar ?— ?ƒ?„±?›„ bind-->
                 <li><a href="/categories/server" class="">Server</a> ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+
+            <span class="nav__sub-title">Database</span>
+            <ul>
+                {% for category in site.categories %}
+                {% if category[0] == "Database" %} <!-- ì¹´í…Œê³ ë¦¬ê°? ... ?¼ë©? -->
+                <!-- ?•„?ž˜ ?´ë¦„ìœ¼ë¡? sidebar ?— ?ƒ?„±?›„ bind-->
+                <li><a href="/categories/db" class="">Database</a> ({{category[1].size}})</a></li>
                 {% endif %}
                 {% endfor %}
             </ul>
