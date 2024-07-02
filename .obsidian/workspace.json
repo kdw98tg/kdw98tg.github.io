@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Unity/2024-06-27-Addressable Asset 사용법.md",
+                "file": "_posts/Design Pattern/2024-03-04-Singleton Pattern.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Unity/2024-06-27-Addressable Asset 사용법.md",
+                "file": "_posts/Design Pattern/2024-03-04-Singleton Pattern.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Unity/2024-06-27-Addressable Asset 사용법.md",
+                "file": "_posts/Design Pattern/2024-03-04-Singleton Pattern.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Unity/2024-06-27-Addressable Asset 사용법.md"
+                "file": "_posts/Design Pattern/2024-03-04-Singleton Pattern.md"
               }
             }
           }
@@ -158,12 +158,14 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "95f1480089cf5cc1",
+  "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
+    "_posts/Design Pattern/2024-03-03-Factory Pattern.md",
+    "_posts/Design Pattern/2024-03-04-Singleton Pattern.md",
+    "_posts/Unity/2024-06-27-Addressable Asset 사용법.md",
     "_pages/categories/category-database.md",
     "_pages/categories/category-db.md",
     "_posts/Common.md",
-    "_posts/Unity/2024-06-27-Addressable Asset 사용법.md",
     "images/Pasted image 20240702124533.png",
     "images/Pasted image 20240702124218.png",
     "images/Pasted image 20240702124051.png",
@@ -176,8 +178,6 @@
     "_posts/Server/2024-04-11-Ngrok.md",
     "_posts/Unity/2024-03-19-Unity SoundManager.md",
     "_posts/Unity/2024-03-19-Coroutine 활용법.md",
-    "_posts/Design Pattern/2024-03-04-Singleton Pattern.md",
-    "_posts/Design Pattern/2024-03-03-Factory Pattern.md",
     "_posts/Design Pattern/2024-03-02-Observer Pattern.md",
     "_posts/Design Pattern/2024-03-02-Design Principle.md",
     "_posts/Design Pattern/2024-03-02-Decorator Pattern.md",
