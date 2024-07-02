@@ -1,12 +1,17 @@
 ---
-title: "[Unity Addressable Asset 활용법]"
+title: "[Unity] Addressable Asset 활용법"
+
 categories:
-- Unity
+  -  Unity
+  
 tags:
-- [Unity, Addressable]
+  - [Unity, Addressable]
+
 toc: true
 toc_sticky: true
+
 published: true
+
 date: 2024-06-27
 last_modified_at: 2024-06-27
 ---
