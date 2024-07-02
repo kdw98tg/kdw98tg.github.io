@@ -111,7 +111,7 @@
                 {% for category in site.categories %}
                 {% if category[0] == "Database" %} <!-- ì¹´í…Œê³ ë¦¬ê°? ... ?¼ë©? -->
                 <!-- ?•„?ž˜ ?´ë¦„ìœ¼ë¡? sidebar ?— ?ƒ?„±?›„ bind-->
-                <li><a href="/categories/db" class="">ASP .NET Core</a> ({{category[1].size}})</a></li>
+                <li><a href="/categories/db" class="">Database</a> ({{category[1].size}})</a></li>
                 {% endif %}
                 {% endfor %}
             </ul>
