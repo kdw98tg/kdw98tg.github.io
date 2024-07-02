@@ -158,8 +158,10 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "022ce0e03a4ec61a",
+  "active": "95f1480089cf5cc1",
   "lastOpenFiles": [
+    "_pages/categories/category-database.md",
+    "_pages/categories/category-db.md",
     "_posts/Common.md",
     "_posts/Unity/2024-06-27-Addressable Asset 사용법.md",
     "images/Pasted image 20240702124533.png",

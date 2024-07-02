@@ -5,7 +5,7 @@
     <label for="ac-toc">{{ site.data.ui-text[site.locale].menu_label }}</label>
     <ul class="nav__items" id="category_tag_menu">
 
-        <!-- Î∞©Î¨∏ÏûêÏàò ÏÑ§Ï†ïÏòÅÏó≠-->
+        <!-- Î∞©Î¨∏?ûê?àò ?Ñ§?†ï?òÅ?ó≠-->
         <li>
             <a href="https://hits.seeyoufarm.com">
                 <img
@@ -14,24 +14,24 @@
             <br>
             <br>
         </li>
-        <!-- Î∞©Î¨∏ÏûêÏàò ÏÑ§Ï†ïÏòÅÏó≠-->
+        <!-- Î∞©Î¨∏?ûê?àò ?Ñ§?†ï?òÅ?ó≠-->
 
 
-        <!-- Ï†ÑÏ≤¥ Í∏Ä Ïàò ÏòÅÏó≠ -->
+        <!-- ?†ÑÏ≤? Í∏? ?àò ?òÅ?ó≠ -->
         <li>
-            üìÇ <span style="font-family:'Cafe24Oneprettynight';">Ï†ÑÏ≤¥ Í∏Ä Ïàò</style>
+            ?üì? <span style="font-family:'Cafe24Oneprettynight';">?†ÑÏ≤? Í∏? ?àò</style>
                 <span style="font-family:'Coming Soon';">{{sum}}</style>
-                    <span style="font-family:'Cafe24Oneprettynight';">Í∞ú</style>
+                    <span style="font-family:'Cafe24Oneprettynight';">Í∞?</style>
         </li>
-        <!-- Ï†ÑÏ≤¥ Í∏Ä Ïàò ÏòÅÏó≠ -->
+        <!-- ?†ÑÏ≤? Í∏? ?àò ?òÅ?ó≠ -->
 
 
         <li>
-            <!-- ÎåÄÏ†úÎ™© -->
+            <!-- ????†úÎ™? -->
             <span class="nav__sub-title">Languages</span>
-            <!-- ÏÜåÏ†úÎ™© 1-->
+            <!-- ?Üå?†úÎ™? 1-->
 
-            <!-- ÏÜåÏ†úÎ™© 1-->
+            <!-- ?Üå?†úÎ™? 1-->
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "C" %}
@@ -39,7 +39,7 @@
                     {% endif %}
                 {% endfor %}
             </ul>
-            <!-- ÏÜåÏ†úÎ™© 1-->
+            <!-- ?Üå?†úÎ™? 1-->
 
             <ul>
                 {% for category in site.categories %}
@@ -92,8 +92,8 @@
             <span class="nav__sub-title">Design Pattern</span>
             <ul>
                 {% for category in site.categories %}
-                {% if category[0] == "Design Pattern" %} <!-- Ïπ¥ÌÖåÍ≥†Î¶¨Í∞Ä ... ÎùºÎ©¥ -->
-                <!-- ÏïÑÎûò Ïù¥Î¶ÑÏúºÎ°ú sidebar Ïóê ÏÉùÏÑ±ÌõÑ bind-->
+                {% if category[0] == "Design Pattern" %} <!-- Ïπ¥ÌÖåÍ≥†Î¶¨Í∞? ... ?ùºÎ©? -->
+                <!-- ?ïÑ?ûò ?ù¥Î¶ÑÏúºÎ°? sidebar ?óê ?Éù?Ñ±?õÑ bind-->
                 <li><a href="/categories/design-pattern" class="">Design Patterns</a> ({{category[1].size}})</a></li>
                 {% endif %}
                 {% endfor %}
@@ -101,7 +101,17 @@
             <ul>
                 {% for category in site.categories %}
                 {% if category[0] == "Design Principle" %}
-                <li><a href="/categories/design-principle" class="">ÎîîÏûêÏù∏ ÏõêÏπô ({{category[1].size}})</a></li>
+                <li><a href="/categories/design-principle" class="">?îî?ûê?ù∏ ?õêÏπ? ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+
+            <span class="nav__sub-title">Database</span>
+            <ul>
+                {% for category in site.categories %}
+                {% if category[0] == "Database" %} <!-- Ïπ¥ÌÖåÍ≥†Î¶¨Í∞? ... ?ùºÎ©? -->
+                <!-- ?ïÑ?ûò ?ù¥Î¶ÑÏúºÎ°? sidebar ?óê ?Éù?Ñ±?õÑ bind-->
+                <li><a href="/categories/db" class="">ASP .NET Core</a> ({{category[1].size}})</a></li>
                 {% endif %}
                 {% endfor %}
             </ul>
@@ -109,8 +119,8 @@
             <span class="nav__sub-title">Web</span>
             <ul>
                 {% for category in site.categories %}
-                {% if category[0] == "ASP .NET Core" %} <!-- Ïπ¥ÌÖåÍ≥†Î¶¨Í∞Ä ... ÎùºÎ©¥ -->
-                <!-- ÏïÑÎûò Ïù¥Î¶ÑÏúºÎ°ú sidebar Ïóê ÏÉùÏÑ±ÌõÑ bind-->
+                {% if category[0] == "ASP .NET Core" %} <!-- Ïπ¥ÌÖåÍ≥†Î¶¨Í∞? ... ?ùºÎ©? -->
+                <!-- ?ïÑ?ûò ?ù¥Î¶ÑÏúºÎ°? sidebar ?óê ?Éù?Ñ±?õÑ bind-->
                 <li><a href="/categories/asp-net-core" class="">ASP .NET Core</a> ({{category[1].size}})</a></li>
                 {% endif %}
                 {% endfor %}
@@ -128,8 +138,8 @@
             <span class="nav__sub-title">Server</span>
             <ul>
                 {% for category in site.categories %}
-                {% if category[0] == "Server" %} <!-- Ïπ¥ÌÖåÍ≥†Î¶¨Í∞Ä ... ÎùºÎ©¥ -->
-                <!-- ÏïÑÎûò Ïù¥Î¶ÑÏúºÎ°ú sidebar Ïóê ÏÉùÏÑ±ÌõÑ bind-->
+                {% if category[0] == "Server" %} <!-- Ïπ¥ÌÖåÍ≥†Î¶¨Í∞? ... ?ùºÎ©? -->
+                <!-- ?ïÑ?ûò ?ù¥Î¶ÑÏúºÎ°? sidebar ?óê ?Éù?Ñ±?õÑ bind-->
                 <li><a href="/categories/server" class="">Server</a> ({{category[1].size}})</a></li>
                 {% endif %}
                 {% endfor %}
