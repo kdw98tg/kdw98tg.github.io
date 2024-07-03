@@ -1,5 +1,5 @@
 ---
-title: "C"
+title: "Kotlin"
 layout: archive
 permalink: categories/kotlin
 author_profile: true
