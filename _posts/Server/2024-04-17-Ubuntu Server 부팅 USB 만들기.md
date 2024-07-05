@@ -2,7 +2,7 @@
 title: "[Ubuntu] Ubuntu Server 디스크 만들기"
 
 categories:
-  -  Ubuntu
+  -  Server
   
 tags:
   - [Ubuntu, Server, Disk, ISO]
