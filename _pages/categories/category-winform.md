@@ -1,7 +1,7 @@
 ---
-title: "Database"
+title: "Winform"
 layout: archive
-permalink: categories/database
+permalink: categories/winform
 author_profile: true
 sidebar_main: true
 ---
@@ -10,5 +10,5 @@ sidebar_main: true
 
 ***
 
-{% assign posts = site.categories['Database'] %}
+{% assign posts = site.categories['Winform'] %}
 {% for post in posts %} {% include archive-single2.html type=page.entries_layout %} {% endfor %}
