@@ -25,6 +25,22 @@ C#은 string이라는 불변타입을 제공하고 있습니다. 그래서, stri
 
 이 과정에서 buffer는 한번 쓰고 버리는 것이기 때문에, 가비지가 생깁니다.
 
+```csharp
+public class SomeClass
+{
+	private string someString = string.Empty;
+	private int someInt = 10;
+	private static void Main(string args[])
+	{
+		for(int i = 0 ; i < 100; i++)
+		{
+			//가비지 생성
+			someString += someInt;
+		}
+	}
+}
+```
+
 혹시나, string을 자주 바꿔야 한다면 `StringBuilder`를 사용하시는 것이 좋습니다.
 
 `StringBuilder`는 객체를 생성하여, 전역변수로 buffer를 가지고 있기 때문에, `StringBuilder`객체가 사라지기 전까지는 buffer의 가비지가 생성되지 않습니다.
@@ -37,8 +53,12 @@ public class SomeClass
 
 	private static void Main(string args[])
 	{
-		someString.Append(someInt);
-		someString.Append("값을 출력");
+		for(int i = 0 ; i < 100; i++)
+		{
+			//가비지 안생김
+			someString.Append(someInt);
+			someString.Append("값을 출력");
+		}
 	}
 }
 ```
