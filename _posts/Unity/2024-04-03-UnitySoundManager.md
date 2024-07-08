@@ -674,3 +674,66 @@ public class GameManager : MonoBehaviour
 확장을 고려하여 더 나은 방법이 있는지 생각 해 봐야겠습니다.
 
 
+## 2024-07-08 수정
+
+위에 문저점으로 Enums 를 제네릭화 못시킨다는 단점이 있었는데, 찾아보니까 `Enums`라는 클래스가 있었습니다.
+
+해당 Enum 은 모든 타입의 `enum`들을 가져올 수 있습니다.
+
+```csharp
+public class ResourceManager
+{
+	public string ConvertEnumToAudioClipName(Enums _enum)
+    {
+        string result = string.Empty;
+        switch (_enum)
+        {
+            case SFXS.GUN:
+                result = "Gun";
+                break;
+            case SFXS.SWORD:
+                result = "Sword";
+                break;
+            case SFXS.ARROW:
+                result = "Arrow";
+                break;
+            case BGMS.STAGE_01_START:
+                result = "BGM_Stage01";
+                break;
+            case BGMS.STAGE_02_START:
+                result = "BGM_Stage02";
+                break;
+            case BGMS.STAGE_03_START:
+                result = "BGM_Stage03";
+                break;
+            case BGMS.STAGE_03_ENTER:
+                result = "BGM_Stage03_Enter";
+                break;
+            case BGMS.STAGE_04_BATTLE_PAGE_01:
+                result = "BattleBGM1";
+                break;
+            case BGMS.STAGE_04_BATTLE_PAGE_02:
+                result = "BattleBGM2";
+                break;
+            case BGMS.STAGE_04_BATTLE_PAGE_03:
+                result = "BGM_Stage04_Boss_Page01";
+                break;
+            case BGMS.STAGE_04_BATTLE_PAGE_04:
+                result = "BGM_Stage04_Boss_Page02";
+                break;
+            default:
+                Debug.LogError(this + "UnExpectedValue");
+                break;
+        }
+        return result;
+    }
+}
+```
+
+이런식으로 사용할 수 있습니다.
+
+하지만 Enum 타입이 너무 물렁물렁해져서 예외처리를 좀 빡세게 해 줄 필요가 있어 보입니다.
+
+
+
+
