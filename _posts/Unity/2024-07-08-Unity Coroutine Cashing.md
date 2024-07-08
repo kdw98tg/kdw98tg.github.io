@@ -19,10 +19,12 @@ last_modified_at: 2024-07-08
 Unity 에서 작업을 하시다 보면 `Coroutine`이라는 녀석을 많이 사용합니다.
 
 Coroutine 에 관한 내용은 아래를 참조 하시면 됩니다.
+
 [👉👉👉  Unity Coroutine 게시글](https://kdw98tg.github.io/unity/Coroutine-%ED%99%9C%EC%9A%A9%EB%B2%95/)
 
 
 (본 게시글은 구름고래님의 블로그를 참조하였습니다.)
+
 [👉👉👉  구름고래의 이스터에그](http://blog.naver.com/kch8246)
 ## Corotuine의 문제점
 현재의 Unity는 C# 의 8.0 버전을 사용하고 있습니다. C#의 8.0 버전에는 Coroutined을 사용하려면 필수 키워드인 `yield` 에 문제가 있다고 합니다.
