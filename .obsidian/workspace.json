@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Unity/2024-07-08-Unity Coroutine Cashing.md",
+                "file": "_posts/Unity/2024-07-08-Unity의 생성자 소멸자.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Unity/2024-07-08-Unity Coroutine Cashing.md",
+                "file": "_posts/Unity/2024-07-08-Unity의 생성자 소멸자.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Unity/2024-07-08-Unity Coroutine Cashing.md",
+                "file": "_posts/Unity/2024-07-08-Unity의 생성자 소멸자.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Unity/2024-07-08-Unity Coroutine Cashing.md"
+                "file": "_posts/Unity/2024-07-08-Unity의 생성자 소멸자.md"
               }
             }
           }
@@ -160,10 +160,13 @@
   },
   "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
-    "_posts/Server/2024-04-17-쉬운코드 인터넷 강의 1.md",
+    "images/Pasted image 20240708151007.png",
+    "images/Pasted image 20240708150922.png",
     "_posts/Common.md",
-    "_posts/Server/2024-04-16-PortForwarding.md",
+    "_posts/Unity/2024-07-08-Unity의 생성자 소멸자.md",
     "_posts/Unity/2024-07-08-Unity Coroutine Cashing.md",
+    "_posts/Server/2024-04-17-쉬운코드 인터넷 강의 1.md",
+    "_posts/Server/2024-04-16-PortForwarding.md",
     "_posts/Unity/2024-06-26-Unity Interface.md",
     "_posts/Unity/2024-06-27-Addressable Asset 사용법.md",
     "_posts/대학원 강의/산업AI/2024-03-23-산업 AI 강의3.md",
@@ -187,8 +190,6 @@
     "_posts/Unity/2024-04-03-UnitySoundManager.md",
     "_posts/Server/2024-03-15-Docker.md",
     "_posts/Server/2024-04-11-Ngrok.md",
-    "_posts/Unity/2024-03-19-Unity SoundManager.md",
-    "_posts/Unity/2024-03-19-Coroutine 활용법.md",
     "images/Pasted image 20240626173431.png",
     "favicon-16x16.png",
     "_posts/Asp net core",
@@ -197,7 +198,6 @@
     "images/Pasted image 20240417141611.png",
     "images/Pasted image 20240417141532.png",
     "images/Pasted image 20240417140858.png",
-    "images/Pasted image 20240417140522.png",
     "_site/assets/css/temp.scss",
     "assets/css/temp.scss",
     "_site/assets/css/main.css.map",
