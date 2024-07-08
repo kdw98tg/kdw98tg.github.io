@@ -2,10 +2,10 @@
 title: "[Unity] Interface를 활용하여 느슨한 결합 만들기"
 
 categories:
-  -  Categories
+  -  Unity
   
 tags:
-  - [Tags1, Tags2]
+  - [Unity, Interface, 다형성]
 
 toc: true
 toc_sticky: true

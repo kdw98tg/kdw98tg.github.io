@@ -66,3 +66,6 @@ last_modified_at: 2024-00-00
 ## 이모티콘
 https://getemoji.com/
 🖥👉
+
+## 하이퍼링크
+[👉👉👉 유튜브 쉬운코드님 강의](https://www.youtube.com/watch?v=oFKYzp6gGfc&list=PLcXyemr8ZeoSGlzhlw4gmpNGicIL4kMcX&index=1)
