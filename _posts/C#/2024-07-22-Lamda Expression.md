@@ -83,6 +83,7 @@ namespace LamdaTest
 ## 문 형식
 
 - 델리게이트 안에서 특정 로직을 처리할 수 있는 형식
+
 ```csharp
 using System;
 using System.Collections.Generic;
