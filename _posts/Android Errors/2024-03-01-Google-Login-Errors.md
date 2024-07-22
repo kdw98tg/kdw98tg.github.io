@@ -2,7 +2,7 @@
 title:  "[Android Errors] Google Login Errors" 
 
 categories:
-  -  Android Studio
+  -  Android
 tags:
   - [Programming, Android]
 

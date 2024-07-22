@@ -13,7 +13,7 @@
             "state": {
               "type": "image",
               "state": {
-                "file": "android-chrome-192x192.png"
+                "file": "screenshot-layouts.png"
               }
             }
           },
@@ -95,7 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "android-chrome-192x192.png",
+                "file": "screenshot-layouts.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,7 +112,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "android-chrome-192x192.png",
+                "file": "screenshot-layouts.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +135,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "android-chrome-192x192.png"
+                "file": "screenshot-layouts.png"
               }
             }
           }
@@ -158,7 +158,6 @@
   },
   "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
-    "screenshot-layouts.png",
     "screenshot.png",
     "safari-pinned-tab.svg",
     "README.md",
@@ -169,11 +168,11 @@
     "apple-touch-icon.png",
     "android-chrome-512x512.png",
     "android-chrome-192x192.png",
+    "screenshot-layouts.png",
     "_posts/Unity/2024-07-22-Unity PlayerPrefs.md",
     "_posts/Unity/2024-07-22-Unity UI 관리법.md",
     "_posts/Common.md",
     "images/Pasted image 20240722144311.png",
-    "images/Pasted image 20240722144025.png",
     "_posts/Unity/2024-07-08-Unity의 생성자 소멸자.md",
     "_posts/Unity/2024-03-19-Coroutine 활용법.md",
     "_posts/Unity/2024-06-27-Addressable Asset 사용법.md",
