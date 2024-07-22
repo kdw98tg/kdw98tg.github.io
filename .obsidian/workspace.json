@@ -11,9 +11,11 @@
             "id": "022ce0e03a4ec61a",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "screenshot-layouts.png"
+                "file": "_posts/Unity/2024-07-22-Unity 해상도 대응하기.md",
+                "mode": "source",
+                "source": false
               }
             }
           },
@@ -95,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "screenshot-layouts.png",
+                "file": "_posts/Unity/2024-07-22-Unity 해상도 대응하기.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "screenshot-layouts.png",
+                "file": "_posts/Unity/2024-07-22-Unity 해상도 대응하기.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "screenshot-layouts.png"
+                "file": "_posts/Unity/2024-07-22-Unity 해상도 대응하기.md"
               }
             }
           }
@@ -158,6 +160,16 @@
   },
   "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
+    "_posts/Common.md",
+    "_posts/Unity/2024-07-22-Unity 해상도 대응하기.md",
+    "images/Pasted image 20240722155750.png",
+    "images/Pasted image 20240722155727.png",
+    "images/Pasted image 20240722155714.png",
+    "images/Pasted image 20240722155508.png",
+    "_posts/Unity/2024-07-22-Unity UI 관리법.md",
+    "_posts/Unity/2024-07-22-Unity PlayerPrefs.md",
+    "_posts/Unity/2024-07-08-Unity Coroutine Cashing.md",
+    "screenshot-layouts.png",
     "screenshot.png",
     "safari-pinned-tab.svg",
     "README.md",
@@ -165,19 +177,10 @@
     "favicon-32x32.png",
     "favicon-16x16.png",
     "CHANGELOG.md",
-    "apple-touch-icon.png",
-    "android-chrome-512x512.png",
-    "android-chrome-192x192.png",
-    "screenshot-layouts.png",
-    "_posts/Unity/2024-07-22-Unity PlayerPrefs.md",
-    "_posts/Unity/2024-07-22-Unity UI 관리법.md",
-    "_posts/Common.md",
-    "images/Pasted image 20240722144311.png",
     "_posts/Unity/2024-07-08-Unity의 생성자 소멸자.md",
     "_posts/Unity/2024-03-19-Coroutine 활용법.md",
     "_posts/Unity/2024-06-27-Addressable Asset 사용법.md",
     "_posts/Unity/2024-07-08-StringBuilder.md",
-    "_posts/Unity/2024-07-08-Unity Coroutine Cashing.md",
     "_posts/Unity/2024-04-03-UnitySoundManager.md",
     "_posts/Unity/2024-03-19-Unity SoundManager.md",
     "_posts/C#/2024-07-08-StringBuilder.md",
@@ -192,7 +195,6 @@
     "_posts/Android Errors/2024-03-01-Google-Login-Errors.md",
     "_posts/Asp net core/2024-05-28-Asp.net core DB 마이그레이션.md",
     "_posts/Asp net core/2024-04-04-ASP.Net Core API 서버.md",
-    "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md",
     "_posts/Asp net core",
     "_posts/Database",
     "_site/assets/css/temp.scss",
