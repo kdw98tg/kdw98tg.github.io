@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Server/2024-07-22-FTP&SFTP.md",
+                "file": "_posts/Unity/2024-07-22-Unity 해상도 대응하기.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Server/2024-07-22-FTP&SFTP.md",
+                "file": "_posts/Unity/2024-07-22-Unity 해상도 대응하기.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Server/2024-07-22-FTP&SFTP.md",
+                "file": "_posts/Unity/2024-07-22-Unity 해상도 대응하기.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Server/2024-07-22-FTP&SFTP.md"
+                "file": "_posts/Unity/2024-07-22-Unity 해상도 대응하기.md"
               }
             }
           }
@@ -160,18 +160,18 @@
   },
   "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
+    "_posts/C#/2024-03-01-Linq.md",
+    "_posts/Server/2024-07-22-FTP&SFTP.md",
     "images/Pasted image 20240722175249.png",
     "images/Pasted image 20240722175233.png",
     "_posts/Common.md",
     "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md",
-    "_posts/Server/2024-07-22-FTP&SFTP.md",
     "_posts/Server/2024-07-22-경계 문자열.md",
     "_posts/Server/2024-04-17-Ubuntu Server 부팅 USB 만들기.md",
     "_posts/Server/2024-04-17-쉬운코드 인터넷 강의 1.md",
     "_posts/Server/2024-04-16-PortForwarding.md",
     "_posts/Server/2024-04-11-Ngrok.md",
     "_posts/Server/2024-03-15-Docker.md",
-    "_posts/C#/2024-03-01-Linq.md",
     "_posts/C#/2024-07-22-Lamda Expression.md",
     "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
     "images/Pasted image 20240722160626.png",
@@ -183,7 +183,6 @@
     "images/Pasted image 20240722155750.png",
     "images/Pasted image 20240722155727.png",
     "images/Pasted image 20240722155714.png",
-    "images/Pasted image 20240722155508.png",
     "_posts/Unity/2024-07-22-Unity UI 관리법.md",
     "_posts/Unity/2024-07-22-Unity PlayerPrefs.md",
     "_posts/Unity/2024-07-08-Unity Coroutine Cashing.md",
