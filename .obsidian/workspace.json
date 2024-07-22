@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Server/2024-07-22-경계 문자열.md",
+                "file": "_posts/Server/2024-07-22-FTP&SFTP.md",
                 "mode": "source",
                 "source": false
               }
@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md",
+                "file": "_posts/Common.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Server/2024-07-22-경계 문자열.md",
+                "file": "_posts/Server/2024-07-22-FTP&SFTP.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Server/2024-07-22-경계 문자열.md",
+                "file": "_posts/Server/2024-07-22-FTP&SFTP.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Server/2024-07-22-경계 문자열.md"
+                "file": "_posts/Server/2024-07-22-FTP&SFTP.md"
               }
             }
           }
@@ -160,8 +160,11 @@
   },
   "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
-    "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md",
+    "images/Pasted image 20240722175249.png",
+    "images/Pasted image 20240722175233.png",
     "_posts/Common.md",
+    "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md",
+    "_posts/Server/2024-07-22-FTP&SFTP.md",
     "_posts/Server/2024-07-22-경계 문자열.md",
     "_posts/Server/2024-04-17-Ubuntu Server 부팅 USB 만들기.md",
     "_posts/Server/2024-04-17-쉬운코드 인터넷 강의 1.md",
@@ -184,7 +187,6 @@
     "_posts/Unity/2024-07-22-Unity UI 관리법.md",
     "_posts/Unity/2024-07-22-Unity PlayerPrefs.md",
     "_posts/Unity/2024-07-08-Unity Coroutine Cashing.md",
-    "screenshot-layouts.png",
     "README.md",
     "CHANGELOG.md",
     "_posts/Unity/2024-07-08-Unity의 생성자 소멸자.md",
@@ -194,8 +196,6 @@
     "_posts/Unity/2024-04-03-UnitySoundManager.md",
     "_posts/Unity/2024-03-19-Unity SoundManager.md",
     "_posts/C#/2024-07-08-StringBuilder.md",
-    "_posts/Unity/2024-06-26-Unity Interface.md",
-    "_posts/대학원 강의/산업AI/2024-03-23-산업 AI 강의3.md",
     "_posts/Asp net core",
     "_posts/Database",
     "_site/assets/css/temp.scss",
