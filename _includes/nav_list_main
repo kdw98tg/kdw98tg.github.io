@@ -75,7 +75,7 @@
             <ul>
                 {% for category in site.categories %}
                     {% if category[0] == "Android Studio" %}
-                        <li><a href="/categories/android" class="">Android Studio ({{category[1].size}})</a></li>
+                        <li><a href="/categories/android" class="">Android({{category[1].size}})</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>

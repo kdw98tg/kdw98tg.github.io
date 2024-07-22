@@ -11,11 +11,9 @@
             "id": "022ce0e03a4ec61a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "_posts/Unity/2024-07-22-Unity PlayerPrefs.md",
-                "mode": "source",
-                "source": false
+                "file": "android-chrome-192x192.png"
               }
             }
           },
@@ -97,7 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Unity/2024-07-22-Unity PlayerPrefs.md",
+                "file": "android-chrome-192x192.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +112,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Unity/2024-07-22-Unity PlayerPrefs.md",
+                "file": "android-chrome-192x192.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +135,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Unity/2024-07-22-Unity PlayerPrefs.md"
+                "file": "android-chrome-192x192.png"
               }
             }
           }
@@ -160,14 +158,23 @@
   },
   "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
-    "_posts/Unity/2024-07-22-Unity UI 관리법.md",
+    "screenshot-layouts.png",
+    "screenshot.png",
+    "safari-pinned-tab.svg",
+    "README.md",
+    "mstile-150x150.png",
+    "favicon-32x32.png",
+    "favicon-16x16.png",
+    "CHANGELOG.md",
+    "apple-touch-icon.png",
+    "android-chrome-512x512.png",
+    "android-chrome-192x192.png",
     "_posts/Unity/2024-07-22-Unity PlayerPrefs.md",
+    "_posts/Unity/2024-07-22-Unity UI 관리법.md",
     "_posts/Common.md",
     "images/Pasted image 20240722144311.png",
     "images/Pasted image 20240722144025.png",
     "_posts/Unity/2024-07-08-Unity의 생성자 소멸자.md",
-    "images/Pasted image 20240722143119.png",
-    "images/Pasted image 20240722143109.png",
     "_posts/Unity/2024-03-19-Coroutine 활용법.md",
     "_posts/Unity/2024-06-27-Addressable Asset 사용법.md",
     "_posts/Unity/2024-07-08-StringBuilder.md",
@@ -177,8 +184,6 @@
     "_posts/C#/2024-07-08-StringBuilder.md",
     "_posts/C#/2024-03-01-Linq.md",
     "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
-    "images/Pasted image 20240708151007.png",
-    "images/Pasted image 20240708150922.png",
     "_posts/Server/2024-04-17-쉬운코드 인터넷 강의 1.md",
     "_posts/Server/2024-04-16-PortForwarding.md",
     "_posts/Unity/2024-06-26-Unity Interface.md",
@@ -189,13 +194,6 @@
     "_posts/Asp net core/2024-05-28-Asp.net core DB 마이그레이션.md",
     "_posts/Asp net core/2024-04-04-ASP.Net Core API 서버.md",
     "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md",
-    "_posts/Server/2024-04-17-Ubuntu Server 부팅 USB 만들기.md",
-    "_posts/Design Pattern/2024-03-04-Singleton Pattern.md",
-    "_pages/categories/category-winform.md",
-    "images/Pasted image 20240702124533.png",
-    "images/Pasted image 20240702124218.png",
-    "images/Pasted image 20240702124051.png",
-    "images/Pasted image 20240626173431.png",
     "_posts/Asp net core",
     "_posts/Database",
     "_site/assets/css/temp.scss",
