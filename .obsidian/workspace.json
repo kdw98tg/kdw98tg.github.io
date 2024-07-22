@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Unity/2024-07-22-Unity UI 관리법.md",
+                "file": "_posts/Unity/2024-07-22-Unity PlayerPrefs.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Unity/2024-07-22-Unity UI 관리법.md",
+                "file": "_posts/Unity/2024-07-22-Unity PlayerPrefs.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Unity/2024-07-22-Unity UI 관리법.md",
+                "file": "_posts/Unity/2024-07-22-Unity PlayerPrefs.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Unity/2024-07-22-Unity UI 관리법.md"
+                "file": "_posts/Unity/2024-07-22-Unity PlayerPrefs.md"
               }
             }
           }
@@ -160,8 +160,9 @@
   },
   "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
-    "_posts/Common.md",
     "_posts/Unity/2024-07-22-Unity UI 관리법.md",
+    "_posts/Unity/2024-07-22-Unity PlayerPrefs.md",
+    "_posts/Common.md",
     "images/Pasted image 20240722144311.png",
     "images/Pasted image 20240722144025.png",
     "_posts/Unity/2024-07-08-Unity의 생성자 소멸자.md",
