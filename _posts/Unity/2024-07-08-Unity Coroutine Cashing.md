@@ -65,13 +65,14 @@ private IEnumerator SomeCoroutine()
 private static class CoroutineCashManager
 {
 	public static readonly Dictionary<float, WaitForSeconds> waitForSeconds = new Dictionary<float, WaitForSeconds>();
-	public static WaitForSeconds(float _seconds)
+	public static WaitForSeconds WaitForSeconds(float _seconds)
 	{
 		WaitForSeconds wfs;
 		if(!waitForSeconds.TryGetValue(_seconds, out wfs))
 		{
 			waitForSeconds.Add(_seconds, wfs = new WaitForSeconds(_seconds));
 		}
+		return wfs
 	}
 }
 ```
