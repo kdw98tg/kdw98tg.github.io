@@ -33,7 +33,7 @@ last_modified_at: 2020-07-22
 
 ### 람다식 모양
 
-```C#
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -63,7 +63,7 @@ namespace LamdaTest
 요 3가지 형태로 쓸 수 있음
 델리게이트로 사용하는게 원래 C# 2.0에 있었는데 C# 3.0에 람다식이 추가되어서 둘다 공존
 #### 실제 사용
-```C#
+```csharp
 namespace LamdaTest
 {
     internal class Program
@@ -83,7 +83,7 @@ namespace LamdaTest
 ## 문 형식
 
 - 델리게이트 안에서 특정 로직을 처리할 수 있는 형식
-```C#
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -112,7 +112,7 @@ namespace LamdaTest
 
 ```
 
-```C#
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -158,7 +158,7 @@ namespace LamdaTest
 - 매개변수 중 가장 마지막에 있는 것이 반환 형식임
 
 #### 매개변수가 없는 버전
-```C#
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -182,7 +182,7 @@ namespace LamdaTest
 
 #### 매개변수가 1개인 버전
 
-```C#
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -206,7 +206,7 @@ namespace LamdaTest
 
 #### 매개변수가 2개인 버전
 
-```C#
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -235,7 +235,7 @@ namespace LamdaTest
 - 이것도 17개의 버전이 있음
 
 #### 매개변수 없는 버전
-```C#
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -259,7 +259,7 @@ namespace LamdaTest
 ```
 
 #### 매개변수가 하나뿐인 버전
-```C#
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -285,7 +285,7 @@ namespace LamdaTest
 
 ### 매개변수가 2개인 버전
 
-```C#
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Data;
