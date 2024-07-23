@@ -13,9 +13,19 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Unity/2024-07-22-Unity 해상도 대응하기.md",
+                "file": "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
                 "mode": "source",
                 "source": false
+              }
+            }
+          },
+          {
+            "id": "22e1b2558224eb79",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.6.7"
               }
             }
           },
@@ -97,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Unity/2024-07-22-Unity 해상도 대응하기.md",
+                "file": "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +124,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Unity/2024-07-22-Unity 해상도 대응하기.md",
+                "file": "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +147,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Unity/2024-07-22-Unity 해상도 대응하기.md"
+                "file": "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md"
               }
             }
           }
@@ -160,6 +170,7 @@
   },
   "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
+    "_posts/Unity/2024-07-22-Unity 해상도 대응하기.md",
     "_posts/C#/2024-03-01-Linq.md",
     "_posts/Server/2024-07-22-FTP&SFTP.md",
     "images/Pasted image 20240722175249.png",
@@ -179,7 +190,6 @@
     "images/Pasted image 20240722160531.png",
     "images/Pasted image 20240722160443.png",
     "images/Pasted image 20240722160438.png",
-    "_posts/Unity/2024-07-22-Unity 해상도 대응하기.md",
     "images/Pasted image 20240722155750.png",
     "images/Pasted image 20240722155727.png",
     "images/Pasted image 20240722155714.png",
