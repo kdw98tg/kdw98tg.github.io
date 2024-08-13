@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
+                "file": "_pages/categories/category-python.md",
                 "mode": "source",
                 "source": false
               }
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
+                "file": "_pages/categories/category-python.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -124,7 +124,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
+                "file": "_pages/categories/category-python.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -147,7 +147,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md"
+                "file": "_pages/categories/category-python.md"
               }
             }
           }
@@ -170,6 +170,12 @@
   },
   "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
+    "_pages/categories/category-Server.md",
+    "_pages/categories/category-c.md",
+    "_pages/categories/category-android.md",
+    "_pages/categories/category-AI.md",
+    "_pages/categories/category-python.md",
+    "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
     "_posts/Unity/2024-07-22-Unity 해상도 대응하기.md",
     "_posts/C#/2024-03-01-Linq.md",
     "_posts/Server/2024-07-22-FTP&SFTP.md",
@@ -184,7 +190,6 @@
     "_posts/Server/2024-04-11-Ngrok.md",
     "_posts/Server/2024-03-15-Docker.md",
     "_posts/C#/2024-07-22-Lamda Expression.md",
-    "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
     "images/Pasted image 20240722160626.png",
     "images/Pasted image 20240722160558.png",
     "images/Pasted image 20240722160531.png",
@@ -201,10 +206,6 @@
     "_posts/Unity/2024-07-08-Unity의 생성자 소멸자.md",
     "_posts/Unity/2024-03-19-Coroutine 활용법.md",
     "_posts/Unity/2024-06-27-Addressable Asset 사용법.md",
-    "_posts/Unity/2024-07-08-StringBuilder.md",
-    "_posts/Unity/2024-04-03-UnitySoundManager.md",
-    "_posts/Unity/2024-03-19-Unity SoundManager.md",
-    "_posts/C#/2024-07-08-StringBuilder.md",
     "_posts/Asp net core",
     "_posts/Database",
     "_site/assets/css/temp.scss",
