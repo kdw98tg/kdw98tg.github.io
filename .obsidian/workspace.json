@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_pages/categories/category-python.md",
+                "file": "_posts/Python/2024-08-13-python venv.md",
                 "mode": "source",
                 "source": false
               }
@@ -107,7 +107,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_pages/categories/category-python.md",
+                "file": "_posts/Python/2024-08-13-python venv.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -124,7 +124,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_pages/categories/category-python.md",
+                "file": "_posts/Python/2024-08-13-python venv.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -147,7 +147,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_pages/categories/category-python.md"
+                "file": "_posts/Python/2024-08-13-python venv.md"
               }
             }
           }
@@ -170,18 +170,22 @@
   },
   "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
+    "images/Pasted image 20240813215049.png",
+    "images/Pasted image 20240813214700.png",
+    "_posts/Common.md",
+    "_posts/Python/2024-08-13-python venv.md",
+    "_pages/categories/category-python.md",
+    "_posts/Python",
     "_pages/categories/category-Server.md",
     "_pages/categories/category-c.md",
     "_pages/categories/category-android.md",
     "_pages/categories/category-AI.md",
-    "_pages/categories/category-python.md",
     "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
     "_posts/Unity/2024-07-22-Unity 해상도 대응하기.md",
     "_posts/C#/2024-03-01-Linq.md",
     "_posts/Server/2024-07-22-FTP&SFTP.md",
     "images/Pasted image 20240722175249.png",
     "images/Pasted image 20240722175233.png",
-    "_posts/Common.md",
     "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md",
     "_posts/Server/2024-07-22-경계 문자열.md",
     "_posts/Server/2024-04-17-Ubuntu Server 부팅 USB 만들기.md",
@@ -197,15 +201,12 @@
     "images/Pasted image 20240722160438.png",
     "images/Pasted image 20240722155750.png",
     "images/Pasted image 20240722155727.png",
-    "images/Pasted image 20240722155714.png",
     "_posts/Unity/2024-07-22-Unity UI 관리법.md",
     "_posts/Unity/2024-07-22-Unity PlayerPrefs.md",
     "_posts/Unity/2024-07-08-Unity Coroutine Cashing.md",
     "README.md",
     "CHANGELOG.md",
     "_posts/Unity/2024-07-08-Unity의 생성자 소멸자.md",
-    "_posts/Unity/2024-03-19-Coroutine 활용법.md",
-    "_posts/Unity/2024-06-27-Addressable Asset 사용법.md",
     "_posts/Asp net core",
     "_posts/Database",
     "_site/assets/css/temp.scss",
@@ -214,7 +215,6 @@
     "assets/css/temp.css",
     "_site/unity/UnitySoundManager/index.html",
     "_site/unity/UnitySoundManager",
-    "_site/unity/Http-통신(UnityWebRequset)/index.html",
-    "_site/unity/Http-통신(UnityWebRequset)"
+    "_site/unity/Http-통신(UnityWebRequset)/index.html"
   ]
 }
