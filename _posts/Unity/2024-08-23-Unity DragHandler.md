@@ -57,7 +57,6 @@ public class UI_GridController : UI_Base
 	private Action updateTileAreaCallback = null;
 	
 	protected override void Awake()
-	
 	{
 		base.Awake();
 		
@@ -111,7 +110,6 @@ public class UI_GridController_Button_Move : UI_Button, IBeginDragHandler, IDrag
 	private Action<PointerEventData> onDragCallback = null;
 	private Action<PointerEventData> onEndDragCallback = null;
 	
-	
 	public void Init(Action<PointerEventData> _onBeginDragCallback, Action<PointerEventData> _onDragCallback, Action<PointerEventData> _onEndDragCallback)
 	{
 		this.onBeginDragCallback = _onBeginDragCallback;
@@ -121,21 +119,15 @@ public class UI_GridController_Button_Move : UI_Button, IBeginDragHandler, IDrag
 		this.onEndDragCallback = _onEndDragCallback;
 	}
 	
-	  
-	
 	public void OnBeginDrag(PointerEventData eventData)
 	{
 		onBeginDragCallback?.Invoke(eventData);
 	}
 	
-	  
-	
 	public void OnDrag(PointerEventData eventData)
 	{
 		onDragCallback?.Invoke(eventData);
 	}
-	
-	  
 	
 	public void OnEndDrag(PointerEventData eventData)
 	{
