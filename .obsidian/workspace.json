@@ -13,19 +13,9 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Unity/2024-08-19-Unity StatePattern.md",
+                "file": "_posts/Unity/2024-08-23-DragHandler.md",
                 "mode": "source",
                 "source": false
-              }
-            }
-          },
-          {
-            "id": "22e1b2558224eb79",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.6.7"
               }
             }
           },
@@ -107,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Unity/2024-08-19-Unity StatePattern.md",
+                "file": "_posts/Unity/2024-08-23-DragHandler.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -124,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Unity/2024-08-19-Unity StatePattern.md",
+                "file": "_posts/Unity/2024-08-23-DragHandler.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -147,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Unity/2024-08-19-Unity StatePattern.md"
+                "file": "_posts/Unity/2024-08-23-DragHandler.md"
               }
             }
           }
@@ -170,10 +160,13 @@
   },
   "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
+    "images/Pasted image 20240823140230.png",
+    "_posts/Common.md",
+    "_posts/Unity/2024-08-23-DragHandler.md",
+    "images/Pasted image 20240823134546.png",
+    "_posts/Unity/2024-08-19-Unity StatePattern.md",
     "images/Pasted image 20240819222408.png",
     "images/Pasted image 20240819222223.png",
-    "_posts/Common.md",
-    "_posts/Unity/2024-08-19-Unity StatePattern.md",
     "images/Pasted image 20240819213815.png",
     "_posts/Unity/2024-07-22-Unity UI 관리법.md",
     "_posts/Python/2024-08-13-python venv.md",
@@ -201,12 +194,9 @@
     "_posts/C#/2024-07-22-Lamda Expression.md",
     "images/Pasted image 20240722160626.png",
     "images/Pasted image 20240722160558.png",
-    "images/Pasted image 20240722160531.png",
-    "images/Pasted image 20240722160443.png",
     "_posts/Unity/2024-07-22-Unity PlayerPrefs.md",
     "_posts/Unity/2024-07-08-Unity Coroutine Cashing.md",
     "README.md",
-    "CHANGELOG.md",
     "_posts/Asp net core",
     "_posts/Database",
     "_site/assets/css/temp.scss",
