@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Unity/2024-08-23-DragHandler.md",
+                "file": "_posts/Unity/2024-08-23-Unity DragHandler.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Unity/2024-08-23-DragHandler.md",
+                "file": "_posts/Unity/2024-08-23-Unity DragHandler.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Unity/2024-08-23-DragHandler.md",
+                "file": "_posts/Unity/2024-08-23-Unity DragHandler.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Unity/2024-08-23-DragHandler.md"
+                "file": "_posts/Unity/2024-08-23-Unity DragHandler.md"
               }
             }
           }
@@ -160,9 +160,12 @@
   },
   "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
-    "images/Pasted image 20240823140230.png",
+    "_posts/Unity/2024-08-23-Unity Reset() 함수.md",
+    "images/Pasted image 20240823160332.png",
     "_posts/Common.md",
-    "_posts/Unity/2024-08-23-DragHandler.md",
+    "images/Pasted image 20240823155242.png",
+    "_posts/Unity/2024-08-23-Unity DragHandler.md",
+    "images/Pasted image 20240823140230.png",
     "images/Pasted image 20240823134546.png",
     "_posts/Unity/2024-08-19-Unity StatePattern.md",
     "images/Pasted image 20240819222408.png",
@@ -183,7 +186,6 @@
     "_posts/C#/2024-03-01-Linq.md",
     "_posts/Server/2024-07-22-FTP&SFTP.md",
     "images/Pasted image 20240722175249.png",
-    "images/Pasted image 20240722175233.png",
     "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md",
     "_posts/Server/2024-07-22-경계 문자열.md",
     "_posts/Server/2024-04-17-Ubuntu Server 부팅 USB 만들기.md",
@@ -192,11 +194,8 @@
     "_posts/Server/2024-04-11-Ngrok.md",
     "_posts/Server/2024-03-15-Docker.md",
     "_posts/C#/2024-07-22-Lamda Expression.md",
-    "images/Pasted image 20240722160626.png",
-    "images/Pasted image 20240722160558.png",
     "_posts/Unity/2024-07-22-Unity PlayerPrefs.md",
     "_posts/Unity/2024-07-08-Unity Coroutine Cashing.md",
-    "README.md",
     "_posts/Asp net core",
     "_posts/Database",
     "_site/assets/css/temp.scss",

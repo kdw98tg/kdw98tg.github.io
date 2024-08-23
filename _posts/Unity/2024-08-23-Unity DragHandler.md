@@ -48,60 +48,53 @@ using UnityEngine.EventSystems;
 
 public class UI_GridController : UI_Base
 {
-private UI_GridController_Button_Move buttonMove = null;
-private UI_GridController_Button_Confirm buttonConfirm = null;
-private UI_GridController_Button_Remove buttonRemove = null;
-
-private Vector3 dragOffset;
-private Building building = null;
-private Action updateTileAreaCallback = null;
-
-protected override void Awake()
-
-{
-base.Awake();
-
-buttonMove = GetComponentInChildren<UI_GridController_Button_Move>();
-buttonConfirm = GetComponentInChildren<UI_GridController_Button_Confirm>();
-buttonRemove = GetComponentInChildren<UI_GridController_Button_Remove>();
+	private UI_GridController_Button_Move buttonMove = null;
+	private UI_GridController_Button_Confirm buttonConfirm = null;
+	private UI_GridController_Button_Remove buttonRemove = null;
+	
+	private Vector3 dragOffset;
+	private Building building = null;
+	private Action updateTileAreaCallback = null;
+	
+	protected override void Awake()
+	
+	{
+		base.Awake();
+		
+		buttonMove = GetComponentInChildren<UI_GridController_Button_Move>();
+		buttonConfirm = GetComponentInChildren<UI_GridController_Button_Confirm>();
+		buttonRemove = GetComponentInChildren<UI_GridController_Button_Remove>();
+	}
+	
+	//여기서 버튼 이벤트 등록해줘야하는데
+	
+	//나중에 GridController에서 DI 받아서 해주던가 하자
+	
+	public void Init(Action _updateTileAreaCallback, UnityAction _confirmAction, UnityAction _removeAction)
+	{
+		buttonMove.Init(OnBeginDrag, OnDrag, OnDragEnd);
+		updateTileAreaCallback = _updateTileAreaCallback;
+		buttonConfirm.SetOnClickEvent(_confirmAction);
+		buttonRemove.SetOnClickEvent(_removeAction);
+	}
+	
+	#region MovebuttonDrag
+	
+	private void OnBeginDrag(PointerEventData _eventData)
+	{
+	//드래그 시작할 때 발생하는 로직 정의
+	}
+	
+	private void OnDrag(PointerEventData _eventData)
+	{
+	//드래그 중에 계속 발생되는 로직 정의
+	}
+	
+	private void OnDragEnd(PointerEventData _eventData)
+	{
+	//드래그가 끝났을 때 발생되는 로직 정의
+	}
 }
-
-//여기서 버튼 이벤트 등록해줘야하는데
-
-//나중에 GridController에서 DI 받아서 해주던가 하자
-
-public void Init(Action _updateTileAreaCallback, UnityAction _confirmAction, UnityAction _removeAction)
-{
-
-buttonMove.Init(OnBeginDrag, OnDrag, OnDragEnd);
-
-updateTileAreaCallback = _updateTileAreaCallback;
-
-buttonConfirm.SetOnClickEvent(_confirmAction);
-
-buttonRemove.SetOnClickEvent(_removeAction);
-}
-
-#region MovebuttonDrag
-
-private void OnBeginDrag(PointerEventData _eventData)
-
-{
-//드래그 시작할 때 발생하는 로직 정의
-}
-
-private void OnDrag(PointerEventData _eventData)
-
-{
-//드래그 중에 계속 발생되는 로직 정의
-}
-
-private void OnDragEnd(PointerEventData _eventData)
-
-{
-//드래그가 끝났을 때 발생되는 로직 정의
-}
-
 #endregion
 ```
 
@@ -114,50 +107,41 @@ using System;
 public class UI_GridController_Button_Move : UI_Button, IBeginDragHandler, IDragHandler, IEndDragHandler
 
 {
-
-private Action<PointerEventData> onBeginDragCallback = null;
-
-private Action<PointerEventData> onDragCallback = null;
-
-private Action<PointerEventData> onEndDragCallback = null;
-
-  
-
-public void Init(Action<PointerEventData> _onBeginDragCallback, Action<PointerEventData> _onDragCallback, Action<PointerEventData> _onEndDragCallback)
-
-{
-
-this.onBeginDragCallback = _onBeginDragCallback;
-
-this.onDragCallback = _onDragCallback;
-
-this.onEndDragCallback = _onEndDragCallback;
-
+	private Action<PointerEventData> onBeginDragCallback = null;
+	private Action<PointerEventData> onDragCallback = null;
+	private Action<PointerEventData> onEndDragCallback = null;
+	
+	
+	public void Init(Action<PointerEventData> _onBeginDragCallback, Action<PointerEventData> _onDragCallback, Action<PointerEventData> _onEndDragCallback)
+	{
+		this.onBeginDragCallback = _onBeginDragCallback;
+		
+		this.onDragCallback = _onDragCallback;
+		
+		this.onEndDragCallback = _onEndDragCallback;
+	}
+	
+	  
+	
+	public void OnBeginDrag(PointerEventData eventData)
+	{
+		onBeginDragCallback?.Invoke(eventData);
+	}
+	
+	  
+	
+	public void OnDrag(PointerEventData eventData)
+	{
+		onDragCallback?.Invoke(eventData);
+	}
+	
+	  
+	
+	public void OnEndDrag(PointerEventData eventData)
+	{
+		onEndDragCallback?.Invoke(eventData);
+	}
 }
-
-  
-
-public void OnBeginDrag(PointerEventData eventData)
-{
-onBeginDragCallback?.Invoke(eventData);
-}
-
-  
-
-public void OnDrag(PointerEventData eventData)
-{
-onDragCallback?.Invoke(eventData);
-}
-
-  
-
-public void OnEndDrag(PointerEventData eventData)
-{
-onEndDragCallback?.Invoke(eventData);
-}
-
-}
-
 ```
 
 Drag가 되어야 하는 객체에 `IDragable`인터페이스를 상속시키고, 정의부에서 실행해야 하는 로직을 구현해주면 바로 실행이 됩니다.
