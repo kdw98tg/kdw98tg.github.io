@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_pages/categories/category-etc.md",
+                "file": "_posts/Git/2024-08-27-Git LFS.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_pages/categories/category-etc.md",
+                "file": "_posts/Git/2024-08-27-Git LFS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_pages/categories/category-etc.md",
+                "file": "_posts/Git/2024-08-27-Git LFS.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_pages/categories/category-etc.md"
+                "file": "_posts/Git/2024-08-27-Git LFS.md"
               }
             }
           }
@@ -158,10 +158,10 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "95f1480089cf5cc1",
+  "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
-    "_pages/categories/category-git.md",
     "_pages/categories/category-etc.md",
+    "_pages/categories/category-git.md",
     "_pages/categories/category-java.md",
     "_posts/Git/2024-08-27-Git LFS.md",
     "_posts/Etc/2024-08-28-Mac Obsidian 한글 끊김.md",
