@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Etc/2024-08-28-Mac Obsidian 한글 끊김.md",
+                "file": "_posts/Git/2024-08-27-Git LFS.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Etc/2024-08-28-Mac Obsidian 한글 끊김.md",
+                "file": "_posts/Git/2024-08-27-Git LFS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Etc/2024-08-28-Mac Obsidian 한글 끊김.md",
+                "file": "_posts/Git/2024-08-27-Git LFS.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Etc/2024-08-28-Mac Obsidian 한글 끊김.md"
+                "file": "_posts/Git/2024-08-27-Git LFS.md"
               }
             }
           }
@@ -160,15 +160,16 @@
   },
   "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
-    "_posts/Common.md",
     "_posts/Etc/2024-08-28-Mac Obsidian 한글 끊김.md",
+    "_posts/Git/2024-08-27-Git LFS.md",
+    "_pages/categories/category-git.md",
     "_pages/categories/category-etc.md",
+    "_posts/Common.md",
     "_posts/Etc",
     "_posts/Unity/무제 폴더",
     "_posts/무제 파일.md",
     "_pages/categories/category-c.md",
     "_pages/categories/category-design-principle.md",
-    "_posts/Git/2024-08-27-Git LFS.md",
     "images/Pasted image 20240828213705.png",
     "images/Pasted image 20240828213638.png",
     "images/Pasted image 20240828213611.png",
@@ -177,7 +178,6 @@
     "images/Pasted image 20240828155504.png",
     "images/Pasted image 20240828155011.png",
     "images/Pasted image 20240828124601.png",
-    "_pages/categories/category-git.md",
     "_posts/Unity/2024-08-23-Unity DragHandler.md",
     "_posts/Git",
     "_posts/Unity/2024-08-23-Unity Reset() 함수.md",
