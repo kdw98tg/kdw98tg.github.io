@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Unity/2024-08-23-Unity DragHandler.md",
+                "file": "_posts/Etc/2024-08-28-Mac Obsidian 한글 끊김.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Unity/2024-08-23-Unity DragHandler.md",
+                "file": "_posts/Etc/2024-08-28-Mac Obsidian 한글 끊김.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Unity/2024-08-23-Unity DragHandler.md",
+                "file": "_posts/Etc/2024-08-28-Mac Obsidian 한글 끊김.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Unity/2024-08-23-Unity DragHandler.md"
+                "file": "_posts/Etc/2024-08-28-Mac Obsidian 한글 끊김.md"
               }
             }
           }
@@ -160,50 +160,51 @@
   },
   "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
+    "_posts/Common.md",
+    "_posts/Etc/2024-08-28-Mac Obsidian 한글 끊김.md",
+    "_pages/categories/category-etc.md",
+    "_posts/Etc",
+    "_posts/Unity/무제 폴더",
+    "_posts/무제 파일.md",
+    "_pages/categories/category-c.md",
+    "_pages/categories/category-design-principle.md",
+    "_posts/Git/2024-08-27-Git LFS.md",
+    "images/Pasted image 20240828213705.png",
+    "images/Pasted image 20240828213638.png",
+    "images/Pasted image 20240828213611.png",
+    "images/Pasted image 20240828213527.png",
+    "images/Pasted image 20240828155531.png",
+    "images/Pasted image 20240828155504.png",
+    "images/Pasted image 20240828155011.png",
+    "images/Pasted image 20240828124601.png",
+    "_pages/categories/category-git.md",
+    "_posts/Unity/2024-08-23-Unity DragHandler.md",
+    "_posts/Git",
     "_posts/Unity/2024-08-23-Unity Reset() 함수.md",
     "images/Pasted image 20240823160332.png",
-    "_posts/Common.md",
     "images/Pasted image 20240823155242.png",
-    "_posts/Unity/2024-08-23-Unity DragHandler.md",
-    "images/Pasted image 20240823140230.png",
-    "images/Pasted image 20240823134546.png",
     "_posts/Unity/2024-08-19-Unity StatePattern.md",
-    "images/Pasted image 20240819222408.png",
-    "images/Pasted image 20240819222223.png",
-    "images/Pasted image 20240819213815.png",
     "_posts/Unity/2024-07-22-Unity UI 관리법.md",
     "_posts/Python/2024-08-13-python venv.md",
-    "images/Pasted image 20240813215049.png",
-    "images/Pasted image 20240813214700.png",
     "_pages/categories/category-python.md",
     "_posts/Python",
     "_pages/categories/category-Server.md",
-    "_pages/categories/category-c.md",
     "_pages/categories/category-android.md",
     "_pages/categories/category-AI.md",
     "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
     "_posts/Unity/2024-07-22-Unity 해상도 대응하기.md",
     "_posts/C#/2024-03-01-Linq.md",
     "_posts/Server/2024-07-22-FTP&SFTP.md",
-    "images/Pasted image 20240722175249.png",
     "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md",
     "_posts/Server/2024-07-22-경계 문자열.md",
     "_posts/Server/2024-04-17-Ubuntu Server 부팅 USB 만들기.md",
     "_posts/Server/2024-04-17-쉬운코드 인터넷 강의 1.md",
     "_posts/Server/2024-04-16-PortForwarding.md",
-    "_posts/Server/2024-04-11-Ngrok.md",
-    "_posts/Server/2024-03-15-Docker.md",
-    "_posts/C#/2024-07-22-Lamda Expression.md",
-    "_posts/Unity/2024-07-22-Unity PlayerPrefs.md",
-    "_posts/Unity/2024-07-08-Unity Coroutine Cashing.md",
     "_posts/Asp net core",
     "_posts/Database",
     "_site/assets/css/temp.scss",
     "assets/css/temp.scss",
     "_site/assets/css/main.css.map",
-    "assets/css/temp.css",
-    "_site/unity/UnitySoundManager/index.html",
-    "_site/unity/UnitySoundManager",
-    "_site/unity/Http-통신(UnityWebRequset)/index.html"
+    "assets/css/temp.css"
   ]
 }
