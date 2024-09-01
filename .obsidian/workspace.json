@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Git/2024-08-27-Git LFS.md",
+                "file": "_posts/Unity/2024-09-01-Unity Command Pattern.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Git/2024-08-27-Git LFS.md",
+                "file": "_posts/Unity/2024-09-01-Unity Command Pattern.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Git/2024-08-27-Git LFS.md",
+                "file": "_posts/Unity/2024-09-01-Unity Command Pattern.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Git/2024-08-27-Git LFS.md"
+                "file": "_posts/Unity/2024-09-01-Unity Command Pattern.md"
               }
             }
           }
@@ -160,6 +160,11 @@
   },
   "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
+    "_posts/Common.md",
+    "_posts/Unity/2024-09-01-Unity Command Pattern.md",
+    "_posts/Unity/2024-08-19-Unity StatePattern.md",
+    "_posts/Unity/2024-08-23-Unity Reset() 함수.md",
+    "_posts/Git/2024-08-27-Git LFS.md",
     "_posts/Unity/2024-08-23-Unity DragHandler.md",
     "_pages/categories/category-unity.md",
     "_pages/categories/category-design_pattern.md",
@@ -168,8 +173,6 @@
     "_pages/categories/category-kotlin.md",
     "_pages/categories/category-java.md",
     "_pages/categories/category-git.md",
-    "_posts/Git/2024-08-27-Git LFS.md",
-    "_posts/Common.md",
     "_pages/categories/category-etc.md",
     "_posts/Etc/2024-08-28-Mac Obsidian 한글 끊김.md",
     "_posts/Etc",
@@ -186,10 +189,8 @@
     "images/Pasted image 20240828155011.png",
     "images/Pasted image 20240828124601.png",
     "_posts/Git",
-    "_posts/Unity/2024-08-23-Unity Reset() 함수.md",
     "images/Pasted image 20240823160332.png",
     "images/Pasted image 20240823155242.png",
-    "_posts/Unity/2024-08-19-Unity StatePattern.md",
     "_posts/Unity/2024-07-22-Unity UI 관리법.md",
     "_posts/Python/2024-08-13-python venv.md",
     "_pages/categories/category-python.md",
@@ -199,7 +200,6 @@
     "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
     "_posts/Unity/2024-07-22-Unity 해상도 대응하기.md",
     "_posts/C#/2024-03-01-Linq.md",
-    "_posts/Server/2024-07-22-FTP&SFTP.md",
     "_posts/Asp net core",
     "_posts/Database",
     "_site/assets/css/temp.scss",
