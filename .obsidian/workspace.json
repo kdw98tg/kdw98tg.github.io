@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Java/2024-09-03-Java로 콜백 패턴 구현.md",
+                "file": "_posts/Design Pattern/2024-09-07-Templete Method Pattern.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Java/2024-09-03-Java로 콜백 패턴 구현.md",
+                "file": "_posts/Design Pattern/2024-09-07-Templete Method Pattern.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Java/2024-09-03-Java로 콜백 패턴 구현.md",
+                "file": "_posts/Design Pattern/2024-09-07-Templete Method Pattern.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Java/2024-09-03-Java로 콜백 패턴 구현.md"
+                "file": "_posts/Design Pattern/2024-09-07-Templete Method Pattern.md"
               }
             }
           }
@@ -160,14 +160,20 @@
   },
   "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
+    "images/Pasted image 20240907170134.png",
+    "images/Pasted image 20240907165954.png",
+    "images/Pasted image 20240907165414.png",
+    "_posts/Common.md",
+    "_posts/Design Pattern/2024-09-07-Templete Method Pattern.md",
+    "_posts/Design Pattern/2024-03-04-Singleton Pattern.md",
+    "_posts/Design Pattern/2024-03-03-Factory Pattern.md",
+    "_posts/Java/2024-09-03-Java로 콜백 패턴 구현.md",
     "images/Pasted image 20240903151147.png",
     "images/Pasted image 20240903151044.png",
     "_pages/categories/category-java.md",
-    "_posts/Java/2024-09-03-Java로 콜백 패턴 구현.md",
     "_posts/Java",
     "_posts/Unity/2024-09-01-Unity Command Pattern.md",
     "_posts/Java/2024-09-03-Java 에서의 콜백 패턴.md",
-    "_posts/Common.md",
     "_posts/Git/2024-08-27-Git LFS.md",
     "_posts/Java",
     "_posts/Unity/무제 파일.md",
@@ -191,17 +197,11 @@
     "images/Pasted image 20240828213527.png",
     "images/Pasted image 20240828155531.png",
     "images/Pasted image 20240828155504.png",
-    "images/Pasted image 20240828155011.png",
-    "images/Pasted image 20240828124601.png",
     "_posts/Git",
     "_posts/Unity/2024-08-23-Unity Reset() 함수.md",
-    "images/Pasted image 20240823160332.png",
     "_posts/Unity/2024-08-19-Unity StatePattern.md",
     "_posts/Unity/2024-07-22-Unity UI 관리법.md",
-    "_posts/Python/2024-08-13-python venv.md",
-    "_pages/categories/category-python.md",
     "_posts/Python",
-    "_pages/categories/category-Server.md",
     "_posts/Asp net core",
     "_posts/Database",
     "_site/assets/css/temp.scss",
