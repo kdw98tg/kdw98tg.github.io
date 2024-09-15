@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Unity/2024-09-15-Unity Build 시 생명주기 오류.md",
+                "file": "_posts/Unity/2024-09-15-Unity 빌드 오류 모음.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Unity/2024-09-15-Unity Build 시 생명주기 오류.md",
+                "file": "_posts/Unity/2024-09-15-Unity 빌드 오류 모음.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Unity/2024-09-15-Unity Build 시 생명주기 오류.md",
+                "file": "_posts/Unity/2024-09-15-Unity 빌드 오류 모음.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Unity/2024-09-15-Unity Build 시 생명주기 오류.md"
+                "file": "_posts/Unity/2024-09-15-Unity 빌드 오류 모음.md"
               }
             }
           }
@@ -160,22 +160,23 @@
   },
   "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
+    "_posts/Common.md",
+    "_posts/Unity/2024-09-15-Unity 빌드 오류 모음.md",
+    "_posts/Unity/2024-09-15-Unity Build 안됨 오류.md",
+    "images/Pasted image 20240915121108.png",
+    "_posts/Unity/2024-09-15-Unity Build 시 생명주기 오류.md",
     "images/Pasted image 20240915120123.png",
     "images/Pasted image 20240915120003.png",
     "images/Pasted image 20240915115906.png",
     "images/Pasted image 20240915115257.png",
     "_posts/Unity/2024-09-10-Unity Addressable 협업시 문제.md",
-    "_posts/Unity/2024-09-15-Unity Build 시 생명주기 오류.md",
     "images/Pasted image 20240910095335.png",
     "images/Pasted image 20240910095310.png",
     "images/Pasted image 20240910095308.png",
     "images/Pasted image 20240910095244.png",
     "_posts/Unity/2024-09-01-Unity Command Pattern.md",
     "_posts/Design Pattern/2024-09-07-Templete Method Pattern.md",
-    "_posts/Common.md",
     "images/Pasted image 20240907170134.png",
-    "images/Pasted image 20240907165954.png",
-    "images/Pasted image 20240907165414.png",
     "_posts/Design Pattern/2024-03-04-Singleton Pattern.md",
     "_posts/Design Pattern/2024-03-03-Factory Pattern.md",
     "_posts/Java/2024-09-03-Java로 콜백 패턴 구현.md",
@@ -200,7 +201,6 @@
     "_pages/categories/category-design-principle.md",
     "_posts/Git",
     "_posts/Unity/2024-08-23-Unity Reset() 함수.md",
-    "_posts/Unity/2024-08-19-Unity StatePattern.md",
     "_posts/Python",
     "_posts/Asp net core",
     "_posts/Database",
