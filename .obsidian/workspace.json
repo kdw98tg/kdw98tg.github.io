@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Unity/2024-09-10-Unity Addressable 협업시 문제.md",
+                "file": "_posts/Design Pattern/2024-09-16-Iterator Pattern.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Unity/2024-09-10-Unity Addressable 협업시 문제.md",
+                "file": "_posts/Design Pattern/2024-09-16-Iterator Pattern.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Unity/2024-09-10-Unity Addressable 협업시 문제.md",
+                "file": "_posts/Design Pattern/2024-09-16-Iterator Pattern.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Unity/2024-09-10-Unity Addressable 협업시 문제.md"
+                "file": "_posts/Design Pattern/2024-09-16-Iterator Pattern.md"
               }
             }
           }
@@ -160,22 +160,25 @@
   },
   "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
+    "images/Pasted image 20240916123009.png",
+    "images/Pasted image 20240916122936.png",
+    "images/Pasted image 20240916122908.png",
+    "images/Pasted image 20240916122816.png",
+    "images/Pasted image 20240916122405.png",
+    "_posts/Common.md",
+    "_posts/Design Pattern/2024-09-16-Iterator Pattern.md",
+    "_posts/Design Pattern/2024-09-07-Templete Method Pattern.md",
+    "_posts/Design Pattern/2024-03-04-Singleton Pattern.md",
+    "_posts/Unity/2024-09-10-Unity Addressable 협업시 문제.md",
     "images/Pasted image 20240910095335.png",
     "images/Pasted image 20240910095310.png",
     "images/Pasted image 20240910095308.png",
     "images/Pasted image 20240910095244.png",
     "_posts/Unity/2024-09-01-Unity Command Pattern.md",
-    "_posts/Unity/2024-09-10-Unity Addressable 협업시 문제.md",
-    "_posts/Design Pattern/2024-09-07-Templete Method Pattern.md",
-    "_posts/Common.md",
     "images/Pasted image 20240907170134.png",
     "images/Pasted image 20240907165954.png",
-    "images/Pasted image 20240907165414.png",
-    "_posts/Design Pattern/2024-03-04-Singleton Pattern.md",
     "_posts/Design Pattern/2024-03-03-Factory Pattern.md",
     "_posts/Java/2024-09-03-Java로 콜백 패턴 구현.md",
-    "images/Pasted image 20240903151147.png",
-    "images/Pasted image 20240903151044.png",
     "_pages/categories/category-java.md",
     "_posts/Java",
     "_posts/Java/2024-09-03-Java 에서의 콜백 패턴.md",
@@ -195,12 +198,9 @@
     "_posts/무제 파일.md",
     "_pages/categories/category-c.md",
     "_pages/categories/category-design-principle.md",
-    "images/Pasted image 20240828213705.png",
-    "images/Pasted image 20240828213638.png",
     "_posts/Git",
     "_posts/Unity/2024-08-23-Unity Reset() 함수.md",
     "_posts/Unity/2024-08-19-Unity StatePattern.md",
-    "_posts/Unity/2024-07-22-Unity UI 관리법.md",
     "_posts/Python",
     "_posts/Asp net core",
     "_posts/Database",
