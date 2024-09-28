@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Design Pattern/2024-09-28-State Pattern.md",
+                "file": "_posts/Design Pattern/2024-09-29-Combine Pattern.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Design Pattern/2024-09-28-State Pattern.md",
+                "file": "_posts/Design Pattern/2024-09-29-Combine Pattern.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Design Pattern/2024-09-28-State Pattern.md",
+                "file": "_posts/Design Pattern/2024-09-29-Combine Pattern.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Design Pattern/2024-09-28-State Pattern.md"
+                "file": "_posts/Design Pattern/2024-09-29-Combine Pattern.md"
               }
             }
           }
@@ -160,8 +160,15 @@
   },
   "active": "022ce0e03a4ec61a",
   "lastOpenFiles": [
-    "_posts/Common.md",
+    "images/Pasted image 20240929024941.png",
+    "images/Pasted image 20240929022135.png",
+    "images/Pasted image 20240929020530.png",
+    "images/Pasted image 20240929015454.png",
+    "images/Pasted image 20240929014421.png",
+    "images/Pasted image 20240929013431.png",
     "_posts/Design Pattern/2024-09-28-State Pattern.md",
+    "_posts/Design Pattern/2024-09-29-Combine Pattern.md",
+    "_posts/Common.md",
     "images/Pasted image 20240929003608.png",
     "images/Pasted image 20240928185145.png",
     "_posts/Design Pattern/2024-09-22-Composite Pattern.md",
@@ -171,14 +178,9 @@
     "images/Pasted image 20240922230255.png",
     "images/Pasted image 20240922230246.png",
     "images/Pasted image 20240922230235.png",
-    "images/Pasted image 20240922223628.png",
     "_posts/Design Pattern/2024-09-16-Iterator Pattern.md",
     "_posts/Unity/2024-09-15-Unity Build 안됨 오류.md",
     "_posts/Unity/2024-09-15-Unity Build 시 생명주기 오류.md",
-    "images/Pasted image 20240915121108.png",
-    "images/Pasted image 20240915120123.png",
-    "images/Pasted image 20240915120003.png",
-    "images/Pasted image 20240915115906.png",
     "_posts/Unity/2024-09-15-Unity 빌드 오류 모음.md",
     "_posts/Design Pattern/2024-09-07-Templete Method Pattern.md",
     "_posts/Design Pattern/2024-03-04-Singleton Pattern.md",
@@ -196,7 +198,6 @@
     "_pages/categories/category-design_pattern.md",
     "_pages/categories/category-csharp.md",
     "_pages/categories/category-AI.md",
-    "_pages/categories/category-kotlin.md",
     "_posts/Etc",
     "_posts/Unity/무제 폴더",
     "_posts/Git",
