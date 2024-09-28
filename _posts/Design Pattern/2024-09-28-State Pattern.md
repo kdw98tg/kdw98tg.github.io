@@ -1,5 +1,5 @@
 ---
-title: "[Design Pattern] 컴포지트 패턴 (Composite Pattern)"
+title: "[Design Pattern] 상태 패턴 (State Pattern)"
 
 categories:
   -  Design Pattern
