@@ -28,7 +28,7 @@ MVC 패턴의 동작과정을 살펴보면, 사용자가 View를 통해 상호�
 
 다시한번 보기좋게 정리한다면 다음과 같습니다.
 
-1. 사용자가 뷰와 상호작용 함
+1. 사용자가 뷰와 상호작용 합니다.
 2. 컨트롤러는 모델에게 상태를 변경하라고 요청합니다.(컨트롤러가 뷰를 바꿔달라고 요청할 수도 있음)
 3. 모델에서 상태가 변경되면 모델이 뷰에게 그 사실을 알립니다.
 
@@ -330,7 +330,7 @@ public class DJView implements ActionListener,  BeatObserver, BPMObserver  {
 
 ### Controller 만들기
 
-다음은 `View`와 `Model` 사이에서 중재자 역하을 할 Controller 를 만들어 보겠습니다.
+다음은 `View`와 `Model` 사이에서 중재자 역할을 할 Controller 를 만들어 보겠습니다.
 
 Controller 역시 재사용성과 확장성을 고려하여 Interface로 틀을 먼저 만듭니다.
 
