@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Design Pattern/2024-10-04-Bridge Pattern.md",
+                "file": "_posts/Design Pattern/2024-10-04-MVC Pattern.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Design Pattern/2024-10-04-Bridge Pattern.md",
+                "file": "_posts/Design Pattern/2024-10-04-MVC Pattern.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Design Pattern/2024-10-04-Bridge Pattern.md",
+                "file": "_posts/Design Pattern/2024-10-04-MVC Pattern.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Design Pattern/2024-10-04-Bridge Pattern.md"
+                "file": "_posts/Design Pattern/2024-10-04-MVC Pattern.md"
               }
             }
           }
@@ -148,10 +148,10 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
+    "_posts/Design Pattern/2024-10-04-Bridge Pattern.md",
     "images/Pasted image 20241005001503.png",
     "_posts/Design Pattern/2024-10-04-MVC Pattern.md",
     "_posts/Design Pattern/2024-09-29-Combine Pattern.md",
-    "_posts/Design Pattern/2024-10-04-Bridge Pattern.md",
     "images/Pasted image 20241005000225.png",
     "images/Pasted image 20241005000136.png",
     "_posts/Common.md",
@@ -165,7 +165,6 @@
     "images/Pasted image 20240929015454.png",
     "images/Pasted image 20240929014421.png",
     "images/Pasted image 20240929013431.png",
-    "images/Pasted image 20240929003608.png",
     "_posts/Asp net core/2024-05-28-Asp.net core DB 마이그레이션.md",
     "_posts/Asp net core/2024-04-04-ASP.Net Core API 서버.md",
     "_posts/Asp net core/2024-09-24-Post 의 Body 종류.md",
