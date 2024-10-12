@@ -55,6 +55,8 @@ last_modified_at: 2024-10-12
 
 우선, 구체적인 Tree 를 만들기 전에, Tree 인터페이스를 만들어 상속을 시킬 준비를 합니다.
 
+🗅 **<span style="color: #c03a92">interface Tree</span>**
+
 ```java
 package src.flyweight;  
   
@@ -77,6 +79,8 @@ public interface Tree {
 
 나무의 종류는 활엽수, 침엽수 로 정의 합니다.
 
+🗅 **<span style="color: #c03a92">class DeciduousTree</span>**
+
 ```java
 package src.flyweight;  
   
@@ -95,6 +99,8 @@ public class DeciduousTree implements Tree {
 }
 ```
 
+🗅 **<span style="color: #c03a92">class ConiferTree</span>**
+
 ```java
 package src.flyweight;  
   
@@ -110,6 +116,8 @@ public class ConiferTree implements Tree {
 
 Tree 의 생성 과정을 캡슐화 하는 `Factory`를 만듭니다. `SimpleFactory`로 구성하였습니다. 해당 `Factory` 는  Enum 값에 따라서 나무의 인스턴스를 반환 합니다.
 
+🗅 **<span style="color: #c03a92">enum TreeType</span>**
+
 ```java
 package src.flyweight;  
   
@@ -118,6 +126,8 @@ public enum TreeType {
     Conifer,  
 }
 ```
+
+🗅 **<span style="color: #c03a92">class TreeFactory</span>**
 
 ```java
 package src.flyweight;  
@@ -151,6 +161,8 @@ public class TreeFactory {
 이제 준비가 되었으니, Main에서 실행해 봅니다.
 
 여기서 봐야할 곳은 `for` 문이 돌아가는 곳입니다. `for` 문에서 `Tree` 객체를 생성하는 것이 아닌, `for`문이 돌기전에, 객체의 인스턴스를 하나 만들어 놓고, 그 객체에 위치 속성을 대입하여 출력하게 합니다.
+
+🗅 **<span style="color: #c03a92">class Client</span>**
 
 ```java
 package src.flyweight;  
