@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Design Pattern/2024-10-05-Builder Pattern.md",
+                "file": "_posts/Design Pattern/2024-10-12-FlyWeight Pattern.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Design Pattern/2024-10-05-Builder Pattern.md",
+                "file": "_posts/Design Pattern/2024-10-12-FlyWeight Pattern.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Design Pattern/2024-10-05-Builder Pattern.md",
+                "file": "_posts/Design Pattern/2024-10-12-FlyWeight Pattern.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Design Pattern/2024-10-05-Builder Pattern.md"
+                "file": "_posts/Design Pattern/2024-10-12-FlyWeight Pattern.md"
               }
             }
           }
@@ -160,10 +160,12 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
-    "images/Pasted image 20241005222940.png",
+    "images/Pasted image 20241012233002.png",
+    "images/Pasted image 20241012233000.png",
+    "_posts/Design Pattern/2024-10-05-Builder Pattern.md",
     "_posts/Design Pattern/2024-10-04-MVC Pattern.md",
-    "_posts/Design Pattern/2024-10-05-Builder Pattern.md",
-    "_posts/Design Pattern/2024-10-05-Builder Pattern.md",
+    "_posts/Design Pattern/2024-10-12-FlyWeight Pattern.md",
+    "images/Pasted image 20241005222940.png",
     "images/Pasted image 20241005221912.png",
     "_posts/Common.md",
     "_posts/Design Pattern/2024-10-04-Bridge Pattern.md",
@@ -178,8 +180,6 @@
     "images/Pasted image 20240929024941.png",
     "images/Pasted image 20240929022135.png",
     "images/Pasted image 20240929020530.png",
-    "images/Pasted image 20240929015454.png",
-    "images/Pasted image 20240929014421.png",
     "_posts/Asp net core/2024-05-28-Asp.net core DB 마이그레이션.md",
     "_posts/Asp net core/2024-04-04-ASP.Net Core API 서버.md",
     "_posts/Asp net core/2024-09-24-Post 의 Body 종류.md",

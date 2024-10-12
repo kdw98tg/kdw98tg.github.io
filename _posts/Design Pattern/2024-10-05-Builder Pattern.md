@@ -1,5 +1,5 @@
 ---
-title: "[Design Pattern] 빌더(Builder) 패턴 (MVC Pattern)"
+title: "[Design Pattern] 빌더(Builder) 패턴"
 
 categories:
   -  Design Pattern
