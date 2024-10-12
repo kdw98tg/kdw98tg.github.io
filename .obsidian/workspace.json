@@ -8,11 +8,27 @@
         "type": "tabs",
         "children": [
           {
+            "id": "a96995793f2fffdc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "_posts/Design Pattern/2024-10-12-FlyWeight Pattern.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
             "id": "80447e9411d2778a",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "_posts/Common.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "_posts/Design Pattern/2024-10-12-FlyWeight Pattern.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "_posts/Design Pattern/2024-10-12-FlyWeight Pattern.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +136,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "_posts/Design Pattern/2024-10-12-FlyWeight Pattern.md"
+              }
             }
           }
         ]
@@ -138,8 +158,9 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "80447e9411d2778a",
+  "active": "a96995793f2fffdc",
   "lastOpenFiles": [
+    "_posts/Common.md",
     "_sass/minimal-mistakes/_copyright.scss",
     "_includes/copyright.js",
     "_includes/copyright.html",
@@ -168,7 +189,6 @@
     "images/Pasted image 20240929024941.png",
     "images/Pasted image 20240929022135.png",
     "images/Pasted image 20240929020530.png",
-    "images",
     "_posts/Unity/2024-09-15-Unity 빌드 오류 모음.md",
     "_posts/Unity/2024-07-22-Unity PlayerPrefs.md",
     "_posts/Unity/2024-09-15-Unity Build 안됨 오류.md",
