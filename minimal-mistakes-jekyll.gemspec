@@ -4,13 +4,11 @@ package_json = JSON.parse(File.read("package.json"))
 
 Gem::Specification.new do |spec|
   spec.name                    = "minimal-mistakes-jekyll"
-<<<<<<< HEAD
   spec.version                 = "4.19.2"
   spec.authors                 = ["Michael Rose"]
-=======
   spec.version                 = package_json["version"]
   spec.authors                 = ["Michael Rose", "iBug"]
->>>>>>> 6e94773083afc5b9fc5a28f57f8243d44d78f669
+
 
   spec.summary                 = %q{A flexible two-column Jekyll theme.}
   spec.homepage                = "https://github.com/mmistakes/minimal-mistakes"
