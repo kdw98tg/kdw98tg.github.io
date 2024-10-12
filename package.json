@@ -1,11 +1,7 @@
 {
   "name": "minimal-mistakes",
-<<<<<<< HEAD
-  "version": "4.19.2",
-=======
   "private": true,
   "version": "4.25.0",
->>>>>>> 6e94773083afc5b9fc5a28f57f8243d44d78f669
   "description": "Minimal Mistakes 2 column Jekyll theme.",
   "repository": {
     "type": "git",

@@ -1086,9 +1086,6 @@ pl: &DEFAULT_PL
   comment_success_msg        : "Dziękuję za Twój komentarz! Zostanie dodany po akceptacji."
   comment_error_msg          : "Niestety wystąpił błąd. Proszę upewnij się, że wszystkie wymagane pola zostały wypełnione i spróbuj ponownie."
   loading_label              : "Trwa ładowanie strony..."
-<<<<<<< HEAD
-  search_label_text          :
-=======
   search_label_text          : "Wprowadź kryteria wyszukiwania..."
   search_placeholder_text    : "Wprowadź kryteria wyszukiwania..."
   search_algolia_no_results  : "Brak wyników"
@@ -1710,10 +1707,7 @@ fi: &DEFAULT_FI
   loading_label              : "Ladataan..."
   search_label_text          : "Hakusana..."
   search_placeholder_text    : "Hakusana..."
-<<<<<<< HEAD
-=======
   search_algolia_no_results  : "Ei hakutuloksia"
->>>>>>> 6e94773083afc5b9fc5a28f57f8243d44d78f669
   results_found              : "Tulosta"
   back_to_top                : "Siirry ylös"
 
