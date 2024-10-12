@@ -1091,7 +1091,6 @@ pl: &DEFAULT_PL
   search_algolia_no_results  : "Brak wyników"
   results_found              : "Znalezione wyniki"
   back_to_top                : "Wróć na górę"
->>>>>>> 6e94773083afc5b9fc5a28f57f8243d44d78f669
 pl-PL:
   <<: *DEFAULT_PL
 
