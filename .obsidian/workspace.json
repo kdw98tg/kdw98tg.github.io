@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Design Pattern/2024-10-12-FlyWeight Pattern.md",
+                "file": "_posts/Unity/2024-10-14-Unity Image Up,Downloader.md",
                 "mode": "source",
                 "source": false
               }
@@ -25,13 +25,14 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Common.md",
+                "file": "_posts/Unity/2024-10-14-Unity Image Up,Downloader.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -97,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Design Pattern/2024-10-12-FlyWeight Pattern.md",
+                "file": "_posts/Unity/2024-10-14-Unity Image Up,Downloader.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Design Pattern/2024-10-12-FlyWeight Pattern.md",
+                "file": "_posts/Unity/2024-10-14-Unity Image Up,Downloader.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Design Pattern/2024-10-12-FlyWeight Pattern.md"
+                "file": "_posts/Unity/2024-10-14-Unity Image Up,Downloader.md"
               }
             }
           }
@@ -158,9 +159,12 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "a96995793f2fffdc",
+  "active": "80447e9411d2778a",
   "lastOpenFiles": [
+    "_posts/Unity/2024-09-15-Unity Build 안됨 오류.md",
+    "_posts/Unity/2024-10-14-Unity Image Up,Downloader.md",
     "_posts/Common.md",
+    "_posts/Design Pattern/2024-10-12-FlyWeight Pattern.md",
     "_sass/minimal-mistakes/_copyright.scss",
     "_includes/copyright.js",
     "_includes/copyright.html",
@@ -191,7 +195,6 @@
     "images/Pasted image 20240929020530.png",
     "_posts/Unity/2024-09-15-Unity 빌드 오류 모음.md",
     "_posts/Unity/2024-07-22-Unity PlayerPrefs.md",
-    "_posts/Unity/2024-09-15-Unity Build 안됨 오류.md",
     "_posts/Unity/2024-09-10-Unity Addressable 협업시 문제.md",
     "_posts/Unity/2024-09-15-Unity Build 시 생명주기 오류.md",
     "_posts/Unity/2024-09-01-Unity Command Pattern.md",
@@ -203,8 +206,6 @@
     "_posts/Unity/2024-07-08-Unity의 생성자 소멸자.md",
     "_posts/Unity/2024-07-08-Unity Coroutine Cashing.md",
     "_posts/Unity/2024-07-08-StringBuilder.md",
-    "_posts/Unity/2024-06-27-Addressable Asset 사용법.md",
-    "_posts/Unity/2024-06-26-Unity Interface.md",
-    "_posts/Unity/2024-03-19-Coroutine 활용법.md"
+    "_posts/Unity/2024-06-27-Addressable Asset 사용법.md"
   ]
 }
