@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Refactoring/2024-10-16-Refactoring chap.1.md",
+                "file": "_posts/Refactoring/2024-10-16-Refactoring chap.1 - 1.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Refactoring/2024-10-16-Refactoring chap.1.md",
+                "file": "_posts/Refactoring/2024-10-16-Refactoring chap.1 - 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Refactoring/2024-10-16-Refactoring chap.1.md",
+                "file": "_posts/Refactoring/2024-10-16-Refactoring chap.1 - 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Refactoring/2024-10-16-Refactoring chap.1.md"
+                "file": "_posts/Refactoring/2024-10-16-Refactoring chap.1 - 1.md"
               }
             }
           }
@@ -148,12 +148,12 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
-    "_posts/Refactoring/2024-10-16-Refactoring chap.1.md",
+    "_pages/categories/무제 파일.md",
+    "_posts/Refactoring/2024-10-16-Refactoring chap.1 - 1.md",
     "_posts/무제 폴더",
     "images/Pasted image 20241015001915.png",
     "images/Pasted image 20241015000229.png",
     "_posts/Unity/2024-10-14-Unity Image Up,Downloader.md",
-    "_posts/Refactoring/2024-10-16-Refactoring chap.1.md",
     "_posts/Refactoring",
     "_posts/Unity/2024-09-15-Unity Build 안됨 오류.md",
     "_posts/Common.md",
@@ -192,7 +192,6 @@
     "_posts/Unity/2024-08-23-Unity DragHandler.md",
     "_posts/Unity/2024-07-22-Unity 해상도 대응하기.md",
     "_posts/Unity/2024-07-22-Unity UI 관리법.md",
-    "_posts/Unity/2024-07-08-Unity의 생성자 소멸자.md",
-    "_posts/Unity/2024-07-08-Unity Coroutine Cashing.md"
+    "_posts/Unity/2024-07-08-Unity의 생성자 소멸자.md"
   ]
 }

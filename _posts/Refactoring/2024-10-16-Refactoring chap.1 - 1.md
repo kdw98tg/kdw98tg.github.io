@@ -1,5 +1,5 @@
 ---
-title: "[Refactoring] 리펙터링 : 첫번째 예시"
+title: "[Refactoring] 리팩터링 2판 Chapter.01 (함수 추출하기, 변수 인라인하기)"
 
 categories:
   -  Refactoring
@@ -12,8 +12,8 @@ toc_sticky: true
 
 published: true
 
-date: 2024-10-14
-last_modified_at: 2024-10-14
+date: 2024-10-17
+last_modified_at: 2024-10-17
 ---
 
 ## 리팩터링 서론
