@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Unity/2024-03-19-Coroutine 활용법.md",
+                "file": "_posts/Etc/2024-10-17-코드 총 라인수 구하기.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Unity/2024-03-19-Coroutine 활용법.md",
+                "file": "_posts/Etc/2024-10-17-코드 총 라인수 구하기.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Unity/2024-03-19-Coroutine 활용법.md",
+                "file": "_posts/Etc/2024-10-17-코드 총 라인수 구하기.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Unity/2024-03-19-Coroutine 활용법.md"
+                "file": "_posts/Etc/2024-10-17-코드 총 라인수 구하기.md"
               }
             }
           }
@@ -160,6 +160,8 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
+    "_posts/Etc/2024-08-28-Mac Obsidian 한글 끊김.md",
+    "_posts/Unity/2024-03-19-Coroutine 활용법.md",
     "_posts/Refactoring/2024-10-27-Refactoring chap.1-4.md",
     "_pages/categories/category-refactoring.md",
     "_posts/Refactoring/2024-10-27-Refactoring chap.1-3.md",
@@ -167,7 +169,6 @@
     "_posts/Refactoring/2024-10-20-Refactoring chap.1-2.md",
     "_posts/Refactoring/2024-10-16-Refactoring chap.1 - 1.md",
     "_posts/Etc/2024-10-17-코드 총 라인수 구하기.md",
-    "_posts/Etc/2024-08-28-Mac Obsidian 한글 끊김.md",
     "_pages/categories/무제 파일.md",
     "_posts/무제 폴더",
     "images/Pasted image 20241015001915.png",
@@ -204,7 +205,6 @@
     "_posts/Unity/2024-09-10-Unity Addressable 협업시 문제.md",
     "_posts/Unity/2024-09-15-Unity Build 시 생명주기 오류.md",
     "_posts/Unity/2024-09-01-Unity Command Pattern.md",
-    "_posts/Unity/2024-08-23-Unity Reset() 함수.md",
-    "_posts/Unity/2024-08-19-Unity StatePattern.md"
+    "_posts/Unity/2024-08-23-Unity Reset() 함수.md"
   ]
 }
