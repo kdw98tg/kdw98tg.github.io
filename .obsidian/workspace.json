@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Refactoring/2024-10-27-Refactoring chap.1-4.md",
+                "file": "_posts/Unity/2024-03-19-Coroutine 활용법.md",
                 "mode": "source",
                 "source": false
               }
@@ -97,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Refactoring/2024-10-27-Refactoring chap.1-4.md",
+                "file": "_posts/Unity/2024-03-19-Coroutine 활용법.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Refactoring/2024-10-27-Refactoring chap.1-4.md",
+                "file": "_posts/Unity/2024-03-19-Coroutine 활용법.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Refactoring/2024-10-27-Refactoring chap.1-4.md"
+                "file": "_posts/Unity/2024-03-19-Coroutine 활용법.md"
               }
             }
           }
@@ -160,9 +160,9 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
+    "_posts/Refactoring/2024-10-27-Refactoring chap.1-4.md",
     "_pages/categories/category-refactoring.md",
     "_posts/Refactoring/2024-10-27-Refactoring chap.1-3.md",
-    "_posts/Refactoring/2024-10-27-Refactoring chap.1-4.md",
     "_posts/Common.md",
     "_posts/Refactoring/2024-10-20-Refactoring chap.1-2.md",
     "_posts/Refactoring/2024-10-16-Refactoring chap.1 - 1.md",
