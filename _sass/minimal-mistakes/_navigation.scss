@@ -142,11 +142,11 @@
 
     .prev_next {
       font-family: $cute;
-      color:#ffd861;
+      color:cadetblue;
     }
 
     &:hover {
-      @include yiq-contrasted($muted-text-color);
+      @include yiq-contrasted(#ff0000);
     }
 
     &:first-child {
