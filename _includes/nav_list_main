@@ -102,7 +102,7 @@
                 {% endfor %}
             </ul>
 
-            <span class="nav__sub-title">Design Pattern</span>
+            <span class="nav__sub-title">Code Core</span>
             <ul>
                 {% for category in site.categories %}
                 {% if category[0] == "Design Pattern" %} <!-- 카테고리가 ... 라면 -->
@@ -113,18 +113,10 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                {% if category[0] == "Design Principle" %}
-                <li><a href="/categories/design-principle" class="">Design Principle ({{category[1].size}})</a></li>
+                {% if category[0] == "Refactoring" %} <!-- 카테고리가 ... 라면 -->
+                <!-- 아래 이름으로 sidebar 에 생성후 bind-->
+                <li><a href="/categories/refactoring" class="">Refactoring</a> ({{category[1].size}})</a></li>
                 {% endif %}
-                {% endfor %}
-            </ul>
-
-            <span class="nav__sub-title">Git</span>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "Git" %}
-                        <li><a href="/categories/git" class="">Git ({{category[1].size}})</a></li>
-                    {% endif %}
                 {% endfor %}
             </ul>
 
@@ -142,6 +134,25 @@
                 {% if category[0] == "Database" %} <!-- 카테고리가 ... 라면 -->
                 <!-- 아래 이름으로 sidebar 에 생성후 bind-->
                 <li><a href="/categories/database" class="">Database</a> ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+
+            <span class="nav__sub-title">Git</span>
+            <ul>
+                {% for category in site.categories %}
+                    {% if category[0] == "Git" %}
+                        <li><a href="/categories/git" class="">Git ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+            <span class="nav__sub-title">Etc</span>
+            <ul>
+                {% for category in site.categories %}
+                {% if category[0] == "Etc" %} <!-- 카테고리가 ... 라면 -->
+                <!-- 아래 이름으로 sidebar 에 생성후 bind-->
+                <li><a href="/categories/etc" class="">Etc</a> ({{category[1].size}})</a></li>
                 {% endif %}
                 {% endfor %}
             </ul>
