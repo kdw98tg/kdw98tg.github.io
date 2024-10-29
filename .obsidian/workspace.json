@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Python/2024-08-13-python venv.md",
+                "file": "_posts/Refactoring/2024-10-27-Refactoring chap.1-4.md",
                 "mode": "source",
                 "source": false
               }
@@ -60,7 +60,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "되세",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -77,7 +77,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -97,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Python/2024-08-13-python venv.md",
+                "file": "_posts/Refactoring/2024-10-27-Refactoring chap.1-4.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -114,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Python/2024-08-13-python venv.md",
+                "file": "_posts/Refactoring/2024-10-27-Refactoring chap.1-4.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -137,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Python/2024-08-13-python venv.md"
+                "file": "_posts/Refactoring/2024-10-27-Refactoring chap.1-4.md"
               }
             }
           }
@@ -160,6 +161,7 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
+    "_posts/Python/2024-08-13-python venv.md",
     "_posts/Refactoring/2024-10-16-Refactoring chap.1-1.md",
     "_posts/Asp net core/2024-10-28-EFCore RawQuery.md",
     "_posts/Etc/2024-10-17-코드 총 라인수 구하기.md",
@@ -189,7 +191,6 @@
     "_posts/대학원 강의/산업AI",
     "_posts/대학원 강의/AI프로그래밍기초",
     "_posts/대학원 강의",
-    "_posts/Python/2024-08-13-python venv.md",
     "_posts/Python",
     "_posts/Java/2024-09-03-Java로 콜백 패턴 구현.md",
     "_posts/Java",
