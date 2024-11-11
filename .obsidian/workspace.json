@@ -13,10 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Refactoring/2024-10-27-Refactoring chap.1-4.md",
+                "file": "_posts/Refactoring/2024-11-11-Refactoring chap.2.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "2024-11-11-Refactoring chap.2"
             }
           },
           {
@@ -28,7 +30,9 @@
                 "file": "_posts/Common.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "Common"
             }
           }
         ]
@@ -51,7 +55,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "파일 탐색기"
             }
           },
           {
@@ -66,7 +72,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "검색"
             }
           },
           {
@@ -74,11 +82,12 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -106,7 +115,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "2024-10-27-Refactoring chap.1-4의 백링크"
             }
           },
           {
@@ -118,7 +129,9 @@
                 "file": "_posts/Refactoring/2024-10-27-Refactoring chap.1-4.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "2024-10-27-Refactoring chap.1-4의 나가는 링크"
             }
           },
           {
@@ -129,7 +142,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
             }
           },
           {
@@ -139,7 +154,9 @@
               "type": "outline",
               "state": {
                 "file": "_posts/Refactoring/2024-10-27-Refactoring chap.1-4.md"
-              }
+              },
+              "icon": "lucide-list",
+              "title": "2024-10-27-Refactoring chap.1-4 개요"
             }
           }
         ]
@@ -161,13 +178,14 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
-    "_posts/Python/2024-08-13-python venv.md",
+    "_posts/Refactoring/2024-10-27-Refactoring chap.1-4.md",
+    "_posts/Refactoring/2024-11-11-Refactoring chap.2.md",
     "_posts/Refactoring/2024-10-16-Refactoring chap.1-1.md",
+    "_posts/Python/2024-08-13-python venv.md",
     "_posts/Asp net core/2024-10-28-EFCore RawQuery.md",
     "_posts/Etc/2024-10-17-코드 총 라인수 구하기.md",
     "_posts/Etc/2024-08-28-Mac Obsidian 한글 끊김.md",
     "_posts/Unity/2024-03-19-Coroutine 활용법.md",
-    "_posts/Refactoring/2024-10-27-Refactoring chap.1-4.md",
     "_pages/categories/category-refactoring.md",
     "_posts/Refactoring/2024-10-27-Refactoring chap.1-3.md",
     "_posts/Common.md",
@@ -205,7 +223,6 @@
     "images/Pasted image 20240929024941.png",
     "_posts/Unity/2024-09-15-Unity 빌드 오류 모음.md",
     "_posts/Unity/2024-07-22-Unity PlayerPrefs.md",
-    "_posts/Unity/2024-09-10-Unity Addressable 협업시 문제.md",
-    "_posts/Unity/2024-09-15-Unity Build 시 생명주기 오류.md"
+    "_posts/Unity/2024-09-10-Unity Addressable 협업시 문제.md"
   ]
 }
