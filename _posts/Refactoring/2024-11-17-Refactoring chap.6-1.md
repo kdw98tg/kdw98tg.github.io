@@ -1,5 +1,5 @@
 ---
-title: "[Refactoring] 리팩터링 2판 Chapter.06 ()"
+title: "[Refactoring] 리팩터링 2판 Chapter.06 (기본적인 리팩터링)"
 
 categories:
   -  Refactoring
