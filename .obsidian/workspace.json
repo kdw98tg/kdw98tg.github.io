@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Refactoring/2024-11-17-Refactoring chap.6-1.md",
+                "file": "_posts/Refactoring/2024-11-17-Refactoring chap.6-2.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2024-11-17-Refactoring chap.6-1"
+              "title": "2024-11-17-Refactoring chap.6-2"
             }
           },
           {
@@ -178,8 +178,19 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
-    "_posts/Refactoring/2024-11-17-Refactoring chap.4.md",
     "_posts/Refactoring/2024-11-17-Refactoring chap.6-1.md",
+    "_posts/Refactoring/2024-11-17-Refactoring chap.6-2.md",
+    "_posts/Unity/2024-11-19-Unity Addressable 서버로 이관하기.md",
+    "images/Pasted image 20241119152509.png",
+    "images/Pasted image 20241119152231.png",
+    "images/Pasted image 20241119151750.png",
+    "images/Pasted image 20241119151707.png",
+    "images/Pasted image 20241119151605.png",
+    "images/Pasted image 20241119151532.png",
+    "images/Pasted image 20241119151404.png",
+    "images/Pasted image 20241119151313.png",
+    "_posts/Unity/2024-10-14-Unity Image Up,Downloader.md",
+    "_posts/Refactoring/2024-11-17-Refactoring chap.4.md",
     "_posts/Refactoring/2024-11-11-Refactoring chap.2.md",
     "_posts/Refactoring/2024-11-12-Refactoring chap.3.md",
     "_posts/Refactoring/2024-10-27-Refactoring chap.1-4.md",
@@ -198,7 +209,6 @@
     "_posts/무제 폴더",
     "images/Pasted image 20241015001915.png",
     "images/Pasted image 20241015000229.png",
-    "_posts/Unity/2024-10-14-Unity Image Up,Downloader.md",
     "_posts/Refactoring",
     "_posts/Unity/2024-09-15-Unity Build 안됨 오류.md",
     "_posts/Design Pattern/2024-10-12-FlyWeight Pattern.md",
@@ -213,16 +223,6 @@
     "_posts/대학원 강의/AI프로그래밍기초",
     "_posts/대학원 강의",
     "_posts/Python",
-    "_posts/Java/2024-09-03-Java로 콜백 패턴 구현.md",
-    "_posts/Java",
-    "_posts/Git/2024-08-27-Git LFS.md",
-    "images/Pasted image 20241012233002.png",
-    "images/Pasted image 20241012233000.png",
-    "images/Pasted image 20241005222940.png",
-    "images/Pasted image 20241005001503.png",
-    "images/Pasted image 20241005000225.png",
-    "images/Pasted image 20241005000136.png",
-    "images/Pasted image 20241004122611.png",
-    "images/Pasted image 20240929024941.png"
+    "_posts/Java"
   ]
 }
