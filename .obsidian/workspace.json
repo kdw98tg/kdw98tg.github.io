@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Refactoring/2024-11-23-Refactoring chap.6-3.md",
+                "file": "_posts/Server/2024-12-16-Window 서버 Nginx 를 사용하여 phpmyadmin 구축.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2024-11-23-Refactoring chap.6-3"
+              "title": "2024-12-16-Window 서버 Nginx 를 사용하여 phpmyadmin 구축"
             }
           },
           {
@@ -57,7 +57,7 @@
                 "sortOrder": "alphabetical"
               },
               "icon": "lucide-folder-closed",
-              "title": "파일 탐색기"
+              "title": "Files"
             }
           },
           {
@@ -168,29 +168,38 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:퀵 스위처 열기": false,
-      "graph:그래프 뷰 열기": false,
-      "canvas:새 캔버스 만들기": false,
-      "daily-notes:오늘의 데일리 노트 열기": false,
-      "templates:템플릿 삽입": false,
-      "command-palette:명령어 팔레트 열기": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
     }
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
-    "_posts/Refactoring/2024-11-17-Refactoring chap.6-2.md",
+    "images/Pasted image 20241216164034.png",
+    "images/Pasted image 20241216163829.png",
+    "images/Pasted image 20241216163811.png",
+    "images/Pasted image 20241216163759.png",
+    "images/Pasted image 20241216163744.png",
+    "images/Pasted image 20241216163727.png",
+    "images/Pasted image 20241216163705.png",
+    "images/Pasted image 20241216163652.png",
+    "images/Pasted image 20241216163622.png",
+    "images/Pasted image 20241216163548.png",
+    "images/Pasted image 20241216163442.png",
+    "_posts/Server/2024-12-16-Window 서버 Nginx 설치.md",
+    "_posts/Server/2024-12-16-Window 서버 Nginx 를 사용하여 phpmyadmin 구축.md",
+    "_posts/Server/2024-07-22-경계 문자열.md",
+    "_posts/Server/2024-07-22-FTP&SFTP.md",
+    "_posts/Server/2024-04-18-Ubuntu Server에 Asp.net Core 호스팅.md",
+    "_posts/Server/2024-04-17-Ubuntu Server 부팅 USB 만들기.md",
     "_posts/Refactoring/2024-11-23-Refactoring chap.6-3.md",
+    "_posts/Refactoring/2024-11-17-Refactoring chap.6-2.md",
     "_posts/Refactoring/2024-11-24-Refactoring chap.6-4.md",
     "_posts/Refactoring/2024-11-17-Refactoring chap.6-1.md",
     "_posts/Unity/2024-11-19-Unity Addressable 서버로 이관하기.md",
-    "images/Pasted image 20241119152509.png",
-    "images/Pasted image 20241119152231.png",
-    "images/Pasted image 20241119151750.png",
-    "images/Pasted image 20241119151707.png",
-    "images/Pasted image 20241119151605.png",
-    "images/Pasted image 20241119151532.png",
-    "images/Pasted image 20241119151404.png",
-    "images/Pasted image 20241119151313.png",
     "_posts/Unity/2024-10-14-Unity Image Up,Downloader.md",
     "_posts/Refactoring/2024-11-17-Refactoring chap.4.md",
     "_posts/Refactoring/2024-11-11-Refactoring chap.2.md",
@@ -205,20 +214,11 @@
     "_pages/categories/category-refactoring.md",
     "_posts/Refactoring/2024-10-27-Refactoring chap.1-3.md",
     "_posts/Common.md",
-    "_posts/Refactoring/2024-10-20-Refactoring chap.1-2.md",
-    "_posts/Refactoring/2024-10-16-Refactoring chap.1 - 1.md",
-    "_pages/categories/무제 파일.md",
     "_posts/무제 폴더",
-    "images/Pasted image 20241015001915.png",
-    "images/Pasted image 20241015000229.png",
     "_posts/Refactoring",
-    "_posts/Unity/2024-09-15-Unity Build 안됨 오류.md",
-    "_posts/Design Pattern/2024-10-12-FlyWeight Pattern.md",
     "_sass/minimal-mistakes/_copyright.scss",
     "_includes/copyright.js",
     "_includes/copyright.html",
-    "_posts/대학원 강의/산업AI/2024-03-23-산업 AI 강의3.md",
-    "_posts/대학원 강의/산업AI/2024-03-16-산업 AI 강의2.md",
     "_posts/대학원 강의/산업AI",
     "_posts/대학원 강의/AI프로그래밍기초",
     "_posts/대학원 강의",
