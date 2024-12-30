@@ -1,5 +1,5 @@
 ---
-title: "[Refactoring] 리팩터링 2판 Chapter.07 part 2 (캡슐화)"
+title: "[Refactoring] 리팩터링 2판 Chapter.07 part 3 (캡슐화)"
 
 categories:
   -  Refactoring
