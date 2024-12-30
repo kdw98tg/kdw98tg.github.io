@@ -2,7 +2,7 @@
 title: "[SpringBoot] Spring Boot Initializr 사용법"
 
 categories:
-  -  SpringBoot
+  -  SpringBoot
   
 tags:
   - [SpringBoot, Java]
@@ -16,4 +16,4 @@ date: 2024-12-30
 last_modified_at: 2024-12-30
 ---
 
-dd
+ddasdf
