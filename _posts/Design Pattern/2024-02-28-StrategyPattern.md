@@ -13,9 +13,6 @@ toc_sticky: true
 date: 2023-05-12
 last_modified_at: 2024-03-01
 ---
-
-
-
 ## 전략 패턴이란?
 
 > 전략패턴 (Strategy Pattern)은 알고리즘군을 정의하고 캡슐화해서 각각의 알고리즘군을 수정해서 쓸 수 있게 할 수 있는 패턴 입니다. 

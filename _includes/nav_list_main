@@ -96,15 +96,17 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
-                {% if category[0] == "Winform" %}
-                <li><a href="/categories/winform" class="">Winform ({{category[1].size}})</a></li>
+                {% if category[0] == "Winform" %} <!-- 카테고리가 ... 라면 -->
+                <!-- 아래 이름으로 sidebar 에 생성후 bind-->
+                <li><a href="/categories/winform" class="">Winform</a> ({{category[1].size}})</a></li>
                 {% endif %}
                 {% endfor %}
             </ul>
             <ul>
                 {% for category in site.categories %}
-                {% if category[0] == "SpringBoot" %}
-                <li><a href="/categories/springboot" class="">Spring Boot ({{category[1].size}})</a></li>
+                {% if category[0] == "SpringBoot" %} <!-- 카테고리가 ... 라면 -->
+                <!-- 아래 이름으로 sidebar 에 생성후 bind-->
+                <li><a href="/categories/springBoot" class="">Spring Boot</a> ({{category[1].size}})</a></li>
                 {% endif %}
                 {% endfor %}
             </ul>

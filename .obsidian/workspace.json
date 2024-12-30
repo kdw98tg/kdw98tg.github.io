@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Design Pattern/2024-03-02-Design Principle.md",
+                "file": "_posts/SpringBoot/2024-12-30-Springboot.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2024-03-02-Design Principle"
+              "title": "2024-12-30-Springboot"
             }
           },
           {
@@ -178,6 +178,7 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
+    "_posts/Design Pattern/2024-02-28-StrategyPattern.md",
     "_posts/Design Pattern/2024-03-02-Decorator Pattern.md",
     "_posts/Design Pattern/2024-03-02-Design Principle.md",
     "_posts/SpringBoot/2024-12-30-Springboot.md",
@@ -213,7 +214,6 @@
     "_posts/Refactoring/2024-11-11-Refactoring chap.2.md",
     "_posts/Refactoring/2024-11-12-Refactoring chap.3.md",
     "_posts/Refactoring/2024-10-27-Refactoring chap.1-4.md",
-    "_posts/Refactoring/2024-10-16-Refactoring chap.1-1.md",
     "_posts/무제 폴더",
     "_posts/Refactoring",
     "_sass/minimal-mistakes/_copyright.scss",
