@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Refactoring/2024-12-29-Refactoring chap7-2.md",
+                "file": "_posts/Winform/2024-12-30-Winform.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2024-12-29-Refactoring chap7-2"
+              "title": "2024-12-30-Winform"
             }
           },
           {
@@ -178,8 +178,11 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
-    "_posts/Refactoring/2024-12-21-Refactoring chap7-1.md",
+    "_posts/SpringBoot/2024-12-30-Springboot.md",
+    "_posts/Winform/2024-12-30-Winform.md",
+    "_posts/Unity/2024-03-19-Coroutine 활용법.md",
     "_posts/Refactoring/2024-12-29-Refactoring chap7-2.md",
+    "_posts/Refactoring/2024-12-21-Refactoring chap7-1.md",
     "_posts/Refactoring/2024-11-24-Refactoring chap.6-4.md",
     "_posts/Server/2024-12-16-Window 서버 Nginx 를 사용하여 phpmyadmin 구축.md",
     "images/Pasted image 20241216164034.png",
@@ -211,9 +214,6 @@
     "_posts/Asp net core/2024-10-28-EFCore RawQuery.md",
     "_posts/Etc/2024-10-17-코드 총 라인수 구하기.md",
     "_posts/Etc/2024-08-28-Mac Obsidian 한글 끊김.md",
-    "_posts/Unity/2024-03-19-Coroutine 활용법.md",
-    "_pages/categories/category-refactoring.md",
-    "_posts/Refactoring/2024-10-27-Refactoring chap.1-3.md",
     "_posts/무제 폴더",
     "_posts/Refactoring",
     "_sass/minimal-mistakes/_copyright.scss",
