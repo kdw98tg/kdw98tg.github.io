@@ -2,7 +2,7 @@
 title: "[Design Principle] 객체지향 디자인 원칙"
 
 categories:
-  -  Design Principle
+  -  Design Pattern
   
 tags:
   - [Design Pattern]
