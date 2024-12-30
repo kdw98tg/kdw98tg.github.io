@@ -1,5 +1,5 @@
 ---
-title: "[Design Pattern] 플라이웨이트 (Flyweight) 패턴"
+title: "[SpringBoot] SpringInitailizr 사용법"
 
 categories:
   -  SpringBoot
@@ -10,8 +10,8 @@ tags:
 toc: true
 toc_sticky: true
 
-date: 2024-10-12
-last_modified_at: 2024-10-12
+date: 2024-12-30
+last_modified_at: 2024-12-30
 ---
 
 ## 플라이웨이트 패턴이란?
