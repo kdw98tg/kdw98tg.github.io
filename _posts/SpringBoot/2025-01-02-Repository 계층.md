@@ -2,7 +2,7 @@
 title: "[SpringBoot] Repository계층 이란?"
 
 categories:
-  -  SpringBoot
+  - SpringBoot
   
 tags:
   - [Java, Head-First Design Pattern]
@@ -10,7 +10,7 @@ tags:
 toc: true
 toc_sticky: true
 
-published: true
+published: true
 
 date: 2025-01-02
 last_modified_at: 2025-01-02
