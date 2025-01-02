@@ -1,5 +1,5 @@
 ---
-title: "[SpringBoot] Controller 계층 이란?"
+title: "[SpringBoot] Controller 계층 이란?"
 
 categories:
   - SpringBoot
