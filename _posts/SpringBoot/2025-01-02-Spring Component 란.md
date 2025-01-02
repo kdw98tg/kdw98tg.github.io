@@ -2,7 +2,7 @@
 title: "[SpringBoot] Spring Component 란?"
 
 categories:
-  -  SpringBoot
+  - SpringBoot
   
 tags:
   - [Java, Head-First Design Pattern]
