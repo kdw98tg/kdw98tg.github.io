@@ -1,5 +1,5 @@
 ---
-title: "[SpringBoot] Repository계층 이란?"
+title: "[SpringBoot] Repository 계층 이란?"
 
 categories:
   - SpringBoot
@@ -16,7 +16,7 @@ date: 2025-01-02
 last_modified_at: 2025-01-02
 ---
 
-## Spring Boot의 Repository Pattern
+## Spring Boot의 Repository 계층
 
 Spring Boot 프레임워크에서 사용하는 Repository계층 이란 데이터베이스에 접근해서 특정 동작을 수행하는 게층의 로직을 구성하는 계층을 말합니다. Repository는 하나의 엔티티의 CRUD(Create, Read, Update, Delete)를 담당하기 때문에, 엔티티 1개당 Repository 1개가 필요하게 됩니다.
 

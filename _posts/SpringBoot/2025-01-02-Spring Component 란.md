@@ -1,5 +1,5 @@
 ---
-title: "[SpringBoot] Spring Component 란?"
+title: "[SpringBoot] Service 계층 이란?"
 
 categories:
   - SpringBoot
