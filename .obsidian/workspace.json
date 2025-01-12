@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Server/2025-01-10-라즈베리파이 블루투스 연결하기.md",
+                "file": "_posts/Refactoring/2025-01-12-Refactoring chap.9-1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-01-10-라즈베리파이 블루투스 연결하기"
+              "title": "2025-01-12-Refactoring chap.9-1"
             }
           },
           {
@@ -178,16 +178,18 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
+    "_posts/Refactoring/2025-01-12-Refactoring chap.8-1.md",
+    "_posts/Refactoring/2025-01-12-Refactoring chap.9-1.md",
+    "_posts/Refactoring/2025-01-04-Refactoring chap.7-4.md",
+    "_posts/Refactoring/2024-12-29-Refactoring chap7-2.md",
+    "_posts/Refactoring/2024-12-30-Refactoring chap.7-3.md",
+    "_posts/Server/2025-01-10-라즈베리파이 블루투스 연결하기.md",
     "_posts/Server/2024-07-22-FTP&SFTP.md",
     "_posts/Server/2024-12-16-Window 서버 Nginx 설치.md",
     "_posts/Server/2024-12-16-Window 서버 Nginx 를 사용하여 phpmyadmin 구축.md",
-    "_posts/Server/2025-01-10-라즈베리파이 블루투스 연결하기.md",
-    "_posts/Refactoring/2024-12-30-Refactoring chap.7-3.md",
-    "_posts/Refactoring/2024-12-29-Refactoring chap7-2.md",
     "_posts/Refactoring/2024-12-21-Refactoring chap7-1.md",
     "_posts/Asp net core/2024-01-07-EF Core에서 Repository Pattern을 사용하지 말아야 하는 이유.md",
     "_posts/Asp net core/2024-04-04-ASP.Net Core API 서버.md",
-    "_posts/Refactoring/2025-01-04-Refactoring chap.7-4.md",
     "_posts/SpringBoot/2025-01-02-TestCase 작성 요령.md",
     "_posts/SpringBoot/2025-01-02-Spring Component 란.md",
     "_posts/SpringBoot/2025-01-02-Service 계층.md",
@@ -202,8 +204,6 @@
     "_pages/categories/category-unity copy 2.md",
     "_pages/categories/category-unity copy.md",
     "_posts/Unity/2024-11-19-Unity Addressable 서버로 이관하기.md",
-    "_posts/Design Pattern/2024-02-28-StrategyPattern.md",
-    "_posts/Design Pattern/2024-03-02-Decorator Pattern.md",
     "images/Pasted image 20241216164034.png",
     "images/Pasted image 20241216163829.png",
     "images/Pasted image 20241216163811.png",
