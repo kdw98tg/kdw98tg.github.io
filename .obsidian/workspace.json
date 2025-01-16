@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Python/2024-08-13-python venv.md",
+                "file": "_posts/Server/2025-01-16-라즈베리파이 BLE 블루투스 통신 예제.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2024-08-13-python venv"
+              "title": "2025-01-16-라즈베리파이 BLE 블루투스 통신 예제"
             }
           },
           {
@@ -91,7 +91,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 317.5
+    "width": 433.5
   },
   "right": {
     "id": "6dd3fa4b300be02e",
@@ -178,6 +178,10 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
+    "_posts/Server/2025-01-10-라즈베리파이 클래식 블루투스 연결.md",
+    "_posts/Server/2025-01-16-라즈베리파이 BLE 블루투스 통신 예제.md",
+    "_posts/Server/2025-01-16-Bluetooth 통신 방식 정리.md",
+    "_posts/Python/2024-08-13-python venv.md",
     "images/Pasted image 20250116151412.png",
     "images/Pasted image 20250116151137.png",
     "images/Pasted image 20250116151035.png",
@@ -188,10 +192,6 @@
     "images/Pasted image 20250116150511.png",
     "images/Pasted image 20250116150256.png",
     "images/Pasted image 20250116145341.png",
-    "images/Pasted image 20250116145258.png",
-    "_posts/Server/2025-01-16-라즈베리파이 BLE 블루투스 통신 예제.md",
-    "_posts/Server/2025-01-16-Bluetooth 통신 방식 정리.md",
-    "_posts/Server/2025-01-10-라즈베리파이 클래식 블루투스 연결.md",
     "_posts/Server/2024-03-15-Docker.md",
     "_posts/Server/2024-04-11-Ngrok.md",
     "_posts/Server/2024-04-16-PortForwarding.md",
