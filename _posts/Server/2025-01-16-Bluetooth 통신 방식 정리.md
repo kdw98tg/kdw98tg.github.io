@@ -46,7 +46,8 @@ last_modified_at: 2025-01-16
 
 블루투스 4.0 BLE의 프로토콜 스택 구조는 다음과 같습니다. 블루투스 1.0, 2.0 에서는 SPP(Serial Port Profile) 을 통해 시리얼 통신이 가능했지만, 4.0으로 넘어오면서 SPP 는 기본적으로 지원하지 않고, GATT 프로파일을 이용하여 통신해야 합니다. (예전자료들이 많아 이것때문에 삽질을 많이 했습니다.) 
 
-![](/images/Pasted%20image%2020250116124739.png)
+![BLE/Classic 블루투스 스택](/images/Pasted%20image%2020250116124739.png)
+
 (왼쪽이 BLE 스택, 오른쪽이 Classic 스택)
 
 

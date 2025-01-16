@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Server/2025-01-16-Bluetooth 통신 방식 정리.md",
+                "file": "_posts/Python/2024-08-13-python venv.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-01-16-Bluetooth 통신 방식 정리"
+              "title": "2024-08-13-python venv"
             }
           },
           {
@@ -178,10 +178,20 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
-    "images/Pasted image 20250116125303.png",
-    "images/Pasted image 20250116124739.png",
-    "_posts/Server/2025-01-10-라즈베리파이 블루투스 연결하기.md",
+    "images/Pasted image 20250116151412.png",
+    "images/Pasted image 20250116151137.png",
+    "images/Pasted image 20250116151035.png",
+    "images/Pasted image 20250116150822.png",
+    "images/Pasted image 20250116150756.png",
+    "images/Pasted image 20250116150723.png",
+    "images/Pasted image 20250116150603.png",
+    "images/Pasted image 20250116150511.png",
+    "images/Pasted image 20250116150256.png",
+    "images/Pasted image 20250116145341.png",
+    "images/Pasted image 20250116145258.png",
+    "_posts/Server/2025-01-16-라즈베리파이 BLE 블루투스 통신 예제.md",
     "_posts/Server/2025-01-16-Bluetooth 통신 방식 정리.md",
+    "_posts/Server/2025-01-10-라즈베리파이 클래식 블루투스 연결.md",
     "_posts/Server/2024-03-15-Docker.md",
     "_posts/Server/2024-04-11-Ngrok.md",
     "_posts/Server/2024-04-16-PortForwarding.md",
@@ -204,16 +214,6 @@
     "_posts/Refactoring/2024-12-30-Refactoring chap.7-3.md",
     "_posts/Refactoring/2024-12-21-Refactoring chap7-1.md",
     "_posts/SpringBoot/2025-01-02-TestCase 작성 요령.md",
-    "_posts/SpringBoot/2025-01-02-Spring Component 란.md",
-    "images/Pasted image 20241216164034.png",
-    "images/Pasted image 20241216163829.png",
-    "images/Pasted image 20241216163811.png",
-    "images/Pasted image 20241216163759.png",
-    "images/Pasted image 20241216163744.png",
-    "images/Pasted image 20241216163727.png",
-    "images/Pasted image 20241216163705.png",
-    "images/Pasted image 20241216163652.png",
-    "images/Pasted image 20241216163622.png",
     "_posts/무제 폴더",
     "_posts/Refactoring",
     "_sass/minimal-mistakes/_copyright.scss",
