@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Refactoring/2025-01-18-BLE 코드 리팩터링.md",
+                "file": "_posts/Winform/2025-01-18-Winform BLE 통신.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-01-18-BLE 코드 리팩터링"
+              "title": "2025-01-18-Winform BLE 통신"
             }
           },
           {
@@ -178,8 +178,8 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
-    "_posts/Refactoring/2025-01-12-Refactoring chap.9-1.md",
     "_posts/Refactoring/2025-01-18-BLE 코드 리팩터링.md",
+    "_posts/Refactoring/2025-01-12-Refactoring chap.9-1.md",
     "_posts/Server/2025-01-16-라즈베리파이 BLE 블루투스 통신 예제.md",
     "_posts/Winform/2025-01-18-Winform BLE 통신.md",
     "_posts/Winform/2024-12-30-Winformsadf.md",

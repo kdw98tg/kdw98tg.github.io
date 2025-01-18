@@ -404,3 +404,4 @@ namespace MotionMaestro_ver._1.Forms
 
 동작은 하나, 위 코드를 보면 유지보수성과 가독성이라곤 찾아볼 수 없습니다. 아래의 포스팅에서 위 코드를 리팩터링하는 과정을 기술합니다.
 
+https://kdw98tg.github.io/refactoring/BLE-%EC%BD%94%EB%93%9C-%EB%A6%AC%ED%8C%A9%ED%84%B0%EB%A7%81/
