@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Winform/2025-01-18-Winform BLE 통신.md",
+                "file": "_posts/Refactoring/2025-01-18-BLE 코드 리팩터링.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-01-18-Winform BLE 통신"
+              "title": "2025-01-18-BLE 코드 리팩터링"
             }
           },
           {
@@ -178,9 +178,11 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
-    "_posts/Winform/2024-12-30-Winformsadf.md",
-    "_posts/Winform/2025-01-18-Winform BLE 통신.md",
+    "_posts/Refactoring/2025-01-12-Refactoring chap.9-1.md",
+    "_posts/Refactoring/2025-01-18-BLE 코드 리팩터링.md",
     "_posts/Server/2025-01-16-라즈베리파이 BLE 블루투스 통신 예제.md",
+    "_posts/Winform/2025-01-18-Winform BLE 통신.md",
+    "_posts/Winform/2024-12-30-Winformsadf.md",
     "_posts/Server/2025-01-16-Bluetooth 통신 방식 정리.md",
     "images/Pasted image 20250118231446.png",
     "images/Pasted image 20250118224501.png",
@@ -210,7 +212,6 @@
     "_posts/Asp net core/2024-01-07-EF Core에서 Repository Pattern을 사용하지 말아야 하는 이유.md",
     "_posts/Asp net core/2025-01-13-Dbset 함수들.md",
     "_posts/Asp net core/2024-10-28-EFCore RawQuery.md",
-    "_posts/Refactoring/2025-01-12-Refactoring chap.9-1.md",
     "_posts/Refactoring/2025-01-12-Refactoring chap.8-1.md",
     "_posts/Refactoring/2025-01-04-Refactoring chap.7-4.md",
     "_posts/무제 폴더",
