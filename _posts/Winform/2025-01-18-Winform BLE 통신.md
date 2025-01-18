@@ -17,7 +17,8 @@ last_modified_at: 2025-01-18
 ---
 
 서버 코드(Linux 계열의 python 코드)가 궁금하신 분들은 다음 링크를 참고하시기 바랍니다.
-https://kdw98tg.github.io/server/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4-BLE-%EB%B8%94%EB%A3%A8%ED%88%AC%EC%8A%A4-%ED%86%B5%EC%8B%A0-%EC%98%88%EC%A0%9C/
+
+👉👉👉[블루투스 저전력 서버 구현 - 마시남의 기술블로그](https://kdw98tg.github.io/server/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4-BLE-%EB%B8%94%EB%A3%A8%ED%88%AC%EC%8A%A4-%ED%86%B5%EC%8B%A0-%EC%98%88%EC%A0%9C/)
 
 ## Window UWP 와 프로젝트 설정
 
@@ -48,7 +49,7 @@ using Windows.Storage.Streams;
 
 저전력 통신 코드는 다음 마이크로 소프트 문서를 확인하여 구현할 수 있습니다.
 
-https://learn.microsoft.com/ko-kr/windows/uwp/devices-sensors/gatt-client
+👉👉👉[마이크로 소프트 저전력 통신 공식 문서](https://learn.microsoft.com/ko-kr/windows/uwp/devices-sensors/gatt-client)
 
 ### Bluetooth DeviceWatcher 
 
@@ -404,4 +405,4 @@ namespace MotionMaestro_ver._1.Forms
 
 동작은 하나, 위 코드를 보면 유지보수성과 가독성이라곤 찾아볼 수 없습니다. 아래의 포스팅에서 위 코드를 리팩터링하는 과정을 기술합니다.
 
-https://kdw98tg.github.io/refactoring/BLE-%EC%BD%94%EB%93%9C-%EB%A6%AC%ED%8C%A9%ED%84%B0%EB%A7%81/
+👉👉👉[코드 리팩터링 - 마시남의 기술블로그](https://kdw98tg.github.io/refactoring/BLE-%EC%BD%94%EB%93%9C-%EB%A6%AC%ED%8C%A9%ED%84%B0%EB%A7%81/)
