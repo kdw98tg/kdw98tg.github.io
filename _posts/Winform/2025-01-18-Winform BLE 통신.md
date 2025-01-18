@@ -10,14 +10,14 @@ tags:
 toc: true
 toc_sticky: true
 
-published: false
+published: true
 
 date: 2025-01-18
 last_modified_at: 2025-01-18
 ---
 
 서버 코드(Linux 계열의 python 코드)가 궁금하신 분들은 다음 링크를 참고하시기 바랍니다.
-
+https://kdw98tg.github.io/server/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4-BLE-%EB%B8%94%EB%A3%A8%ED%88%AC%EC%8A%A4-%ED%86%B5%EC%8B%A0-%EC%98%88%EC%A0%9C/
 
 ## Window UWP 와 프로젝트 설정
 
