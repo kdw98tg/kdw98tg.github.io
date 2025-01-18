@@ -5,7 +5,7 @@ categories:
   -  Winform
   
 tags:
-  - [Java, Head-First Design Pattern]
+  - [Winform, C#]
 
 toc: true
 toc_sticky: true
