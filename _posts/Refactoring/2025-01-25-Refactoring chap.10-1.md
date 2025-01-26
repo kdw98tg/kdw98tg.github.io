@@ -1,5 +1,5 @@
 ---
-title: "[Refactoring] 리팩터링 2판 Chapter.10 part 1 (데이터 조직화)"
+title: "[Refactoring] 리팩터링 2판 Chapter.10 part 1 (조건부 로직 간소화)"
 
 categories:
   -  Refactoring
