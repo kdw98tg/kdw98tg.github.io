@@ -186,7 +186,7 @@ class Customer {
 }
 ```
 
-여기서 aCustomer가 `unkown customer`일때 예외를 처리합니다.
+여기서 aCustomer가 `unknown customer`일때 예외를 처리합니다.
 
 ```js
 const aCustomer = site.customer;
@@ -199,7 +199,7 @@ const plan = (aCustomer === "unknown") ? registry.billingPlans.basic : aCustomer
 
 현재는 특이 케이스를 처리하는 로직이 없기 때문에, 위 코드와 같이 if문을 계속 넣어서 특이케이스를 처리해줘야 합니다.
 
-이렇게 했을 때, 가장 큰 문제는 만약 미확인 고객의 식별 문자열이 `unkown`이 아니라 `not found`로 바뀌게 된다면 그야말로 대 제앙이 벌어지게 됩니다. 어디에 있을지 모르는 코드들을 전부 수정해줘야 하기 때문입니다. 또한, `unkown`이 아니라 개발자의 실수로 `ukon`이라고 작성하게 되었다면 이 버그를 고치는데 한참이 걸릴 것입니다. 그래서 해당 코드를 클래스에 캡슐화 합니다.
+이렇게 했을 때, 가장 큰 문제는 만약 미확인 고객의 식별 문자열이 `unknown`이 아니라 `not found`로 바뀌게 된다면 그야말로 대 재앙이 벌어지게 됩니다. 어디에 있을지 모르는 코드들을 전부 수정해줘야 하기 때문입니다. 또한, `unknown`이 아니라 개발자의 실수로 `ukon`이라고 작성하게 되었다면 이 버그를 고치는데 한참이 걸릴 것입니다. 그래서 해당 코드를 클래스에 캡슐화 합니다.
 
 ```js
 class Customer {
