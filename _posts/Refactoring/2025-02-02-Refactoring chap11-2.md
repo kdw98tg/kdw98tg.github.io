@@ -103,3 +103,96 @@ BuildingObject bTypebuilding = BuildingObject.CreateBTypeBuilding();
 9. 오류 코드를 반환하는 곳 모두에서 예외를 던지도록 수정한다. 하나씩 수정할 때마다 테스트한다.
 10. 모두 수정했다면 그 오류 코드를 콜스택 위로 전달하는 코드를 모두 제거한다. 하나씩 수정할 때마다 테스트한다.
 
+## 예외를 사전확인으로 바꾸기
+
+예외라는 개념은 프로그래밍 언어의 발전에 의미있는 한걸음이었습니다. 오류 코드를 연쇄적으로 전파하던 긴 코드를 예외로 바꿔 깔끔히 제거할 수 있게 되었습니다. 하지만 좋은 것들이 늘 그렇듯, 예외도 과용되면 좋은게 아니게 됩니다. 예외(뜻밖의 오류)는 말 그대로 예외적으로 동작할 때만 쓰여야 합니다. **함수 수행 시 문제가 될 수 있는 조건을 함수 호출 전에 검사할 수 있다면, 예외를 던지는 대신 호출하는 곳에서 조건을 검사하도록 해야 합니다.**
+
+### 절차
+1. 예외를 유발하는 상황을 검사할 수 있는 조건문을 추가한다. catch 블록의 코드를 조건문의 조건절중 하나로 옮기고, 남은 try 블록의 코드를 다른 조건절로 옮긴다.
+2. catch 블록에 어서션을 추가하고 테스트한다.
+3. try문과 catch 블록을 제거한다.
+4. 테스트한다.
+
+
+### 예제
+
+데이터베이스 연결 같은 자원들을 관리하는 자원 풀 클래스가 있다고 가정합니다. 만약 자원이 바닥난다면 다시 채우는 코드를 작성한다고 가정합니다.
+
+```java
+public Resource get(){
+	Resource result;
+	try{
+		result = available.pop();
+		allocated.add(result);
+	}
+	catch (NoSuchElementException e){
+		result = Resource.create();
+		allocated.add(result);
+	}
+	return result;
+}
+
+private Deque<Resource> available;
+private List<Resource> allocated;
+```
+
+위 코드에서 만약 풀의 자원이 고갈되었다면, `pop()`이 실행될 때 예외가 발생할 수 있습니다. 하지만, 풀에서 자원이 고갈되는것은 예외가 아니라 충분히 예상 가능한 상황입니다. 이럴때는 try~catch 블록을 사용하면 안됩니다.
+
+```java
+public Resource get(){
+	Resource result;
+	if(available.isEmpty()){
+		result = Resource.create();
+		allocated.add(result);
+	}
+	else{
+		try{
+			result = available.pop();
+			allocated.add(result);
+		}catch(NoSuchElementException e){
+			
+		}
+	}
+	return result;
+}
+```
+
+위처럼 바꿔서 사용해야 합니다. 근데 이제 보니까 catch 절은 사용하지 않는군요. 여기서는 로깅을 하거나 어서션을 추가하여 예상치못한 상황에 대비 합니다.
+
+```java
+public Resource get(){
+	Resource result;
+	if(available.isEmpty()){
+		result = Resource.create();
+		allocated.add(result);
+	}
+	else{
+		try{
+			result = available.pop();
+			allocated.add(result);
+		}catch(NoSuchElementException e){
+			throw new AssertionError("도달 불가");
+		}
+	}
+	return result;
+}
+```
+
+여기까지 하고보니, 로깅하는 로직이 아니라면, 굳이 try~catch 절도 필요없어 보입니다. 테스트를 거친 후 어서션을 통과했다면 try~catch 블록도 삭제해 줍니다.
+
+```java
+public Resource get(){
+	Resource result;
+	if(available.isEmpty()){
+		result = Resource.create();
+		allocated.add(result);
+	}
+	else{
+		result = available.pop();
+		allocated.add(result);
+	}
+	return result;
+}
+```
+
+여기까지하면, 리팩터링의 끝입니다.
