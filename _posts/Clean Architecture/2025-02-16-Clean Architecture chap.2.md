@@ -1,5 +1,5 @@
 ---
-title: "[Clean Architecture] Clean Architecture chap 3, 4 정리"
+title: "[Clean Architecture] Clean Architecture chap 2 정리"
 
 categories:
   -  Clean Architecture
