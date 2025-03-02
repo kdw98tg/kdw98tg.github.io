@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Clean Architecture/2025-03-02-Clean Architecture LSP.md",
+                "file": "_posts/Clean Architecture/2025-03-02-Clean Architecture DIP.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-03-02-Clean Architecture LSP"
+              "title": "2025-03-02-Clean Architecture DIP"
             }
           },
           {
@@ -121,7 +121,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 321.5
+    "width": 335.5
   },
   "right": {
     "id": "6dd3fa4b300be02e",
@@ -208,10 +208,12 @@
   },
   "active": "ff5a5d9af2e9b747",
   "lastOpenFiles": [
-    "_posts/Clean Architecture/2025-02-24-Clean Architecture SRP.md",
+    "_posts/Clean Architecture/2025-03-02-Clean Architecture ISP.md",
+    "_posts/Clean Architecture/2025-03-02-Clean Architecture DIP.md",
     "_posts/Clean Architecture/2025-03-02-Clean Architecture LSP.md",
     "_posts/Clean Architecture/2025-02-24-Clean Architecture OCP.md",
     "images/Pasted image 20250224182033.png",
+    "_posts/Clean Architecture/2025-02-24-Clean Architecture SRP.md",
     "_posts/Clean Architecture/2025-02-24-Clean Architecture chap 3.md",
     "_posts/Clean Architecture/2025-02-10-Clean Architecture chap 1.md",
     "_posts/Clean Architecture/2025-02-16-Clean Architecture chap.2.md",
@@ -237,8 +239,6 @@
     "_posts/Git/2025-01-21-Git Lfs 오류.md",
     "_posts/Asp net core/2024-01-07-EF Core에서 Repository Pattern을 사용하지 말아야 하는 이유.md",
     "_posts/Asp net core/2024-04-04-ASP.Net Core API 서버.md",
-    "_posts/Asp net core/2024-05-28-Asp.net core DB 마이그레이션.md",
-    "_posts/Asp net core/2024-09-24-Post 의 Body 종류.md",
     "images/Pasted image 20250124153730.png",
     "images/Pasted image 20250118231446.png",
     "images/Pasted image 20250118224501.png",
