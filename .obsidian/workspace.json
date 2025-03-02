@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Clean Architecture/2025-02-24-Clean Architecture OCP.md",
+                "file": "_posts/Clean Architecture/2025-03-02-Clean Architecture LSP.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-02-24-Clean Architecture OCP"
+              "title": "2025-03-02-Clean Architecture LSP"
             }
           },
           {
@@ -208,9 +208,10 @@
   },
   "active": "ff5a5d9af2e9b747",
   "lastOpenFiles": [
-    "images/Pasted image 20250224182033.png",
     "_posts/Clean Architecture/2025-02-24-Clean Architecture SRP.md",
+    "_posts/Clean Architecture/2025-03-02-Clean Architecture LSP.md",
     "_posts/Clean Architecture/2025-02-24-Clean Architecture OCP.md",
+    "images/Pasted image 20250224182033.png",
     "_posts/Clean Architecture/2025-02-24-Clean Architecture chap 3.md",
     "_posts/Clean Architecture/2025-02-10-Clean Architecture chap 1.md",
     "_posts/Clean Architecture/2025-02-16-Clean Architecture chap.2.md",
@@ -244,7 +245,6 @@
     "images/Pasted image 20250118224419.png",
     "images/Pasted image 20250118224301.png",
     "images/Pasted image 20250116151412.png",
-    "images/Pasted image 20250116151137.png",
     "_posts/무제 폴더",
     "_posts/Refactoring",
     "_sass/minimal-mistakes/_copyright.scss",
