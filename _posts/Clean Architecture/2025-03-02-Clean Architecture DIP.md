@@ -1,5 +1,5 @@
 ---
-title: "[Clean Architecture] Clean Architecture DIP(Dependency Inversion Principle 인터페이스 분리의 원칙)"
+title: "[Clean Architecture] Clean Architecture DIP(Dependency Inversion Principle 의존성 역전의 원칙ㅔ)"
 
 categories:
   -  Clean Architecture

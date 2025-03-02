@@ -121,7 +121,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 335.5
+    "width": 321.5
   },
   "right": {
     "id": "6dd3fa4b300be02e",
@@ -208,12 +208,12 @@
   },
   "active": "ff5a5d9af2e9b747",
   "lastOpenFiles": [
+    "_posts/Clean Architecture/2025-03-02-Clean Architecture LSP.md",
     "_posts/Clean Architecture/2025-03-02-Clean Architecture ISP.md",
     "_posts/Clean Architecture/2025-03-02-Clean Architecture DIP.md",
-    "_posts/Clean Architecture/2025-03-02-Clean Architecture LSP.md",
+    "_posts/Clean Architecture/2025-02-24-Clean Architecture SRP.md",
     "_posts/Clean Architecture/2025-02-24-Clean Architecture OCP.md",
     "images/Pasted image 20250224182033.png",
-    "_posts/Clean Architecture/2025-02-24-Clean Architecture SRP.md",
     "_posts/Clean Architecture/2025-02-24-Clean Architecture chap 3.md",
     "_posts/Clean Architecture/2025-02-10-Clean Architecture chap 1.md",
     "_posts/Clean Architecture/2025-02-16-Clean Architecture chap.2.md",
