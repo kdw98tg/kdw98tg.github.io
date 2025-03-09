@@ -13,40 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Refactoring/2025-02-02-Refactoring chap11-2.md",
+                "file": "_posts/Clean Architecture/2025-03-09-Clean Architecture REP, CCP, CRP.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-02-02-Refactoring chap11-2"
-            }
-          },
-          {
-            "id": "b3d63d5b0f7e7004",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "_posts/Refactoring/2025-02-09-Refactoring chap.12.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2025-02-09-Refactoring chap.12"
-            }
-          },
-          {
-            "id": "ff5a5d9af2e9b747",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "_posts/Clean Architecture/2025-03-02-Clean Architecture DIP.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2025-03-02-Clean Architecture DIP"
+              "title": "2025-03-09-Clean Architecture REP, CCP, CRP"
             }
           },
           {
@@ -63,8 +35,7 @@
               "title": "Common"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -206,11 +177,14 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "ff5a5d9af2e9b747",
+  "active": "80447e9411d2778a",
   "lastOpenFiles": [
     "_posts/Clean Architecture/2025-03-02-Clean Architecture LSP.md",
-    "_posts/Clean Architecture/2025-03-02-Clean Architecture ISP.md",
+    "_posts/Clean Architecture/2025-03-09-Clean Architecture REP, CCP, CRP.md",
+    "_posts/Refactoring/2025-02-02-Refactoring chap11-2.md",
+    "_posts/Refactoring/2025-02-09-Refactoring chap.12.md",
     "_posts/Clean Architecture/2025-03-02-Clean Architecture DIP.md",
+    "_posts/Clean Architecture/2025-03-02-Clean Architecture ISP.md",
     "_posts/Clean Architecture/2025-02-24-Clean Architecture SRP.md",
     "_posts/Clean Architecture/2025-02-24-Clean Architecture OCP.md",
     "images/Pasted image 20250224182033.png",
@@ -220,9 +194,7 @@
     "images/Pasted image 20250224181303.png",
     "images/Pasted image 20250216225924.png",
     "images/Pasted image 20250216225751.png",
-    "_posts/Refactoring/2025-02-09-Refactoring chap.12.md",
     "_posts/Clean Architecture",
-    "_posts/Refactoring/2025-02-02-Refactoring chap11-2.md",
     "_posts/Refactoring/2025-01-29-Refactoring chap.11-1.md",
     "_posts/Refactoring/2025-01-25-Refactoring chap.10-2.md",
     "_posts/Python/2024-08-13-python venv.md",
@@ -238,7 +210,6 @@
     "_posts/Asp net core/2025-01-24-Asp.net Core Service 패턴.md",
     "_posts/Git/2025-01-21-Git Lfs 오류.md",
     "_posts/Asp net core/2024-01-07-EF Core에서 Repository Pattern을 사용하지 말아야 하는 이유.md",
-    "_posts/Asp net core/2024-04-04-ASP.Net Core API 서버.md",
     "images/Pasted image 20250124153730.png",
     "images/Pasted image 20250118231446.png",
     "images/Pasted image 20250118224501.png",
