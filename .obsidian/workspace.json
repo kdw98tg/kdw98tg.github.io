@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Clean Architecture/2025-03-17-Clean Architecture ADP, SDP, SAP.md",
+                "file": "_posts/C#/2025-05-02-Test 구축.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-03-17-Clean Architecture ADP, SDP, SAP"
+              "title": "2025-05-02-Test 구축"
             }
           },
           {
@@ -58,7 +58,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "파일 탐색기"
+              "title": "Files"
             }
           },
           {
@@ -169,22 +169,33 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:빠른 전환기 열기": false,
-      "daily-notes:오늘의 일일 노트 열기": false,
-      "graph:그래프 뷰 열기": false,
-      "canvas:새 캔버스 만들기": false,
-      "templates:템플릿 삽입": false,
-      "command-palette:명령어 팔레트 열기": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
     }
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
-    "images/Pasted image 20250317173805.png",
-    "_posts/Clean Architecture/2025-03-17-Clean Architecture 아키텍처란?.md",
+    "images/Pasted image 20250502114118.png",
+    "images/Pasted image 20250502114052.png",
+    "images/Pasted image 20250502113535.png",
+    "images/Pasted image 20250502113223.png",
+    "images/Pasted image 20250502113203.png",
+    "_posts/C#/2025-05-02-ClassLibrary 관리.md",
+    "images/Pasted image 20250502112610.png",
+    "images/Pasted image 20250502112443.png",
+    "images/Pasted image 20250502112059.png",
+    "images/Pasted image 20250502111732.png",
+    "images/Pasted image 20250502111525.png",
+    "images/Pasted image 20250502111354.png",
+    "_posts/C#/2025-05-02-Test 구축.md",
+    "_posts/C#/2024-07-22-Lamda Expression.md",
+    "_posts/C#/Untitled.md",
     "_posts/Clean Architecture/2025-03-17-Clean Architecture ADP, SDP, SAP.md",
-    "images/Pasted image 20250317153328.png",
-    "images/Pasted image 20250317153010.png",
-    "images/Pasted image 20250317150629.png",
+    "_posts/Clean Architecture/2025-03-17-Clean Architecture 아키텍처란?.md",
     "_posts/Clean Architecture/2025-03-09-Clean Architecture REP, CCP, CRP.md",
     "_posts/Clean Architecture/2025-03-02-Clean Architecture LSP.md",
     "_posts/Refactoring/2025-02-02-Refactoring chap11-2.md",
@@ -193,13 +204,9 @@
     "_posts/Clean Architecture/2025-03-02-Clean Architecture ISP.md",
     "_posts/Clean Architecture/2025-02-24-Clean Architecture SRP.md",
     "_posts/Clean Architecture/2025-02-24-Clean Architecture OCP.md",
-    "images/Pasted image 20250224182033.png",
     "_posts/Clean Architecture/2025-02-24-Clean Architecture chap 3.md",
     "_posts/Clean Architecture/2025-02-10-Clean Architecture chap 1.md",
     "_posts/Clean Architecture/2025-02-16-Clean Architecture chap.2.md",
-    "images/Pasted image 20250224181303.png",
-    "images/Pasted image 20250216225924.png",
-    "images/Pasted image 20250216225751.png",
     "_posts/Clean Architecture",
     "_posts/Refactoring/2025-01-29-Refactoring chap.11-1.md",
     "_posts/Refactoring/2025-01-25-Refactoring chap.10-2.md",
@@ -209,13 +216,6 @@
     "_posts/Database/2024-05-14-데이터베이스 테이블 한번에 삭제.md",
     "_posts/Refactoring/2025-01-25-Refactoring chap.10-1.md",
     "_posts/Refactoring/2025-01-18-BLE 코드 리팩터링.md",
-    "_posts/Refactoring/2025-01-12-Refactoring chap.9-1.md",
-    "_posts/Refactoring/2025-01-12-Refactoring chap.8-1.md",
-    "_posts/Common.md",
-    "_posts/Asp net core/2025-01-24-Asp.net Core Mapper 사용법.md",
-    "images/Pasted image 20250124153730.png",
-    "images/Pasted image 20250118231446.png",
-    "images/Pasted image 20250118224501.png",
     "_posts/무제 폴더",
     "_posts/Refactoring",
     "_sass/minimal-mistakes/_copyright.scss",
