@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/C#/2025-05-02-Custom Exception 만들기.md",
+                "file": "_posts/Winform/2025-05-02-Winform Custom UI.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-05-02-Custom Exception 만들기"
+              "title": "2025-05-02-Winform Custom UI"
             }
           },
           {
@@ -58,7 +58,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "파일 탐색기"
             }
           },
           {
@@ -169,19 +169,22 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "switcher:빠른 전환기 열기": false,
+      "graph:그래프 뷰 열기": false,
+      "canvas:새 캔버스 만들기": false,
+      "daily-notes:오늘의 일일 노트 열기": false,
+      "templates:템플릿 삽입": false,
+      "command-palette:명령어 팔레트 열기": false
     }
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
-    "_posts/C#/2025-05-02-Test 구축.md",
-    "_posts/C#/2025-05-02-Custom Exception 만들기.md",
+    "images/Pasted image 20250502141321.png",
+    "images/Pasted image 20250502141303.png",
     "_posts/Winform/2025-05-02-Winform MVP 패턴.md",
+    "_posts/Winform/2025-05-02-Winform Custom UI.md",
+    "_posts/C#/2025-05-02-Custom Exception 만들기.md",
+    "_posts/C#/2025-05-02-Test 구축.md",
     "images/Pasted image 20250502130110.png",
     "images/Pasted image 20250502125234.png",
     "_posts/C#/2025-05-02-ClassLibrary 관리.md",
@@ -193,7 +196,6 @@
     "images/Pasted image 20250502113203.png",
     "images/Pasted image 20250502112610.png",
     "images/Pasted image 20250502112443.png",
-    "images/Pasted image 20250502112059.png",
     "_posts/C#/2024-07-22-Lamda Expression.md",
     "_posts/Clean Architecture/2025-03-17-Clean Architecture ADP, SDP, SAP.md",
     "_posts/Clean Architecture/2025-03-17-Clean Architecture 아키텍처란?.md",
@@ -214,7 +216,6 @@
     "_posts/Python/2024-08-13-python venv.md",
     "_posts/Java/2024-09-03-Java로 콜백 패턴 구현.md",
     "_posts/C#/2024-03-01-Linq.md",
-    "_posts/Database/2024-05-14-데이터베이스 테이블 한번에 삭제.md",
     "_posts/무제 폴더",
     "_posts/Refactoring",
     "_sass/minimal-mistakes/_copyright.scss",
