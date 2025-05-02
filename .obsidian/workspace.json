@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Winform/2025-05-02-Winform MVP 패턴.md",
+                "file": "_posts/C#/2025-05-02-Custom Exception 만들기.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-05-02-Winform MVP 패턴"
+              "title": "2025-05-02-Custom Exception 만들기"
             }
           },
           {
@@ -179,11 +179,12 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
+    "_posts/C#/2025-05-02-Test 구축.md",
+    "_posts/C#/2025-05-02-Custom Exception 만들기.md",
+    "_posts/Winform/2025-05-02-Winform MVP 패턴.md",
     "images/Pasted image 20250502130110.png",
     "images/Pasted image 20250502125234.png",
-    "_posts/C#/2025-05-02-Test 구축.md",
     "_posts/C#/2025-05-02-ClassLibrary 관리.md",
-    "_posts/Winform/2025-05-02-Winform MVP 패턴.md",
     "_posts/Winform/2025-01-18-Winform BLE 통신.md",
     "images/Pasted image 20250502114118.png",
     "images/Pasted image 20250502114052.png",
@@ -193,9 +194,7 @@
     "images/Pasted image 20250502112610.png",
     "images/Pasted image 20250502112443.png",
     "images/Pasted image 20250502112059.png",
-    "images/Pasted image 20250502111732.png",
     "_posts/C#/2024-07-22-Lamda Expression.md",
-    "_posts/C#/Untitled.md",
     "_posts/Clean Architecture/2025-03-17-Clean Architecture ADP, SDP, SAP.md",
     "_posts/Clean Architecture/2025-03-17-Clean Architecture 아키텍처란?.md",
     "_posts/Clean Architecture/2025-03-09-Clean Architecture REP, CCP, CRP.md",
