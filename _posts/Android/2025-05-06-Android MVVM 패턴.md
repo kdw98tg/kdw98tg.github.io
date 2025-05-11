@@ -245,3 +245,5 @@ class MainActivity : AppCompatActivity()
 ![](/images/Pasted%20image%2020250506203519.png)
 
 정상적으로 잘 작동합니다.
+
+
