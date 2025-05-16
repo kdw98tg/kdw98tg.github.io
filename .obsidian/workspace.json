@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Clean Architecture/2025-05-11-Clean Architecture 선긋기.md",
+                "file": "_posts/Clean Architecture/2025-05-16-Clean Architecture 경계 해부학, 업무 규칙.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-05-11-Clean Architecture 선긋기"
+              "title": "2025-05-16-Clean Architecture 경계 해부학, 업무 규칙"
             }
           },
           {
@@ -179,10 +179,15 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
+    "images/Pasted image 20250516155935.png",
+    "images/Pasted image 20250516155517.png",
+    "images/Pasted image 20250516154649.png",
+    "images/Pasted image 20250516154400.png",
+    "_posts/Clean Architecture/2025-05-11-Clean Architecture 선긋기.md",
+    "_posts/Clean Architecture/2025-05-16-Clean Architecture 경계 해부학, 업무 규칙.md",
     "images/Pasted image 20250511183948.png",
     "images/Pasted image 20250511183345.png",
     "_posts/Clean Architecture/2025-05-11-Clean Architecture 독립성.md",
-    "_posts/Clean Architecture/2025-05-11-Clean Architecture 선긋기.md",
     "_posts/Clean Architecture/2025-03-17-Clean Architecture ADP, SDP, SAP.md",
     "_posts/Clean Architecture/무제 1.md",
     "images/Pasted image 20250511181700.png",
@@ -201,11 +206,7 @@
     "_posts/Winform/2025-05-02-Winform Custom UI.md",
     "images/Pasted image 20250502141321.png",
     "images/Pasted image 20250502141303.png",
-    "images/Pasted image 20250502130110.png",
-    "images/Pasted image 20250502125234.png",
     "_posts/Winform/2025-01-18-Winform BLE 통신.md",
-    "images/Pasted image 20250502114118.png",
-    "images/Pasted image 20250502114052.png",
     "_posts/Clean Architecture/2025-03-17-Clean Architecture 아키텍처란?.md",
     "_posts/Clean Architecture/2025-03-09-Clean Architecture REP, CCP, CRP.md",
     "_posts/Clean Architecture/2025-03-02-Clean Architecture LSP.md",
@@ -214,7 +215,6 @@
     "_posts/Clean Architecture/2025-03-02-Clean Architecture DIP.md",
     "_posts/Clean Architecture/2025-03-02-Clean Architecture ISP.md",
     "_posts/Clean Architecture/2025-02-24-Clean Architecture SRP.md",
-    "_posts/Clean Architecture/2025-02-24-Clean Architecture OCP.md",
     "_posts/Clean Architecture",
     "_posts/무제 폴더",
     "_posts/Refactoring",
