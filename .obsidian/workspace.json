@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Clean Architecture/2025-05-16-Clean Architecture 경계 해부학, 업무 규칙.md",
+                "file": "_posts/Clean Architecture/2025-05-16-Clean Architecture 소리치는 아키텍처, 클린 아키텍쳐.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-05-16-Clean Architecture 경계 해부학, 업무 규칙"
+              "title": "2025-05-16-Clean Architecture 소리치는 아키텍처, 클린 아키텍쳐"
             }
           },
           {
@@ -179,12 +179,14 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
+    "images/Pasted image 20250516181248.png",
+    "_posts/Clean Architecture/2025-05-16-Clean Architecture 경계 해부학, 업무 규칙.md",
+    "_posts/Clean Architecture/2025-05-16-Clean Architecture 소리치는 아키텍처, 클린 아키텍쳐.md",
     "images/Pasted image 20250516155935.png",
     "images/Pasted image 20250516155517.png",
     "images/Pasted image 20250516154649.png",
     "images/Pasted image 20250516154400.png",
     "_posts/Clean Architecture/2025-05-11-Clean Architecture 선긋기.md",
-    "_posts/Clean Architecture/2025-05-16-Clean Architecture 경계 해부학, 업무 규칙.md",
     "images/Pasted image 20250511183948.png",
     "images/Pasted image 20250511183345.png",
     "_posts/Clean Architecture/2025-05-11-Clean Architecture 독립성.md",
@@ -205,7 +207,6 @@
     "_posts/Winform/2025-05-02-Winform MVP 패턴.md",
     "_posts/Winform/2025-05-02-Winform Custom UI.md",
     "images/Pasted image 20250502141321.png",
-    "images/Pasted image 20250502141303.png",
     "_posts/Winform/2025-01-18-Winform BLE 통신.md",
     "_posts/Clean Architecture/2025-03-17-Clean Architecture 아키텍처란?.md",
     "_posts/Clean Architecture/2025-03-09-Clean Architecture REP, CCP, CRP.md",
@@ -214,7 +215,6 @@
     "_posts/Refactoring/2025-02-09-Refactoring chap.12.md",
     "_posts/Clean Architecture/2025-03-02-Clean Architecture DIP.md",
     "_posts/Clean Architecture/2025-03-02-Clean Architecture ISP.md",
-    "_posts/Clean Architecture/2025-02-24-Clean Architecture SRP.md",
     "_posts/Clean Architecture",
     "_posts/무제 폴더",
     "_posts/Refactoring",
