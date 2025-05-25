@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Clean Architecture/2025-05-25-CleanArchitecture 험블객체 및 경계.md",
+                "file": "_posts/Clean Architecture/2025-05-25-계층과 경계, 크고 작은 모든 서비스들.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-05-25-CleanArchitecture 험블객체 및 경계"
+              "title": "2025-05-25-계층과 경계, 크고 작은 모든 서비스들"
             }
           },
           {
@@ -179,8 +179,11 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
-    "_posts/Clean Architecture/2025-05-16-Clean Architecture 소리치는 아키텍처, 클린 아키텍쳐.md",
+    "images/Pasted image 20250525232424.png",
+    "images/Pasted image 20250525232242.png",
     "_posts/Clean Architecture/2025-05-25-CleanArchitecture 험블객체 및 경계.md",
+    "_posts/Clean Architecture/2025-05-25-계층과 경계, 크고 작은 모든 서비스들.md",
+    "_posts/Clean Architecture/2025-05-16-Clean Architecture 소리치는 아키텍처, 클린 아키텍쳐.md",
     "_posts/Clean Architecture/2025-05-16-Clean Architecture 경계 해부학, 업무 규칙.md",
     "images/Pasted image 20250516181248.png",
     "images/Pasted image 20250516155935.png",
@@ -197,7 +200,6 @@
     "_posts/Clean Architecture/2025-03-17-Clean Architecture 아키텍처란.md",
     "_posts/Android/2025-05-06-Android MVVM 패턴.md",
     "images/Pasted image 20250506203519.png",
-    "images/Pasted image 20250506200632.png",
     "_posts/C#/2024-03-01-Linq.md",
     "_posts/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
     "_posts/C#/2024-07-22-Lamda Expression.md",
@@ -213,8 +215,6 @@
     "_posts/Clean Architecture/2025-03-02-Clean Architecture LSP.md",
     "_posts/Refactoring/2025-02-02-Refactoring chap11-2.md",
     "_posts/Refactoring/2025-02-09-Refactoring chap.12.md",
-    "_posts/Clean Architecture/2025-03-02-Clean Architecture DIP.md",
-    "_posts/Clean Architecture/2025-03-02-Clean Architecture ISP.md",
     "_posts/Clean Architecture",
     "_posts/무제 폴더",
     "_posts/Refactoring",
