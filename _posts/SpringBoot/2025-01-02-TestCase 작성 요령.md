@@ -5,7 +5,7 @@ categories:
   - SpringBoot
   
 tags:
-  - [Java, Head-First Design Pattern]
+  - [Java, Spring Boot]
 
 toc: true
 toc_sticky: true
