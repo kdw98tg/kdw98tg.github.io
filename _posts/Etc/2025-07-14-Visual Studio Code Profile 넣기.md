@@ -2,10 +2,11 @@
 title: "[Window] Visual Studio Code Profile 넣기"
 
 categories:
-  -  Etc
-  
+  - Etc
+
 tags:
-  - [Visual Studio, Window]
+  - Visual Studio Code
+  - Window
 
 toc: true
 toc_sticky: true
@@ -15,6 +16,7 @@ published: true
 date: 2025-07-14
 last_modified_at: 2025-07-14
 ---
+
 
 Visual Studio Code는 강력한 코드 에디터입니다.  
 하지만 단점 중 하나는 다양한 확장 기능(Extension)을 통해 개발 환경을 구성해야 하기 때문에, 여러 컴퓨터에서 동일한 환경을 유지하기 어렵다는 점입니다.
