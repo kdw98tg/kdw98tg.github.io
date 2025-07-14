@@ -5,8 +5,7 @@ categories:
   - Etc
 
 tags:
-  - Visual Studio Code
-  - Window
+  - [CodeLines, Window, Mac]
 
 toc: true
 toc_sticky: true
