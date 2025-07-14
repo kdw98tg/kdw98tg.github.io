@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/SpringBoot/2025-06-06-Model Mapper.md",
+                "file": "_posts/Etc/2025-07-14-Visual Studio Code Profile 넣기.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-06-06-Model Mapper"
+              "title": "2025-07-14-Visual Studio Code Profile 넣기"
             }
           },
           {
@@ -179,8 +179,15 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
-    "_posts/SpringBoot/2025-06-06-Spring Boot Repository 패턴.md",
+    "images/Pasted image 20250714173112.png",
+    "images/Pasted image 20250714173013.png",
+    "images/Pasted image 20250714172917.png",
+    "images/Pasted image 20250714172749.png",
+    "images/Pasted image 20250714172703.png",
+    "_posts/Etc/2024-10-17-코드 총 라인수 구하기.md",
+    "_posts/Etc/2025-07-14-Visual Studio Code Profile 넣기.md",
     "_posts/SpringBoot/2025-06-06-Model Mapper.md",
+    "_posts/SpringBoot/2025-06-06-Spring Boot Repository 패턴.md",
     "_posts/SpringBoot/2025-01-02-TestCase 작성 요령.md",
     "_posts/SpringBoot/2025-01-02-Spring Boot 프로젝트 생성.md",
     "images/Pasted image 20250606201119.png",
@@ -190,10 +197,6 @@
     "images/Pasted image 20250605172137.png",
     "images/Pasted image 20250605171415.png",
     "images/Pasted image 20250605171300.png",
-    "images/Pasted image 20250605171211.png",
-    "images/Pasted image 20250605171156.png",
-    "images/Pasted image 20250605171116.png",
-    "images/Pasted image 20250605171030.png",
     "_posts/SpringBoot/2025-01-02-Controller 계층.md",
     "_posts/SpringBoot/2025-01-02-Repository 계층.md",
     "_posts/SpringBoot/2025-01-02-Service 계층.md",
@@ -213,9 +216,6 @@
     "_posts/AI",
     "_posts/무제.md",
     "_posts/Clean Architecture/2025-05-25-CleanArchitecture 험블객체 및 경계.md",
-    "_posts/Clean Architecture/2025-05-16-Clean Architecture 소리치는 아키텍처, 클린 아키텍쳐.md",
-    "_posts/Clean Architecture/2025-05-16-Clean Architecture 경계 해부학, 업무 규칙.md",
-    "_posts/Clean Architecture/2025-05-11-Clean Architecture 선긋기.md",
     "_posts/Clean Architecture",
     "_posts/무제 폴더",
     "_posts/Refactoring",
