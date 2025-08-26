@@ -10,14 +10,14 @@ tags:
 toc: true
 toc_sticky: true
 
-published: false
+published: true
 
 date: 2025-08-26
 last_modified_at: 2025-08-26
 ---
 
 Spring Boot와 같은 백엔드 프로젝트에서 클라이언트와 서버 간 데이터를 주고받을 때는 보통 순수 Entity를 그대로 사용하지 않고 DTO(Data Transfer Object)를 활용합니다.  
-이는 관심사의 분리, 보안 강화, 서버 호출 최소화 등의 이유 때문으로, 제대로 된 프로젝트에서는 DTO 사용이 사실상 필수적입니다.
+이는 관심사의 분리, 보안 강화, 서버 호출 최소화 등의 이유 때문으로, 제대로 된 프로젝트에서는 DTO 사용이 사실상 필수적입니다. 
 
 하지만 프로젝트를 진행하다 보면 Model과 DTO를 서로 변환하는 과정에서 코드가 복잡해지는 경우가 많습니다. Setter 메서드나 다수의 생성자 오버로딩이 등장해 코드 가독성이 떨어지곤 합니다.
 
