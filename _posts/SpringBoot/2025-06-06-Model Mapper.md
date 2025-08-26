@@ -1,5 +1,5 @@
 ---
-title: "[SpringBoot] 기본적인 Repository 패턴"
+title: "[SpringBoot] Model "
 
 categories:
   - SpringBoot
