@@ -67,7 +67,7 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 실행 권한을 변경한 후에 아래의 명령어를 기입하면 가상환경이 실행되면서 터미널 앞에 가상환경이 실행되고 있다는 표시가 나타나게 됩니다.
 
 ```bash
-source .\myenv\Scripts\activate
+.\myenv\Scripts\activate
 ```
 
 ![activate venv](/images/Pasted%20image%2020250116150256.png)
