@@ -39,6 +39,14 @@
                 {% endif %}
                 {% endfor %}
             </ul>
+
+            <ul>
+                {% for category in site.categories %}
+                {% if category[0] == "C++" %}
+                <li><a href="/categories/cpp" class="">C++ ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
             <!-- 소제목 1-->
 
             <ul>
