@@ -2,7 +2,7 @@
 title: "[C++] Test"
 
 categories:
-  -  C++
+  - C++
 tags:
   - [Programming, Language]
 
