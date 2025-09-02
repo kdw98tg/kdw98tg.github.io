@@ -1,5 +1,5 @@
 ---
-title:  "[C++] Test" 
+title: "[C++] Test"
 
 categories:
   -  C++
