@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/C++/C++ Test.md",
+                "file": "_posts/C++/2025-09-02-C++ Test.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "C++ Test"
+              "title": "2025-09-02-C++ Test"
             }
           },
           {
@@ -178,12 +178,12 @@
       "command-palette:명령어 팔레트 열기": false
     }
   },
-  "active": "80447e9411d2778a",
+  "active": "95f1480089cf5cc1",
   "lastOpenFiles": [
     "_posts/Git/2024-08-27-Git LFS.md",
     "_posts/Git/2025-01-21-Git Lfs 오류.md",
     "_posts/C#/2025-05-02-Test 구축.md",
-    "_posts/C++/C++ Test.md",
+    "_posts/C++/2025-09-02-C++ Test.md",
     "_posts/C#/2025-05-02-Custom Exception 만들기.md",
     "_posts/C#/2024-03-01-Linq.md",
     "_posts/Winform/2024-12-30-Winformsadf.md",
