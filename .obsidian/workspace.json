@@ -58,7 +58,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "파일 탐색기"
+              "title": "Files"
             }
           },
           {
@@ -169,21 +169,23 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "bases:새 베이스 생성하기": false,
-      "switcher:빠른 전환기 열기": false,
-      "graph:그래프 뷰 열기": false,
-      "canvas:새 캔버스 만들기": false,
-      "daily-notes:오늘의 일일 노트 열기": false,
-      "templates:템플릿 삽입": false,
-      "command-palette:명령어 팔레트 열기": false
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
     }
   },
-  "active": "95f1480089cf5cc1",
+  "active": "80447e9411d2778a",
   "lastOpenFiles": [
+    "images/Pasted image 20250904105703.png",
+    "_posts/Common.md",
+    "_posts/C++/2025-09-02-C++ Test.md",
+    "images/Pasted image 20250904102420.png",
     "_posts/Git/2024-08-27-Git LFS.md",
     "_posts/Git/2025-01-21-Git Lfs 오류.md",
     "_posts/C#/2025-05-02-Test 구축.md",
-    "_posts/C++/2025-09-02-C++ Test.md",
     "_posts/C#/2025-05-02-Custom Exception 만들기.md",
     "_posts/C#/2024-03-01-Linq.md",
     "_posts/Winform/2024-12-30-Winformsadf.md",
@@ -205,7 +207,6 @@
     "_posts/SpringBoot/2025-01-02-Spring Boot 프로젝트 생성.md",
     "_posts/SpringBoot/2025-08-26-Model Struct.md",
     "_posts/SpringBoot/2025-01-02-Controller 계층.md",
-    "_posts/Server/2024-03-15-Docker.md",
     "_posts/Unreal",
     "images/Pasted image 20250801170558.png",
     "images/Pasted image 20250801165714.png",
@@ -214,11 +215,9 @@
     "images/Pasted image 20250714172917.png",
     "images/Pasted image 20250714172749.png",
     "images/Pasted image 20250714172703.png",
-    "_posts/SpringBoot/2025-08-01-SpringBoot 패키지 구조.md",
     "images/Pasted image 20250606201119.png",
     "images/Pasted image 20250608132158.png",
     "_posts/Front-End",
-    "images/Pasted image 20250605172235.png",
     "_posts/AI",
     "_posts/Clean Architecture",
     "_posts/무제 폴더",
