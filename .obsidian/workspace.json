@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/C++/2025-09-02-C++ Test.md",
+                "file": "_posts/C++/2025-09-02-카드게임 구현.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-09-02-C++ Test"
+              "title": "2025-09-02-카드게임 구현"
             }
           },
           {
@@ -181,7 +181,7 @@
   "lastOpenFiles": [
     "images/Pasted image 20250904105703.png",
     "_posts/Common.md",
-    "_posts/C++/2025-09-02-C++ Test.md",
+    "_posts/C++/2025-09-02-카드게임 구현.md",
     "images/Pasted image 20250904102420.png",
     "_posts/Git/2024-08-27-Git LFS.md",
     "_posts/Git/2025-01-21-Git Lfs 오류.md",
