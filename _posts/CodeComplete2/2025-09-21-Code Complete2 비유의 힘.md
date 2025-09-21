@@ -1,5 +1,5 @@
 ---
-title: "[Code Complete 2] 쿼리 한번으로 데이터베이스의 테이블 전체 삭제"
+title: "[Code Complete 2] 소프트웨어에서의 비유"
 
 categories:
   -  Code Complete
