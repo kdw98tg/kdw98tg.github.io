@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/CodeComplete2/2025-09-21-Code Complete2 소프트웨어 선행조건.md",
+                "file": "_posts/Python/2025-10-12-Python Requirements.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-09-21-Code Complete2 소프트웨어 선행조건"
+              "title": "2025-10-12-Python Requirements"
             }
           },
           {
@@ -180,8 +180,14 @@
   },
   "active": "80447e9411d2778a",
   "lastOpenFiles": [
-    "_posts/CodeComplete2/2025-09-21-Code Complete2 비유의 힘.md",
+    "images/Pasted image 20251012230704.png",
+    "images/Pasted image 20251012230422.png",
+    "images/Pasted image 20251012230323.png",
+    "images/Pasted image 20251012230135.png",
+    "_posts/Python/2024-08-13-python venv.md",
+    "_posts/Python/2025-10-12-Python Requirements.md",
     "_posts/CodeComplete2/2025-09-21-Code Complete2 소프트웨어 선행조건.md",
+    "_posts/CodeComplete2/2025-09-21-Code Complete2 비유의 힘.md",
     "_posts/Unity/2025-09-28-Command 패턴 기반 설계.md",
     "_posts/Unity/2024-03-19-Coroutine 활용법.md",
     "_posts/Unity/2024-03-19-Unity SoundManager.md",
@@ -211,15 +217,9 @@
     "images/Pasted image 20250904105703.png",
     "_posts/Common.md",
     "images/Pasted image 20250904102420.png",
-    "_posts/Git/2024-08-27-Git LFS.md",
-    "_posts/C#/2025-05-02-Test 구축.md",
-    "_posts/C#/2025-05-02-Custom Exception 만들기.md",
     "_posts/C++",
     "_posts/Unreal",
     "images/Pasted image 20250801170558.png",
-    "images/Pasted image 20250801165714.png",
-    "images/Pasted image 20250714173112.png",
-    "images/Pasted image 20250714173013.png",
     "_posts/Front-End",
     "_posts/AI",
     "_posts/Clean Architecture",
