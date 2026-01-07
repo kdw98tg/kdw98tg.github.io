@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/React/2026-01-06-React Hooks.md",
+                "file": "_posts/ReadableCode/2026-01-07-표면적 수준에서의 코드 개선.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-01-06-React Hooks"
+              "title": "2026-01-07-표면적 수준에서의 코드 개선"
             }
           },
           {
@@ -70,7 +70,7 @@
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "파일 탐색기"
             }
           },
           {
@@ -181,22 +181,30 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "switcher:빠른 전환기 열기": false,
+      "graph:그래프 뷰 열기": false,
+      "canvas:새 캔버스 만들기": false,
+      "daily-notes:오늘의 일일 노트 열기": false,
+      "templates:템플릿 삽입": false,
+      "command-palette:명령어 팔레트 열기": false,
+      "bases:새 베이스 생성하기": false
     }
   },
   "active": "a7d5d0583a89d60f",
   "lastOpenFiles": [
-    "_posts/React/2026-01-06-React 컴포넌트.md",
+    "_pages/categories/category-readablecode.md",
+    "_posts/React/2026-01-05-React 프로젝트 생성.md",
+    "_posts/ReadableCode/2026-01-07-표면적 수준에서의 코드 개선.md",
+    "_posts/Refactoring/2024-10-16-Refactoring chap.1-1.md",
+    "_posts/ReadableCode",
+    "_posts/Etc/2026-01-06-생각정리2.md",
+    "_posts/Etc/2025-07-14-Visual Studio Code Profile 넣기.md",
+    "_posts/Etc/2024-08-28-Mac Obsidian 한글 끊김.md",
+    "_posts/Etc/2024-10-17-코드 총 라인수 구하기.md",
     "_posts/React/2026-01-06-React Hooks.md",
+    "_posts/React/2026-01-06-React 컴포넌트.md",
     "_posts/React/2025-01-05-React JSX 간단 예제.md",
     "_posts/Python/2024-08-13-python venv.md",
-    "_posts/React/2026-01-05-React 프로젝트 생성.md",
     "_posts/React/리액트.md",
     "_posts/React/2026-01-05-React.md",
     "images/Pasted image 20260106093722.png",
@@ -222,13 +230,6 @@
     "_posts/AI/공부 해야할것들 메모.md",
     "_posts/AI/2025-08-27-LightBGM 이란.md",
     "_posts/CodeComplete2/2025-09-21-Code Complete2 소프트웨어 선행조건.md",
-    "_posts/AI/2025-05-26-AI 공부.md",
-    "_posts/대학원 강의/산업AI/2024-03-09-산업 AI 강의1.md",
-    "_posts/Unity/2025-09-28-Command 패턴 기반 설계.md",
-    "_posts/Python/2025-10-19-python web crawling1.md",
-    "_posts/Python/2025-10-12-Python Requirements.md",
-    "_posts/Unity/2024-03-19-Coroutine 활용법.md",
-    "_posts/Unity/2024-03-19-Unity SoundManager.md",
     "_posts/CodeComplete2",
     "_posts/서비스 기획",
     "_posts/C++",
@@ -236,7 +237,6 @@
     "_posts/Front-End",
     "_posts/AI",
     "_posts/Clean Architecture",
-    "_posts/무제 폴더",
-    "_posts/Refactoring"
+    "_posts/무제 폴더"
   ]
 }
