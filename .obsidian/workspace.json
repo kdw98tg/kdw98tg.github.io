@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/ReadableCode/2026-01-07-표면적 수준에서의 코드 개선.md",
+                "file": "_posts/ReadableCode/2026-01-12-루프와 논리를 단순하게 만들기.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-01-07-표면적 수준에서의 코드 개선"
+              "title": "2026-01-12-루프와 논리를 단순하게 만들기"
             }
           },
           {
@@ -195,10 +195,12 @@
   },
   "active": "37832e64cc2f00a5",
   "lastOpenFiles": [
+    "_posts/ReadableCode/2026-01-07-표면적 수준에서의 코드 개선.md",
+    "_posts/ReadableCode/2026-01-12-루프와 논리를 단순하게 만들기.md",
+    "_posts/ReadableCode/무제",
     "_posts/React/2026-01-05-React 프로젝트 생성.md",
     "_posts/React/2026-01-05-React JSX 간단 예제.md",
     "_posts/Python/2024-08-13-python venv.md",
-    "_posts/ReadableCode/2026-01-07-표면적 수준에서의 코드 개선.md",
     "_posts/ReadableCode",
     "_posts/Etc/2026-01-06-생각정리2.md",
     "_pages/categories/category-readablecode.md",
@@ -232,14 +234,12 @@
     "_posts/AI/2025-08-27-LightBGM 이란.md",
     "_posts/CodeComplete2/2025-09-21-Code Complete2 소프트웨어 선행조건.md",
     "_posts/AI/2025-05-26-AI 공부.md",
-    "_posts/대학원 강의/산업AI/2024-03-09-산업 AI 강의1.md",
     "_posts/CodeComplete2",
     "_posts/서비스 기획",
     "_posts/C++",
     "_posts/Unreal",
     "_posts/Front-End",
     "_posts/AI",
-    "_posts/Clean Architecture",
-    "_posts/무제 폴더"
+    "_posts/Clean Architecture"
   ]
 }
