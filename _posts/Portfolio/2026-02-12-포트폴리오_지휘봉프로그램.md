@@ -1,0 +1,15 @@
+---
+title: "[포트폴리오] Winform-지휘봉프로그램"
+
+categories:
+  -  Portfolio
+  
+tags:
+  - [Portfolio, MotionMaestro]
+
+toc: true
+toc_sticky: true
+
+date: 2026-02-12
+last_modified_at: 2026-02-12
+---
