@@ -27,6 +27,16 @@
 
 
         <li>
+
+            <span class="nav__sub-title">Portfolios</span>
+            <ul>
+                {% for category in site.categories %}
+                {% if category[0] == "Portfolio" %}
+                <li><a href="/categories/portfolio" class="">Portfolio ({{category[1].size}})</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+
             <!-- 대제목 -->
             <span class="nav__sub-title">Languages</span>
             <!-- 소제목 1-->
