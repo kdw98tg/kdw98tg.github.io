@@ -20,7 +20,7 @@ title: "CoMok Studio 기술 블로그"
 title_separator: "|"
 subtitle: "백만명을 만족시키는 서비스는 백만불을 벌어들인다."
 name: "CoMok"
-description: "블로그의 '목적'"
+description: "CoMok Studio 의 기술 블로그 입니다. 기술들을 익히고, 공유하는것을 목적으로 합니다."
 url: "https://kdw98tg.github.io"
 baseurl: # the subpath of your site, e.g. "/blog"
 repository: # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -105,9 +105,9 @@ analytics:
 
 # Site Author
 author:
-  name: "마시남"
+  name: "CoMok"
   avatar: "/assets/images/logo1.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio: "마시남의 블로그 입니다."
+  bio: "블로그의 '목적'"
   location: "South Korea"
   email: # "kdw98tg@gmail.com"
   links:
