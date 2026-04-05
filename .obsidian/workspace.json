@@ -22,6 +22,18 @@
             }
           },
           {
+            "id": "bdd15fc08f3db3ae",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.12.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "릴리즈 노트 1.12.7"
+            }
+          },
+          {
             "id": "6ca2ab13bf3f0b40",
             "type": "leaf",
             "state": {
@@ -67,7 +79,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "되세",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -181,17 +193,16 @@
   "active": "c165de0ad104fdb1",
   "lastOpenFiles": [
     "_posts/서비스 기획/2026-02-12-프로토타입의 중요성.md",
-    "_posts/서비스 기획/2026-03-24-창의적인 게임 만들기.md",
-    "_posts/서비스 기획/2026-03-24-창의적인 게임 만들기.md",
+    "_posts/서비스 기획/TEMP2.md",
     "_posts/서비스 기획/temp3.md",
+    "_posts/서비스 기획/temp.md",
+    "_posts/서비스 기획/2026-03-24-창의적인 게임 만들기.md",
+    "_posts/Common.md",
     "_posts/SpringBoot/JWT 토큰 및 스프링 시큐리티 메모.md",
     "_posts/SpringBoot/Transactional, Lazy Loading.md",
     "_posts/SpringBoot/2025-08-26-Model Struct.md",
-    "_posts/서비스 기획/TEMP2.md",
-    "_posts/서비스 기획/temp.md",
     "_posts/Portfolio/2026-02-12-포트폴리오_은재팜 게임.md",
     "_posts/Portfolio/2026-02-12-포트폴리오_지휘봉프로그램.md",
-    "_posts/Common.md",
     "images/KakaoTalk_Video_2026-02-13-15-25-16.mp4",
     "_posts/Portfolio/2026-02-12-포트폴리오_android 책 집필.md",
     "images/just patrol icon.png",
