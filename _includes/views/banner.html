@@ -21,6 +21,27 @@
     html .page-banner {
       background: {{ banner_background }};
     }
+
+    .contact-me{
+      position: relative;
+      bottom: 1px;
+      right: 10px;
+      width: 200px;
+      height: 200px;
+      background-color: #6C5CE7;
+    }
+
+    .contact-list{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .contact-list div{
+      width: 30px;
+      height: 30px;
+      background-color: aqua;
+    }
+
   </style>
   {%- endif -%}
   {%- if banner_height -%}
@@ -133,9 +154,19 @@
             </h2>
           </div>
 
+          <div class="contact-me">
+            <div class="contact-list">
+              <div>1</div>
+              <div>2</div>
+              <div>3</div>
+              <div>4</div>
+            </div>
+          </div>
+
         {%- endif -%}
       </div>
     </div>
   </section>
 {%- endif -%}
+
 
