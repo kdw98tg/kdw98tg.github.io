@@ -114,12 +114,22 @@
 
         {%- else -%}
 
-          <div class="page-banner-default">
+        <!-- 기존에 있던 코드 지우고, 스타일 넣으려고 아래 코드로 변경 -->
+          <!-- <div class="page-banner-default">
             <h1 class="page-banner-heading">
               {{ heading | default: page.title | escape }}
             </h1>
             <h2 class="page-banner-subheading">
               {{ subheading | default: page.subtitle | escape }}
+            </h2>
+          </div> -->
+
+          <div>
+            <h1 class="page-banner-heading">
+              CoMok <span style="color: #64FFDA">Studio</span>
+            </h1>
+            <h2 class="page-banner-subheading">
+              백만명을 만족하는 서비스가 백만불을 벌어들인다.
             </h2>
           </div>
 

@@ -162,7 +162,7 @@ lang: "ko"  # default lang is en
 # Page default value
 defaults:
   home:
-    heading: "CoMok Stduio"
+    heading: "CoMok Studio"
     subheading: "백만명이 만족하는 서비스가 백만불을 벌어들인다."
     banner: "Your image url"
 
