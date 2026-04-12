@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 {%- include functions.html func='log' level='debug' msg='Get banner_html value' -%}
 {% assign name = 'banner_html' %}
 {%- include functions.html func='get_value' -%}
@@ -31,6 +32,9 @@
       bottom: 40px;
       text-align: right;
       z-index: 10;
+      border: 1px solid #1e1e1e;
+      border-radius: 24px;
+      padding: 8px;
     }
 
     .contact-title {
