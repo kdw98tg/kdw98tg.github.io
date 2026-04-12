@@ -359,18 +359,26 @@ html {
   .post-tags .post-tag {
     display: inline-block;
     text-decoration: none;
-    border: 1px solid;
-    padding: 2px 4px;
-    border-radius: 2px;
+    border: 1.5px solid;
+     padding: 4px 12px;
+    border-radius: 8px;
     transition: color 0.2s;
     margin-bottom: 8px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    border-color: rgba(255, 81, 0, 0.5);
+    background-color: rgba(255, 81, 0, 0.08);
 
     &:not(:last-child) {
       margin-right: 8px;
     }
 
     &:hover {
-      color: #787878;
+      color: #ffffff;
+       background-color: #ff5100;
+
     }
   }
 
