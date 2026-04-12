@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="springboot의-service-계층">SpringBoot의 Service 계층</h2>
+
+<p>Spring boot의 Service 계층은 실제 사용자가 웹과 상호작용 하면서 제공하는 서비스들, 즉 실질적인 비지니스 로직을 정의하는 계층 입니다. 여기서는 사용자의 입력을 바탕으로 데이터를 변경하거나 보여주는 작업을 하게 됩니다. 데이터베이스에 접근하여 데이터를 조작하는 계층은 Repository 계층이었으므로, 당연하게도 Service 에는 Repository 계층의 의존성이 있습니다.</p>
+
+<p>서비스계층을 만드는 방법은 클래스 위에 <code class="language-plaintext highlighter-rouge">@Service</code>라는 어노테이션을 다는 것입니다. 이렇게 하면 <code class="language-plaintext highlighter-rouge">제어 역전의 원칙</code>에 따라서 스프링 프레임워크가 컴포넌트 스캔을 하게 되고, 해당 java 클래스를 Service 로 등록하게 됩니다. 그리고, 데이터를 조작할 때, <code class="language-plaintext highlighter-rouge">@Transactional</code>이라는 어노테이션을 달아서, 트랜젝션을 열어줍니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Service</span>
+<span class="nd">@Transactional</span> <span class="c1">// Jpa의 모든 데이터 변경이나 로직들은 가급적이면 Transaction 안에서 수행되어야 함. 그리고 패키지는 spring꺼 쓰자</span>
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberService</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">MemberRepository</span> <span class="n">memberRepository</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이렇게 하고, 이제 실질적인 비지니스 로직을 구현합니다. 추상화된 기능으로는 <code class="language-plaintext highlighter-rouge">join()</code>, <code class="language-plaintext highlighter-rouge">findMembers()</code>, <code class="language-plaintext highlighter-rouge">findOne()</code>이 있다고 가정 합니다.</p>
+
+<p>검증하는 절차를 거친 후, Repository에 접근하여 데이터를 처리하는 과정을 거칩니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Service</span>
+<span class="nd">@Transactional</span> <span class="c1">// Jpa의 모든 데이터 변경이나 로직들은 가급적이면 Transaction 안에서 수행되어야 함. 그리고 패키지는 spring꺼 쓰자</span>
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="c1">//참고 -&gt; 실무에서는 검증 로직이 있더라도, 회원명 칼럼에 유니크 제약조건을 추가하는 것이 안전하다.</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MemberService</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">MemberRepository</span> <span class="n">memberRepository</span><span class="o">;</span>
+
+    <span class="cm">/*
+     * 회원가입
+     */</span>
+    <span class="kd">public</span> <span class="nc">Long</span> <span class="nf">join</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">validateDuplicatedMember</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+        <span class="n">memberRepository</span><span class="o">.</span><span class="na">save</span><span class="o">(</span><span class="n">member</span><span class="o">);</span>
+        <span class="k">return</span> <span class="n">member</span><span class="o">.</span><span class="na">getId</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="c1">// 회원 전체 조회</span>
+    <span class="nd">@Transactional</span><span class="o">(</span><span class="n">readOnly</span> <span class="o">=</span> <span class="kc">true</span><span class="o">)</span> <span class="c1">// jpa가 조회하는 곳에서는 성능 이점이 있음</span>
+    <span class="kd">public</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Member</span><span class="o">&gt;</span> <span class="nf">findMembers</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">memberRepository</span><span class="o">.</span><span class="na">findAll</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Member</span> <span class="nf">findOne</span><span class="o">(</span><span class="nc">Long</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">memberRepository</span><span class="o">.</span><span class="na">findOne</span><span class="o">(</span><span class="n">memberId</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">validateDuplicatedMember</span><span class="o">(</span><span class="nc">Member</span> <span class="n">member</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// Exception</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Member</span><span class="o">&gt;</span> <span class="n">findMembers</span> <span class="o">=</span> <span class="n">memberRepository</span><span class="o">.</span><span class="na">findByName</span><span class="o">(</span><span class="n">member</span><span class="o">.</span><span class="na">getName</span><span class="o">());</span>
+
+        <span class="k">if</span> <span class="o">(!</span><span class="n">findMembers</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalStateException</span><span class="o">(</span><span class="s">"이미 존재하는 회원입니다."</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>여기서 주의해야할 점은, 이메일같이 pk 가 아닌데 고유한 값들은 검증절차를 거쳐도, 멀티 스레드환경에서 제대로 동작하지 않을 우려가 있기 때문에, 아예 Unique 제약을 걸도록 합니다.</p>
+
+<p>여기서 <code class="language-plaintext highlighter-rouge">@Transactional</code>의 설정값을 <code class="language-plaintext highlighter-rouge">readonly = true</code>라고 하면 JPA가 정보를 수정하지 않아도 된다는 정보를 가지고 Select를 하기 때문에 일기전용인 데이터에서 성능상 이점을 얻어갈 수 있습니다.</p>
+
+<p>이렇게하면 서비스 계층의 구현이 완료됩니다. 이제 캡슐화된 함수들을 <code class="language-plaintext highlighter-rouge">Controller</code>에서 사용자가 상호작용 했을 때, 호출을 해줍니다.</p>
+</body></html>

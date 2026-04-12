@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="머릿말">머릿말</h2>
+
+<p>이번에 회사 Coding Convention을 정하기 위해 만들어 보았습니다. 여러 선배님들의 원칙들을 참조하여 만들었습니다. 혹시 틀린 부분이나, 더 좋은 방식이 있다면 지적해주시면 감사하겠습니다. 앞으로 공부하며 꾸준히 추가할 예정입니다.</p>
+
+<h2 id="기본-원칙">기본 원칙</h2>
+
+<ol>
+  <li>가독성을 최우선으로 삼는다.(대부분의 경우 코드는 그 자체가 문서의 역할을 해야 함)</li>
+  <li>특별한 이유가 있지 않으면 IDE에서 제안하는 서식을 따른다.</li>
+  <li>더 좋은 방법이 있을 시 건의하여 코드 컨벤션을 수정한다.</li>
+</ol>
+
+<h2 id="1-메인-코딩-표준">1. 메인 코딩 표준</h2>
+
+<h3 id="1-클래스와-구조체의-이름은-파스칼-표기법을-따른다">1. 클래스와 구조체의 이름은 파스칼 표기법을 따른다.</h3>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">GameManager</span>
+<span class="k">struct</span> <span class="nc">GameData</span>
+</code></pre></div></div>
+
+<h3 id="2-전역변수지역변수의-이름은-카멜표기법을-따른다-또한-항상-초기화를-시켜준다">2. 전역변수/지역변수의 이름은 카멜표기법을 따른다. 또한 항상 초기화를 시켜준다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="kt">int</span> <span class="n">someInt</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+<span class="k">private</span> <span class="n">Object</span> <span class="n">someObject</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">void</span> <span class="nf">SomeMethod</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">someScopeInt</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+    <span class="n">Object</span> <span class="n">someScopeObject</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="3-단-함수의-매개변수의-경우-카멜-표기법-앞에-_를-붙여-가독성을-높인다">3. 단, 함수의 매개변수의 경우 카멜 표기법 앞에 <code class="language-plaintext highlighter-rouge">_</code>를 붙여 가독성을 높인다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="nf">SomeMethod</span><span class="p">(</span><span class="kt">int</span> <span class="n">_someParameter</span><span class="p">)</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="4-메서드-이름은-기본적으로-동사--명사의-형태로-짓는다">4. 메서드 이름은 기본적으로 동사 + 명사의 형태로 짓는다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="nf">GetUserId</span><span class="p">()</span>
+<span class="p">{</span>
+	
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="5-단-단순히-불bool-상태를-반환하는-메서드의-동사부분은-최대한-iscanhasshould를-사용하되-그러는-것이-부자연스러울-경우에는-상태를-나타내는-다른-3인칭-단수형-동사를-사용한다">5. 단, 단순히 불(bool) 상태를 반환하는 메서드의 동사부분은 최대한 <code class="language-plaintext highlighter-rouge">Is</code>,<code class="language-plaintext highlighter-rouge">Can</code>,<code class="language-plaintext highlighter-rouge">Has</code>,<code class="language-plaintext highlighter-rouge">Should</code>를 사용하되 그러는 것이 부자연스러울 경우에는 상태를 나타내는 다른 3인칭 단수형 동사를 사용한다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="kt">bool</span> <span class="nf">IsDead</span><span class="p">(</span><span class="n">Player</span> <span class="n">_player</span><span class="p">);</span>
+<span class="k">public</span> <span class="kt">bool</span> <span class="nf">HasScore</span><span class="p">(</span><span class="n">Player</span> <span class="n">_player</span><span class="p">);</span>
+<span class="k">public</span> <span class="kt">bool</span> <span class="nf">CanMove</span><span class="p">(</span><span class="n">Player</span> <span class="n">_player</span><span class="p">);</span>
+<span class="k">public</span> <span class="kt">bool</span> <span class="nf">ShouldDelete</span><span class="p">(</span><span class="n">Player</span> <span class="n">_player</span><span class="p">);</span>
+<span class="k">public</span> <span class="kt">bool</span> <span class="nf">Exists</span><span class="p">(</span><span class="n">Player</span> <span class="n">_player</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="6-상수의-이름은-모두-대문자로-하되-밑줄로-각-단어를-분리한다">6. 상수의 이름은 모두 대문자로 하되, 밑줄로 각 단어를 분리한다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">int</span> <span class="n">SOME_CONSTANT</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="7-상수로-사용하는-개체형-변수에는-static-readonly를-사용한다-또한-상수와-같이-변수는-모두-대문자로-하되-밑줄로각-단어를-분리한다">7. 상수로 사용하는 개체형 변수에는 <code class="language-plaintext highlighter-rouge">static readonly</code>를 사용한다. 또한, 상수와 같이 변수는 모두 대문자로 하되, 밑줄로각 단어를 분리한다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="n">MyConstClass</span> <span class="n">MY_CONST_OBJECT</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MyConstClass</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h3 id="8-초기화-후-값이-변하지-않는-변수는-readonly로-선언한다">8. 초기화 후, 값이 변하지 않는 변수는 <code class="language-plaintext highlighter-rouge">readonly</code>로 선언한다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Account</span>
+ <span class="p">{</span>
+     <span class="k">private</span> <span class="k">readonly</span> <span class="kt">string</span> <span class="n">password</span><span class="p">;</span>
+    
+     <span class="k">public</span> <span class="nf">Account</span><span class="p">(</span><span class="kt">string</span> <span class="n">_password</span><span class="p">)</span>
+     <span class="p">{</span>
+         <span class="n">password</span> <span class="p">=</span> <span class="n">_password</span><span class="p">;</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="9-네임스페이스의-이름은-파스칼-표기법을-따른다">9. 네임스페이스의 이름은 파스칼 표기법을 따른다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">namespace</span> <span class="nn">System.Graphics</span>
+</code></pre></div></div>
+
+<h3 id="10-불bool-변수-앞에는--최대한-iscanhasshould를-사용하되-그러는-것이-부자연스러울-경우에는-상태를-나타내는-다른-3인칭-단수형-동사를-사용한다">10. 불(bool) 변수 앞에는  최대한 <code class="language-plaintext highlighter-rouge">Is</code>,<code class="language-plaintext highlighter-rouge">Can</code>,<code class="language-plaintext highlighter-rouge">Has</code>,<code class="language-plaintext highlighter-rouge">Should</code>를 사용하되 그러는 것이 부자연스러울 경우에는 상태를 나타내는 다른 3인칭 단수형 동사를 사용한다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="kt">bool</span> <span class="n">isFired</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="k">private</span> <span class="kt">bool</span> <span class="n">hasScore</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="11-인터페이스를-선언할-때는-앞에-i를-붙인다">11. 인터페이스를 선언할 때는 앞에 <code class="language-plaintext highlighter-rouge">I</code>를 붙인다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">interface</span> <span class="nc">ISomeInterFace</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="12-열거형을-선언할-때는-cammel-case를-사용한다">12. 열거형을 선언할 때는 Cammel Case를 사용한다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">enum</span> <span class="n">LanguageType</span>
+<span class="p">{</span>
+	<span class="n">Korea</span><span class="p">,</span>
+	<span class="n">English</span><span class="p">,</span>
+	<span class="n">Japanese</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="13-private-멤버-변수명은-카멜-케이스로-표기하고-public프로퍼티는-파스칼-케이스로-표기한다">13. <code class="language-plaintext highlighter-rouge">private</code> 멤버 변수명은 카멜 케이스로 표기하고, <code class="language-plaintext highlighter-rouge">public</code>프로퍼티는 파스칼 케이스로 표기한다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">User</span>
+<span class="p">{</span>
+	<span class="k">private</span> <span class="kt">int</span> <span class="n">userCode</span><span class="p">;</span>
+	<span class="k">public</span> <span class="kt">int</span> <span class="n">UserCode</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="14-값을-반환하는-함수의-이름은-무엇을-반환하는지-알-수-있게-짓는다">14. 값을 반환하는 함수의 이름은 무엇을 반환하는지 알 수 있게 짓는다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="kt">string</span> <span class="nf">GetUserCode</span><span class="p">();</span>
+</code></pre></div></div>
+
+<h3 id="15-단순히-반복문에-사용되는-변수가-아닌-경우에-i-a같은-변수명-대신-index-ant-처럼-변수에-저장되는-데이터를-단번에-알-수있는-변수명을-사용한다">15. 단순히 반복문에 사용되는 변수가 아닌 경우에, <code class="language-plaintext highlighter-rouge">i</code>, <code class="language-plaintext highlighter-rouge">a</code>같은 변수명 대신 <code class="language-plaintext highlighter-rouge">index</code>, <code class="language-plaintext highlighter-rouge">ant</code> 처럼 변수에 저장되는 데이터를 단번에 알 수있는 변수명을 사용한다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">ant</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">ant</span> <span class="p">&lt;</span> <span class="n">antsArray</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span> <span class="p">++</span><span class="n">ant</span><span class="p">){}</span>
+</code></pre></div></div>
+
+<h3 id="16-줄임말은-모두-한-단어처럼-첫글자만-대문자로-표기한다-단-첫글자만-대문자로-했을-때-그-뜻을-이해하기-어렵다면-예외를-적용한다">16. 줄임말은 모두 한 단어처럼 첫글자만 대문자로 표기한다. 단, 첫글자만 대문자로 했을 때, 그 뜻을 이해하기 어렵다면, 예외를 적용한다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="kt">int</span> <span class="n">UserId</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;}</span>
+<span class="k">public</span> <span class="kt">int</span> <span class="n">UserPassword</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;}</span>
+<span class="k">public</span> <span class="kt">int</span> <span class="n">BgmNumber</span><span class="p">{</span><span class="k">get</span><span class="p">;</span><span class="k">set</span><span class="p">;}</span>
+</code></pre></div></div>
+
+<h3 id="17-프로퍼티를-사용하는것-보다-gettersetter를-선호한다-단-gettersetter-로-표현하는것-보다-프로퍼티로-표현하는것이-가독성이-높을-경우-프로퍼티를-사용한다">17. 프로퍼티를 사용하는것 보다 Getter/Setter를 선호한다. 단, Getter/Setter 로 표현하는것 보다 프로퍼티로 표현하는것이 가독성이 높을 경우 프로퍼티를 사용한다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="kt">int</span> <span class="n">Age</span>
+<span class="p">{</span>
+	<span class="k">get</span>
+	<span class="p">{</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">age</span> <span class="p">!=</span> <span class="m">0</span> <span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">return</span> <span class="n">age</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">set</span>
+	<span class="p">{</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">age</span> <span class="p">&lt;</span> <span class="m">10</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">age</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">void</span> <span class="nf">GetAge</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="c1">//DBConnection</span>
+	<span class="c1">//Auth검사 로직</span>
+	<span class="k">return</span> <span class="n">age</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="18-double이-반드시-필요한-경우가-아닌-이상-부동-소수점-값에-f를-붙여준다">18. <code class="language-plaintext highlighter-rouge">double</code>이 반드시 필요한 경우가 아닌 이상 부동 소수점 값에 <code class="language-plaintext highlighter-rouge">f</code>를 붙여준다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="kt">float</span> <span class="n">f</span> <span class="p">=</span> <span class="m">0.5f</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h3 id="19-switch-문에-언제나-default-케이스를-넣는다">19. <code class="language-plaintext highlighter-rouge">switch</code> 문에 언제나 <code class="language-plaintext highlighter-rouge">default:</code> 케이스를 넣는다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">switch</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">case</span> <span class="m">0</span><span class="p">:</span> 
+	<span class="c1">//...</span>
+	<span class="k">break</span><span class="p">;</span>
+	
+	<span class="k">default</span><span class="p">:</span>
+	<span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="20-switch문-안에서-default-케이스가-절대-실행될-일이-없다고-판단한-경우-default-안에-debugfail을-추가한다">20. <code class="language-plaintext highlighter-rouge">switch</code>문 안에서 <code class="language-plaintext highlighter-rouge">default</code> 케이스가 절대 실행될 일이 없다고 판단한 경우, <code class="language-plaintext highlighter-rouge">default</code> 안에 <code class="language-plaintext highlighter-rouge">Debug.Fail()</code>을 추가한다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">switch</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">case</span> <span class="m">0</span><span class="p">:</span> 
+	<span class="c1">//...</span>
+	<span class="k">break</span><span class="p">;</span>
+	
+	<span class="k">default</span><span class="p">:</span>
+	<span class="n">Debug</span><span class="p">.</span><span class="nf">Fail</span><span class="p">(</span><span class="s">"unknown type"</span><span class="p">);</span>
+	<span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="21-클래스-안에서-멤버-변수와-메서드의-등장-순서는-다음을-따른다">21. 클래스 안에서 멤버 변수와 메서드의 등장 순서는 다음을 따른다.</h3>
+<ol>
+  <li>멤버 변수</li>
+  <li>프로퍼티</li>
+  <li>생성자</li>
+  <li>메서드(public -&gt; private 순서로)</li>
+</ol>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="kt">int</span> <span class="n">age</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+<span class="k">public</span> <span class="kt">int</span> <span class="n">Age</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;}</span>
+
+<span class="k">private</span> <span class="kt">bool</span> <span class="n">isDead</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+<span class="k">public</span> <span class="n">Bool</span> <span class="n">IsDead</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;}</span>
+
+<span class="k">public</span> <span class="k">void</span> <span class="nf">SetDelegate</span><span class="p">(){}</span>
+<span class="k">private</span> <span class="k">void</span> <span class="nf">MomvePlayer</span><span class="p">(){}</span>
+</code></pre></div></div>
+
+<h3 id="22-클래스에서-연관-있는-메서드끼리-그룹을-짓는다-멤버-변수도-마찬가지-이다-단--분류가-어려울-경우-예외를-적용한다">22. 클래스에서 연관 있는 메서드끼리 그룹을 짓는다. 멤버 변수도 마찬가지 이다. 단,  분류가 어려울 경우 예외를 적용한다.</h3>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//사용자 정보</span>
+<span class="k">private</span> <span class="kt">int</span> <span class="n">age</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+<span class="k">private</span> <span class="kt">string</span> <span class="n">name</span> <span class="p">=</span> <span class="s">"name"</span><span class="p">;</span>
+
+<span class="c1">//이동관련 변수</span>
+<span class="k">private</span> <span class="kt">float</span> <span class="n">moveSpeed</span> <span class="p">=</span> <span class="m">0f</span><span class="p">;</span>
+<span class="k">private</span> <span class="kt">float</span> <span class="n">moveDampling</span> <span class="p">=</span> <span class="m">0f</span><span class="p">;</span>
+
+<span class="c1">//정보관련 로직</span>
+<span class="k">private</span> <span class="k">void</span> <span class="nf">AddAge</span><span class="p">(){}</span>
+<span class="k">private</span> <span class="k">void</span> <span class="nf">Rename</span><span class="p">(){}</span>
+
+<span class="c1">//플레이어 움직임 </span>
+<span class="k">private</span> <span class="k">void</span> <span class="nf">Move</span><span class="p">(){}</span>
+</code></pre></div></div>
+
+<h3 id="23-매개변수-자료형이-범용적인-경우-함수-오버로딩을-피한다">23. 매개변수 자료형이 범용적인 경우, 함수 오버로딩을 피한다.</h3>
+
+<ul>
+  <li>올바른 예</li>
+</ul>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="n">Anim</span> <span class="nf">GetAnimByIndex</span><span class="p">(</span><span class="kt">int</span> <span class="n">_index</span><span class="p">){}</span>
+<span class="k">public</span> <span class="n">Anim</span> <span class="nf">GetAnimByName</span><span class="p">(){}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>틀린 예</li>
+</ul>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="n">Anim</span> <span class="nf">GetAnimBy</span><span class="p">(</span><span class="kt">int</span> <span class="n">_index</span><span class="p">){}</span>
+<span class="k">public</span> <span class="n">Anim</span> <span class="nf">GetAnimBy</span><span class="p">(</span><span class="kt">string</span> <span class="n">_name</span><span class="p">){}</span>
+</code></pre></div></div>
+
+<h3 id="24-클래스는-각각-독립된-파일에-있어야-한다-단-작은-클래스-몇-개를-한-파일-안에-같이-넣어두는-것이-상식적일-경우-예외를-허용한다">24. 클래스는 각각 독립된 파일에 있어야 한다. 단, 작은 클래스 몇 개를 한 파일 안에 같이 넣어두는 것이 상식적일 경우, 예외를 허용한다.</h3>
+
+<h3 id="25-파일-이름은-대소문자까지-포함해서-반드시-클래스-이름과-일치해야-한다-또한-특별한-경우가-아닌-이상-한-파일에는-하나의-클래스만-존재하도록-한다">25. 파일 이름은 대소문자까지 포함해서 반드시 클래스 이름과 일치해야 한다. 또한, 특별한 경우가 아닌 이상, 한 파일에는 하나의 클래스만 존재하도록 한다.</h3>
+<p>🗅 <strong><span style="color: #c03a92">GameManager.cs</span></strong></p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">GameManager</span><span class="p">()</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="26-비트-플래그-열거형은-이름-뒤에-flags를-붙인다">26. 비트 플래그 열거형은 이름 뒤에 <code class="language-plaintext highlighter-rouge">Flags</code>를 붙인다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="p">[</span><span class="n">Flags</span><span class="p">]</span>
+ <span class="k">public</span> <span class="k">enum</span> <span class="n">EVisibilityFlags</span>
+ <span class="p">{</span>
+     <span class="n">None</span> <span class="p">=</span> <span class="m">0</span><span class="p">,</span>
+     <span class="n">Character</span> <span class="p">=</span> <span class="m">1</span> <span class="p">&lt;&lt;</span> <span class="m">0</span><span class="p">,</span>
+     <span class="n">Terrain</span> <span class="p">=</span> <span class="m">1</span> <span class="p">&lt;&lt;</span> <span class="m">1</span><span class="p">,</span>
+     <span class="n">Building</span> <span class="p">=</span> <span class="m">1</span> <span class="p">&lt;&lt;</span> <span class="m">2</span><span class="p">,</span>
+ <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="27-디폴트-매개변수-대신-함수-오버로딩을-선호한다">27. 디폴트 매개변수 대신 함수 오버로딩을 선호한다.</h3>
+<ul>
+  <li>틀린 예</li>
+</ul>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="nf">LogMessage</span><span class="p">(</span><span class="kt">string</span> <span class="n">_message</span><span class="p">,</span> <span class="n">LogLevel</span> <span class="n">_level</span> <span class="p">=</span> <span class="n">LogLevel</span><span class="p">.</span><span class="n">Info</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 로그 메시지와 로그 레벨을 출력 }</span>
+</code></pre></div></div>
+
+<ul>
+  <li>올바른 예</li>
+</ul>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">void</span> <span class="nf">LogMessage</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">)</span> 
+<span class="p">{</span> 
+	<span class="nf">LogMessage</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">LogLevel</span><span class="p">.</span><span class="n">Info</span><span class="p">);</span> 
+<span class="p">}</span> 
+<span class="k">public</span> <span class="k">void</span> <span class="nf">LogMessage</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">,</span> <span class="n">LogLevel</span> <span class="n">level</span><span class="p">)</span> 
+<span class="p">{</span>
+	<span class="c1">// 로그 메시지와 로그 레벨을 출력 </span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="28-var키워드를-사용하지-않는다-단-데이터형이-중요하지않은-경우에는-예외를-허용-한다-ienumerable-에-var를-사용하거나-익명타입anonymous-type을-사용할-때가-좋은-예이다">28. <code class="language-plaintext highlighter-rouge">var</code>키워드를 사용하지 않는다. 단, 데이터형이 중요하지않은 경우에는 예외를 허용 한다. <code class="language-plaintext highlighter-rouge">IEnumerable</code> 에 <code class="language-plaintext highlighter-rouge">var</code>를 사용하거나, 익명타입(anonymous type)을 사용할 때가 좋은 예이다.</h3>
+
+<h3 id="29async-void-대신에-async-task를-사용한다-async-void가-허용되는-유일한-곳은-이벤트-핸들러-이다">29.<code class="language-plaintext highlighter-rouge">async void</code> 대신에 <code class="language-plaintext highlighter-rouge">async Task</code>를 사용한다. <code class="language-plaintext highlighter-rouge">async void</code>가 허용되는 유일한 곳은 이벤트 핸들러 이다.</h3>
+
+<h3 id="30-외부로부터-들어오는-데이터의-유효성은-외부내부-경계가-바뀌는-곳에서-검증하고-문제가-있을-경우-내부-함수로-전달하기-전에-반환해-버린다-즉-경계를-넘어-내부로-들어온-모든-데이터는-유요하다고-가정한다는-것이다">30. 외부로부터 들어오는 데이터의 유효성은 외부/내부 경계가 바뀌는 곳에서 검증하고 문제가 있을 경우 내부 함수로 전달하기 전에 반환해 버린다. 즉 경계를 넘어 내부로 들어온 모든 데이터는 유요하다고 가정한다는 것이다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="k">void</span> <span class="nf">InitPlayer</span><span class="p">(</span><span class="n">Player</span> <span class="n">_player</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">_player</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="31-따라서-내부-함수에서-예외를-던지지-않으려고-노력한다-예외는-경계에서만-처리하는-것을-원칙으로-한다-단-위에서-정의-했듯이-switch문의-default-케이스는-예외로-한다">31. 따라서 내부 함수에서 예외를 던지지 않으려고 노력한다. 예외는 경계에서만 처리하는 것을 원칙으로 한다. 단, 위에서 정의 했듯이, <code class="language-plaintext highlighter-rouge">switch</code>문의 <code class="language-plaintext highlighter-rouge">default</code> 케이스는 예외로 한다.</h3>
+
+<h3 id="32-함수의-매개변수로-null-을-허용하지-않는-것을-추구한다-특히-public-함수일-때-더욱-그러하다">32. 함수의 매개변수로 <code class="language-plaintext highlighter-rouge">null</code> 을 허용하지 않는 것을 추구한다. 특히, <code class="language-plaintext highlighter-rouge">public</code> 함수일 때 더욱 그러하다.</h3>
+
+<h3 id="33-하지만-null을-사용해야-하는-상황이면-매개변수의-이름-뒤에-ornull을-붙인다">33. 하지만, <code class="language-plaintext highlighter-rouge">null</code>을 사용해야 하는 상황이면, 매개변수의 이름 뒤에 <code class="language-plaintext highlighter-rouge">OrNull</code>을 붙인다.</h3>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="kt">string</span> <span class="nf">GetName</span><span class="p">(</span><span class="kt">string</span> <span class="n">_nameOrNull</span><span class="p">){}</span>
+</code></pre></div></div>
+
+<h3 id="34-함수에-전달하는-out-매개변수는-별도의-라인에-선언한다-즉-인자-목록-안에서-선언하지-않는다">34. 함수에 전달하는 <code class="language-plaintext highlighter-rouge">out</code> 매개변수는 별도의 라인에 선언한다. 즉, 인자 목록 안에서 선언하지 않는다.</h3>
+
+<h3 id="35-using선언의-사용을-금지한다-대신-using문을-사용한다">35. <code class="language-plaintext highlighter-rouge">using</code>선언의 사용을 금지한다. 대신 <code class="language-plaintext highlighter-rouge">using</code>문을 사용한다.</h3>
+<ul>
+  <li>틀린 예</li>
+</ul>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">Ant</span> <span class="n">ant</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Ant</span><span class="p">();</span>
+</code></pre></div></div>
+
+<ul>
+  <li>올바른 예</li>
+</ul>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span><span class="p">(</span><span class="n">Ant</span> <span class="n">ant</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Ant</span><span class="p">())</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="2-소스-코드-포맷팅">2. 소스 코드 포맷팅</h2>
+<h3 id="1-탭tab은-비주얼-스튜디오-기본값을-사용하며-그-외에-띄어쓰기-4칸을-탭으로-사용한다">1. 탭(tab)은 비주얼 스튜디오 기본값을 사용하며, 그 외에 띄어쓰기 4칸을 탭으로 사용한다.</h3>
+
+<h3 id="2-중괄호--를-열때는-언제나-새로운-줄에-연다">2. 중괄호 <code class="language-plaintext highlighter-rouge">{}</code> 를 열때는 언제나 새로운 줄에 연다.</h3>
+
+<h3 id="3-한-줄에-변수-하나만-선언한다">3. 한 줄에 변수 하나만 선언한다.</h3>
+<ul>
+  <li>틀린 예</li>
+</ul>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="kt">int</span> <span class="n">cnt</span><span class="p">,</span> <span class="n">idx</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>올바른 예</li>
+</ul>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="kt">int</span> <span class="n">cnt</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+<span class="k">private</span> <span class="kt">int</span> <span class="n">idx</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+</code></pre></div></div>
+</body></html>

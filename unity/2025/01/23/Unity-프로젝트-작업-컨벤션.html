@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="코드-스타일-컨벤션">코드 스타일 컨벤션</h2>
+
+<p>기본적인 C# 코드 스타일 컨벤션은 다음 문서를 따른다.</p>
+
+<p><a href="https://kdw98tg.github.io/c%20sharp/C-sharp-%EC%BD%94%EB%94%A9-%EC%BB%A8%EB%B2%A4%EC%85%98/">👉👉👉 C# 코드 스타일 컨벤션</a></p>
+
+<h3 id="ui-클래스-명명의-경우-ui가-이미-줄인말이기-때문에-클래스-이름의-가독성이-떨어질-수-있다-ui-클래스의-경우에는-다음과-같이-클래스명-앞에-ui_를-붙이도록-한다">UI 클래스 명명의 경우, UI가 이미 줄인말이기 때문에 클래스 이름의 가독성이 떨어질 수 있다. UI 클래스의 경우에는 다음과 같이 클래스명 앞에 <code class="language-plaintext highlighter-rouge">UI_</code>를 붙이도록 한다.</h3>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">UI_Base</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">UI_Popup</span> <span class="p">:</span> <span class="n">UI_Base</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">UI_Dialog</span> <span class="p">:</span> <span class="n">UI_Popup</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="다른사람의-코드를-수정시에는-다음과-같이-주석을-남긴다-해당-코드를-머지한-후에는-확인-후-주석을-삭제하도록-한다">다른사람의 코드를 수정시에는 다음과 같이 주석을 남긴다. 해당 코드를 머지한 후에는 확인 후 주석을 삭제하도록 한다.</h3>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">SomeClass</span>
+<span class="p">{</span>
+	<span class="c1">//20250123 작성자이름 추가</span>
+	<span class="c1">//추가 내용</span>
+	<span class="k">public</span> <span class="k">void</span> <span class="nf">AddedCode</span><span class="p">()</span>
+	<span class="p">{</span>
+	
+	<span class="p">}</span>
+
+	<span class="c1">//20250123 작성자이름 수정</span>
+	<span class="c1">//수정 내용</span>
+	<span class="k">public</span> <span class="k">void</span> <span class="nf">ModifiedCode</span><span class="p">()</span>
+	<span class="p">{</span>
+	
+	<span class="p">}</span>
+
+	<span class="c1">//20250123 작성자이름 삭제</span>
+	<span class="c1">//삭제 내용</span>
+	<span class="c1">//public void RemovedCode()</span>
+	<span class="c1">//{</span>
+	<span class="c1">//</span>
+	<span class="c1">//}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="ui를-제작할-때-하이어라키에-생기는-자식-클래스는-다음의-형식을-따른다-또한-해당-오브젝트에-붙는-클래스명도-똑같이-선언한다-아래의-네이밍-규칙을-지킬-수-없을때는-예외를-적용하여-알아보기-쉬운-이름을-선언한다">UI를 제작할 때, 하이어라키에 생기는 자식 클래스는 다음의 형식을 따른다. 또한, 해당 오브젝트에 붙는 클래스명도 똑같이 선언한다. 아래의 네이밍 규칙을 지킬 수 없을때는 예외를 적용하여 알아보기 쉬운 이름을 선언한다.</h3>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 해당 오브젝트의 부모 + 해당 오브젝트 형식 + 해당 오브젝트의 역할
+- UI_YesNoDialog
+  - UI_YesNoDialog_Button_Background
+  - UI_YesNoDialog_Text_ConfirmButton
+</code></pre></div></div>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">UI_YesNoDialog</span><span class="p">{}</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">UI_YesNoDialog_Button_Background</span><span class="p">{}</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">UI_YesNoDialog_Text_ConfirmButton</span><span class="p">{}</span>
+</code></pre></div></div>
+
+<h3 id="오브젝트를-명명할때에는-다음과-같은-네이밍-규칙을-사용한다">오브젝트를 명명할때에는 다음과 같은 네이밍 규칙을 사용한다.</h3>
+
+<ul>
+  <li>Prefab인 경우 : P_SomePrefab</li>
+  <li>Prefab이 UI인 경우 : UI_SomeUIPrefab</li>
+  <li>Sprite인 경우 : S_SomeSprite</li>
+  <li>Bgm인 경우 : BGM_SomeBgm</li>
+  <li>SFX인 경우 : SFX_SomeSfx</li>
+  <li>Material인 경우 : M_SomeMaterial</li>
+</ul>
+
+<h3 id="addressable-asset에-등록할-경우-네이밍은-다음과-같은-규칙을-따른다">Addressable Asset에 등록할 경우 네이밍은 다음과 같은 규칙을 따른다.</h3>
+
+<ul>
+  <li>오브젝트인 경우 : 경로를 제외한 프리팹 본연의 이름</li>
+  <li>스프라이트인 경우 : 경로를 제외한 스프라이트 본연의 이름 + .sprite</li>
+</ul>
+
+<h3 id="프로젝트-전반에서-사용할-공용-메서드일-경우-팀원과-상의-후-따로-클래스를-만들어-분리하도록-한다">프로젝트 전반에서 사용할 공용 메서드일 경우 팀원과 상의 후, 따로 클래스를 만들어 분리하도록 한다.</h3>
+
+<h3 id="프로젝트-전반에서-사용할-상수들은-define클래스에-정의하도록-한다-또한-프로젝트-전반에서-사용하는-enum타입들도-define클래스에-정의하도록-한다">프로젝트 전반에서 사용할 상수들은 <code class="language-plaintext highlighter-rouge">Define</code>클래스에 정의하도록 한다. 또한, 프로젝트 전반에서 사용하는 <code class="language-plaintext highlighter-rouge">enum</code>타입들도 <code class="language-plaintext highlighter-rouge">Define</code>클래스에 정의하도록 한다.</h3>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">Define</span>
+<span class="p">{</span>
+	<span class="k">public</span> <span class="k">static</span> <span class="k">readonly</span> <span class="kt">string</span> <span class="n">SERVER_URL</span> <span class="p">=</span> <span class="s">"localhost:5050"</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">public</span> <span class="k">enum</span> <span class="n">Prefabs</span>
+<span class="p">{</span>
+	<span class="n">P_AudioPlayer</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="서버와-통신을-할때에는-dto를-사용하도록-한다">서버와 통신을 할때에는 <code class="language-plaintext highlighter-rouge">Dto</code>를 사용하도록 한다.</h3>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">UserModel</span>
+<span class="p">{</span>
+	<span class="k">public</span> <span class="kt">long</span> <span class="n">Id</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span><span class="k">set</span><span class="p">;}</span>
+	<span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span><span class="k">set</span><span class="p">;}</span>
+	<span class="k">public</span> <span class="kt">string</span> <span class="n">Email</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span><span class="k">set</span><span class="p">;}</span>
+	<span class="k">public</span> <span class="kt">string</span> <span class="n">Password</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span><span class="k">set</span><span class="p">;}</span>
+	<span class="k">public</span> <span class="kt">string</span> <span class="n">PersonalNumber</span><span class="p">{</span><span class="k">get</span><span class="p">;</span><span class="k">set</span><span class="p">;}</span><span class="c1">//주민번호</span>
+<span class="p">}</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">UserJoinDto</span>
+<span class="p">{</span>
+	<span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span><span class="k">set</span><span class="p">;}</span>
+	<span class="k">public</span> <span class="kt">string</span> <span class="n">Email</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span><span class="k">set</span><span class="p">;}</span>
+	<span class="k">public</span> <span class="kt">string</span> <span class="n">Password</span> <span class="p">{</span><span class="k">get</span><span class="p">;</span><span class="k">set</span><span class="p">;}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="테스트를-위한-클래스는-개발자-각자의-테스트-씬을-만들어서-사용한다">테스트를 위한 클래스는 개발자 각자의 테스트 씬을 만들어서 사용한다.</h3>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Scene 이름 - Test_UI_Dong</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Test_UI_Dong</span>
+<span class="p">{</span>
+	<span class="c1">//Test 내용</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="유니티-프로젝트-컨벤션">유니티 프로젝트 컨벤션</h2>
+
+<h3 id="개발자가-직접-생성한-폴더는-최상위-경로명-앞에-를-붙여-명명한다-단-plugins-또는-resources처럼-예약-폴더에는-예외를-적용한다">개발자가 직접 생성한 폴더는 최상위 경로명 앞에 <code class="language-plaintext highlighter-rouge">@</code>를 붙여 명명한다. 단, <code class="language-plaintext highlighter-rouge">Plugins</code> 또는 <code class="language-plaintext highlighter-rouge">Resources</code>처럼 예약 폴더에는 예외를 적용한다.</h3>
+
+<p><img src="/images/Pasted%20image%2020250123153043.png" alt=""></p>
+
+<h3 id="scripts-폴더에-대해서는-일반적인-c-프로젝트과는-달리-classlibrary를-생성하지-않고-폴더로-라이브러리를-나누도록-한다">Scripts 폴더에 대해서는 일반적인 C# 프로젝트과는 달리 ClassLibrary를 생성하지 않고, 폴더로 라이브러리를 나누도록 한다.</h3>
+
+<p><img src="/Images/Pasted%20image%2020250123153308.png" alt=""></p>
+
+<h3 id="scene들은-프로젝트-스토리보드의-흐름에-따라-이름-앞에-01와-같이-번호를-메겨-가독성을-높인다">Scene들은 프로젝트 스토리보드의 흐름에 따라 이름 앞에 <code class="language-plaintext highlighter-rouge">01.</code>와 같이 번호를 메겨 가독성을 높인다.</h3>
+
+<p><img src="/images/Pasted%20image%2020250123153453.png" alt=""></p>
+
+</body></html>

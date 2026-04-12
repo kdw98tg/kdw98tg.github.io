@@ -1,0 +1,349 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>이전 프로젝트에서는 서버사이드 PHP를 사용하여 Http 통신을 하였습니다.</p>
+
+<p>이번에는 ASP.NET Core를 사용하여 API 서버를 만들어서 데이터를 주고 받고 할 수 있도록 만들었습니다.</p>
+
+<p>현재는 동작이되고, CRUD 가 되는 기본적인 상태입니다.</p>
+
+<h2 id="database와-연결">DataBase와 연결</h2>
+
+<p>ASP.NET Core에서 DB와 연결하기 위해서는 다음과 같은 세팅을 해줘야 합니다.</p>
+
+<h3 id="appsettingsjson">appsettings.json</h3>
+
+<p>우선, 데이터베이스 서버의 <code class="language-plaintext highlighter-rouge">Connection String</code>을 기입합니다.</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">Logging</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">LogLevel</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">Default</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Information</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">Microsoft.AspNetCore</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Warning</span><span class="dl">"</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">AllowedHosts</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">*</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">ConnectionStrings</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">MySqlServer</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">your_database_string</span><span class="dl">"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="programcs">Program.cs</h3>
+<p><code class="language-plaintext highlighter-rouge">appsettings.json</code>을 기입하였다면, <code class="language-plaintext highlighter-rouge">Program.cs</code> 스크립트로 와서 DB 연결 코드를 추가합니다.</p>
+
+<p>해당 코드를 삽입하면, 데이터베이스 서버와 연결이 완료 됩니다 .</p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">builder</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="n">AddDbContext</span><span class="p">&lt;</span><span class="n">MySqlContext</span><span class="p">&gt;</span>
+    <span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span> <span class="n">options</span><span class="p">.</span><span class="nf">UseMySql</span><span class="p">(</span><span class="n">builder</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="nf">GetConnectionString</span><span class="p">(</span><span class="s">"MySqlServer"</span><span class="p">),</span>
+        <span class="n">ServerVersion</span><span class="p">.</span><span class="nf">AutoDetect</span><span class="p">(</span><span class="n">builder</span><span class="p">.</span><span class="n">Configuration</span><span class="p">.</span><span class="nf">GetConnectionString</span><span class="p">(</span><span class="s">"MySqlServer"</span><span class="p">)))</span>
+    <span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="model-클래스-만들기">Model 클래스 만들기</h3>
+
+<p>이제 데이터베이스의 테이블과 매핑되는 <code class="language-plaintext highlighter-rouge">Model</code>클래스를 만듭니다.
+이 클래스는 데이터베이스의 테이블에 있는 컬럼과 같게 만들어야 합니다.
+대소문자는 구분하지 않지만, 이름이 다르면 인식하지 못하니 그점을 주의합니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">class User</span></strong></p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System.ComponentModel.DataAnnotations</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MyApi.Models</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">User</span>
+    <span class="p">{</span>
+        <span class="p">[</span><span class="n">Key</span><span class="p">]</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="p">[</span><span class="nf">StringLength</span><span class="p">(</span><span class="m">255</span><span class="p">)]</span>
+        <span class="k">public</span>  <span class="kt">string</span><span class="p">?</span> <span class="n">UserName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="p">[</span><span class="n">Phone</span><span class="p">]</span>
+        <span class="k">public</span> <span class="kt">string</span><span class="p">?</span> <span class="n">phone_number</span> <span class="p">{</span>  <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="p">[</span><span class="nf">Range</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">100</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="kt">int</span><span class="p">?</span> <span class="n">Age</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="context">Context</h3>
+<p>이제 해당 DB의 <code class="language-plaintext highlighter-rouge">Context</code>를 가져와서, 테이블과 매핑합니다.
+현재 저는 <code class="language-plaintext highlighter-rouge">user</code> 테이블과 <code class="language-plaintext highlighter-rouge">test</code>테이블 두가지 테이블을 만들어 놨습니다.
+해당 Context 안에 <code class="language-plaintext highlighter-rouge">User</code>와 <code class="language-plaintext highlighter-rouge">TestItem</code> 을 넣어 테이블의 컨텍스트를 만들어 줍니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">class MySqlContext</span></strong></p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">Microsoft.EntityFrameworkCore</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MyApi.Models</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">MySqlContext</span><span class="p">:</span><span class="n">DbContext</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="nf">MySqlContext</span><span class="p">(</span><span class="n">DbContextOptions</span><span class="p">&lt;</span><span class="n">MySqlContext</span><span class="p">&gt;</span> <span class="n">options</span><span class="p">):</span> <span class="k">base</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+        <span class="p">{</span>
+
+        <span class="p">}</span>
+        <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;</span> <span class="n">User</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="k">null</span><span class="p">!;</span>
+        <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">TestItem</span><span class="p">&gt;</span> <span class="n">Test</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span> <span class="p">=</span> <span class="k">null</span><span class="p">!;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="controller">Controller</h3>
+
+<p>이제 <code class="language-plaintext highlighter-rouge">Controller</code>를 만들어 실제 데이터를 주고받는 로직을 구현합니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Controller</code>에서는 일반 <code class="language-plaintext highlighter-rouge">Model</code>클래스를 바로 사용하는 것이 아닌, <code class="language-plaintext highlighter-rouge">DTO(Data Transfer Object)</code> 를 만들어서, 필요한 정보만 담아서 보냅니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">class UserDTO</span></strong></p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System.ComponentModel.DataAnnotations</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MyApi.Models</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">UserDTO</span>
+    <span class="p">{</span>
+
+        <span class="p">[</span><span class="n">Key</span><span class="p">]</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="p">[</span><span class="nf">StringLength</span><span class="p">(</span><span class="m">255</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="kt">string</span><span class="p">?</span> <span class="n">UserName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="p">[</span><span class="n">Phone</span><span class="p">]</span>
+        <span class="k">public</span> <span class="kt">string</span><span class="p">?</span> <span class="n">phone_number</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="p">[</span><span class="nf">Range</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">100</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="kt">int</span><span class="p">?</span> <span class="n">Age</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>DTO를 만들었다면, Controller에 스크립트를 작성합니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Restful API</code>에 맞게 <code class="language-plaintext highlighter-rouge">Get</code>, <code class="language-plaintext highlighter-rouge">Post</code>, <code class="language-plaintext highlighter-rouge">Put</code>, <code class="language-plaintext highlighter-rouge">Patch</code>, <code class="language-plaintext highlighter-rouge">Delte</code> 메서드를 만듭니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">class UserController</span></strong></p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Mvc</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.EntityFrameworkCore</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">TodoApi.Models</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MyApi.Controllers</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"api/users"</span><span class="p">)]</span>
+    <span class="p">[</span><span class="n">ApiController</span><span class="p">]</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">UserController</span> <span class="p">:</span> <span class="n">ControllerBase</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">MySqlContext</span> <span class="n">context</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">UserController</span><span class="p">(</span><span class="n">MySqlContext</span> <span class="n">context</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">context</span> <span class="p">=</span> <span class="n">context</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span>
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">ActionResult</span><span class="p">&lt;</span><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">UserDTO</span><span class="p">&gt;&gt;&gt;</span> <span class="nf">GetUsers</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">try</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="nf">ItemToDTO</span><span class="p">(</span><span class="n">x</span><span class="p">)).</span><span class="nf">ToListAsync</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">(</span><span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="p">[</span><span class="nf">HttpGet</span><span class="p">(</span><span class="s">"{id}"</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">ActionResult</span><span class="p">&lt;</span><span class="n">UserDTO</span><span class="p">&gt;&gt;</span> <span class="nf">GetUser</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">try</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">user</span> <span class="p">=</span> <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="nf">FindAsync</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="n">user</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+                <span class="p">}</span>
+
+                <span class="k">return</span> <span class="nf">ItemToDTO</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">(</span><span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="p">[</span><span class="nf">HttpPut</span><span class="p">(</span><span class="s">"id"</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">PutUser</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="n">UserDTO</span> <span class="n">userDTO</span><span class="p">)</span>
+        <span class="p">{</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">id</span> <span class="p">!=</span> <span class="n">userDTO</span><span class="p">.</span><span class="n">Id</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="kt">var</span> <span class="n">user</span> <span class="p">=</span> <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="nf">FindAsync</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">user</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="n">user</span><span class="p">.</span><span class="n">UserName</span> <span class="p">=</span> <span class="n">userDTO</span><span class="p">.</span><span class="n">UserName</span><span class="p">;</span>
+            <span class="n">user</span><span class="p">.</span><span class="n">phone_number</span> <span class="p">=</span> <span class="n">userDTO</span><span class="p">.</span><span class="n">phone_number</span><span class="p">;</span>
+            <span class="n">user</span><span class="p">.</span><span class="n">Age</span> <span class="p">=</span> <span class="n">userDTO</span><span class="p">.</span><span class="n">Age</span><span class="p">;</span>
+
+            <span class="k">try</span>
+            <span class="p">{</span>
+                <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="nf">SaveChangesAsync</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="k">catch</span> <span class="p">(</span><span class="n">DbUpdateConcurrencyException</span><span class="p">)</span> <span class="k">when</span> <span class="p">(!</span><span class="nf">TodoItemExists</span><span class="p">(</span><span class="n">id</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nf">NoContent</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span>
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">PostUser</span><span class="p">(</span><span class="n">UserDTO</span> <span class="n">userDTO</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">try</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">user</span> <span class="p">=</span> <span class="k">new</span> <span class="n">User</span>
+                <span class="p">{</span>
+                    <span class="n">UserName</span> <span class="p">=</span> <span class="n">userDTO</span><span class="p">.</span><span class="n">UserName</span><span class="p">,</span>
+                    <span class="n">phone_number</span> <span class="p">=</span> <span class="n">userDTO</span><span class="p">.</span><span class="n">phone_number</span><span class="p">,</span>
+                    <span class="n">Age</span> <span class="p">=</span> <span class="n">userDTO</span><span class="p">.</span><span class="n">Age</span><span class="p">,</span>
+                <span class="p">};</span>
+
+                <span class="n">context</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
+                <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="nf">SaveChangesAsync</span><span class="p">();</span>
+
+                <span class="k">return</span> <span class="nf">CreatedAtAction</span><span class="p">(</span><span class="k">nameof</span><span class="p">(</span><span class="n">GetUser</span><span class="p">),</span> <span class="k">new</span> <span class="p">{</span> <span class="n">id</span> <span class="p">=</span> <span class="n">user</span><span class="p">.</span><span class="n">Id</span> <span class="p">},</span> <span class="nf">ItemToDTO</span><span class="p">(</span><span class="n">user</span><span class="p">));</span>
+            <span class="p">}</span>
+            <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="c1">// 에러가 발생하면 BadRequest 응답을 반환합니다.</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">(</span><span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="p">[</span><span class="nf">HttpPatch</span><span class="p">(</span><span class="s">"{id}"</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">ActionResult</span><span class="p">&lt;</span><span class="n">UserDTO</span><span class="p">&gt;&gt;</span> <span class="nf">PatchUser</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="n">UserDTO</span> <span class="n">userDTO</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">try</span>
+            <span class="p">{</span>
+                <span class="kt">var</span> <span class="n">user</span> <span class="p">=</span> <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="nf">FindAsync</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">user</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+                <span class="p">}</span>
+                <span class="n">user</span><span class="p">.</span><span class="n">UserName</span> <span class="p">=</span> <span class="n">userDTO</span><span class="p">.</span><span class="n">UserName</span><span class="p">;</span>
+                <span class="n">user</span><span class="p">.</span><span class="n">phone_number</span> <span class="p">=</span> <span class="n">userDTO</span><span class="p">.</span><span class="n">phone_number</span><span class="p">;</span>
+                <span class="n">user</span><span class="p">.</span><span class="n">Age</span> <span class="p">=</span> <span class="n">userDTO</span><span class="p">.</span><span class="n">Age</span><span class="p">;</span>
+
+                <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="nf">SaveChangesAsync</span><span class="p">();</span>
+
+                <span class="k">return</span> <span class="nf">CreatedAtAction</span><span class="p">(</span><span class="k">nameof</span><span class="p">(</span><span class="n">GetUser</span><span class="p">),</span> <span class="k">new</span> <span class="p">{</span> <span class="n">id</span> <span class="p">=</span> <span class="n">user</span><span class="p">.</span><span class="n">Id</span> <span class="p">},</span> <span class="nf">ItemToDTO</span><span class="p">(</span><span class="n">user</span><span class="p">));</span>
+            <span class="p">}</span>
+            <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">(</span><span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="p">[</span><span class="nf">HttpDelete</span><span class="p">(</span><span class="s">"{id}"</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">DeleteTodoItem</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">try</span>
+            <span class="p">{</span>
+
+                <span class="kt">var</span> <span class="n">user</span> <span class="p">=</span> <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="nf">FindAsync</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">user</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+                <span class="p">}</span>
+                <span class="n">context</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="nf">Remove</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
+                <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="nf">SaveChangesAsync</span><span class="p">();</span>
+
+                <span class="k">return</span> <span class="nf">NoContent</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">(</span><span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="kt">bool</span> <span class="nf">TodoItemExists</span><span class="p">(</span><span class="kt">long</span> <span class="n">id</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">context</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="nf">Any</span><span class="p">(</span><span class="n">e</span> <span class="p">=&gt;</span> <span class="n">e</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">id</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">static</span> <span class="n">UserDTO</span> <span class="nf">ItemToDTO</span><span class="p">(</span><span class="n">User</span> <span class="n">todoItem</span><span class="p">)</span> <span class="p">=&gt;</span>
+            <span class="k">new</span> <span class="nf">UserDTO</span><span class="p">()</span>
+            <span class="p">{</span>
+                <span class="n">Id</span> <span class="p">=</span> <span class="n">todoItem</span><span class="p">.</span><span class="n">Id</span><span class="p">,</span>
+                <span class="n">UserName</span> <span class="p">=</span> <span class="n">todoItem</span><span class="p">.</span><span class="n">UserName</span><span class="p">,</span>
+                <span class="n">phone_number</span> <span class="p">=</span> <span class="n">todoItem</span><span class="p">.</span><span class="n">phone_number</span><span class="p">,</span>
+                <span class="n">Age</span> <span class="p">=</span> <span class="n">todoItem</span><span class="p">.</span><span class="n">Age</span>
+            <span class="p">};</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이렇게 하면, Swagger 를 통해 문서화된 API 서버를 만들 수 있습니다.</p>
+
+<p><img src="/images/Pasted%20image%2020240409151438.png" alt="Swagger API"></p>
+
+<h3 id="unity-client">Unity Client</h3>
+
+<p>제가설정한 라우팅 경로로 접근하면 정보를 받을 수 있는지 테스트 하는  Unity Client 코드를 작성하였습니다.</p>
+
+<p>전체코드는 저번에 작성하였던 PHP를 활용한 HTTP 통신 포스팅에 있는 코드와 거의 동일 합니다.</p>
+
+<p>이번에는 <code class="language-plaintext highlighter-rouge">Post</code> 코드만 포스팅 하겠습니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">//Post == Insert</span>
+ <span class="k">public</span> <span class="n">IEnumerator</span> <span class="nf">PostTodoItem</span><span class="p">(</span><span class="n">TodoItemDTO</span> <span class="n">_item</span><span class="p">,</span> <span class="n">Action</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">,</span> <span class="n">TodoItemDTO</span><span class="p">&gt;</span> <span class="n">_action</span><span class="p">)</span>
+ <span class="p">{</span>
+     <span class="kt">string</span> <span class="n">itemJson</span> <span class="p">=</span> <span class="n">JsonUtility</span><span class="p">.</span><span class="nf">ToJson</span><span class="p">(</span><span class="n">_item</span><span class="p">);</span>
+     <span class="kt">byte</span><span class="p">[]</span> <span class="n">jsonToSend</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">UTF8Encoding</span><span class="p">().</span><span class="nf">GetBytes</span><span class="p">(</span><span class="n">itemJson</span><span class="p">);</span>
+
+     <span class="n">UnityWebRequest</span> <span class="n">request</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">UnityWebRequest</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s">"POST"</span><span class="p">);</span>
+     <span class="n">request</span><span class="p">.</span><span class="n">uploadHandler</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">UploadHandlerRaw</span><span class="p">(</span><span class="n">jsonToSend</span><span class="p">);</span>
+     <span class="n">request</span><span class="p">.</span><span class="n">downloadHandler</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">DownloadHandlerBuffer</span><span class="p">();</span>
+     <span class="n">request</span><span class="p">.</span><span class="nf">SetRequestHeader</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span> <span class="s">"application/json"</span><span class="p">);</span>
+
+     <span class="k">yield</span> <span class="k">return</span> <span class="n">request</span><span class="p">.</span><span class="nf">SendWebRequest</span><span class="p">();</span>
+     <span class="k">try</span>
+     <span class="p">{</span>
+         <span class="k">if</span> <span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="n">result</span> <span class="p">==</span> <span class="n">UnityWebRequest</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">ConnectionError</span> <span class="p">||</span>
+             <span class="n">request</span><span class="p">.</span><span class="n">result</span> <span class="p">==</span> <span class="n">UnityWebRequest</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">ProtocolError</span><span class="p">)</span>
+         <span class="p">{</span>
+             <span class="nf">_action</span><span class="p">(</span><span class="k">false</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+         <span class="p">}</span>
+         <span class="k">else</span>
+         <span class="p">{</span>
+             <span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="s">"Received: "</span> <span class="p">+</span> <span class="n">request</span><span class="p">.</span><span class="n">downloadHandler</span><span class="p">.</span><span class="n">text</span><span class="p">);</span>
+
+             <span class="n">JObject</span> <span class="n">jsonResponse</span> <span class="p">=</span> <span class="n">JObject</span><span class="p">.</span><span class="nf">Parse</span><span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="n">downloadHandler</span><span class="p">.</span><span class="n">text</span><span class="p">);</span>
+
+             <span class="kt">long</span> <span class="n">userID</span> <span class="p">=</span> <span class="n">method</span><span class="p">.</span><span class="nf">ParseLongOrDefault</span><span class="p">(</span><span class="n">jsonResponse</span><span class="p">[</span><span class="s">"id"</span><span class="p">].</span><span class="nf">ToString</span><span class="p">());</span>
+             <span class="kt">string</span> <span class="n">userName</span> <span class="p">=</span> <span class="n">method</span><span class="p">.</span><span class="nf">CheckNull</span><span class="p">(</span><span class="n">jsonResponse</span><span class="p">[</span><span class="s">"name"</span><span class="p">].</span><span class="nf">ToString</span><span class="p">());</span>
+             <span class="kt">string</span> <span class="n">isComplete</span> <span class="p">=</span> <span class="n">method</span><span class="p">.</span><span class="nf">CheckNull</span><span class="p">(</span><span class="n">jsonResponse</span><span class="p">[</span><span class="s">"isComplete"</span><span class="p">].</span><span class="nf">ToString</span><span class="p">());</span>
+
+             <span class="n">TodoItemDTO</span> <span class="n">todoItemDTO</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TodoItemDTO</span><span class="p">(</span><span class="n">userID</span><span class="p">,</span> <span class="n">userName</span><span class="p">,</span> <span class="n">isComplete</span><span class="p">);</span>
+
+             <span class="nf">_action</span><span class="p">(</span><span class="k">true</span><span class="p">,</span> <span class="n">todoItemDTO</span><span class="p">);</span>
+         <span class="p">}</span>
+     <span class="p">}</span>
+     <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+     <span class="p">{</span>
+         <span class="c1">//로깅작업</span>
+         <span class="nf">_action</span><span class="p">(</span><span class="k">false</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Post</code>는 내용을 받아 서버에 저장하는 역할을 합니다.</p>
+</body></html>

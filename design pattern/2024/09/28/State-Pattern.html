@@ -1,0 +1,415 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="state-pattern-이란">State Pattern 이란?</h2>
+
+<blockquote>
+  <p>상태 패턴은 특정 상태에 따라 다른 행위를 하는 상황에서 상태를 조건문으로 나누는 것 대신, 상태를 객체화 하여 상태가 행동을 할 수 있도록 위임하는 패턴을 말합니다.</p>
+
+  <p>이 패턴의 장점은, 상태를 객체화 해서, 상태를 추가하거나, 상태를 수정하는데 용이하다는 것이 있습니다. 물론 이 과정에서 다른 상태에 영향을 주지 않습니다.</p>
+</blockquote>
+
+<h3 id="패턴의-사용-시기">패턴의 사용 시기</h3>
+
+<ul>
+  <li>객체가 상태에 따라 다른 행동을 할 때</li>
+  <li>상태 및 전환에 대규모 조건문이 걸려있을 경우</li>
+  <li>런타임에서 상태가 유동적으로 바뀌어야 하는 경우</li>
+</ul>
+
+<h3 id="패턴의-장점">패턴의 장점</h3>
+
+<ul>
+  <li>복잡한 상태를 캡슐화해서 개별 클래스로 관리할 수 있음</li>
+  <li>상태에 대한 내용을 클래스로 관리하면서, 복잡도를  낮춤</li>
+  <li>단일책임원칙, 개방폐쇄원칙 을 준수할 수 있음</li>
+</ul>
+
+<h3 id="패턴의-단점">패턴의 단점</h3>
+
+<ul>
+  <li>상태마다의 클래스가 생기기 때문에, 관리해야 할 클래스가 늘어남</li>
+  <li>객체의 상태가 많이 없거나, 상태변환이 자주 일어나지 않는경우에는 복잡도만 증가함</li>
+</ul>
+
+<h2 id="예제">예제</h2>
+
+<p>State Pattern 은 상태의 변환에 유동적으로 대처하기 위해 나온 패턴입니다.</p>
+
+<p>이번에 다뤄볼 예제는 껌볼 머신을 상태별로 구분해서, 껌볼을 뽑는 기계를 만들어 봅니다.</p>
+
+<p>상태의 흐름도는 다음과 같습니다.</p>
+
+<p><img src="/images/Pasted%20image%2020240928185145.png" alt=""></p>
+
+<p>일단 어떤 조건에 따라서 상태가 분기 되기 때문에, if 문 또는 switch ~ case 문으로 해당 알고리즘을 작성하게 되면, 처음 만들때는 쉬울 수 있으나, 상태가 추가되거나, 조건이 변경될 때 변경에 용이하지 않습니다. 또한, 운좋게 변경했다 하더라도, 시간이 매우 많이 걸리고, 다른사람이 코드를 보게 되면 한숨을 자아내게 됩니다.</p>
+
+<p>이러한 문제를 해결하기 위해, <code class="language-plaintext highlighter-rouge">State Pattern</code>을 가지고 알고리즘을 구현 합니다.</p>
+
+<h3 id="상태-interface-작성">상태 Interface 작성</h3>
+
+<p>우선, <code class="language-plaintext highlighter-rouge">상태</code>라는 공통적인 인터페이스를 만듭니다.</p>
+
+<p>이번에 구현하는 예제는 <code class="language-plaintext highlighter-rouge">동전을 넣는다</code>, <code class="language-plaintext highlighter-rouge">동전을 반환한다</code>, <code class="language-plaintext highlighter-rouge">손잡이를 돌린다</code>, <code class="language-plaintext highlighter-rouge">껌볼이 나온다</code>, <code class="language-plaintext highlighter-rouge">껌볼을 채운다</code> 의 행동을 합니다.\</p>
+
+<p>🗅 <strong><span style="color: #c03a92">interface State</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.state.gumballstate</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">State</span> <span class="o">{</span>  
+	<span class="c1">//동전을 넣는다</span>
+    <span class="kt">void</span> <span class="nf">insertQuater</span><span class="o">();</span>  
+    <span class="c1">//동전을 반환함</span>
+    <span class="kt">void</span> <span class="nf">ejectQuater</span><span class="o">();</span>  
+    <span class="c1">//손잡이를 돌린다</span>
+    <span class="kt">void</span> <span class="nf">turnCrank</span><span class="o">();</span>  
+    <span class="c1">//껌볼이 나온다</span>
+    <span class="kt">void</span> <span class="nf">dispense</span><span class="o">();</span>  
+    <span class="c1">//껌볼을 다시 채운다</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">refill</span><span class="o">();</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="상태머신-만들기">상태머신 만들기</h3>
+
+<p>이제 이 상태들을 제어할 <code class="language-plaintext highlighter-rouge">State Machine</code>을 제작 합니다. 해당 상태머신은 모든 상태들을 다 가지고 있고, 상태들을 전환하거나, 상태를 반환하는 역할을 합니다.</p>
+
+<p>객체의 상태는 위의 다이어그램에서 정의 했듯, <code class="language-plaintext highlighter-rouge">동전이 있는 상태</code>, <code class="language-plaintext highlighter-rouge">알맹이를 판매한 상태</code>, <code class="language-plaintext highlighter-rouge">동전이 없는 상태</code>, <code class="language-plaintext highlighter-rouge">알맹이가 매진된 상태</code>로 정의 합니다.</p>
+
+<p>우선 <code class="language-plaintext highlighter-rouge">StateMachine</code>을 만들고, 각 상태들을 만들도록 하겠습니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">class GumballMachine</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.state.gumballstate</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GumballMachine</span> <span class="o">{</span>  
+	<span class="c1">//상태들 선언</span>
+    <span class="kd">private</span> <span class="nc">State</span> <span class="n">soldState</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="nc">State</span> <span class="n">soldOutState</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="nc">State</span> <span class="n">noQuarterState</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="nc">State</span> <span class="n">hasQuarterState</span><span class="o">;</span>  
+
+	<span class="c1">//현재 상태 선언</span>
+    <span class="kd">private</span> <span class="nc">State</span> <span class="n">state</span><span class="o">;</span>  
+  
+    <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>  
+  
+    <span class="kd">public</span> <span class="nf">GumballMachine</span><span class="o">(</span><span class="kt">int</span> <span class="n">numberGumballs</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="n">soldOutState</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SoldOutState</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>  
+        <span class="n">noQuarterState</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NoQuaterState</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>  
+        <span class="n">hasQuarterState</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HasQuaterState</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>  
+        <span class="n">soldState</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SoldState</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>  
+  
+        <span class="k">this</span><span class="o">.</span><span class="na">count</span> <span class="o">=</span> <span class="n">numberGumballs</span><span class="o">;</span>  
+        <span class="k">if</span> <span class="o">(</span><span class="n">numberGumballs</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="n">state</span> <span class="o">=</span> <span class="n">noQuarterState</span><span class="o">;</span>  
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>  
+            <span class="n">state</span> <span class="o">=</span> <span class="n">soldOutState</span><span class="o">;</span>  
+        <span class="o">}</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertQuater</span><span class="o">(){</span>  
+        <span class="n">state</span><span class="o">.</span><span class="na">insertQuater</span><span class="o">();</span>  
+    <span class="o">}</span>  
+  
+    <span class="c1">//꺼내다  </span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ejectQuater</span><span class="o">(){</span>  
+        <span class="n">state</span><span class="o">.</span><span class="na">ejectQuater</span><span class="o">();</span>  
+    <span class="o">}</span>  
+  
+    <span class="c1">//돌리다  </span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">turnCrank</span><span class="o">(){</span>  
+        <span class="n">state</span><span class="o">.</span><span class="na">turnCrank</span><span class="o">();</span>  
+        <span class="n">state</span><span class="o">.</span><span class="na">dispense</span><span class="o">();</span><span class="c1">//분배하다  </span>
+    <span class="o">}</span>  
+  
+    <span class="c1">//나오다  </span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">releaseBall</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"슬롯에서 알맹이가 나오는 중입니다."</span><span class="o">);</span>  
+        <span class="k">if</span> <span class="o">(</span><span class="n">count</span> <span class="o">!=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>  
+        <span class="o">}</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">refill</span><span class="o">(</span><span class="kt">int</span> <span class="n">_count</span><span class="o">){</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">count</span> <span class="o">+=</span> <span class="n">_count</span><span class="o">;</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"껌볼이 리필됨. 현재 검볼 : "</span><span class="o">+</span> <span class="n">_count</span><span class="o">);</span>  
+        <span class="n">state</span><span class="o">.</span><span class="na">refill</span><span class="o">();</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getCount</span><span class="o">(){</span>  
+        <span class="k">return</span> <span class="n">count</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nc">State</span> <span class="nf">getState</span><span class="o">(){</span>  
+        <span class="k">return</span> <span class="n">state</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setState</span><span class="o">(</span><span class="nc">State</span> <span class="n">state</span><span class="o">){</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">state</span> <span class="o">=</span> <span class="n">state</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nc">State</span> <span class="nf">getSoldState</span><span class="o">(){</span>  
+        <span class="k">return</span> <span class="n">soldState</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nc">State</span> <span class="nf">getSoldOutState</span><span class="o">(){</span>  
+        <span class="k">return</span> <span class="n">soldOutState</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nc">State</span> <span class="nf">getNoQuarterState</span><span class="o">(){</span>  
+        <span class="k">return</span> <span class="n">noQuarterState</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nc">State</span> <span class="nf">getHasQuarterState</span><span class="o">(){</span>  
+        <span class="k">return</span> <span class="n">hasQuarterState</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">(){</span>  
+        <span class="nc">StringBuffer</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>  
+        <span class="n">result</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"\n주식회사 왕뽑기"</span><span class="o">);</span>  
+        <span class="n">result</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"\n2024년형 뽑기 기계"</span><span class="o">);</span>  
+        <span class="n">result</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"\n남은 갯수: "</span><span class="o">+</span> <span class="n">count</span> <span class="o">+</span> <span class="s">" 개"</span><span class="o">);</span>  
+        <span class="n">result</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"\n"</span><span class="o">);</span>  
+        <span class="n">result</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"\n현재 상태는 "</span><span class="o">+</span> <span class="n">state</span> <span class="o">+</span><span class="s">"\n"</span><span class="o">);</span>  
+        <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="각-상태들-구현-하기">각 상태들 구현 하기</h3>
+
+<p>이제 위에서 정의했던, <code class="language-plaintext highlighter-rouge">State</code> 를  상속받아서 구체적인 상태를 구현하는 구현 클래스를 만듭니다.</p>
+
+<p>각 상태는 어떤 행동 시에 어떤 <code class="language-plaintext highlighter-rouge">State</code>로 이동할지에 대한 상태 전이를 정의 합니다. 그러기 위해서 생성자에서 모든 상태들을 가지고, <code class="language-plaintext highlighter-rouge">getter</code>로 상태들을 반환하는 GumballMachine 을 DI 해줍니다.</p>
+
+<h4 id="동전이-있는-상태">동전이 있는 상태</h4>
+
+<p>🗅 <strong><span style="color: #c03a92">class HasQuaterState</span></strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.state.gumballstate</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HasQuaterState</span> <span class="kd">implements</span> <span class="nc">State</span> <span class="o">{</span>  
+  
+    <span class="kd">private</span> <span class="nc">GumballMachine</span> <span class="n">gumballMachine</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>  
+  
+    <span class="kd">public</span> <span class="nf">HasQuaterState</span><span class="o">(</span><span class="nc">GumballMachine</span> <span class="n">_gumballMachine</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">gumballMachine</span> <span class="o">=</span> <span class="n">_gumballMachine</span><span class="o">;</span>  
+    <span class="o">}</span>  
+  
+    <span class="c1">//동전 넣기  </span>
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertQuater</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"동전을 또 넣을 수 없습니다"</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="c1">//동전 반환하기  </span>
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ejectQuater</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"동전이 반환되었습니다"</span><span class="o">);</span>  
+        <span class="n">gumballMachine</span><span class="o">.</span><span class="na">setState</span><span class="o">(</span><span class="n">gumballMachine</span><span class="o">.</span><span class="na">getNoQuarterState</span><span class="o">());</span>  
+    <span class="o">}</span>  
+  
+    <span class="c1">//손잡이 돌리기  </span>
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">turnCrank</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"손잡이를 돌렸습니다..."</span><span class="o">);</span>  
+        <span class="n">gumballMachine</span><span class="o">.</span><span class="na">setState</span><span class="o">(</span><span class="n">gumballMachine</span><span class="o">.</span><span class="na">getSoldOutState</span><span class="o">());</span>  
+    <span class="o">}</span>  
+  
+    <span class="c1">//껌볼 내보내기  </span>
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dispense</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"껌볼이 나오지 않았습니다"</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">refill</span><span class="o">(){</span>  
+  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">(){</span>  
+       <span class="k">return</span> <span class="s">"손잡이를 돌리기 기다리는 중"</span><span class="o">;</span>  
+  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="동전이-없는-상태">동전이 없는 상태</h4>
+
+<p>🗅 <strong><span style="color: #c03a92">class NoQuaterState</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.state.gumballstate</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">NoQuaterState</span> <span class="kd">implements</span> <span class="nc">State</span><span class="o">{</span>  
+  
+    <span class="kd">private</span> <span class="nc">GumballMachine</span> <span class="n">gumballMachine</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>  
+  
+    <span class="kd">public</span> <span class="nf">NoQuaterState</span> <span class="o">(</span><span class="nc">GumballMachine</span> <span class="n">gumballMachine</span><span class="o">){</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">gumballMachine</span> <span class="o">=</span> <span class="n">gumballMachine</span><span class="o">;</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertQuater</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"동전을 넣으셨습니다."</span><span class="o">);</span>  
+        <span class="n">gumballMachine</span><span class="o">.</span><span class="na">setState</span><span class="o">(</span><span class="n">gumballMachine</span><span class="o">.</span><span class="na">getHasQuarterState</span><span class="o">());</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ejectQuater</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"동전을 넣지 않았습니다"</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">turnCrank</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"손잡이를 돌렸지만, 동전이 없습니다"</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dispense</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"먼저 돈을 넣어야 합니다"</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">refill</span><span class="o">(){</span>  
+  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">(){</span>  
+        <span class="k">return</span> <span class="s">"동전을 기다리는 중"</span><span class="o">;</span>  
+    <span class="o">}</span>  
+  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="껌볼을-꺼낸-상태">껌볼을 꺼낸 상태</h4>
+
+<p>🗅 <strong><span style="color: #c03a92">class SoldState</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.state.gumballstate</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SoldState</span> <span class="kd">implements</span> <span class="nc">State</span><span class="o">{</span>  
+  
+    <span class="kd">private</span> <span class="nc">GumballMachine</span> <span class="n">gumballMachine</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>  
+  
+    <span class="kd">public</span> <span class="nf">SoldState</span><span class="o">(</span><span class="nc">GumballMachine</span> <span class="n">gumballMachine</span><span class="o">){</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">gumballMachine</span> <span class="o">=</span> <span class="n">gumballMachine</span><span class="o">;</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertQuater</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"잠깐만 기다려 주세요. 알맹이가 나가고 있습니다."</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ejectQuater</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"이미 알맹이를 뽑았습니다."</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">turnCrank</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"손잡이는 한번만 돌려주세요."</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dispense</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="n">gumballMachine</span><span class="o">.</span><span class="na">releaseBall</span><span class="o">();</span>  
+        <span class="k">if</span><span class="o">(</span><span class="n">gumballMachine</span><span class="o">.</span><span class="na">getCount</span><span class="o">()&gt;</span><span class="mi">0</span><span class="o">){</span>  
+            <span class="n">gumballMachine</span><span class="o">.</span><span class="na">setState</span><span class="o">(</span><span class="n">gumballMachine</span><span class="o">.</span><span class="na">getNoQuarterState</span><span class="o">());</span>  
+        <span class="o">}</span>  
+        <span class="k">else</span><span class="o">{</span>  
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"이런, 껌볼이 다 떨어졌습니다!"</span><span class="o">);</span>  
+        <span class="o">}</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">refill</span><span class="o">()</span> <span class="o">{</span>  
+  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">(){</span>  
+        <span class="k">return</span> <span class="s">"껌볼을 내보내는 중"</span><span class="o">;</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="껌볼이-매진된-상태">껌볼이 매진된 상태</h4>
+
+<p>🗅 <strong><span style="color: #c03a92">class SoldOutState</span></strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.state.gumballstate</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SoldOutState</span> <span class="kd">implements</span> <span class="nc">State</span><span class="o">{</span>  
+  
+    <span class="kd">private</span> <span class="nc">GumballMachine</span> <span class="n">gumballMachine</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>  
+    <span class="kd">public</span> <span class="nf">SoldOutState</span><span class="o">(</span><span class="nc">GumballMachine</span> <span class="n">_gumballMachine</span><span class="o">){</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">gumballMachine</span> <span class="o">=</span> <span class="n">_gumballMachine</span><span class="o">;</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">insertQuater</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"껌볼이 다 떨어져서 동전을 넣을 수 없습니다"</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">ejectQuater</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"동전을 넣지 않았기 때문에 반환할 수 없습니다"</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">turnCrank</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"손잡이를 돌렸지만, 껌볼이 없습니다"</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">dispense</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"껌볼이 나오지 않았습니다"</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">refill</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="n">gumballMachine</span><span class="o">.</span><span class="na">setState</span><span class="o">(</span><span class="n">gumballMachine</span><span class="o">.</span><span class="na">getNoQuarterState</span><span class="o">());</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">(){</span>  
+        <span class="k">return</span> <span class="s">"껌볼이 다 떨어졌습니다."</span><span class="o">;</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="main-에서-실행하기">Main 에서 실행하기</h3>
+
+<p>이제 상태머신을 생성하고, 알맹이의 갯수에 대한 정보를 생성자를 통해 설정 합니다. 그러면, <code class="language-plaintext highlighter-rouge">GumballMachine</code>의 생성자에서 조건문을 통해 지금 현재 상태가 결정이 됩니다.</p>
+
+<p>결정된 현재 상태에 따라 <code class="language-plaintext highlighter-rouge">insertQuater</code>, <code class="language-plaintext highlighter-rouge">turnCrank</code> 등의 함수가 호출되며, 로직이 진행이 됩니다. 그러면서 알맹이가 점점 줄어들고, 결국은 매진된 상태로 상태가 전이되며, 껌볼 머신의 작동이 중지가 됩니다.</p>
+
+<p>(<code class="language-plaintext highlighter-rouge">refill()</code> 이라는 메서드를 통해서 껌볼을 더 넣어주지만 넣지 않으면 매진 상태로 종료되게 됩니다)</p>
+
+<p>🗅 <strong><span style="color: #c03a92">class Main</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.state.gumballstate</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>  
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="nc">GumballMachine</span> <span class="n">gumballMachine</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GumballMachine</span><span class="o">(</span><span class="mi">2</span><span class="o">);</span>  
+  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">gumballMachine</span><span class="o">);</span>  
+  
+        <span class="n">gumballMachine</span><span class="o">.</span><span class="na">insertQuater</span><span class="o">();</span>  
+        <span class="n">gumballMachine</span><span class="o">.</span><span class="na">turnCrank</span><span class="o">();</span>  
+  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">gumballMachine</span><span class="o">);</span>  
+  
+        <span class="n">gumballMachine</span><span class="o">.</span><span class="na">insertQuater</span><span class="o">();</span>  
+        <span class="n">gumballMachine</span><span class="o">.</span><span class="na">turnCrank</span><span class="o">();</span>  
+        <span class="n">gumballMachine</span><span class="o">.</span><span class="na">insertQuater</span><span class="o">();</span>  
+        <span class="n">gumballMachine</span><span class="o">.</span><span class="na">turnCrank</span><span class="o">();</span>  
+  
+        <span class="n">gumballMachine</span><span class="o">.</span><span class="na">refill</span><span class="o">(</span><span class="mi">5</span><span class="o">);</span>  
+        <span class="n">gumballMachine</span><span class="o">.</span><span class="na">insertQuater</span><span class="o">();</span>  
+        <span class="n">gumballMachine</span><span class="o">.</span><span class="na">turnCrank</span><span class="o">();</span>  
+  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">gumballMachine</span><span class="o">);</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="정리">정리</h2>
+
+<p>저는 현재 주로 <code class="language-plaintext highlighter-rouge">Unity</code>를 통해서 게임을 개발하고 있습니다. 게임을 개발할 때, 상태 패턴은 많이 쓰이는 패턴 중 하나 입니다. 복잡한 플레이어 컨트롤 또는 보스AI 를 구현할 때 자주 사용합니다.</p>
+
+<p>또한 <code class="language-plaintext highlighter-rouge">Unity</code>의 <code class="language-plaintext highlighter-rouge">Animator Controller</code> 또한 상태머신으로 구현되어 있습니다. 상태를 정의하고, 어떤 조건에서 다른 상태로 <code class="language-plaintext highlighter-rouge">전이</code> 될지만 정해주면 알아서 돌아가도록 만들어져 있습니다.</p>
+
+<p><img src="/images/Pasted%20image%2020240929003608.png" alt=""></p>
+
+<p>상태패턴을 사용하여 상태를 구현하게 되면, <code class="language-plaintext highlighter-rouge">개방폐쇄원칙 (OCP)</code>를 지키게 됩니다. 특별한 경우가 아니고선, 새로운 기능이 추가될 때, 기존의 <code class="language-plaintext highlighter-rouge">State</code>들은 수정하지 않으면서, <code class="language-plaintext highlighter-rouge">State</code>를 상속받는 새로운 <code class="language-plaintext highlighter-rouge">State</code>만 구현하고, <code class="language-plaintext highlighter-rouge">StateMachine</code>에 추가만 해주면 됩니다.</p>
+
+<p>처음 유니티로 AI 를 구현할 때, if 문 떡칠로 구현했던 적이 있습니다. 간단한 로직이었는데도, 구현하기가 상당히 까다로웠습니다. 상태패턴을 공부하고 적용한 후로 구조는 좀더 복잡해 졌지만, 한번 만들어놓으면 상대적으로 복잡한 상태들을 최소한의 오류로 개발할 수 있게 되었습니다.</p>
+</body></html>

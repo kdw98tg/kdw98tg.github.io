@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>유니티에서 게임오브젝트가 움직이는것은 아주 흔한 일입니다. 오랜만에 유니티를 하니 transform.localPosition 과 transform.position을 사용하는것이 헷갈려서 다시 정리를 하였습니다.</p>
+
+<h2 id="world-position">World Position</h2>
+
+<p>World Position은 말 그대로, 게임 공간상의 위치를 말합니다. 예를들어, 플레이어가 앞으로 움직어야 한다면, 플레이어는 게임 공간 상에서 위치를 변경해줘야 합니다. 그럴때 WorldPosition을 사용합니다.</p>
+
+<p>차가 움직여야 할 때, 플레이어가 움직여야 할 때, 비행기가 움직여야 할 때 등등 월드 좌표 기준으로 움직여야 하는 녀석들은 전부 <code class="language-plaintext highlighter-rouge">transform.position</code> 을 조작하면 됩니다.</p>
+
+<h2 id="local-position">Local Position</h2>
+<p>로컬 포지션은 자기 자신의 위치를 뜻합니다. 보통 특정 오브젝트의 자식으로 속해있는 오브젝트에서 많이 사용합니다. 만약, 플레이어의 손이 움직여야 한다고 생각해 봅시다. 그렇다면 그 손은 월드 기준으로 움직이는것이 아니라, 부모 오브젝트인 플레이어 안에서 움직어야 합니다.</p>
+
+<p>부모인 플레이어 오브젝트가 움직일 때, 자식으로 속한 오브젝트의 위치는 그대로가 됩니다. 그 오브젝트의 위치를 수정할때는 <code class="language-plaintext highlighter-rouge">transform.localPosition</code>을 사용해야 합니다.</p>
+
+<p>또한, 유니티에서는 <code class="language-plaintext highlighter-rouge">localPosition</code> 이 기본값으로 세팅이 되어 있고, <code class="language-plaintext highlighter-rouge">position</code> 을 구할때는 오브젝트의 localPosition과 부모의 위치를 더하는 연산을 수행합니다.</p>
+
+<p>따라서 부모가 있는 오브젝트라면 <code class="language-plaintext highlighter-rouge">localPosition</code>을 조작하는 것이 성능상 아주 미세하게 효율적이라고 할 수 있습니다.</p>
+
+<h2 id="예제">예제</h2>
+
+<p>다음 예제는 플레이어와, 플레이어의 팔이 움직이는 코드 입니다. 플레이어가 월드 상에서 움직일때는, <code class="language-plaintext highlighter-rouge">transform.position</code>, 플레이어의 팔이 움직일때는 <code class="language-plaintext highlighter-rouge">transform.loaclPosition</code>을 사용하도록 구성하였습니다.</p>
+
+<p>Player.cs</p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">TransformStudy</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Player</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="n">RightHand</span> <span class="n">rightHand</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+        <span class="k">private</span> <span class="n">LeftHand</span> <span class="n">leftHand</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+        <span class="k">private</span> <span class="kt">float</span> <span class="n">moveSpeed</span> <span class="p">=</span> <span class="m">0.01f</span><span class="p">;</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">Awake</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">rightHand</span> <span class="p">=</span> <span class="n">GetComponentInChildren</span><span class="p">&lt;</span><span class="n">RightHand</span><span class="p">&gt;();</span>
+            <span class="n">leftHand</span> <span class="p">=</span> <span class="n">GetComponentInChildren</span><span class="p">&lt;</span><span class="n">LeftHand</span><span class="p">&gt;();</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="c1">//손 움직임 제어</span>
+            <span class="nf">HandleHands</span><span class="p">();</span>
+            <span class="c1">//플레이어 움직임 제어</span>
+            <span class="nf">MovePlayer</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">MovePlayer</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="nf">GetKey</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">W</span><span class="p">))</span>
+                <span class="nf">MoveForward</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="nf">GetKey</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">A</span><span class="p">))</span>
+                <span class="nf">MoveLeft</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="nf">GetKey</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">S</span><span class="p">))</span>
+                <span class="nf">MoveBackward</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="nf">GetKey</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">D</span><span class="p">))</span>
+                <span class="nf">MoveRight</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">HandleHands</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="c1">//오른손 올리는 키</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="nf">GetKey</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">E</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">rightHand</span><span class="p">.</span><span class="nf">RaiseHand</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="c1">//오른손 내리는 키</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="nf">GetKey</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">C</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">rightHand</span><span class="p">.</span><span class="nf">PutDownHand</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="c1">//왼손 올리는 키</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="nf">GetKey</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">Q</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">leftHand</span><span class="p">.</span><span class="nf">RaiseHand</span><span class="p">();</span>
+            <span class="p">}</span>
+            <span class="c1">//왼손 내리는 키</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="nf">GetKey</span><span class="p">(</span><span class="n">KeyCode</span><span class="p">.</span><span class="n">Z</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">leftHand</span><span class="p">.</span><span class="nf">PutDownHand</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">MoveRight</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">transform</span><span class="p">.</span><span class="n">position</span> <span class="p">+=</span> <span class="k">new</span> <span class="nf">Vector3</span><span class="p">(</span><span class="n">moveSpeed</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">MoveBackward</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">transform</span><span class="p">.</span><span class="n">position</span> <span class="p">+=</span> <span class="k">new</span> <span class="nf">Vector3</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="p">-</span><span class="n">moveSpeed</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">MoveLeft</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">transform</span><span class="p">.</span><span class="n">position</span> <span class="p">+=</span> <span class="k">new</span> <span class="nf">Vector3</span><span class="p">(-</span><span class="n">moveSpeed</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">MoveForward</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">transform</span><span class="p">.</span><span class="n">position</span> <span class="p">+=</span> <span class="k">new</span> <span class="nf">Vector3</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">moveSpeed</span><span class="p">);</span>
+        <span class="p">}</span>
+
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>HandBase.cs</p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">TransformStudy</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">HandBase</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+    <span class="p">{</span>
+        <span class="p">[</span><span class="n">SerializeField</span><span class="p">]</span> <span class="k">protected</span> <span class="kt">float</span> <span class="n">moveSpeed</span> <span class="p">=</span> <span class="m">0.1f</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">RaiseHand</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">transform</span><span class="p">.</span><span class="n">localRotation</span> <span class="p">*=</span> <span class="n">Quaternion</span><span class="p">.</span><span class="nf">Euler</span><span class="p">(-</span><span class="n">moveSpeed</span><span class="p">,</span> <span class="m">0f</span><span class="p">,</span> <span class="m">0f</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">PutDownHand</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">transform</span><span class="p">.</span><span class="n">localRotation</span> <span class="p">*=</span> <span class="n">Quaternion</span><span class="p">.</span><span class="nf">Euler</span><span class="p">(</span><span class="n">moveSpeed</span><span class="p">,</span> <span class="m">0f</span><span class="p">,</span> <span class="m">0f</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+</body></html>

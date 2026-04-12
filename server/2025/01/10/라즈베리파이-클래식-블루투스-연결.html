@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>라즈베리파이 5를 활용하여 블루투스 서버를 열고, Winform 으로 프로그램을 짜서 해당 데이터를 수신하는 과정을 기술하였습니다.</p>
+
+<p>라즈베리파이에서는 python 코드를 가지고 서버를 열었습니다. 또한, 가상환경을 사용하였습니다.</p>
+
+<h2 id="라즈베리파이-세팅하기">라즈베리파이 세팅하기</h2>
+
+<h3 id="1-블루투스-모듈-설치">1. 블루투스 모듈 설치</h3>
+
+<p>블루투스를 사용하기 위한 모듈들을 우선 다운로드 합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$sudo</span> apt-get <span class="nb">install </span>bluez libbluetooth-dev pi-bluetooth
+</code></pre></div></div>
+
+<h3 id="2-python-설치">2. Python 설치</h3>
+
+<p>가상환경을 만들고, Python을 설치 합니다.</p>
+
+<p>파이썬 관련 유틸리티가 설치가 된 상태에서 파이썬을 재빌드해서 설치해야 이후에 블루투스 관련 모듈을 사용할 수 있습니다.</p>
+
+<p>다음의 명령어들을 넣습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$mkdir</span> temp
+<span class="nv">$cd</span> temp
+<span class="nv">$wget</span> https://www.python.org/ftp/python/3.6.5/Python-3.6.5.tgz
+<span class="nv">$tar</span> <span class="nt">-xvf</span> Python-3.6.5.tgz
+ 
+<span class="nv">$cd</span> Python-3.6.5
+<span class="nv">$.</span>/configure
+<span class="nv">$sudo</span> make <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>make <span class="nb">install</span>
+</code></pre></div></div>
+
+<p>이렇게하면 자동으로 temp 폴더를 만들고, python을 설치하게 됩니다. 약 10분정도 소요됩니다.</p>
+
+<h3 id="3-시리얼--포트-등록">3. 시리얼  포트 등록</h3>
+
+<p>통신을 하기 위한 시리얼 포트를 등록 합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$sudo</span> sdptool add SP
+</code></pre></div></div>
+
+<h3 id="4-블루투스-설정파일-수정">4. 블루투스 설정파일 수정</h3>
+
+<p>nano 텍스트 편집기를 사용하여 블루투스의 설정파일을 수정해 줍니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$sudo</span> nano /lib/systemd/system/bluetooth.service
+</code></pre></div></div>
+
+<p>해당 명령어로 <code class="language-plaintext highlighter-rouge">bluetooth.service</code>를 열어보면 다음과 같은 문구가 있습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ExecStart</span><span class="o">=</span>/usr/lib/bluetooth/bluetoothd
+</code></pre></div></div>
+
+<p>해당 문구를 아래와 같이 바꿔줍니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ExecStart</span><span class="o">=</span>/usr/lib/bluetooth/bluetoothd <span class="nt">-C</span>
+</code></pre></div></div>
+
+<p>설정파일을 바꾸면, 바로 적용이 안될 수 있기 때문에, 서비스를 재시작 해줍니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$sudo</span> systemctl daemon-reload -  설정 수정사항 재로딩
+<span class="nv">$sudo</span> systemctl restart bluetooth - 블루투스 서비스 재실행
+<span class="nv">$sudo</span> systemctl <span class="nb">enable </span>bluetooth - 재부팅 시 서비스 자동 등록
+</code></pre></div></div>
+
+<h3 id="5-블루투스를-검색가능하게-만들기">5. 블루투스를 검색가능하게 만들기</h3>
+
+<p>이제, 블루투스를 검색가능하게 만들어서 다른 디바이스에서 찾을 수 있게 해줍니다. bluetoothctl 를 통해서 설정합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bluetoothctl
+</code></pre></div></div>
+
+<p>해당 명령어를 치면 블루투스 설정을 조작할 수 있게 됩니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>power on
+agent on
+discoverable on 
+pairable on
+</code></pre></div></div>
+
+<p>위의 명령어를 입력하여, 블루투스를 사용할수 있게 해줍니다.</p>
+
+<h3 id="6-파이썬-코드-짜기">6. 파이썬 코드 짜기</h3>
+
+<p>이제, 파이썬 코드를 짜야 합니다. 클래식 블루투스통신을 구현할 수 있도록 파이썬 라이브러리를 설치 합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$sudo</span> pip3 <span class="nb">install </span>pybluez pybleno
+</code></pre></div></div>
+
+<p>만약 pip 정책의 변경으로 위 코드가 실행이 안된다면, 다음 코드를 입력하시면 됩니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>git+https://github.com/pybluez/pybluez.git
+</code></pre></div></div>
+
+<p>그러면, 저희가 만든 가상환경 <code class="language-plaintext highlighter-rouge">temp</code> 폴더 안에 의존성들이 모두 설치가 되었을 겁니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">temp</code> 폴더 안에 파이썬 파일을 하나 넣어주고, 스크립트를 짭니다. 여기서 주의해야할 것은 UUID 입니다.</p>
+
+<p>UUID 는 범용 고유 넘버라고 불리며, 일종의 통신을 위한 프로토콜이라고 생각하시면 됩니다. 각 서비스마다 UUID가 다르기 때문에, 주의하여 기입해야 합니다. 본 포스팅에서는 시리얼 포트 UUID를 사용하였습니다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uuid = "00001101-0000-1000-8000-00805f9b34fb"
+</code></pre></div></div>
+
+<p>다음은, 파이썬 코드 입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">bluetooth</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="n">time</span>  <span class="c1"># Import the time module to use sleep
+</span>
+<span class="k">def</span> <span class="nf">receiveMsg</span><span class="p">():</span>
+    <span class="n">uuid</span> <span class="o">=</span> <span class="sh">"</span><span class="s">00001101-0000-1000-8000-00805f9b34fb</span><span class="sh">"</span>
+ 
+    <span class="c1"># RFCOMM 포트를 통해 데이터 통신을 하기 위한 준비    
+</span>    <span class="n">server_sock</span> <span class="o">=</span> <span class="nc">BluetoothSocket</span><span class="p">(</span><span class="n">RFCOMM</span><span class="p">)</span>
+    <span class="n">server_sock</span><span class="p">.</span><span class="nf">bind</span><span class="p">((</span><span class="sh">''</span><span class="p">,</span> <span class="n">PORT_ANY</span><span class="p">))</span>
+    <span class="n">server_sock</span><span class="p">.</span><span class="nf">listen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+ 
+    <span class="n">port</span> <span class="o">=</span> <span class="n">server_sock</span><span class="p">.</span><span class="nf">getsockname</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+ 
+    <span class="c1"># 블루투스 서비스를 Advertise
+</span>    <span class="nf">advertise_service</span><span class="p">(</span><span class="n">server_sock</span><span class="p">,</span> <span class="sh">"</span><span class="s">BtChat</span><span class="sh">"</span><span class="p">,</span>
+                      <span class="n">service_id</span><span class="o">=</span><span class="n">uuid</span><span class="p">,</span>
+                      <span class="n">service_classes</span><span class="o">=</span><span class="p">[</span><span class="n">uuid</span><span class="p">,</span> <span class="n">SERIAL_PORT_CLASS</span><span class="p">],</span>
+                      <span class="n">profiles</span><span class="o">=</span><span class="p">[</span><span class="n">SERIAL_PORT_PROFILE</span><span class="p">])</span>
+    
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Waiting for connection: channel %d</span><span class="sh">"</span> <span class="o">%</span> <span class="n">port</span><span class="p">)</span>
+    <span class="c1"># 클라이언트가 연결될 때까지 대기
+</span>    <span class="n">client_sock</span><span class="p">,</span> <span class="n">client_info</span> <span class="o">=</span> <span class="n">server_sock</span><span class="p">.</span><span class="nf">accept</span><span class="p">()</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">Accepted connection from</span><span class="sh">'</span><span class="p">,</span> <span class="n">client_info</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">start</span><span class="sh">"</span><span class="p">)</span>
+
+            <span class="c1"># Sending data to the client every 1 second
+</span>            <span class="n">message</span> <span class="o">=</span> <span class="sh">"</span><span class="s">Hello from server</span><span class="sh">"</span>
+            <span class="n">client_sock</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+            <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Sent: </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+            <span class="c1"># Wait for 1 second before sending the next message
+</span>            <span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+ 
+    <span class="k">except</span> <span class="nb">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Disconnected</span><span class="sh">"</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">BluetoothError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">Bluetooth Error </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+    <span class="k">except</span> <span class="nb">OSError</span> <span class="k">as</span> <span class="n">o</span><span class="p">:</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s"> OSError </span><span class="si">{</span><span class="n">o</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">client_sock</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
+        <span class="n">server_sock</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">All done</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="nf">receiveMsg</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>위 스크립트를 실행시키면 됩니다. 만약, 해당 스크립트를 실행시켰는데, <code class="language-plaintext highlighter-rouge">Permission Denied</code> 라는 에러가 뜬다면, sudo 권한으로 실행시켜줘야 합니다. 가상환경이 블루투스모듈에 직접 접근할 권한이 없기 때문에 발생하는 문제 입니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>python3 /yourDirectory/script.py
+</code></pre></div></div>
+
+<h3 id="실행">실행</h3>
+
+<p>위 과정을 모두 하였다면, 스크립트를 실생시킵니다. 스크립트를 실행시키면, 저희가 찍어놓았던 로그대로 <code class="language-plaintext highlighter-rouge">Waiting for connection: channel 1</code> 이라는 문구가 뜰 것입니다.</p>
+
+<p>이제, 클라이언트에서 접속을 시도하면, 반응하여 작동할 것입니다.</p>
+
+<p>👉👉👉[참고 블로그]](https://diymaker.tistory.com/124)</p>
+
+<h2 id="클라이언트-세팅하기">클라이언트 세팅하기</h2>
+
+<p>블루투스 클래식 서버의 준비를 마쳤고, 이제는 클라이언트를 세팅 합니다. 이번에 맡은 프로젝트는 Winform 으로 작업하고 있기에, C# 클라이언트를 준비 합니다.</p>
+
+<p>라이브러리는 32feet 라이브러리를 사용하였습니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">InTheHand.Net.Sockets</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.ComponentModel</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Data</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Drawing</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Text</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Windows.Forms</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MotionMaestro_ver._1.Forms</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">BL_Test</span> <span class="p">:</span> <span class="n">Form</span>
+    <span class="p">{</span>
+        <span class="c1">// Bluetooth 통신 관련 멤버</span>
+        <span class="k">private</span> <span class="n">BluetoothClient</span> <span class="n">bluetoothClient</span><span class="p">;</span>
+        <span class="k">private</span> <span class="n">StreamReader</span> <span class="n">reader</span><span class="p">;</span>
+        <span class="k">private</span> <span class="n">StreamWriter</span> <span class="n">writer</span><span class="p">;</span>
+
+        <span class="c1">// 수신 루프를 계속 돌릴지 여부</span>
+        <span class="k">private</span> <span class="kt">bool</span> <span class="n">isReading</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">BL_Test</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="nf">InitializeComponent</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">ConnectBluetooth</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">try</span>
+            <span class="p">{</span>
+                <span class="c1">// 기존 연결이 열려 있으면 먼저 정리</span>
+                <span class="nf">DisconnectBluetooth</span><span class="p">();</span>
+
+                <span class="c1">// 새 클라이언트 생성</span>
+                <span class="n">bluetoothClient</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">BluetoothClient</span><span class="p">();</span>
+
+                <span class="c1">// 주변 블루투스 디바이스 검색</span>
+                <span class="kt">var</span> <span class="n">devices</span> <span class="p">=</span> <span class="n">bluetoothClient</span><span class="p">.</span><span class="nf">DiscoverDevices</span><span class="p">();</span>
+                <span class="kt">bool</span> <span class="n">found</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+
+                <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">device</span> <span class="k">in</span> <span class="n">devices</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">device</span><span class="p">.</span><span class="n">DeviceName</span> <span class="p">==</span> <span class="s">"raspberrypi"</span><span class="p">)</span> <span class="c1">// Raspberry Pi의 Bluetooth 이름</span>
+                    <span class="p">{</span>
+                        <span class="n">textBox1</span><span class="p">.</span><span class="nf">AppendText</span><span class="p">(</span><span class="s">$"[INFO] Raspberry Pi 찾음: </span><span class="p">{</span><span class="n">device</span><span class="p">.</span><span class="n">DeviceAddress</span><span class="p">}</span><span class="s">\r\n"</span><span class="p">);</span>
+
+                        <span class="c1">// SerialPort 프로필로 연결</span>
+                        <span class="n">Guid</span> <span class="n">guid</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Guid</span><span class="p">(</span><span class="s">"00001101-0000-1000-8000-00805f9b34fb"</span><span class="p">);</span>
+                        <span class="c1">//Guid guid = new Guid("94f39d29-7d6d-437d-973b-fba39e49d4ee");</span>
+                        <span class="n">bluetoothClient</span><span class="p">.</span><span class="nf">Connect</span><span class="p">(</span><span class="n">device</span><span class="p">.</span><span class="n">DeviceAddress</span><span class="p">,</span> <span class="n">guid</span><span class="p">);</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">bluetoothClient</span><span class="p">.</span><span class="n">Connected</span><span class="p">)</span>
+                        <span class="p">{</span>
+                            <span class="n">textBox1</span><span class="p">.</span><span class="nf">AppendText</span><span class="p">(</span><span class="s">"[INFO] 라즈베리파이에 블루투스 연결 성공!\r\n"</span><span class="p">);</span>
+
+                            <span class="c1">// 스트림 얻기</span>
+                            <span class="kt">var</span> <span class="n">stream</span> <span class="p">=</span> <span class="n">bluetoothClient</span><span class="p">.</span><span class="nf">GetStream</span><span class="p">();</span>
+                            <span class="n">reader</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamReader</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span>
+                            <span class="n">writer</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StreamWriter</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span>
+                            <span class="c1">// 자동 Flush 설정 (매번 Write 시점에 실제로 전송)</span>
+                            <span class="n">writer</span><span class="p">.</span><span class="n">AutoFlush</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+
+                            <span class="c1">// 연결 성공하면 비동기로 수신 시작</span>
+                            <span class="n">isReading</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+                            <span class="nf">ReceiveDataAsync</span><span class="p">();</span>
+
+                            <span class="n">found</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+                            <span class="k">break</span><span class="p">;</span> <span class="c1">// 원하는 디바이스를 찾았으므로 반복 종료</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+
+                <span class="k">if</span> <span class="p">(!</span><span class="n">found</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">textBox1</span><span class="p">.</span><span class="nf">AppendText</span><span class="p">(</span><span class="s">"[WARN] 'raspberrypi' 블루투스 기기를 찾지 못했습니다.\r\n"</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">MessageBox</span><span class="p">.</span><span class="nf">Show</span><span class="p">(</span><span class="s">$"Error: </span><span class="p">{</span><span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">/// &lt;summary&gt;</span>
+        <span class="c1">/// 비동기로 Raspberry Pi로부터 데이터를 계속 수신합니다.</span>
+        <span class="c1">/// &lt;/summary&gt;</span>
+        <span class="k">private</span> <span class="k">async</span> <span class="k">void</span> <span class="nf">ReceiveDataAsync</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">try</span>
+            <span class="p">{</span>
+                <span class="k">while</span> <span class="p">(</span><span class="n">isReading</span> <span class="p">&amp;&amp;</span> <span class="n">bluetoothClient</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">&amp;&amp;</span> <span class="n">bluetoothClient</span><span class="p">.</span><span class="n">Connected</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="c1">// ReadLineAsync()는 '\n' 기준으로 한 줄을 읽어옴</span>
+                    <span class="kt">string</span> <span class="n">data</span> <span class="p">=</span> <span class="k">await</span> <span class="n">reader</span><span class="p">.</span><span class="nf">ReadLineAsync</span><span class="p">();</span>
+
+                    <span class="c1">// 상대방이 소켓을 끊었거나, null/빈 문자열이 들어오면 종료로 간주</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+                    <span class="p">{</span>
+                        <span class="n">textBox1</span><span class="p">.</span><span class="nf">AppendText</span><span class="p">(</span><span class="s">"[INFO] 연결이 종료된 것으로 보입니다.\r\n"</span><span class="p">);</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="p">}</span>
+
+                    <span class="c1">// UI 스레드에 안전하게 반영</span>
+                    <span class="nf">Invoke</span><span class="p">(</span><span class="k">new</span> <span class="nf">Action</span><span class="p">(()</span> <span class="p">=&gt;</span>
+                    <span class="p">{</span>
+                        <span class="n">textBox1</span><span class="p">.</span><span class="nf">AppendText</span><span class="p">(</span><span class="s">$"[수신] </span><span class="p">{</span><span class="n">data</span><span class="p">}</span><span class="s">\r\n"</span><span class="p">);</span>
+                    <span class="p">}));</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="c1">// 연결이 끊어지거나 소켓이 닫히면 예외 발생</span>
+                <span class="nf">Invoke</span><span class="p">(</span><span class="k">new</span> <span class="nf">Action</span><span class="p">(()</span> <span class="p">=&gt;</span>
+                <span class="p">{</span>
+                    <span class="n">MessageBox</span><span class="p">.</span><span class="nf">Show</span><span class="p">(</span><span class="s">$"수신 중 오류가 발생했습니다: </span><span class="p">{</span><span class="n">ex</span><span class="p">.</span><span class="n">Message</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
+                <span class="p">}));</span>
+            <span class="p">}</span>
+            <span class="k">finally</span>
+            <span class="p">{</span>
+                <span class="c1">// 루프 종료 시도 시</span>
+                <span class="n">isReading</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">/// &lt;summary&gt;</span>
+        <span class="c1">/// 현재 연결과 자원을 정리합니다.</span>
+        <span class="c1">/// &lt;/summary&gt;</span>
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">DisconnectBluetooth</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">isReading</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">reader</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">reader</span><span class="p">.</span><span class="nf">Dispose</span><span class="p">();</span>
+                <span class="n">reader</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">writer</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">writer</span><span class="p">.</span><span class="nf">Dispose</span><span class="p">();</span>
+                <span class="n">writer</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">bluetoothClient</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">bluetoothClient</span><span class="p">.</span><span class="n">Connected</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">bluetoothClient</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span>
+                <span class="p">}</span>
+                <span class="n">bluetoothClient</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">/// &lt;summary&gt;</span>
+        <span class="c1">/// "디바이스 찾기" 버튼 클릭 -&gt; ConnectBluetooth()</span>
+        <span class="c1">/// &lt;/summary&gt;</span>
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">buttonFindDevice_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nf">ConnectBluetooth</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+</body></html>

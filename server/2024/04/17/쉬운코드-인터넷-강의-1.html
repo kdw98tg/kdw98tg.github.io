@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>본 포스팅은 유튜브 <code class="language-plaintext highlighter-rouge">쉬운코드</code>님의 강의를 보고 작성되었습니다.</p>
+
+<p><a href="https://www.youtube.com/watch?v=oFKYzp6gGfc&list=PLcXyemr8ZeoSGlzhlw4gmpNGicIL4kMcX&index=1">👉👉👉 유튜브 쉬운코드님 강의</a></p>
+
+<h2 id="internet">Internet</h2>
+
+<h3 id="ip">IP</h3>
+<p>인터넷에 연결되기 위해서는 기본적으로 IP주소가 있어야 합니다.</p>
+
+<blockquote>
+  <p>IP주소란 인터넷에 연결되기 위해 필요한 인터넷 상의 주소를 말합니다.</p>
+</blockquote>
+
+<p>보통 통신사를 통해 인터넷에 가입하면, 알아서 IP주소를 할당해 줍니다.</p>
+
+<p>그렇다면, 이제 인터넷과 연결될수 있는 케이블 선을 하나 들고와서 연결을 합니다. 연결하는주최를 바로 <code class="language-plaintext highlighter-rouge">모뎀</code> 이라고 합니다.</p>
+
+<h3 id="모뎀">모뎀</h3>
+
+<blockquote>
+  <p>모뎀이란 네트워크 통신에 필요한 신호 변환 장치 입니다. 이 모뎀에 공유기를 연결 합니다.</p>
+</blockquote>
+
+<h3 id="공유기">공유기</h3>
+
+<blockquote>
+  <p>여러가지 기기들을 인터넷에 연결될 수 있도록 하는 장치 입니다. 하나의 IP주소로도 동시에 인터넷을 사용하는 것이 가능합니다. 즉, 공유기에 연결된 기기들은 같은 네트워크 소속 입니다.</p>
+</blockquote>
+
+<p>모뎀을 통해 공유기가 연결이 되면, 공유기에 연결된 장비들이 네트워크 통신을 할 수 있게 됩니다.</p>
+
+<p><img src="/images/Pasted%20image%2020240417140325.png" alt="LAN"></p>
+
+<p>그럼 만약에, 선을 꽂을 포트가 부족하다면 어떻게 하면 될까요? 바로 <code class="language-plaintext highlighter-rouge">스위치</code>를 구매하여 꽂으면 됩니다.</p>
+
+<h3 id="스위치">스위치</h3>
+
+<blockquote>
+  <p>같은 네트워크내의 기기들이 서로 통신할 수 있도록 하는 장치 입니다. 보통 공유기의 랜포트 수가 부족할 때 사용합니다. <code class="language-plaintext highlighter-rouge">허브</code>라고도 부르는데, 정식명칭은 <code class="language-plaintext highlighter-rouge">스위치</code>가 맞다고 합니다.</p>
+</blockquote>
+
+<p><img src="/images/Pasted%20image%2020240417140522.png" alt="LAN"></p>
+
+<p>이렇게 구성이 되면 우리는 이걸 <code class="language-plaintext highlighter-rouge">네트워크</code>라고 합니다. 물론 지금까지 설명한 것은 작은 의미의 <code class="language-plaintext highlighter-rouge">네트워크</code>입니다.</p>
+
+<h3 id="네트워크">네트워크</h3>
+
+<blockquote>
+  <p>컴퓨터나기기들이 리소스를 공유하거나 데이터를 주고받기 위해 유선 혹은 무선으로 연결된 통신체계를 말합니다.</p>
+</blockquote>
+
+<p>그리고 지금까지 하나의 공유기내에서의 네트워크를 <code class="language-plaintext highlighter-rouge">LAN(Local Area Network)</code>라고 합니다.</p>
+
+<h3 id="lanlocal-area-network">LAN(Local Area Network)</h3>
+
+<blockquote>
+  <p>집, 학교, 회사 등 제한된 범위에서 컴퓨터나 기타 기기들을 연결해서 데이터나 리소스를 공유할 수 있게 하는 네트워크를 말합니다.</p>
+</blockquote>
+
+<p>이것을 구성하는 두가지 중요한 기술이 있습니다. 바로 <code class="language-plaintext highlighter-rouge">Ethernet</code>과 <code class="language-plaintext highlighter-rouge">Wireless Lan(Wi-Fi)</code> 입니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Ethernet</code>: 유선으로 통신하는 체계
+<code class="language-plaintext highlighter-rouge">Wireless Lan(Wi-Fi)</code>: 무선으로 통신하는 체계</p>
+
+<p><img src="/images/Pasted%20image%2020240417140858.png" alt="LAN"></p>
+
+<h3 id="wanwid-area-network">WAN(Wid Area Network)</h3>
+<p><code class="language-plaintext highlighter-rouge">LAN</code>은 하나의 제한된 범위 안에서의 네트워크를 말합니다. 그러면 이렇게 생각할 수 있죠.</p>
+
+<p><strong>다른 곳이랑도 통신을 하고 싶다.</strong></p>
+
+<p>즉, 다른 LAN이나 다른 종류의 네트워크들을 하나로 묶어서 멀리 떨어진 기기들도 통신이 가능하도록 만들고 싶은 것입니다.</p>
+
+<p>이것을 <code class="language-plaintext highlighter-rouge">WAN(Wide Area Network)</code>라고 합니다. 훨씬 더 넓은 범위를 커버하는 네트워크 이죠.</p>
+
+<p>은행의 ATM, Wireless Wan, Internet 등이 여기에 속합니다.</p>
+
+<p>자, 이제 그러면 인터넷이 무엇인지 살펴 보겠습니다.</p>
+
+<h3 id="internet-1">Internet</h3>
+
+<p>위에서 설명했던 모든 것을 통틀어 <code class="language-plaintext highlighter-rouge">Internet</code>이라고 합니다.</p>
+
+<p>인터넷을 설명하는 다른 말들도 있습니다.</p>
+<ul>
+  <li>The Network of Networks</li>
+  <li>The World’s Largest WAN</li>
+  <li>Global Network</li>
+</ul>
+
+<p>딱 봐도 넓은 의미의 것들입니다.</p>
+
+<p>자 근데, 여기에는 문제가 있습니다. 누군가는 LAN들을 서로 연결해줘야 합니다. 즉, 서비스를 제공해주는 주체가 있어야 한다는 것이죠. 그것을 우리는 <code class="language-plaintext highlighter-rouge">ISP(Internet Service Provider)</code>라고 합니다.</p>
+
+<h3 id="ispinternet-service-provider">ISP(Internet Service Provider)</h3>
+
+<blockquote>
+  <p>사용자가 인터넷을 사용할 수 있도록 서비스를 제공해주는 주체를 말합니다.</p>
+</blockquote>
+
+<p>한국을 예로들면, KT, LG 이런 통신사들이 있겠네요.</p>
+
+<p>근데 잘 생각해보니까 어떤사람은 KT 에 가입하고 어떤사람은 LG 에 가입하는데 어떻게 서로 통신이 되는 걸까요?</p>
+
+<p>사실은 ISP끼리는 모두 연결이 되어 있습니다.</p>
+
+<p><img src="/images/Pasted%20image%2020240417141532.png" alt="ISP"></p>
+
+<p>그리고 여기에는 각자의 역할과 규모에 따라서 <code class="language-plaintext highlighter-rouge">tier</code>가 나뉩니다.</p>
+
+<p><img src="/images/Pasted%20image%2020240417141611.png" alt="ISP Tier"></p>
+
+<h4 id="tier-1">tier 1</h4>
+<ul>
+  <li>국제범위의 네트워크 보유</li>
+  <li>인터넷의 모든 네트워크 접근 가능</li>
+  <li>Tier3으로 접근하고 싶으면 1-&gt;2-&gt;3 순으로 접근</li>
+  <li>이때, 하위 Tier로 접근시 트래픽 비용 없음</li>
+  <li>반대로 하위Tier가 상위Tier로 접근시 트래픽 비용 받음</li>
+  <li>인터넷의 중추 역할을 함</li>
+  <li>실 사용자나 기업들에게 바로 서비스를 제공하는것은 아님</li>
+</ul>
+
+<h4 id="tier-2">tier 2</h4>
+<ul>
+  <li>국가/지방 범위 네트워크 보유</li>
+  <li>일반 사용자나 기업 대상 서비스</li>
+  <li>인터넷의 모든 영역에 연결되기 위해 Tier1 ISP 에 비용을 내고 트래픽 전송</li>
+</ul>
+
+<h4 id="tier-3">tier 3</h4>
+<ul>
+  <li>작은 지역 범위 서비스 제공</li>
+  <li>일반 사용자나 기업 대상 서비스</li>
+  <li>상위 ISP에게 비용을 내고인터넷 트래픽을 구매해서 이를 통해 서비스함</li>
+  <li>우리나라에는 많이없고, 땅이 넓은 곳에는 꽤 존재함</li>
+</ul>
+
+<h3 id="라우터">라우터</h3>
+
+<p>자, 그러면 이 ISP 들은 어떻게 서로 연결되어 있는걸까요?</p>
+
+<p>바로 <code class="language-plaintext highlighter-rouge">라우터</code>를 통해 연결되어 있습니다.</p>
+
+<blockquote>
+  <p>목적하는 네트워크에 데이터를 보내는 장치입니다.</p>
+</blockquote>
+
+<p>다음은 라우터를 통해 물리적으로 연결된 인터넷의 최종 모습 입니다.</p>
+
+<p><img src="/images/Pasted%20image%2020240417141947.png" alt="Internet"></p>
+
+<h3 id="노드">노드</h3>
+
+<blockquote>
+  <p>네트워크에 달려있는 장치를 전부 노드라고 합니다. 여기서 네트워크 끝단에 있는 노드를 <code class="language-plaintext highlighter-rouge">EndSystem, 또는 Host</code>라고 합니다.</p>
+</blockquote>
+
+<p><code class="language-plaintext highlighter-rouge">EndSystem 또는 Host</code> 는 <code class="language-plaintext highlighter-rouge">클라이언트와 서버</code>로 나뉘게 됩니다.</p>
+
+</body></html>

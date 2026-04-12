@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>Ubuntu 22.0.4 LTS 버전을 활용하여 서버를 구성하였습니다.</p>
+
+<p>웹서버는 <code class="language-plaintext highlighter-rouge">nginx</code>를 사용하였습니다.</p>
+
+<p>이제 asp.net core의 애플리케이션을 배포하는 작업만이 남았었습니다.</p>
+
+<p>처음 배포를 하다보니까 nginx의 디폴트 설정도 헷갈렸습니다.</p>
+
+<p>다음 코드는 제 asp.net 호스팅을 위한 세팅입니다. 본 세팅은 Microsoft 공식문서를 참고하였습니다.</p>
+
+<p>또한 <code class="language-plaintext highlighter-rouge">phpmyadmin</code>을 설치하여 외부에서도 접근가능하도록 만들어두었습니다.</p>
+
+<p>다음은 제 설정파일 입니다</p>
+
+<p>사용하실때는 <code class="language-plaintext highlighter-rouge">[your-http-port]</code>처럼 생긴것들을 통쨰로 삭제하고 포트번호를 넣으시면 됩니다.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>server <span class="o">{</span>
+        listen <span class="o">[</span>your-http-port] default_server<span class="p">;</span>
+<span class="c">#        listen [::]:[your-http-port] default_server;</span>
+
+        server_name _<span class="p">;</span>
+
+        location / <span class="o">{</span>
+
+<span class="c">#               try_files $uri $uri/ =404;</span>
+                proxy_pass         http://127.0.0.1:[your-proxy-path]]/<span class="p">;</span>
+                proxy_http_version 1.1<span class="p">;</span>
+                proxy_set_header   Upgrade <span class="nv">$http_upgrade</span><span class="p">;</span>
+                proxy_set_header   Host <span class="nv">$host</span><span class="p">;</span>
+                proxy_cache_bypass <span class="nv">$http_upgrade</span><span class="p">;</span>
+                proxy_set_header   X-Forwarded-For <span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+                proxy_set_header   X-Forwarded-Proto <span class="nv">$scheme</span><span class="p">;</span>
+        <span class="o">}</span>
+
+        location /phpmyadmin <span class="o">{</span>
+
+                root /usr/share/<span class="p">;</span>       
+                index index.php index.html index.htm<span class="p">;</span>
+                location ~ ^/phpmyadmin/<span class="o">(</span>.+<span class="se">\.</span>php<span class="o">)</span><span class="nv">$ </span><span class="o">{</span>
+                    try_files <span class="nv">$uri</span> <span class="o">=</span>404<span class="p">;</span>
+                    root /usr/share/<span class="p">;</span>
+                    fastcgi_pass unix:/run/php/php8.1-fpm.sock<span class="p">;</span> <span class="c"># PHP 버전에 맞춰 경로 수정 필요</span>
+                    fastcgi_index index.php<span class="p">;</span>
+                    fastcgi_param SCRIPT_FILENAME <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+                    include /etc/nginx/fastcgi_params<span class="p">;</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+</body></html>

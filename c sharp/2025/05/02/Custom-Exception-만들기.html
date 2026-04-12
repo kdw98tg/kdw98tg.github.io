@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>예외를 처리하는것은 프로그램에서 아주 중요한 사항입니다. 라이브러리를 만들어서 배포할때, 또는 디버깅을 위해서 등등 여러곳에서 사용하게 됩니다.</p>
+
+<p>C#에서는 Exception 이라는 클래스를 상속받은 여러가지 예외 클래스들이 있습니다. 프로그램을 시작했다면 한번은 접해본 <code class="language-plaintext highlighter-rouge">ObjectNullReferenceException</code>, <code class="language-plaintext highlighter-rouge">ArgumentNullException</code>, <code class="language-plaintext highlighter-rouge">ArgumentException</code> 등이 그 예 입니다.</p>
+
+<p>하지만, 해당 예외만 가지고 도메인에서 발생하는 예외들을 처리하기에는 힘듭니다. 따라서, 커스텀으로 예외를 만들어서 사용해야 합니다.</p>
+
+<p>C#에서 예외를 만드는 방법은 다음과 같습니다.</p>
+
+<h2 id="excpetion-만들기">Excpetion 만들기</h2>
+
+<p>우선, 클래스를 만들고, 클래스의 이름을 원하는 Exception 이름으로 정의합니다. User의 이름이 잘못되었음을 나타내는 예외를 만들도록 하겠습니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">class</span> <span class="nc">UserNameInvalidException</span> <span class="p">:</span> <span class="n">Exception</span>
+    <span class="p">{</span>
+    
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>클래스를 만든 후, 생성자를 총 3개 필수적으로 생성해줘야 합니다. (기본 생성자를 제외하면 2개)</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">UserNameInvalidException</span> <span class="p">:</span> <span class="n">Exception</span>
+<span class="p">{</span>
+	<span class="k">public</span> <span class="nf">UserNameInvalidException</span><span class="p">()</span>
+	<span class="p">{</span>
+
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="nf">UserNameInvalidException</span><span class="p">(</span><span class="kt">string</span> <span class="n">_message</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">_message</span><span class="p">)</span>
+	<span class="p">{</span>
+
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="nf">UserNameInvalidException</span><span class="p">(</span><span class="kt">string</span> <span class="n">_message</span><span class="p">,</span> <span class="n">Exception</span> <span class="n">_inner</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">_message</span><span class="p">,</span> <span class="n">_inner</span><span class="p">)</span>
+	<span class="p">{</span>
+
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이렇게 하면 사용하는 곳에서 다음과 같이 쓸 수 있습니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">UserService</span>
+<span class="p">{</span>
+	<span class="k">public</span> <span class="k">void</span> <span class="nf">ValidateUser</span><span class="p">(</span><span class="n">User</span> <span class="n">_newUser</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">_newUser</span><span class="p">.</span><span class="n">UserAge</span> <span class="p">&lt;=</span> <span class="m">0</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">throw</span> <span class="k">new</span> <span class="nf">UserAgeException</span><span class="p">(</span><span class="s">"나이는 음수일 수 없음"</span><span class="p">);</span>
+		<span class="p">}</span>
+		<span class="k">if</span> <span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">(</span><span class="n">_newUser</span><span class="p">.</span><span class="n">UserName</span><span class="p">))</span>
+		<span class="p">{</span>
+			<span class="k">throw</span> <span class="k">new</span> <span class="nf">UserNameInvalidException</span><span class="p">(</span><span class="s">"이름을 넣어주세요."</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">MVP_Structure.Exceptions</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">MVP_Structure.Model</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">MVP_Structure.Repository</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">MVP_Structure.Service</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">MVP_Structure.View.MainFormView</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">MVP_Structure.Presenter.MainForm</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">MainFormPresenter</span> <span class="p">:</span> <span class="n">IMainFormPresenter</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="n">IMainFormView</span> <span class="n">mainView</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+        <span class="k">private</span> <span class="n">UserService</span> <span class="n">userService</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">MainFormPresenter</span><span class="p">(</span><span class="n">IMainFormView</span> <span class="n">_view</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">mainView</span> <span class="p">=</span> <span class="n">view</span><span class="p">;</span>
+            <span class="n">userService</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">UserService</span><span class="p">(</span><span class="k">new</span> <span class="nf">UserRepository</span><span class="p">());</span>
+        <span class="p">}</span>
+        
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">InsertUser</span><span class="p">(</span><span class="n">User</span> <span class="n">_user</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">try</span>
+            <span class="p">{</span>
+                <span class="n">userService</span><span class="p">.</span><span class="nf">InsertUser</span><span class="p">(</span><span class="n">_user</span><span class="p">);</span>
+                <span class="n">mainView</span><span class="p">.</span><span class="nf">AddUserToListView</span><span class="p">(</span><span class="n">_user</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">catch</span> <span class="p">(</span><span class="n">UserNameInvalidException</span> <span class="n">_userNameException</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">MessageBox</span><span class="p">.</span><span class="nf">Show</span><span class="p">(</span><span class="s">"이름 잘못됨"</span> <span class="p">+</span> <span class="n">_userNameException</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이렇게 하여, 특정 오류마다 Handling을 할 수 있게 된다는것이 가장 큰 장점인것 같습니다.</p>
+
+</body></html>

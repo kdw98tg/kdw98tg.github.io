@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="프로젝트-내용">프로젝트 내용</h2>
+
+<p>해당 프로젝트는 지휘봉의 움직임에 따라서 음원 재생 속도를 제어하기 위해 개발 되었습니다.</p>
+
+<ul>
+  <li>지휘봉을 크게 흔듦 - 음원의 소리가 커짐</li>
+  <li>지휘봉을 빠르게 흔듦 - 음원의 재생속도가 빨라짐</li>
+  <li>지휘봉을 멈춤 - 음원 정지</li>
+</ul>
+
+<p>연구용 모델이라서, 라즈베리파이 서버를 사용했습니다.</p>
+
+<h3 id="실제-구동-장면">실제 구동 장면</h3>
+
+<video width="100%" height="auto" controls="" autoplay="" loop="" muted="" playsinline="">
+  <source src="/images/KakaoTalk_20260212_134608996.mp4" type="video/mp4"></source>
+  해당 브라우저는 비디오 태그를 지원하지 않습니다.
+</video>
+
+<h3 id="실제-구동-장면화면">실제 구동 장면(화면)</h3>
+
+<video width="100%" height="auto" controls="" autoplay="" loop="" muted="" playsinline="">
+  <source src="/images/KakaoTalk_20260212_134533162.mp4" type="video/mp4"></source>
+  해당 브라우저는 비디오 태그를 지원하지 않습니다.
+</video>
+
+<h3 id="라즈베리파이-서버-및-가속도센서가-달린-지휘봉">라즈베리파이 서버 및 가속도센서가 달린 지휘봉</h3>
+
+<p><img src="/images/KakaoTalk_20260212_134508552_01.jpg" alt=""></p>
+
+<h3 id="결과-출력-기능">결과 출력 기능</h3>
+
+<p><img src="/images/KakaoTalk_20260212_134508552.png" alt=""></p>
+
+<h2 id="기술-스택">기술 스택</h2>
+<ul>
+  <li>Window Forms</li>
+  <li>라즈베리파이 Server</li>
+  <li>BLE 5.0</li>
+</ul>
+
+<h2 id="기술적-내용">기술적 내용</h2>
+
+<ul>
+  <li>그라데이션 및 UI 등을 UserControl 클래스를 활용하여 커스텀 클래스로 만듦</li>
+  <li>라즈베리파이 서버(python)와 Window Client 간의 실시간 통신</li>
+  <li>BLE 통신을 구현</li>
+  <li>가속도 센서를 2개 사용하여 지휘봉의 움직임을 수치화 시킴</li>
+  <li>FFT(Fast Fourier Transform)알고리즘을 구현 및 사용하여 지휘봉의 진폭 및 주파수를 구함</li>
+  <li>LiveChart를 실시간으로 랜더링함</li>
+  <li>프린트 라이브러리를 사용하여 결과값 출력</li>
+  <li>Client에 MVP 패턴을 적용하여 관심사 분리</li>
+</ul>
+
+<h2 id="배운점">배운점</h2>
+
+<ul>
+  <li>외주가 끝나기 하루 전에 FFT 알고리즘이 아닌 다른 알고리즘으로 교체해달라고 요청함. 자주 바뀔 수 있는 로직들은 interface를 사용하여 유연하게 대처하는것이 좋다고 생각하게 됨</li>
+  <li>클라이언트와 자주 소통하여 진행했음에도, 마지막날에 요구사항이 바뀌었음. 끝날때까지 방심을 하면안됨</li>
+</ul>
+</body></html>

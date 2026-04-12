@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="에셋-관리-방법">에셋 관리 방법</h2>
+
+<p>에셋을 관리하는 방법에는 여러가지가 있습니다.</p>
+
+<p>제일 고전적인 에셋 관리 방법은 Unity의 <code class="language-plaintext highlighter-rouge">ResourceManager</code>를 통해 관리하는 방법입니다. 유니티의 예약 폴더에 <code class="language-plaintext highlighter-rouge">Resource</code>라는 폴더를 만들어 두고, 해당 폴더 아래에 에셋들을 보관하며, 에셋을 불러오고 싶을때는 <code class="language-plaintext highlighter-rouge">Resources.Load&lt;&gt;</code>함수를 통해 불러오게 됩니다.</p>
+
+<p>하지만 이 방법은 로컬폴더에만 접근가능하다는 단점이 있어, 어떤 에셋을 업데이트할 때 마다 버전 업데이트를 해줘야 한다는 치명적인 단점이 있습니다.</p>
+
+<p>이것을 보완하고자 나온 방법이 <code class="language-plaintext highlighter-rouge">Asset Bundle</code> 이라는 시스템 입니다. 이것은 에셋들을 서버에서 관리하고, 에셋 업데이트 시 게임 자체의 버전 업데이트가 필요 없도록 하고, 서버에서 에셋을 내려받는 시스템 입니다. 하지만 <code class="language-plaintext highlighter-rouge">Asset Bunlde</code>은 메모리 관리가 까다롭고, 런타임 성능 문제가 있었습니다.</p>
+
+<p>또 이것을 보완하기 위해 나온 것이 <code class="language-plaintext highlighter-rouge">Addressable Asset</code>입니다. <code class="language-plaintext highlighter-rouge">Asset Bundle</code>의 메모리 문제를 해결하고, 유연한 로딩 및 관리로 더욱 유연하게 에셋을 사용할 수 있는 시스템 입니다.</p>
+
+<h2 id="addressable-asset-사용하는-방법">Addressable Asset 사용하는 방법</h2>
+
+<p>우선, 이것을 사용하기 위해서는 <strong>Window</strong> &gt; <strong>PackageManager</strong> &gt; <strong>Unity Registry</strong> 로 이동하셔서 <strong>Addressable Asset</strong> 을 다운받아야 합니다.</p>
+
+<p>Addressable Asset을 다운받고 나면, Addressable 에 접근할 수 있는 메뉴가 생성됩니다.</p>
+
+<p><img src="/images/Pasted%20image%2020240702124051.png" alt="Addressable Import"></p>
+
+<p>이렇게 하면 Addressable 을 사용할 준비가 완료되었습니다.</p>
+
+<p><strong>WIndow</strong> &gt; <strong>Asset Management</strong> &gt; <strong>Addressables</strong> &gt; <strong>Group</strong> 을 통해 새로운 Addressable Gorup 을 지정해 줍니다.</p>
+
+<p><img src="/images/Pasted%20image%2020240702124218.png" alt="Addressable-Group"></p>
+
+<p>이렇게 하면, Addressable 을 사용할 준비가 완료되었습니다.</p>
+
+<h2 id="addressable-등록하기">Addressable 등록하기</h2>
+
+<p>이제, Addressable Asset을 사용하기 위해서 Addressable 로 관리할 오브젝트들을 설정해 봅시다.</p>
+
+<p>Addressable 을 사용하기 위해서는 GameObject를 Prefab 으로 만들어주고, 해당 Prefab을 Addressable Group으로 드래그 앤 드롭 해주면 됩니다.</p>
+
+<p>저는 <code class="language-plaintext highlighter-rouge">UI</code>라는 새로운 Addressable Group을 만들어서 UI 들을 등록 해놨습니다.
+<img src="Pasted%20image%2020240702124533.png" alt=""></p>
+
+<p>오른쪽에보면 <code class="language-plaintext highlighter-rouge">preload</code>라고 적혀있는 곳이 있는데, 여기는 <code class="language-plaintext highlighter-rouge">Label</code>을 적는 칸이다.</p>
+
+<p>여기서 지정한 Label 을 통해 코드에서 로드 타이밍을 정할 수 있다.
+(Label은 다중으로 설정 가능함)</p>
+
+<h2 id="addressable-가져오기">Addressable 가져오기</h2>
+
+<p>이제 코드로 Addressable Asset을 가져오도록 합니다.
+Addressable Asset 을 가져올떄는 항상 비동기로 가져오도록 만들어져 있습니다.</p>
+
+<p>따라서 callback 을 통해서 완료되었다는 사실을 전달해줄 수 있도록 합니다.</p>
+
+<h3 id="하나만-지정해서-가져오기">하나만 지정해서 가져오기</h3>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">private</span> <span class="k">void</span> <span class="n">LoadAsync</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kt">string</span> <span class="n">_key</span><span class="p">,</span> <span class="n">Action</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">_callback</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span> <span class="k">where</span> <span class="n">T</span> <span class="p">:</span> <span class="n">UnityEngine</span><span class="p">.</span><span class="n">Object</span>
+
+<span class="p">{</span>
+	<span class="kt">string</span> <span class="n">loadKey</span> <span class="p">=</span> <span class="n">_key</span><span class="p">;</span>
+
+	<span class="k">if</span> <span class="p">(</span><span class="n">_key</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="s">".sprite"</span><span class="p">))</span>
+	<span class="p">{</span>
+		<span class="n">loadKey</span> <span class="p">=</span> <span class="s">$"</span><span class="p">{</span><span class="n">_key</span><span class="p">}</span><span class="s">[</span><span class="p">{</span><span class="n">_key</span><span class="p">.</span><span class="nf">Replace</span><span class="p">(</span><span class="s">".sprite"</span><span class="p">,</span> <span class="s">""</span><span class="p">)}</span><span class="s">]"</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+	<span class="kt">var</span> <span class="n">asyncOperation</span> <span class="p">=</span> <span class="n">Addressables</span><span class="p">.</span><span class="n">LoadAssetAsync</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">loadKey</span><span class="p">);</span>
+	<span class="n">asyncOperation</span><span class="p">.</span><span class="n">Completed</span> <span class="p">+=</span> <span class="p">(</span><span class="n">op</span><span class="p">)</span> <span class="p">=&gt;</span>
+	<span class="p">{</span>
+		<span class="c1">//캐시 확인</span>
+	
+		<span class="k">if</span> <span class="p">(</span><span class="n">resources</span><span class="p">.</span><span class="nf">TryGetValue</span><span class="p">(</span><span class="n">_key</span><span class="p">,</span> <span class="k">out</span> <span class="n">UnityEngine</span><span class="p">.</span><span class="n">Object</span> <span class="n">resource</span><span class="p">))</span>
+		<span class="p">{</span>
+			<span class="n">_callback</span><span class="p">?.</span><span class="nf">Invoke</span><span class="p">(</span><span class="n">op</span><span class="p">.</span><span class="n">Result</span><span class="p">);</span>
+			<span class="k">return</span><span class="p">;</span>
+		<span class="p">}</span>
+	
+	<span class="n">resources</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">_key</span><span class="p">,</span> <span class="n">op</span><span class="p">.</span><span class="n">Result</span><span class="p">);</span>
+	<span class="n">_callback</span><span class="p">?.</span><span class="nf">Invoke</span><span class="p">(</span><span class="n">op</span><span class="p">.</span><span class="n">Result</span><span class="p">);</span>
+	
+	<span class="p">};</span>	
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h3 id="전체-로드">전체 로드</h3>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">public</span> <span class="k">void</span> <span class="n">LoadAllAsync</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="kt">string</span> <span class="n">label</span><span class="p">,</span> <span class="n">Action</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="p">&gt;</span> <span class="n">callback</span><span class="p">)</span> <span class="k">where</span> <span class="n">T</span> <span class="p">:</span> <span class="n">UnityEngine</span><span class="p">.</span><span class="n">Object</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">opHandle</span> <span class="p">=</span> <span class="n">Addressables</span><span class="p">.</span><span class="nf">LoadResourceLocationsAsync</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="k">typeof</span><span class="p">(</span><span class="n">T</span><span class="p">));</span>
+        <span class="n">opHandle</span><span class="p">.</span><span class="n">Completed</span> <span class="p">+=</span> <span class="p">(</span><span class="n">op</span><span class="p">)</span> <span class="p">=&gt;</span>
+        <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">loadCount</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+
+            <span class="kt">int</span> <span class="n">totalCount</span> <span class="p">=</span> <span class="n">op</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span>
+
+            <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">result</span> <span class="k">in</span> <span class="n">op</span><span class="p">.</span><span class="n">Result</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">PrimaryKey</span><span class="p">.</span><span class="nf">Contains</span><span class="p">(</span><span class="s">".sprite"</span><span class="p">))</span>
+                <span class="p">{</span>
+                    <span class="n">LoadAsync</span><span class="p">&lt;</span><span class="n">Sprite</span><span class="p">&gt;(</span><span class="n">result</span><span class="p">.</span><span class="n">PrimaryKey</span><span class="p">,</span> <span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="p">=&gt;</span>
+                    <span class="p">{</span>
+                        <span class="n">loadCount</span><span class="p">++;</span>
+                        <span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">PrimaryKey</span> <span class="p">+</span> <span class="s">" "</span> <span class="p">+</span> <span class="n">loadCount</span> <span class="p">+</span> <span class="s">" / "</span> <span class="p">+</span> <span class="n">totalCount</span><span class="p">);</span>
+                        <span class="n">callback</span><span class="p">?.</span><span class="nf">Invoke</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">PrimaryKey</span><span class="p">,</span> <span class="n">loadCount</span><span class="p">,</span> <span class="n">totalCount</span><span class="p">);</span>
+                    <span class="p">});</span>
+                <span class="p">}</span>
+                <span class="k">else</span>
+                <span class="p">{</span>
+                    <span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">PrimaryKey</span><span class="p">);</span>
+                    <span class="n">LoadAsync</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">result</span><span class="p">.</span><span class="n">PrimaryKey</span><span class="p">,</span> <span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="p">=&gt;</span>
+                    <span class="p">{</span>
+                        <span class="n">loadCount</span><span class="p">++;</span>
+                        <span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">PrimaryKey</span> <span class="p">+</span> <span class="s">" "</span> <span class="p">+</span> <span class="n">loadCount</span> <span class="p">+</span> <span class="s">" / "</span> <span class="p">+</span> <span class="n">totalCount</span><span class="p">);</span>
+                        <span class="n">callback</span><span class="p">?.</span><span class="nf">Invoke</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">PrimaryKey</span><span class="p">,</span> <span class="n">loadCount</span><span class="p">,</span> <span class="n">totalCount</span><span class="p">);</span>
+                    <span class="p">});</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이렇게하면, 아래와 같이 사용할 수 있습니다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ResourceManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">LoadAllAsync</span><span class="p">&lt;</span><span class="n">Object</span><span class="p">&gt;(</span><span class="s">"preload"</span><span class="p">,</span> <span class="p">(</span><span class="n">primaryKey</span><span class="p">,</span> <span class="n">loadCount</span><span class="p">,</span> <span class="n">totalCount</span><span class="p">)</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+	<span class="c1">//프로그레스바 매핑하기</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">loadCount</span> <span class="p">==</span> <span class="n">totalCount</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="s">"Loaded"</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="개선사항">개선사항</h2>
+<p>현재는 로컬에 저장되어 있지만, 이 Addressable 파일들을 서버로 빼내서, 앱스토어에 업데이트 하지 않아도, Resource 들을 바꿀 수 있도록 해야 합니다.</p>
+</body></html>

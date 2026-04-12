@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="service-패턴-이란">Service 패턴 이란?</h2>
+
+<p>서비스 패턴이란 애플리케이션의 비즈니스 로직을 담는 계층을 별도로 두어, UI 계층과 도메인 또는 데이터접근 계층을 분리하기 위한 설계 방식입니다.</p>
+
+<p>보통 Layered Architecture에서 자주 적용되며, 다음과 같은 계층을 가집니다.</p>
+
+<p><img src="/images/Pasted%20image%2020250124153730.png" alt=""></p>
+
+<p>Controller에서 입력을 받고, 로직을 처리할 때, Service에 캡슐화된 비지니스 로직을 호출하여 사용하는 방식을 말합니다. 그리고 Service는 추상화된 Repository에 요청하여 DB의 정보를 가져와서 처리하게 됩니다.</p>
+
+<p>하지만, Asp.net Core 에서는 DBContext로 Repository 계층을 이미 잘 추상화 해놓았기 때문에, Repository 패턴을 굳이 구현하지 않아도 된다는 목소리가 큽니다. Repository 패턴을 구현하면 과한 추상화로 구조가 오히려 복잡히질 수 있기 때문입니다. 그래서 Service 계층까지만 사용하는걸 선호합니다.</p>
+
+<p>Microsoft의 공식문서 <code class="language-plaintext highlighter-rouge">TodoApi</code> 만들기를 보면, 위의 계층없이 Controller에서 모든 행동을 처리하는것을 볼 수 있습니다. 간단한 Api를 만들떄는 해당 방식이 좋을 수 있으나, 로직이 복잡해지고, 재사용할 비지니스 로직이 많아질수록 Controller에 코드가 집중되기때문에 유지보수 및 수정에서 단점이 발생합니다.</p>
+
+<p>따라서 Service 패턴을 구현하여 결합도와 관심사를 낮추는 방식으로 해결합니다.</p>
+
+<h2 id="service-패턴-구현하기">Service 패턴 구현하기</h2>
+
+<p>User데이터를 조작하는 예제를 가져왔습니다. User는 다음과 같이 정의합니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">namespace</span> <span class="nn">AspDemo.Models.User</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">User</span>
+    <span class="p">{</span>
+        <span class="p">[</span><span class="n">Key</span><span class="p">]</span>
+        <span class="p">[</span><span class="nf">DatabaseGenerated</span><span class="p">(</span><span class="n">DatabaseGeneratedOption</span><span class="p">.</span><span class="n">Identity</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="kt">long</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">string</span><span class="p">?</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Age</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>그리고 해당 User를 조작하기 위해 Dto를 만듭니다. 이 예제에서는 <code class="language-plaintext highlighter-rouge">유저 1명 조회</code>, <code class="language-plaintext highlighter-rouge">전체 유저 조회</code>, <code class="language-plaintext highlighter-rouge">새로운 유저 삽입</code> 이렇게 3가지 기능을 만듭니다. 그에 맞게 Dto를 만들어 줍니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">namespace</span> <span class="nn">AspDemo.Models.User</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">UserInfoDto</span>
+    <span class="p">{</span>
+        <span class="k">protected</span> <span class="nf">UserInfoDto</span><span class="p">()</span> <span class="p">{</span> <span class="p">}</span>
+
+        <span class="k">public</span> <span class="kt">long</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">string</span><span class="p">?</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Age</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">namespace</span> <span class="nn">AspDemo.Models.User</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">CreateNewUserDto</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">string</span><span class="p">?</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Age</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>그다음으로는 Service 계층을 만듭니다. Service 계층을 만들 때, interface를 정의하여 사용하고, Controller에서 Interface를 DI 받도록 합니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">AspDemo.Models.User</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">interface</span> <span class="nc">IUserService</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">UserInfoDto</span><span class="p">?&gt;</span> <span class="nf">GetUserByIdAsync</span><span class="p">(</span><span class="kt">long</span> <span class="n">_id</span><span class="p">);</span>
+    <span class="k">public</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">UserInfoDto</span><span class="p">&gt;?&gt;</span> <span class="nf">GetAllUsersAsync</span><span class="p">();</span>
+    <span class="k">public</span> <span class="n">Task</span> <span class="nf">InsertNewUser</span><span class="p">(</span><span class="n">CreateNewUserDto</span> <span class="n">_user</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>그 다음에는 해당 인터페이스를 구현한 구현 클래스 <code class="language-plaintext highlighter-rouge">UserService</code>를 만듭니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">AspDemo.Data</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">AspDemo.Models.User</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">AutoMapper</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.EntityFrameworkCore</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">UserService</span> <span class="p">:</span> <span class="n">IUserService</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">MySqlContext</span> <span class="n">context</span><span class="p">;</span>
+    <span class="k">public</span> <span class="n">IMapper</span> <span class="n">mapper</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nf">UserService</span><span class="p">(</span><span class="n">MySqlContext</span> <span class="n">_context</span><span class="p">,</span> <span class="n">IMapper</span> <span class="n">_mapper</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">context</span> <span class="p">=</span> <span class="n">_context</span><span class="p">;</span>
+        <span class="n">mapper</span> <span class="p">=</span> <span class="n">_mapper</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">UserInfoDto</span><span class="p">?&gt;</span> <span class="nf">GetUserByIdAsync</span><span class="p">(</span><span class="kt">long</span> <span class="n">_id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">user</span> <span class="p">=</span> <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="nf">FindAsync</span><span class="p">(</span><span class="n">_id</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">user</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">UserInfoDto</span><span class="p">&gt;(</span><span class="n">user</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">UserInfoDto</span><span class="p">&gt;?&gt;</span> <span class="nf">GetAllUsersAsync</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">userEntityList</span> <span class="p">=</span> <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="nf">ToListAsync</span><span class="p">();</span><span class="c1">//ToListAsync 는 요소가 없을 때 리스트를 만들고 Count = 0 을 반환</span>
+
+        <span class="k">return</span> <span class="n">mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">UserInfoDto</span><span class="p">&gt;&gt;(</span><span class="n">userEntityList</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">InsertNewUser</span><span class="p">(</span><span class="n">CreateNewUserDto</span> <span class="n">_createNewUserDto</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">newUser</span> <span class="p">=</span> <span class="n">mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;(</span><span class="n">_createNewUserDto</span><span class="p">);</span>
+
+        <span class="n">context</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">newUser</span><span class="p">);</span>
+
+        <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="nf">SaveChangesAsync</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이렇게 하면, Service 계층의 작업이 완료 됩니다. 이제 이 Service 를 DI 받은 Controller를 구현합니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">AspDemo.Models.User</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Mvc</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">UnityApiServer.Controllers</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"api/[controller]"</span><span class="p">)]</span>
+    <span class="p">[</span><span class="n">ApiController</span><span class="p">]</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">UserController</span> <span class="p">:</span> <span class="n">ControllerBase</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="n">IUserService</span> <span class="n">userService</span><span class="p">;</span>
+        <span class="k">private</span> <span class="n">ILogger</span><span class="p">&lt;</span><span class="n">UserController</span><span class="p">&gt;</span> <span class="n">logger</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">UserController</span><span class="p">(</span><span class="n">IUserService</span> <span class="n">_userService</span><span class="p">,</span> <span class="n">ILogger</span><span class="p">&lt;</span><span class="n">UserController</span><span class="p">&gt;</span> <span class="n">_logger</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">userService</span> <span class="p">=</span> <span class="n">_userService</span><span class="p">;</span>
+            <span class="n">logger</span> <span class="p">=</span> <span class="n">_logger</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="p">[</span><span class="nf">HttpGet</span><span class="p">(</span><span class="s">"{id}"</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">ActionResult</span><span class="p">&lt;</span><span class="n">UserInfoDto</span><span class="p">&gt;&gt;</span> <span class="nf">GetUser</span><span class="p">(</span><span class="kt">long</span> <span class="n">id</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">userInfoDto</span> <span class="p">=</span> <span class="k">await</span> <span class="n">userService</span><span class="p">.</span><span class="nf">GetUserByIdAsync</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">userInfoDto</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="n">userInfoDto</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="p">[</span><span class="nf">HttpGet</span><span class="p">(</span><span class="s">"all"</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">ActionResult</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">UserInfoDto</span><span class="p">&gt;&gt;&gt;</span> <span class="nf">GetAllUsers</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">userInfoDtoList</span> <span class="p">=</span> <span class="k">await</span> <span class="n">userService</span><span class="p">.</span><span class="nf">GetAllUsersAsync</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">userInfoDtoList</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="n">userInfoDtoList</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="p">[</span><span class="nf">HttpPut</span><span class="p">(</span><span class="s">"insert"</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">ActionResult</span><span class="p">&gt;</span> <span class="nf">InsertNewUser</span><span class="p">([</span><span class="n">FromBody</span><span class="p">]</span> <span class="n">CreateNewUserDto</span> <span class="n">newUser</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">newUser</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">try</span>
+            <span class="p">{</span>
+                <span class="k">await</span> <span class="n">userService</span><span class="p">.</span><span class="nf">InsertNewUser</span><span class="p">(</span><span class="n">newUser</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">logger</span><span class="p">.</span><span class="nf">LogError</span><span class="p">(</span><span class="n">ex</span><span class="p">,</span> <span class="s">"InsertNewUser error"</span><span class="p">);</span>
+                <span class="k">return</span> <span class="nf">StatusCode</span><span class="p">(</span><span class="n">StatusCodes</span><span class="p">.</span><span class="n">Status500InternalServerError</span><span class="p">,</span> <span class="s">"An error occurred while inserting new user."</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nf">Ok</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>해당 Service를 받아 구현한 Controller 입니다. Controller의 역할이 분명해지고, 코드 라인수도 줄어들었으며 가독성도 향상되었음을 볼 수 있습니다.</p>
+
+</body></html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>유니티에서 게임을 만들다 보면, 이미지를 업로드, 다운로드 해야하는 상황이 생깁니다. 일반적으로 프로필 사진 같은게 있습니다.</p>
+
+<p>이미지를 저장할 때는, DB에 바로 이미지를 넣는게 아니라, 서버에 이미지를 저장하고, 그 서버의 디렉토리를 DB에 저장하여 불러오는 식으로 합니다.</p>
+
+<p>물론 DB에 이미지를 바이트로 변환해서 저장하는 방식이 있습니다. 하지만 속도가 엄청나게 느리기 때문에 권장하는 방법은 아닙니다.</p>
+
+<p>API는 <code class="language-plaintext highlighter-rouge">ASP.net core</code>를 사용하였습니다. 예전에 <code class="language-plaintext highlighter-rouge">php</code>를 써서 업로드 할 때는 서버 루트 디렉토리 아래에 디렉토리를 만들어서 저장했었는데, <code class="language-plaintext highlighter-rouge">Asp.net core</code> 는 해당 솔루션이 있는 폴더에 <code class="language-plaintext highlighter-rouge">wwwroot</code>라는 파일을 생성해서 여기에 저장하는 방식을 사용합니다.</p>
+
+<h2 id="이미지-업로드">이미지 업로드</h2>
+
+<h3 id="texture2d-형태와-sprite-형태에서-변환하기">Texture2D 형태와 Sprite 형태에서 변환하기</h3>
+
+<p>우선, Unity 에서 서버로 이미지를 올리는 코드를 작성 합니다. 유니티에서는 <code class="language-plaintext highlighter-rouge">Sprite</code> 라는 형태로 이미지를 사용하지만, 서버에 올리때는 <code class="language-plaintext highlighter-rouge">Texture2D</code> 형태로 바꾸어서 올리게 됩니다.</p>
+
+<p>이 과정 (Sprite -&gt; Texture2D , Texture2D -&gt; Sprite)을 해주는 함수를 정의 합니다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">UnityMethod</span>
+<span class="p">{</span>
+	<span class="k">public</span> <span class="k">static</span> <span class="n">Sprite</span> <span class="nf">Texture2DToSprite</span><span class="p">(</span><span class="n">Texture2D</span> <span class="n">_texture</span><span class="p">)</span>
+	<span class="p">{</span>
+	<span class="k">return</span> <span class="n">Sprite</span><span class="p">.</span><span class="nf">Create</span><span class="p">(</span><span class="n">_texture</span><span class="p">,</span> <span class="k">new</span> <span class="nf">Rect</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">_texture</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">_texture</span><span class="p">.</span><span class="n">height</span><span class="p">),</span> <span class="k">new</span> <span class="nf">Vector2</span><span class="p">(</span><span class="m">0.5f</span><span class="p">,</span> <span class="m">0.5f</span><span class="p">));</span>
+	<span class="p">}</span>
+	
+	<span class="k">public</span> <span class="k">static</span> <span class="n">Texture2D</span> <span class="nf">SpriteToTexture2D</span><span class="p">(</span><span class="n">Sprite</span> <span class="n">sprite</span><span class="p">)</span>
+	<span class="p">{</span>
+	<span class="c1">// Sprite의 텍스처 영역을 가져옴</span>
+	<span class="kt">var</span> <span class="n">rect</span> <span class="p">=</span> <span class="n">sprite</span><span class="p">.</span><span class="n">rect</span><span class="p">;</span>
+	<span class="kt">var</span> <span class="n">texture</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Texture2D</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">rect</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">rect</span><span class="p">.</span><span class="n">height</span><span class="p">);</span>
+	
+	<span class="c1">// Sprite의 픽셀 데이터를 새 텍스처에 복사</span>
+	<span class="kt">var</span> <span class="n">pixels</span> <span class="p">=</span> <span class="n">sprite</span><span class="p">.</span><span class="n">texture</span><span class="p">.</span><span class="nf">GetPixels</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">rect</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">rect</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">rect</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">rect</span><span class="p">.</span><span class="n">height</span><span class="p">);</span>
+	
+	<span class="n">texture</span><span class="p">.</span><span class="nf">SetPixels</span><span class="p">(</span><span class="n">pixels</span><span class="p">);</span>
+	<span class="n">texture</span><span class="p">.</span><span class="nf">Apply</span><span class="p">();</span>
+	
+	<span class="k">return</span> <span class="n">texture</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="imagecontroller-생성">ImageController 생성</h3>
+
+<p>이제 변환하는 코드를 만들었으니, 실제로 서버에 업로드 하는 코드를 생성 합니다. 유니티에서는 통신을 비동기로 하는것을 권장하기 때문에 코루틴을 사용하여 통신을 합니다.</p>
+
+<p>우선, Upload 하는 코드부터 작성합니다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine.Networking</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Common.Define</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEditor</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">ImageController</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="kt">string</span> <span class="n">imageUploadURL</span> <span class="p">=</span> <span class="n">Define</span><span class="p">.</span><span class="n">ServerURL</span> <span class="p">+</span> <span class="s">"/api/Image/upload"</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="n">IEnumerator</span> <span class="nf">UploadImage</span><span class="p">(</span><span class="kt">string</span> <span class="n">_fileName</span><span class="p">,</span> <span class="n">Texture2D</span> <span class="n">_image</span><span class="p">,</span> <span class="n">Action</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">,</span> <span class="kt">string</span><span class="p">&gt;</span> <span class="n">_action</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">byte</span><span class="p">[]</span> <span class="n">imageBytes</span> <span class="p">=</span> <span class="n">_image</span><span class="p">.</span><span class="nf">EncodeToPNG</span><span class="p">();</span>
+
+        <span class="n">WWWForm</span> <span class="n">form</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">WWWForm</span><span class="p">();</span>
+
+        <span class="c1">//AddbinaryData 의 첫번째 매개변수 이름이 서버의 매개변수 이름과 다르면 ProtocolError 를 뿜음</span>
+        <span class="c1">//imageByte 는 사진이 바이트로 바뀐 형태</span>
+        <span class="c1">//3번쨰는 이미지 이름</span>
+        <span class="c1">//4번째는 이미지 형식</span>
+        <span class="n">form</span><span class="p">.</span><span class="nf">AddBinaryData</span><span class="p">(</span><span class="s">"_file"</span><span class="p">,</span> <span class="n">imageBytes</span><span class="p">,</span> <span class="n">_fileName</span><span class="p">,</span> <span class="s">"image/png"</span><span class="p">);</span>
+
+        <span class="k">using</span> <span class="p">(</span><span class="n">UnityWebRequest</span> <span class="n">request</span> <span class="p">=</span> <span class="n">UnityWebRequest</span><span class="p">.</span><span class="nf">Post</span><span class="p">(</span><span class="n">imageUploadURL</span><span class="p">,</span> <span class="n">form</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">yield</span> <span class="k">return</span> <span class="n">request</span><span class="p">.</span><span class="nf">SendWebRequest</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="n">result</span> <span class="p">==</span> <span class="n">UnityWebRequest</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">ConnectionError</span> <span class="p">||</span>
+                <span class="n">request</span><span class="p">.</span><span class="n">result</span> <span class="p">==</span> <span class="n">UnityWebRequest</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">ProtocolError</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">Debug</span><span class="p">.</span><span class="nf">LogError</span><span class="p">(</span><span class="s">"Image upload failed: "</span> <span class="p">+</span> <span class="n">request</span><span class="p">.</span><span class="n">error</span><span class="p">);</span>
+                <span class="nf">_action</span><span class="p">(</span><span class="k">false</span><span class="p">,</span> <span class="n">request</span><span class="p">.</span><span class="n">error</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="c1">// 서버 응답 처리</span>
+                <span class="kt">string</span> <span class="n">responseText</span> <span class="p">=</span> <span class="n">request</span><span class="p">.</span><span class="n">downloadHandler</span><span class="p">.</span><span class="n">text</span><span class="p">;</span>
+                <span class="n">_action</span><span class="p">.</span><span class="nf">Invoke</span><span class="p">(</span><span class="k">true</span><span class="p">,</span> <span class="n">responseText</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
+</code></pre></div></div>
+
+<p>이 코드는 이미지를 받아서, 바이트코드로 변환 한 후, <code class="language-plaintext highlighter-rouge">WWWForm</code> 객체에 실어서 서버에 바이트 코드를 보내는 역할을 합니다.</p>
+
+<p>여기서 주의깊게 봐야할 곳은 <code class="language-plaintext highlighter-rouge">form.AddBinaryData</code> 입니다.</p>
+
+<p>WWWForm.AddBinaryData 는 4가지의 인자를 가집니다. (필드명, 바이트코드, 파일명, 파일 형식) 으로 구성되어 있습니다.</p>
+
+<p>여기서, 필드명을 <code class="language-plaintext highlighter-rouge">ASP.net</code> 에 있는 필드명과 같게 만들어주어야 합니다. 만약, 이것이 같지 않으면 <code class="language-plaintext highlighter-rouge">ProtocolError</code>를 뿜게 됩니다.</p>
+
+<p>다음은, 해당 코드를 사용하는 방법 입니다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">private</span> <span class="k">void</span> <span class="nf">OnProfileButtonClick</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">ImageController</span> <span class="n">imageController</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ImageController</span><span class="p">();</span>
+        
+        <span class="c1">//upload</span>
+        <span class="nf">StartCoroutine</span><span class="p">(</span><span class="n">imageController</span><span class="p">.</span><span class="nf">UploadImage</span><span class="p">(</span><span class="n">CommonMethod</span><span class="p">.</span><span class="nf">GetUserProfileImageName</span><span class="p">(</span><span class="n">Global</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="n">User_Code</span><span class="p">),</span> <span class="n">UnityMethod</span><span class="p">.</span><span class="nf">SpriteToTexture2D</span><span class="p">(</span><span class="n">buttonProfile</span><span class="p">.</span><span class="nf">GetImage</span><span class="p">()),</span> <span class="p">(</span><span class="n">onSuccess</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span> <span class="p">=&gt;</span>
+        <span class="p">{</span>
+           <span class="k">if</span> <span class="p">(</span><span class="n">onSuccess</span><span class="p">)</span>
+           <span class="p">{</span>
+               <span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
+           <span class="p">}</span>
+        <span class="p">}));</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>위 코드에서 파일명과, Sprite를 Texture 로 바꿔주는 과정을 수행 합니다. 그리고, 업로드가 완료되면 콜백으로 성공 여부와 메세지를 넘겨주게 됩니다.</p>
+
+<h3 id="서버-코드">서버 코드</h3>
+
+<p>이제 서버코드를 살펴 봅니다. 처음에 <code class="language-plaintext highlighter-rouge">IWebHostEnvironment</code> 라는 변수를 DI 받게 되는데 이것은 애플리케이션이 실행중인 웹 호스팅 환경에 대한 정보를 제공하는 클래스 입니다.,</p>
+
+<p>또한, ASP 에서는 이미지를 저장할 때 <code class="language-plaintext highlighter-rouge">wwwroot</code>라는 폴더에 저장하게 됩니다. <code class="language-plaintext highlighter-rouge">MVC WEB</code>을 만들면 이 디렉토리가 자동으로 생성 되지만, <code class="language-plaintext highlighter-rouge">WebAPI</code>를 만들면 자동으로 생성이 안됩니다. 이것을 솔루션이 있는 디렉토리에 직접 생성 해줘야 합니다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Mvc</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.VisualBasic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+
+<span class="p">[</span><span class="n">ApiController</span><span class="p">]</span>
+<span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"api/[controller]"</span><span class="p">)]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">ImageController</span> <span class="p">:</span> <span class="n">ControllerBase</span>
+<span class="p">{</span>
+    <span class="c1">//애플리케이션이 실행 중인 웹 호스팅 환경에 대한 정보를 제공함</span>
+    <span class="c1">//애플리케이션의 환경변수, 루트 경로 등을 받음</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">IWebHostEnvironment</span> <span class="n">environment</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nf">ImageController</span><span class="p">(</span><span class="n">IWebHostEnvironment</span> <span class="n">_environment</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">environment</span> <span class="p">=</span> <span class="n">_environment</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="nf">HttpPost</span><span class="p">(</span><span class="s">"upload"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">Upload</span><span class="p">(</span><span class="n">IFormFile</span> <span class="n">_file</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">_file</span> <span class="p">==</span> <span class="k">null</span> <span class="p">||</span> <span class="n">_file</span><span class="p">.</span><span class="n">Length</span> <span class="p">==</span> <span class="m">0</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">(</span><span class="s">"File is not selected"</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">//environment.WebRootPath 는 웹 애플리케이션의 기본 디렉토리 경로를 제공함</span>
+        <span class="c1">//여기에 uploads 폴더를 추가하여 저장될 디렉토리를 만듬</span>
+        <span class="c1">//wwwroot/uploads/ 이렇게 저장됨</span>
+        <span class="c1">//WebApiController 에서는 wwwroot 디렉토리가 없기 때문에, 만들어줘야함. 아니면 ArgumentNullException 이 뜸</span>
+        <span class="kt">string</span> <span class="n">path</span> <span class="p">=</span> <span class="n">Path</span><span class="p">.</span><span class="nf">Combine</span><span class="p">(</span><span class="n">environment</span><span class="p">.</span><span class="n">WebRootPath</span><span class="p">,</span> <span class="s">"uploads"</span><span class="p">);</span>
+
+        <span class="c1">//파일을 저장할 경로가 존재하는지 확인해보고, 없으면 경로를 만듦</span>
+        <span class="k">if</span> <span class="p">(!</span><span class="n">Directory</span><span class="p">.</span><span class="nf">Exists</span><span class="p">(</span><span class="n">path</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">Directory</span><span class="p">.</span><span class="nf">CreateDirectory</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="kt">string</span> <span class="n">fileName</span> <span class="p">=</span> <span class="n">Guid</span><span class="p">.</span><span class="nf">NewGuid</span><span class="p">().</span><span class="nf">ToString</span><span class="p">()</span> <span class="p">+</span> <span class="n">Path</span><span class="p">.</span><span class="nf">GetExtension</span><span class="p">(</span><span class="n">_file</span><span class="p">.</span><span class="n">FileName</span><span class="p">);</span>
+        <span class="kt">string</span> <span class="n">filePath</span> <span class="p">=</span> <span class="n">Path</span><span class="p">.</span><span class="nf">Combine</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">fileName</span><span class="p">);</span>
+
+        <span class="k">using</span> <span class="p">(</span><span class="kt">var</span> <span class="n">stream</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">FileStream</span><span class="p">(</span><span class="n">filePath</span><span class="p">,</span> <span class="n">FileMode</span><span class="p">.</span><span class="n">Create</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">await</span> <span class="n">_file</span><span class="p">.</span><span class="nf">CopyToAsync</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="k">new</span> <span class="p">{</span> <span class="n">fileName</span> <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이렇게 하면, <code class="language-plaintext highlighter-rouge">/wwwroot/uploads</code> 경로에 이미지가 들어가는것을 볼 수 있습니다.</p>
+
+<p><img src="/images/Pasted%20image%2020241015000229.png" alt=""></p>
+
+<p>여기서, 제가 지정한 이름이 아니라 알아볼 수 없는 문자가 들어가는 것은 중복방지를 위해 UUID 를 생성하는 코드를 썼기 때문입니다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">string</span> <span class="n">fileName</span> <span class="p">=</span> <span class="n">Guid</span><span class="p">.</span><span class="nf">NewGuid</span><span class="p">().</span><span class="nf">ToString</span><span class="p">()</span> <span class="p">+</span> <span class="n">Path</span><span class="p">.</span><span class="nf">GetExtension</span><span class="p">(</span><span class="n">_file</span><span class="p">.</span><span class="n">FileName</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>도메인에서 중복 불가능한 형식을 이미 사용하고 있다면 해당 코드는 쓸 필요가 없습니다.</p>
+<h2 id="이미지-다운로드">이미지 다운로드</h2>
+
+<p>이제 업로드를 했으니, 다운로드 하는 과정을 만들어 봅니다. 전체적인 과정은 업로드와 동일 합니다.</p>
+
+<h3 id="imagecontroller">ImageController</h3>
+
+<p>이제 ImageController 에서 download 를 하는 코드를 만듭니다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine.Networking</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Common.Define</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEditor</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">ImageController</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="kt">string</span> <span class="n">imageDownloadURL</span> <span class="p">=</span> <span class="n">Define</span><span class="p">.</span><span class="n">ServerURL</span> <span class="p">+</span> <span class="s">"/api/Image/download"</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="n">IEnumerator</span> <span class="nf">DownloadImage</span><span class="p">(</span><span class="kt">string</span> <span class="n">_fileName</span><span class="p">,</span> <span class="n">Action</span><span class="p">&lt;</span><span class="kt">bool</span><span class="p">,</span> <span class="n">Texture2D</span><span class="p">&gt;</span> <span class="n">_action</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">using</span> <span class="p">(</span><span class="n">UnityWebRequest</span> <span class="n">request</span> <span class="p">=</span> <span class="n">UnityWebRequestTexture</span><span class="p">.</span><span class="nf">GetTexture</span><span class="p">(</span><span class="n">imageDownloadURL</span> <span class="p">+</span> <span class="s">"/"</span> <span class="p">+</span> <span class="n">_fileName</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">yield</span> <span class="k">return</span> <span class="n">request</span><span class="p">.</span><span class="nf">SendWebRequest</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">request</span><span class="p">.</span><span class="n">result</span> <span class="p">==</span> <span class="n">UnityWebRequest</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">ConnectionError</span> <span class="p">||</span>
+                <span class="n">request</span><span class="p">.</span><span class="n">result</span> <span class="p">==</span> <span class="n">UnityWebRequest</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">ProtocolError</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">Debug</span><span class="p">.</span><span class="nf">LogError</span><span class="p">(</span><span class="s">"Error downloading image: "</span> <span class="p">+</span> <span class="n">request</span><span class="p">.</span><span class="n">error</span><span class="p">);</span>
+                <span class="nf">_action</span><span class="p">(</span><span class="k">false</span><span class="p">,</span> <span class="k">null</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="c1">// 다운로드한 텍스처를 가져옵니다.</span>
+                <span class="n">Texture2D</span> <span class="n">texture</span> <span class="p">=</span> <span class="n">DownloadHandlerTexture</span><span class="p">.</span><span class="nf">GetContent</span><span class="p">(</span><span class="n">request</span><span class="p">);</span>
+                <span class="n">_action</span><span class="p">?.</span><span class="nf">Invoke</span><span class="p">(</span><span class="k">true</span><span class="p">,</span> <span class="n">texture</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>해당 코드는 서버에서 파일 이름을 기준으로 이미지를 조회하여 가져오는 코드 입니다. 그리고 콜백을 통해서, 성공 여부와 서버에서 받은 이미지를 넘겨 줍니다.</p>
+
+<p>이 코드를 사용하는 부분은 다음과 같습니다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">private</span> <span class="k">void</span> <span class="nf">OnProfileButtonClick</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">ImageController</span> <span class="n">imageController</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ImageController</span><span class="p">();</span>
+        <span class="nf">StartCoroutine</span><span class="p">(</span><span class="n">imageController</span><span class="p">.</span><span class="nf">DownloadImage</span><span class="p">(</span><span class="n">CommonMethod</span><span class="p">.</span><span class="nf">GetUserProfileImageName</span><span class="p">(</span><span class="n">Global</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="n">User_Code</span><span class="p">),</span> <span class="p">(</span><span class="n">onSuccess</span><span class="p">,</span> <span class="n">texture</span><span class="p">)</span> <span class="p">=&gt;</span>
+        <span class="p">{</span>
+            <span class="n">buttonProfile</span><span class="p">.</span><span class="nf">SetImage</span><span class="p">(</span><span class="n">UnityMethod</span><span class="p">.</span><span class="nf">Texture2DToSprite</span><span class="p">(</span><span class="n">texture</span><span class="p">));</span>
+        <span class="p">}));</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="서버-코드-1">서버 코드</h3>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Mvc</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.VisualBasic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Threading.Tasks</span><span class="p">;</span>
+
+<span class="p">[</span><span class="n">ApiController</span><span class="p">]</span>
+<span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"api/[controller]"</span><span class="p">)]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">ImageController</span> <span class="p">:</span> <span class="n">ControllerBase</span>
+<span class="p">{</span>
+    <span class="c1">//애플리케이션이 실행 중인 웹 호스팅 환경에 대한 정보를 제공함</span>
+    <span class="c1">//애플리케이션의 환경변수, 루트 경로 등을 받음</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">IWebHostEnvironment</span> <span class="n">environment</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nf">ImageController</span><span class="p">(</span><span class="n">IWebHostEnvironment</span> <span class="n">_environment</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">environment</span> <span class="p">=</span> <span class="n">_environment</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="p">[</span><span class="nf">HttpGet</span><span class="p">(</span><span class="s">"download/{fileName}"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">DownloadImage</span><span class="p">(</span><span class="kt">string</span> <span class="n">fileName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 이미지 파일이 저장된 폴더 경로</span>
+        <span class="kt">string</span> <span class="n">filePath</span> <span class="p">=</span> <span class="n">Path</span><span class="p">.</span><span class="nf">Combine</span><span class="p">(</span><span class="n">environment</span><span class="p">.</span><span class="n">WebRootPath</span><span class="p">,</span> <span class="s">"uploads"</span><span class="p">,</span> <span class="n">fileName</span><span class="p">);</span>
+
+        <span class="c1">// 파일이 존재하는지 확인</span>
+        <span class="k">if</span> <span class="p">(!</span><span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">File</span><span class="p">.</span><span class="nf">Exists</span><span class="p">(</span><span class="n">filePath</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">NotFound</span><span class="p">(</span><span class="s">"Image not found"</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 파일을 바이트 배열로 읽어들입니다.</span>
+        <span class="kt">byte</span><span class="p">[]</span> <span class="n">imageData</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">IO</span><span class="p">.</span><span class="n">File</span><span class="p">.</span><span class="nf">ReadAllBytes</span><span class="p">(</span><span class="n">filePath</span><span class="p">);</span>
+
+        <span class="c1">// 파일의 Content-Type을 image/png로 설정하고 반환합니다.</span>
+        <span class="k">return</span> <span class="nf">File</span><span class="p">(</span><span class="n">imageData</span><span class="p">,</span> <span class="s">"image/png"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>위 코드는 <code class="language-plaintext highlighter-rouge">wwwroot/uploads</code>  디렉토리에서 파일 명으로 이미지를 찾은 다음에, 바이트 코드로 변환해서 전송해주는 코드 입니다.</p>
+
+<p>코드를 실행시키면, 잘 동작하는것을 볼 수 있습니다.</p>
+
+<p><img src="/images/Pasted%20image%2020241015001915.png" alt=""></p>
+
+</body></html>

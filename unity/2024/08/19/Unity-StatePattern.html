@@ -1,0 +1,408 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="statepattern-이란">StatePattern 이란?</h2>
+
+<p>유니티로 게임을 만들다 보면, 누군가 조종하지 않고 자기 혼자 판단하여 게임을 진행시키는 AI를 구현해야 할 때가 있습니다. 해당 AI는 어떠한 조건에 따라서 수행해야 하는 로직이 결정됩니다.</p>
+
+<p>예를들어, Player가 공격 사정거리에 들어오면, 공격을 하고, 공격 사정거리 밖으로 나가게 되면 Patrol을 하는 경우가 있습니다.</p>
+
+<p>방금 예시로 든 상황은 2가지의 경우밖에 없기 때문에 <code class="language-plaintext highlighter-rouge">if</code>문으로 간단하게 구현이 가능합니다.</p>
+
+<p>하지만, 저희가 실제로 플레이 하는 게임은 그렇지 않습니다. 적은 Player를 쫓다가 특정공격을 하고, 어떨때는 뛰어다녀야 하고, 어떨때는 Player가 모르게 접근해야 하며, 체력이 일정 이하가 되면 광란상태에 빠지는 등 여러가지 <code class="language-plaintext highlighter-rouge">상태</code>를 가지게 됩니다.</p>
+
+<p>이러한 <code class="language-plaintext highlighter-rouge">상태</code>들을 모두 <code class="language-plaintext highlighter-rouge">if</code>문으로 처리한다는 것은 거의 불가능에 가깝습니다. 이렇게 어려운것을 해낸다고 해도, 다음날 아침에 기획자가 수정을 요구한다면, 그야말로 재앙이 벌어지는 것입니다.</p>
+
+<p>그렇다면 방법이 없는걸까요? 당연히 아닙니다. 우리는 이 문제를 <code class="language-plaintext highlighter-rouge">State Pattern</code>을 통해서 해결할 수 있습니다.</p>
+
+<blockquote>
+  <p>State Pattern 이란,</p>
+
+  <p>State Pattern은 객체의 상태를 캡슐화하여, 객체의 내부 상태가 변경될 때 해당 객체가 그 행동을 변경할 수 있도록 하는 패턴 입니다.
+간단하게, 복잡한 상태를 분리하여 관리하도록 해서, 추가 혹은 변경에 용이하게 대처할 수 있도록 합니다.</p>
+</blockquote>
+
+<p>State Pattern은 AI 말고도 복잡한 행동을 수행해야 하는 Player Control 에도 사용합니다.</p>
+
+<p>실제로 포트폴리오를 만들 때, 복잡한 행동을 수행하는 Player를 State Pattern으로 구현하였습니다. 아래 이미지는 StatePattern으로 구현한 Player의 상태도 입니다. 이걸 <code class="language-plaintext highlighter-rouge">if</code>문으로 전부 처리한다고 생각하니까 벌써 머리가 아파오는군요.</p>
+
+<p><img src="/images/Pasted%20image%2020240819213815.png" alt="복잡한 행동을 하는 Player의 상태도"></p>
+
+<h2 id="statepattern-구현">StatePattern 구현</h2>
+
+<p>(해당 예제는 유니티코리아의 예제를 참고하여 만들었습니다.)</p>
+
+<p>해당 예제는 플레이어의 <code class="language-plaintext highlighter-rouge">Idle</code>, <code class="language-plaintext highlighter-rouge">Walk</code>, <code class="language-plaintext highlighter-rouge">Jump</code> 상태를 전환하는 StateMachine 입니다. 각각의 조건은 다음과 같습니다.</p>
+
+<p><img src="/images/Pasted%20image%2020240819222223.png" alt="State 구성도"></p>
+
+<p>해당 조건으로 각 상태들을 왔다갔다 합니다.</p>
+
+<p>이 그림을 보아하니, 유니티의 어떤 기능과 많이 닮아 있습니다. 바로 Animatior Controller 입니다.</p>
+
+<p><img src="/images/Pasted%20image%2020240819222408.png" alt="Unity Animator Controller"></p>
+
+<p>네 맞습니다. 유니티의 Animator Controller 역시 StatePattern으로 구현되었습니다. 그렇다면 이러한 기능을 직접 구현해보도록 하겠습니다.</p>
+
+<h3 id="상태를-추상화-하기">상태를 추상화 하기</h3>
+
+<p>우선 구현을 하려면, 객체가 가지는 상태를 추상화 해야 합니다. <code class="language-plaintext highlighter-rouge">IState</code>라는 인터페이스를 정의하여 추상화 하였습니다. <code class="language-plaintext highlighter-rouge">IState</code>인터페이스는 상태에 들어올 때, 상태를 실행할 때, 상태에서 벗어날 때 라는 함수들을 가지고 있습니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">Interface IState</span></strong></p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">interface</span> <span class="nc">IState</span>
+<span class="p">{</span>
+	<span class="k">public</span> <span class="k">void</span> <span class="nf">Enter</span><span class="p">();</span>
+	<span class="k">public</span> <span class="k">void</span> <span class="nf">Execute</span><span class="p">();</span>
+	<span class="k">public</span> <span class="k">void</span> <span class="nf">Exit</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="동작을-수행할-객체와-상태들을-관리한-statemachine-만들기">동작을 수행할 객체와 상태들을 관리한 StateMachine 만들기</h3>
+
+<p><code class="language-plaintext highlighter-rouge">상태</code>를 추상화 하였으니, 이제는 구현을 할 차례 입니다. 우선, 상태를 수행해야 할 Player를 컨트롤 하는 클래스를 만듭니다. <code class="language-plaintext highlighter-rouge">PlayerInput</code>이라는 스크립트를 만들어서 Player의 Input을 관리합니다.</p>
+
+<p>또한 SimplePlayerStateMachine 이라는 클래스를 만들어서, 각각의 상태를 전환하거나 제어하는 역할을 수행하게 만듭니다.</p>
+
+<p>해당 PlayerController는 SimplePlayerStateMachine 이라는 클래스를 바탕으로 State들을 전환합니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">Class PlayerInput</span></strong></p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">PlayerInput</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="nf">Header</span><span class="p">(</span><span class="s">"Controls"</span><span class="p">)]</span>
+    <span class="p">[</span><span class="n">SerializeField</span><span class="p">]</span> <span class="k">private</span> <span class="n">KeyCode</span> <span class="n">forward</span> <span class="p">=</span> <span class="n">KeyCode</span><span class="p">.</span><span class="n">W</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">SerializeField</span><span class="p">]</span> <span class="k">private</span> <span class="n">KeyCode</span> <span class="n">back</span> <span class="p">=</span> <span class="n">KeyCode</span><span class="p">.</span><span class="n">S</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">SerializeField</span><span class="p">]</span> <span class="k">private</span> <span class="n">KeyCode</span> <span class="n">left</span> <span class="p">=</span> <span class="n">KeyCode</span><span class="p">.</span><span class="n">A</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">SerializeField</span><span class="p">]</span> <span class="k">private</span> <span class="n">KeyCode</span> <span class="n">right</span> <span class="p">=</span> <span class="n">KeyCode</span><span class="p">.</span><span class="n">D</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">SerializeField</span><span class="p">]</span> <span class="k">private</span> <span class="n">KeyCode</span> <span class="n">jump</span> <span class="p">=</span> <span class="n">KeyCode</span><span class="p">.</span><span class="n">Space</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="n">Vector3</span> <span class="n">inputVector</span> <span class="p">=</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">zero</span><span class="p">;</span>
+    <span class="k">public</span> <span class="n">Vector3</span> <span class="n">InputVector</span> <span class="p">=&gt;</span> <span class="n">inputVector</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="n">IsJumping</span> <span class="p">{</span> <span class="k">get</span> <span class="p">=&gt;</span> <span class="n">isJumping</span><span class="p">;</span> <span class="k">set</span> <span class="p">=&gt;</span> <span class="n">isJumping</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">private</span> <span class="kt">bool</span> <span class="n">isJumping</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="k">private</span> <span class="kt">float</span> <span class="n">xInput</span> <span class="p">=</span> <span class="m">0f</span><span class="p">;</span>
+    <span class="k">private</span> <span class="kt">float</span> <span class="n">zInput</span> <span class="p">=</span> <span class="m">0f</span><span class="p">;</span>
+    <span class="k">private</span> <span class="kt">float</span> <span class="n">yInput</span> <span class="p">=</span> <span class="m">0f</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nf">HandleInput</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">HandleInput</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">xInput</span> <span class="p">=</span> <span class="m">0f</span><span class="p">;</span>
+        <span class="n">yInput</span> <span class="p">=</span> <span class="m">0f</span><span class="p">;</span>
+        <span class="n">zInput</span> <span class="p">=</span> <span class="m">0f</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="nf">GetKey</span><span class="p">(</span><span class="n">forward</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">zInput</span><span class="p">++;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="nf">GetKey</span><span class="p">(</span><span class="n">back</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">zInput</span><span class="p">--;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="nf">GetKey</span><span class="p">(</span><span class="n">left</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">xInput</span><span class="p">--;</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">Input</span><span class="p">.</span><span class="nf">GetKey</span><span class="p">(</span><span class="n">right</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">xInput</span><span class="p">++;</span>
+        <span class="p">}</span>
+
+        <span class="n">inputVector</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Vector3</span><span class="p">(</span><span class="n">xInput</span><span class="p">,</span> <span class="n">yInput</span><span class="p">,</span> <span class="n">zInput</span><span class="p">);</span>
+        <span class="n">isJumping</span> <span class="p">=</span> <span class="n">Input</span><span class="p">.</span><span class="nf">GetKey</span><span class="p">(</span><span class="n">jump</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>🗅 <strong><span style="color: #c03a92">Class PlayerController</span></strong></p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="p">[</span><span class="nf">RequireComponent</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">PlayerInput</span><span class="p">),</span> <span class="k">typeof</span><span class="p">(</span><span class="n">CharacterController</span><span class="p">))]</span>
+
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">PlayerController</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+    <span class="p">{</span>
+        <span class="p">[</span><span class="n">SerializeField</span><span class="p">]</span> <span class="k">private</span> <span class="n">PlayerInput</span> <span class="n">playerInput</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+        <span class="k">private</span> <span class="n">SimplePlayerStateMachine</span> <span class="n">playerStateMachine</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+        <span class="p">[</span><span class="nf">Header</span><span class="p">(</span><span class="s">"Movement"</span><span class="p">)]</span>
+        <span class="p">[</span><span class="nf">Tooltip</span><span class="p">(</span><span class="s">"Horizontal speed"</span><span class="p">)]</span>
+        <span class="p">[</span><span class="n">SerializeField</span><span class="p">]</span> <span class="k">private</span> <span class="kt">float</span> <span class="n">moveSpeed</span> <span class="p">=</span> <span class="m">5f</span><span class="p">;</span>
+        <span class="p">[</span><span class="nf">Tooltip</span><span class="p">(</span><span class="s">"Rate of change for move speed"</span><span class="p">)]</span>
+        <span class="p">[</span><span class="n">SerializeField</span><span class="p">]</span> <span class="k">private</span> <span class="kt">float</span> <span class="n">acceleration</span> <span class="p">=</span> <span class="m">10f</span><span class="p">;</span>
+        <span class="p">[</span><span class="nf">Tooltip</span><span class="p">(</span><span class="s">"Max height to jump"</span><span class="p">)]</span>
+        <span class="p">[</span><span class="n">SerializeField</span><span class="p">]</span> <span class="k">private</span> <span class="kt">float</span> <span class="n">jumpHeight</span> <span class="p">=</span> <span class="m">1.25f</span><span class="p">;</span>
+
+        <span class="p">[</span><span class="nf">Tooltip</span><span class="p">(</span><span class="s">"Custom gravity for player"</span><span class="p">)]</span>
+        <span class="p">[</span><span class="n">SerializeField</span><span class="p">]</span> <span class="k">private</span> <span class="kt">float</span> <span class="n">gravity</span> <span class="p">=</span> <span class="p">-</span><span class="m">15f</span><span class="p">;</span>
+        <span class="p">[</span><span class="nf">Tooltip</span><span class="p">(</span><span class="s">"Time between jumps"</span><span class="p">)]</span>
+        <span class="p">[</span><span class="n">SerializeField</span><span class="p">]</span> <span class="k">private</span> <span class="kt">float</span> <span class="n">jumpTimeout</span> <span class="p">=</span> <span class="m">0.1f</span><span class="p">;</span>
+
+        <span class="p">[</span><span class="n">SerializeField</span><span class="p">]</span> <span class="k">private</span> <span class="kt">bool</span> <span class="n">isGrounded</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+        <span class="p">[</span><span class="n">SerializeField</span><span class="p">]</span> <span class="k">private</span> <span class="kt">float</span> <span class="n">groundedRadius</span> <span class="p">=</span> <span class="m">0.5f</span><span class="p">;</span>
+        <span class="p">[</span><span class="n">SerializeField</span><span class="p">]</span> <span class="k">private</span> <span class="kt">float</span> <span class="n">groundedOffset</span> <span class="p">=</span> <span class="m">0.15f</span><span class="p">;</span>
+        <span class="p">[</span><span class="n">SerializeField</span><span class="p">]</span> <span class="k">private</span> <span class="n">LayerMask</span> <span class="n">groundLayers</span><span class="p">;</span>
+
+        <span class="k">private</span> <span class="n">CharacterController</span> <span class="n">characterController</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+        <span class="k">public</span> <span class="n">CharacterController</span> <span class="n">CharController</span> <span class="p">=&gt;</span> <span class="n">characterController</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="kt">bool</span> <span class="n">IsGrounded</span> <span class="p">=&gt;</span> <span class="n">isGrounded</span><span class="p">;</span>
+        <span class="k">public</span> <span class="n">SimplePlayerStateMachine</span> <span class="n">PlayerStateMachine</span> <span class="p">=&gt;</span> <span class="n">playerStateMachine</span><span class="p">;</span>
+
+        <span class="k">private</span> <span class="n">CharacterController</span> <span class="n">charController</span><span class="p">;</span>
+        <span class="k">private</span> <span class="kt">float</span> <span class="n">targetSpeed</span><span class="p">;</span>
+        <span class="k">private</span> <span class="kt">float</span> <span class="n">verticalVelocity</span><span class="p">;</span>
+        <span class="k">private</span> <span class="kt">float</span> <span class="n">jumpCooldown</span><span class="p">;</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">Awake</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">playerInput</span> <span class="p">=</span> <span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">PlayerInput</span><span class="p">&gt;();</span>
+            <span class="n">characterController</span> <span class="p">=</span> <span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">CharacterController</span><span class="p">&gt;();</span>
+
+            <span class="n">playerStateMachine</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">SimplePlayerStateMachine</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">Start</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">playerStateMachine</span><span class="p">.</span><span class="nf">Init</span><span class="p">(</span><span class="n">playerStateMachine</span><span class="p">.</span><span class="n">IdleState</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="c1">//계속 실행시킬것임</span>
+            <span class="n">playerStateMachine</span><span class="p">.</span><span class="nf">Execute</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">LateUpdate</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="nf">CalculateVertical</span><span class="p">();</span>
+            <span class="nf">Move</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">Move</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">Vector3</span> <span class="n">inputVector</span> <span class="p">=</span> <span class="n">playerInput</span><span class="p">.</span><span class="n">InputVector</span><span class="p">;</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">inputVector</span> <span class="p">==</span> <span class="n">Vector3</span><span class="p">.</span><span class="n">zero</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">targetSpeed</span> <span class="p">=</span> <span class="m">0f</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="c1">//x,z 로만 움직이니까</span>
+            <span class="kt">float</span> <span class="n">currentHorizontalSpeed</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Vector3</span><span class="p">(</span><span class="n">characterController</span><span class="p">.</span><span class="n">velocity</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="m">0.0f</span><span class="p">,</span> <span class="n">characterController</span><span class="p">.</span><span class="n">velocity</span><span class="p">.</span><span class="n">z</span><span class="p">).</span><span class="n">magnitude</span><span class="p">;</span>
+            <span class="c1">//공차</span>
+            <span class="kt">float</span> <span class="n">tolerance</span> <span class="p">=</span> <span class="m">0.1f</span><span class="p">;</span>
+
+            <span class="c1">//현재 속도가 목표 속도와 충분히 가깝지 않다면, 부드럽게 목표 속도로 전환함</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">currentHorizontalSpeed</span> <span class="p">&lt;</span> <span class="n">targetSpeed</span> <span class="p">-</span> <span class="n">tolerance</span> <span class="p">||</span> <span class="n">currentHorizontalSpeed</span> <span class="p">&gt;</span> <span class="n">targetSpeed</span> <span class="p">+</span> <span class="n">tolerance</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">targetSpeed</span> <span class="p">=</span> <span class="n">Mathf</span><span class="p">.</span><span class="nf">Lerp</span><span class="p">(</span><span class="n">currentHorizontalSpeed</span><span class="p">,</span> <span class="n">targetSpeed</span><span class="p">,</span> <span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span> <span class="p">*</span> <span class="n">acceleration</span><span class="p">);</span>
+                <span class="c1">// targetSpeed = Mathf.Round(targetSpeed * 1000f) / 1000f;// 선택 사항: 작은 부동 소수점 오류를 방지하기 위해 반올림</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">targetSpeed</span> <span class="p">=</span> <span class="n">moveSpeed</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="n">characterController</span><span class="p">.</span><span class="nf">Move</span><span class="p">((</span><span class="n">inputVector</span><span class="p">.</span><span class="n">normalized</span> <span class="p">*</span> <span class="n">targetSpeed</span> <span class="p">*</span> <span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">)</span> <span class="p">+</span> <span class="k">new</span> <span class="nf">Vector3</span><span class="p">(</span><span class="m">0f</span><span class="p">,</span> <span class="n">verticalVelocity</span><span class="p">,</span> <span class="m">0f</span><span class="p">)</span> <span class="p">*</span> <span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">CalculateVertical</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">isGrounded</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">verticalVelocity</span> <span class="p">&lt;</span> <span class="m">0f</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">verticalVelocity</span> <span class="p">=</span> <span class="p">-</span><span class="m">2f</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">playerInput</span><span class="p">.</span><span class="n">IsJumping</span> <span class="p">&amp;&amp;</span> <span class="n">jumpCooldown</span> <span class="p">&lt;</span> <span class="m">0f</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">verticalVelocity</span> <span class="p">=</span> <span class="n">Mathf</span><span class="p">.</span><span class="nf">Sqrt</span><span class="p">(</span><span class="n">jumpHeight</span> <span class="p">*</span> <span class="p">-</span><span class="m">2f</span> <span class="p">*</span> <span class="n">gravity</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">jumpCooldown</span> <span class="p">&gt;=</span> <span class="m">0f</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">jumpCooldown</span> <span class="p">-=</span> <span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">jumpCooldown</span> <span class="p">=</span> <span class="n">jumpTimeout</span><span class="p">;</span>
+                <span class="n">playerInput</span><span class="p">.</span><span class="n">IsJumping</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="n">verticalVelocity</span> <span class="p">+=</span> <span class="n">gravity</span> <span class="p">*</span> <span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span>
+
+            <span class="c1">// check if grounded</span>
+            <span class="n">Vector3</span> <span class="n">spherePosition</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Vector3</span><span class="p">(</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span> <span class="p">+</span> <span class="n">groundedOffset</span><span class="p">,</span> <span class="n">transform</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+            <span class="n">isGrounded</span> <span class="p">=</span> <span class="n">Physics</span><span class="p">.</span><span class="nf">CheckSphere</span><span class="p">(</span><span class="n">spherePosition</span><span class="p">,</span> <span class="m">1.5f</span><span class="p">,</span> <span class="n">groundLayers</span><span class="p">,</span> <span class="n">QueryTriggerInteraction</span><span class="p">.</span><span class="n">Ignore</span><span class="p">);</span>
+        <span class="p">}</span>
+
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>🗅 <strong><span style="color: #c03a92">Class SimplePlayerStateMachine</span></strong></p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">public</span> <span class="k">class</span> <span class="nc">SimplePlayerStateMachine</span>
+ <span class="p">{</span>
+     <span class="k">private</span> <span class="n">IState</span> <span class="n">currentState</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+     <span class="k">private</span> <span class="n">WalkState</span> <span class="n">walkState</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+     <span class="k">private</span> <span class="n">JumpState</span> <span class="n">jumpState</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+     <span class="k">private</span> <span class="n">IdleState</span> <span class="n">idleState</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+     <span class="k">public</span> <span class="n">IState</span> <span class="n">CurrentState</span> <span class="p">{</span> <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">currentState</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>
+     <span class="k">public</span> <span class="n">WalkState</span> <span class="n">WalkState</span> <span class="p">{</span> <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">walkState</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>
+     <span class="k">public</span> <span class="n">JumpState</span> <span class="n">JumpState</span> <span class="p">{</span> <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">jumpState</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>
+     <span class="k">public</span> <span class="n">IdleState</span> <span class="n">IdleState</span> <span class="p">{</span> <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">idleState</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>
+
+     <span class="k">public</span> <span class="k">event</span> <span class="n">Action</span><span class="p">&lt;</span><span class="n">IState</span><span class="p">&gt;</span> <span class="n">stateChanged</span><span class="p">;</span>
+
+     <span class="k">public</span> <span class="nf">SimplePlayerStateMachine</span><span class="p">(</span><span class="n">PlayerController</span> <span class="n">_player</span><span class="p">)</span>
+     <span class="p">{</span>
+         <span class="k">this</span><span class="p">.</span><span class="n">walkState</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">WalkState</span><span class="p">(</span><span class="n">_player</span><span class="p">);</span>
+         <span class="k">this</span><span class="p">.</span><span class="n">jumpState</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">JumpState</span><span class="p">(</span><span class="n">_player</span><span class="p">);</span>
+         <span class="k">this</span><span class="p">.</span><span class="n">idleState</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">IdleState</span><span class="p">(</span><span class="n">_player</span><span class="p">);</span>
+     <span class="p">}</span>
+
+     <span class="k">public</span> <span class="k">void</span> <span class="nf">Init</span><span class="p">(</span><span class="n">IState</span> <span class="n">_state</span><span class="p">)</span>
+     <span class="p">{</span>
+         <span class="c1">//state 바꿔줌</span>
+         <span class="n">currentState</span> <span class="p">=</span> <span class="n">_state</span><span class="p">;</span>
+         <span class="n">_state</span><span class="p">.</span><span class="nf">Enter</span><span class="p">();</span>
+
+         <span class="c1">//stateChanged?.Invoke(_state);</span>
+     <span class="p">}</span>
+
+     <span class="c1">//다음 행동으로 전환</span>
+     <span class="k">public</span> <span class="k">void</span> <span class="nf">TransitionTo</span><span class="p">(</span><span class="n">IState</span> <span class="n">_nextState</span><span class="p">)</span>
+     <span class="p">{</span>
+         <span class="n">currentState</span><span class="p">.</span><span class="nf">Exit</span><span class="p">();</span>
+         <span class="n">currentState</span> <span class="p">=</span> <span class="n">_nextState</span><span class="p">;</span>
+         <span class="n">_nextState</span><span class="p">.</span><span class="nf">Enter</span><span class="p">();</span>
+
+         <span class="c1">//stateChanged?.Invoke(_nextState);</span>
+     <span class="p">}</span>
+
+     <span class="k">public</span> <span class="k">void</span> <span class="nf">Execute</span><span class="p">()</span>
+     <span class="p">{</span>
+         <span class="n">currentState</span><span class="p">?.</span><span class="nf">Execute</span><span class="p">();</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="각각의-상태-캡슐화하고-다음-행동으로-넘어갈-조건-구현하기">각각의 상태 캡슐화하고, 다음 행동으로 넘어갈 조건 구현하기</h3>
+
+<p>이제 Player의 행동이 정의가 되었으니, 각 <code class="language-plaintext highlighter-rouge">상태</code>들을 구현해 보겠습니다. 각 <code class="language-plaintext highlighter-rouge">상태</code>들은 <code class="language-plaintext highlighter-rouge">Player</code>를 움직일 것이기 때문에, <code class="language-plaintext highlighter-rouge">PlayerController</code>를 DI 해줍니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">Class IdleState</span></strong></p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">IdleState</span><span class="p">:</span> <span class="n">IState</span>
+<span class="p">{</span>
+	<span class="k">private</span> <span class="n">PlayerController</span> <span class="n">player</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+	<span class="k">public</span> <span class="nf">IdleState</span><span class="p">(</span><span class="n">PlayerController</span> <span class="n">_player</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="n">player</span> <span class="p">=</span> <span class="n">_player</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">void</span> <span class="nf">Enter</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="s">"IdleState Enter"</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">void</span> <span class="nf">Execute</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="k">if</span><span class="p">(!</span><span class="n">player</span><span class="p">.</span><span class="n">IsGrounded</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">player</span><span class="p">.</span><span class="n">PlayerStateMachine</span><span class="p">.</span><span class="nf">TransitionTo</span><span class="p">(</span><span class="n">player</span><span class="p">.</span><span class="n">PlayerStateMachine</span><span class="p">.</span><span class="n">JumpState</span><span class="p">);</span>
+		<span class="p">}</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">Mathf</span><span class="p">.</span><span class="nf">Abs</span><span class="p">(</span><span class="n">player</span><span class="p">.</span><span class="n">CharController</span><span class="p">.</span><span class="n">velocity</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="p">&gt;</span> <span class="m">0.1f</span> <span class="p">||</span> <span class="n">Mathf</span><span class="p">.</span><span class="nf">Abs</span><span class="p">(</span><span class="n">player</span><span class="p">.</span><span class="n">CharController</span><span class="p">.</span><span class="n">velocity</span><span class="p">.</span><span class="n">z</span><span class="p">)</span> <span class="p">&gt;</span> <span class="m">0.1f</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">player</span><span class="p">.</span><span class="n">PlayerStateMachine</span><span class="p">.</span><span class="nf">TransitionTo</span><span class="p">(</span><span class="n">player</span><span class="p">.</span><span class="n">PlayerStateMachine</span><span class="p">.</span><span class="n">WalkState</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">void</span> <span class="nf">Exit</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="s">"IdleState Exit"</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>🗅 <strong><span style="color: #c03a92">Class JumpState</span></strong></p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">JumpState</span><span class="p">:</span><span class="n">IState</span>
+<span class="p">{</span>
+	<span class="k">private</span> <span class="n">PlayerController</span> <span class="n">player</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+	<span class="k">public</span> <span class="nf">JumpState</span><span class="p">(</span><span class="n">PlayerController</span> <span class="n">_player</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="n">player</span> <span class="p">=</span> <span class="n">_player</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">void</span> <span class="nf">Enter</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="s">"JumpState Enter"</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">void</span> <span class="nf">Execute</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">player</span><span class="p">.</span><span class="n">IsGrounded</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">Mathf</span><span class="p">.</span><span class="nf">Abs</span><span class="p">(</span><span class="n">player</span><span class="p">.</span><span class="n">CharController</span><span class="p">.</span><span class="n">velocity</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="p">&gt;</span> <span class="m">0.1f</span> <span class="p">||</span> <span class="n">Mathf</span><span class="p">.</span><span class="nf">Abs</span><span class="p">(</span><span class="n">player</span><span class="p">.</span><span class="n">CharController</span><span class="p">.</span><span class="n">velocity</span><span class="p">.</span><span class="n">z</span><span class="p">)</span> <span class="p">&gt;</span> <span class="m">0.1f</span><span class="p">)</span>
+			<span class="p">{</span>
+				<span class="n">player</span><span class="p">.</span><span class="n">PlayerStateMachine</span><span class="p">.</span><span class="nf">TransitionTo</span><span class="p">(</span><span class="n">player</span><span class="p">.</span><span class="n">PlayerStateMachine</span><span class="p">.</span><span class="n">IdleState</span><span class="p">);</span>
+			<span class="p">}</span>
+			<span class="k">else</span>
+			<span class="p">{</span>
+				<span class="n">player</span><span class="p">.</span><span class="n">PlayerStateMachine</span><span class="p">.</span><span class="nf">TransitionTo</span><span class="p">(</span><span class="n">player</span><span class="p">.</span><span class="n">PlayerStateMachine</span><span class="p">.</span><span class="n">walkState</span><span class="p">);</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">public</span> <span class="k">void</span> <span class="nf">Exit</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="s">"JumpState Exit"</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>🗅 <strong><span style="color: #c03a92">Class WalkState</span></strong></p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">WalkState</span><span class="p">:</span> <span class="n">IState</span>
+<span class="p">{</span>
+	<span class="k">private</span> <span class="n">PlayerController</span> <span class="n">player</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+	<span class="k">public</span> <span class="nf">WalkState</span><span class="p">(</span><span class="n">PlayerController</span> <span class="n">_player</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">this</span><span class="p">.</span><span class="n">player</span> <span class="p">=</span> <span class="n">_player</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">public</span> <span class="k">void</span> <span class="nf">Enter</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="s">"Walk Enter"</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">void</span> <span class="nf">Execute</span><span class="p">()</span>
+	<span class="p">{</span>
+		<span class="k">if</span><span class="p">(!</span><span class="n">player</span><span class="p">.</span><span class="n">IsGrounded</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">player</span><span class="p">.</span><span class="n">PlayerStateMachine</span><span class="p">.</span><span class="nf">TransitionTo</span><span class="p">(</span><span class="n">player</span><span class="p">.</span><span class="n">PlayerStateMachine</span><span class="p">.</span><span class="n">JumpState</span><span class="p">);</span>
+		<span class="p">}</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="nf">Abs</span><span class="p">(</span><span class="n">player</span><span class="p">.</span><span class="n">CharController</span><span class="p">.</span><span class="n">velocity</span><span class="p">.</span><span class="n">x</span><span class="p">)</span> <span class="p">&lt;</span> <span class="m">0.1f</span> <span class="p">&amp;&amp;</span> <span class="n">Mathf</span><span class="p">.</span><span class="nf">Abs</span><span class="p">(</span><span class="n">player</span><span class="p">.</span><span class="n">CharController</span><span class="p">.</span><span class="n">velocity</span><span class="p">.</span><span class="n">z</span><span class="p">)</span> <span class="p">&lt;</span> <span class="m">0.1f</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">player</span><span class="p">.</span><span class="n">PlayerStateMachine</span><span class="p">.</span><span class="nf">TransitionTo</span><span class="p">(</span><span class="n">player</span><span class="p">.</span><span class="n">PlayerStateMachine</span><span class="p">.</span><span class="n">IdleState</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">void</span> <span class="nf">Exit</span><span class="p">()</span>
+	<span class="p">{</span>
+    <span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="s">"Walk Exit"</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이렇게 State 까지 구현을 완료한다면 심플하지 않은 <code class="language-plaintext highlighter-rouge">SimplePlayerStateMachine</code>이 구현되었습니다.</p>
+
+<p>처음하면 구조가 복잡해보이지만, 상태가 많아질수록, 상태의 조건이 복잡할수록 빛을 바라는 구조입니다.</p>
+
+<p>디자인패턴은 무조건 쓰면 좋은것이 아닌, 필요할 때 적재적소에 사용하는것이 중요한 것 같습니다. 오버 엔지니어링을 하게되면 오히려 복잡도만 높이게 되어 불편할 수 있습니다.</p>
+
+</body></html>

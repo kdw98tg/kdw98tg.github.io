@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="unity의-ui-관리법">Unity의 UI 관리법</h2>
+
+<p>유니티의 UI 관리법은 Canvas를 위에 두고, 그 위에 컴포넌트들을 그리는 방식으로 작동합니다. 이를 UGUI 라고 합니다.</p>
+
+<p>UI를 관리하는 방법은 셀 수 없이 많지만, 저는 이번에 UI마다 컴포넌트를 만들어서 관리하는 방법을 사용하였습니다.</p>
+
+<p>또한, 상속을 이용하여 각 UI들의 성질을 미리 정의 한 후, 캡슐화 하여 모든 버튼들이 캡슐화된 함수를 참조하도록 만들었습니다.</p>
+
+<p>예시는 UI_YesNoDialog 를 가져왔습니다.</p>
+
+<p><img src="/images/Pasted%20image%2020240722143119.png" alt=""></p>
+
+<h2 id="ui-컴포넌트-만들기">UI 컴포넌트 만들기</h2>
+
+<p><img src="/images/Pasted%20image%2020240722144025.png" alt=""></p>
+
+<p>우선 제가 만든 하이어라키 구조 입니다. 자식으로 달려있는 Button 이나 Text를 찾기 위한 방법으로는 <code class="language-plaintext highlighter-rouge">public</code> 필드로 만들어서 드래그 앤 드롭 하기, 또는 <code class="language-plaintext highlighter-rouge">GetComponentInChildren</code>을 사용하여 참조를 가져옵니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">public</code>필드로 모든 객체들을 드래그 앤 드롭 할 시, 객체지향에서 많이 벗어나기 때문에, 저는 <code class="language-plaintext highlighter-rouge">GetComponentInChildren</code>으로 전부 찾아주었습니다. 하지만 GetComponentInChildren을 하기 위해서는 Generic 안에 찾아야 할 객체의 타입을 넣어주어야 합니다. 그렇기 때문에 제어가 필요한 UI에 클래스를 만들어 다 붙여주었습니다.</p>
+
+<p><img src="/images/Pasted%20image%2020240722144311.png" alt=""></p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">UI_YesNoDialog</span> <span class="p">:</span> <span class="n">UI_Popup</span>
+<span class="p">{</span>
+    <span class="err">#</span><span class="n">region</span> <span class="n">UI</span>
+    <span class="k">private</span> <span class="n">UI_YesNoDialog_Button_Yes</span> <span class="n">buttonYes</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+    <span class="k">private</span> <span class="n">UI_YesNoDialog_Button_No</span> <span class="n">buttonNo</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="n">UI_YesNoDialog_Text_Content</span> <span class="n">contentText</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+    <span class="k">private</span> <span class="n">UI_YesNoDialog_Text_Title</span> <span class="n">titleText</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="k">private</span> <span class="n">UI_YesNoDialog_Image_Background</span> <span class="n">imageBackground</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+    <span class="err">#</span><span class="n">endregion</span>
+
+    <span class="k">private</span> <span class="n">Action</span> <span class="n">onYesButtonClickCallback</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+    <span class="k">private</span> <span class="n">Action</span> <span class="n">onNoButtonClickCallback</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Awake</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">base</span><span class="p">.</span><span class="nf">Awake</span><span class="p">();</span>
+        <span class="n">buttonYes</span> <span class="p">=</span> <span class="n">GetComponentInChildren</span><span class="p">&lt;</span><span class="n">UI_YesNoDialog_Button_Yes</span><span class="p">&gt;();</span>
+        <span class="n">buttonNo</span> <span class="p">=</span> <span class="n">GetComponentInChildren</span><span class="p">&lt;</span><span class="n">UI_YesNoDialog_Button_No</span><span class="p">&gt;();</span>
+
+        <span class="n">contentText</span> <span class="p">=</span> <span class="n">GetComponentInChildren</span><span class="p">&lt;</span><span class="n">UI_YesNoDialog_Text_Content</span><span class="p">&gt;();</span>
+        <span class="n">titleText</span> <span class="p">=</span> <span class="n">GetComponentInChildren</span><span class="p">&lt;</span><span class="n">UI_YesNoDialog_Text_Title</span><span class="p">&gt;();</span>
+
+        <span class="n">imageBackground</span> <span class="p">=</span> <span class="n">GetComponentInChildren</span><span class="p">&lt;</span><span class="n">UI_YesNoDialog_Image_Background</span><span class="p">&gt;();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이렇게만 하면, Button 이든 Text 이든 다시 GetComponent를 해야하기 때문에, 그 과정을 줄이고자 상속을 사용하여 중복코드를 제거하였습니다.</p>
+
+<p>상속구조는 <code class="language-plaintext highlighter-rouge">UI_Base</code> - <code class="language-plaintext highlighter-rouge">UI_SubItem</code> - <code class="language-plaintext highlighter-rouge">UI_Button</code> 입니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">class UI_YesNoDialog_Button_Yes</span></strong></p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">UI_YesNoDialog_Button_Yes</span> <span class="p">:</span> <span class="n">UI_Button</span>
+<span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>🗅 <strong><span style="color: #c03a92">class UI_Button</span></strong></p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">UI_Button</span> <span class="p">:</span> <span class="n">UI_SubItem</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="n">Button</span> <span class="n">button</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+    <span class="k">private</span> <span class="n">UnityAction</span> <span class="n">onClickEvent</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Awake</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">base</span><span class="p">.</span><span class="nf">Awake</span><span class="p">();</span>
+        <span class="n">button</span> <span class="p">=</span> <span class="n">GetComponent</span><span class="p">&lt;</span><span class="n">Button</span><span class="p">&gt;();</span>
+    <span class="p">}</span>
+    
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">SetOnClickEvent</span><span class="p">(</span><span class="n">UnityAction</span> <span class="n">_onClickEvent</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">button</span><span class="p">.</span><span class="n">onClick</span><span class="p">.</span><span class="nf">RemoveAllListeners</span><span class="p">();</span>
+        <span class="n">button</span><span class="p">.</span><span class="n">onClick</span><span class="p">.</span><span class="nf">AddListener</span><span class="p">(</span><span class="n">PlayButtonClickSound</span><span class="p">);</span>
+        <span class="n">button</span><span class="p">.</span><span class="n">onClick</span><span class="p">.</span><span class="nf">AddListener</span><span class="p">(</span><span class="n">_onClickEvent</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이런식으로 구현 한 후, <code class="language-plaintext highlighter-rouge">Button</code>에 <code class="language-plaintext highlighter-rouge">OnClick</code>이벤트를 달고 싶다면 제어하는 UI 스크립트에서 다음과 같이 사용하면 됩니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">class UI_YesNoDialog</span></strong></p>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">UI_YesNoDialog</span> <span class="p">:</span> <span class="n">UI_Popup</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Init</span><span class="p">(</span><span class="kt">string</span> <span class="n">_titleString</span><span class="p">,</span> <span class="kt">string</span> <span class="n">_contentString</span><span class="p">,</span> <span class="n">Action</span> <span class="n">_onYesButtonClick</span><span class="p">,</span> <span class="n">Action</span> <span class="n">_onNoButtonClick</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nf">SetText</span><span class="p">(</span><span class="n">_titleString</span><span class="p">,</span> <span class="n">_contentString</span><span class="p">);</span>
+        <span class="nf">SetOnYesButtonClickCallback</span><span class="p">(</span><span class="n">_onYesButtonClick</span><span class="p">);</span>
+        <span class="nf">SetOnNoButtonClickCallback</span><span class="p">(</span><span class="n">_onNoButtonClick</span><span class="p">);</span>
+        <span class="nf">SetChildButtonClickEvent</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">SetChildButtonClickEvent</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">buttonYes</span><span class="p">.</span><span class="nf">SetOnClickEvent</span><span class="p">(</span><span class="n">OnYesButtonClick</span><span class="p">);</span>
+        <span class="n">buttonNo</span><span class="p">.</span><span class="nf">SetOnClickEvent</span><span class="p">(</span><span class="n">OnNoButtonClick</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이런식으로 <code class="language-plaintext highlighter-rouge">OnClick</code>이벤트를 달아줄 수 있습니다. 그 외에도 버튼의 색상을 바꾼다던지, 버튼에 사운드를 입힌다던지의 기능들을 <code class="language-plaintext highlighter-rouge">UI_Button</code>에서 한번에 관리할 수 있기 때문에, 수정에 용이하다는 장점이 있습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">UI_Button</code>을 상속받기만 하고, SetOnClickEvent 만 해준다면 한번의 수정으로 모든 버튼들을 수정할 수 있습니다.</p>
+
+<p>또한, 결합도를 낮추기 위해 위의 스크립트에서 볼 수 있듯이, 모든 버튼이벤트들을 <code class="language-plaintext highlighter-rouge">Callback</code>으로 분리해 <code class="language-plaintext highlighter-rouge">Init</code>에서 넣어주도록 하였습니다.</p>
+
+<h2 id="실제-사용">실제 사용</h2>
+
+<p>실제로 Dialog를 띄우는 코드입니다. <code class="language-plaintext highlighter-rouge">Close()</code>와 <code class="language-plaintext highlighter-rouge">Show()</code> 도 <code class="language-plaintext highlighter-rouge">UI_Base</code>의 확장 메서드 이므로, 애니메이션을 추가하던지, 다른 작업을 추가하던지 도 확장 가능합니다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">private</span> <span class="k">void</span> <span class="nf">Test_UI_YesNoDialog</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">UI_YesNoDialog</span> <span class="n">dialog</span> <span class="p">=</span> <span class="n">UIManager</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">GetOrInstantiateWithPool</span><span class="p">&lt;</span><span class="n">UI_YesNoDialog</span><span class="p">&gt;();</span>
+        <span class="n">dialog</span><span class="p">.</span><span class="nf">Init</span><span class="p">(</span><span class="s">"YesNoDialog"</span><span class="p">,</span> <span class="s">"YesNoDialog Content"</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="n">dialog</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span> <span class="p">},</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span> <span class="n">dialog</span><span class="p">.</span><span class="nf">Close</span><span class="p">();</span> <span class="p">});</span>
+        <span class="n">dialog</span><span class="p">.</span><span class="nf">Show</span><span class="p">();</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+</body></html>

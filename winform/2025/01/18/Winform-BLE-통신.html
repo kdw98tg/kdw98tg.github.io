@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>서버 코드(Linux 계열의 python 코드)가 궁금하신 분들은 다음 링크를 참고하시기 바랍니다.</p>
+
+<p>👉👉👉<a href="https://kdw98tg.github.io/server/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4-BLE-%EB%B8%94%EB%A3%A8%ED%88%AC%EC%8A%A4-%ED%86%B5%EC%8B%A0-%EC%98%88%EC%A0%9C/">블루투스 저전력 서버 구현 - 마시남의 기술블로그</a></p>
+
+<h2 id="window-uwp-와-프로젝트-설정">Window UWP 와 프로젝트 설정</h2>
+
+<p>Winform 에서 블루투스 저전력을 구현하기 위해서는 우선, 윈도우 UWP 기능을 이용해야 합니다. UWP란, Window 10, Window 11 에서 실행되는 앱을 만들기 위한 라이브러리 입니다. 이것을 사용하기 위해서는 현재의 프로젝트를 선택하여 설정을 바꿔줘야 합니다.</p>
+
+<p>UWP 자체가 Window10, 11 을 타겟으로 하기 때문에, 프로젝트의 최소 Window 버전을 10으로 설정해줘야 합니다. 그리고 Visual Studio Installer 에 가서 Window 10 이상의 SDK가 설치되어 있는지 확인해야 합니다.</p>
+
+<p><img src="/images/Pasted%20image%2020250118224301.png" alt="Window 10 SDK"></p>
+
+<p>그리고, 현재 C# 프로젝트의 속성으로 가서, TargetFrameWork 부분에 Window 10 이상의 버전이 들어가 있는지 확인해야 합니다.</p>
+
+<p><img src="/images/Pasted%20image%2020250118224419.png" alt=""></p>
+
+<p>이렇게 추가하게 되면, 다음과 같은 네임스페이스를 사용할 수 있게 됩니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">Windows.Devices.Bluetooth</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Windows.Devices.Bluetooth.GenericAttributeProfile</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Windows.Devices.Enumeration</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Windows.Storage.Streams</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><img src="/images/Pasted%20image%2020250118224501.png" alt=""></p>
+
+<p>이렇게 하면, 준비가 끝났습니다.</p>
+
+<h2 id="저전력-통신-코드-구현">저전력 통신 코드 구현</h2>
+
+<p>저전력 통신 코드는 다음 마이크로 소프트 문서를 확인하여 구현할 수 있습니다.</p>
+
+<p>👉👉👉<a href="https://learn.microsoft.com/ko-kr/windows/uwp/devices-sensors/gatt-client">마이크로 소프트 저전력 통신 공식 문서</a></p>
+
+<h3 id="bluetooth-devicewatcher">Bluetooth DeviceWatcher</h3>
+
+<p>저전력 기기를 찾는 방식은 <code class="language-plaintext highlighter-rouge">DeviceWatcher</code>를 사용합니다. 그리고, 디바이스를 지정하는 쿼리 문자열을 전달하여 기기들을 찾습니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">string</span><span class="p">[]</span> <span class="n">requestedProperties</span> <span class="p">=</span> <span class="p">{</span> <span class="s">"System.Devices.Aep.DeviceAddress"</span><span class="p">,</span> <span class="s">"System.Devices.Aep.IsConnected"</span> <span class="p">};</span>
+
+<span class="n">DeviceWatcher</span> <span class="n">deviceWatcher</span> <span class="p">=</span>
+            <span class="n">DeviceInformation</span><span class="p">.</span><span class="nf">CreateWatcher</span><span class="p">(</span>
+                    <span class="n">BluetoothLEDevice</span><span class="p">.</span><span class="nf">GetDeviceSelectorFromPairingState</span><span class="p">(</span><span class="k">false</span><span class="p">),</span>
+                    <span class="n">requestedProperties</span><span class="p">,</span>
+                    <span class="n">DeviceInformationKind</span><span class="p">.</span><span class="n">AssociationEndpoint</span><span class="p">);</span>
+
+<span class="n">deviceWatcher</span><span class="p">.</span><span class="n">Added</span> <span class="p">+=</span> <span class="n">DeviceWatcher_Added</span><span class="p">;</span>
+<span class="n">deviceWatcher</span><span class="p">.</span><span class="n">Updated</span> <span class="p">+=</span> <span class="n">DeviceWatcher_Updated</span><span class="p">;</span>
+<span class="n">deviceWatcher</span><span class="p">.</span><span class="n">Removed</span> <span class="p">+=</span> <span class="n">DeviceWatcher_Removed</span><span class="p">;</span>
+<span class="n">deviceWatcher</span><span class="p">.</span><span class="n">EnumerationCompleted</span> <span class="p">+=</span> <span class="n">DeviceWatcher_EnumerationCompleted</span><span class="p">;</span>
+<span class="n">deviceWatcher</span><span class="p">.</span><span class="n">Stopped</span> <span class="p">+=</span> <span class="n">DeviceWatcher_Stopped</span><span class="p">;</span>
+
+<span class="n">deviceWatcher</span><span class="p">.</span><span class="nf">Start</span><span class="p">();</span>
+</code></pre></div></div>
+
+<p>여기서 쿼리 문자열을 살펴보면 다음과 같습니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">string</span><span class="p">[]</span> <span class="n">requestedProperties</span> <span class="p">=</span> <span class="p">{</span> <span class="s">"System.Devices.Aep.DeviceAddress"</span><span class="p">,</span> <span class="s">"System.Devices.Aep.IsConnected"</span> <span class="p">};</span>
+</code></pre></div></div>
+
+<ul>
+  <li>System.Devices.Aep.DeviceAddress : 기기의 고유 주소(MAC Address)</li>
+  <li>System.Devices.Aep.IsConnected : 해당 기기가 현재 연결 상태인지의 여부</li>
+</ul>
+
+<p>해당 정보들을 가져올 수 있게 됩니다.</p>
+
+<p>그리고, 아래 코드는 DeviceWatcher를 설정하는 부분 입니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">DeviceWatcher</span> <span class="n">deviceWatcher</span> <span class="p">=</span>
+            <span class="n">DeviceInformation</span><span class="p">.</span><span class="nf">CreateWatcher</span><span class="p">(</span>
+                    <span class="n">BluetoothLEDevice</span><span class="p">.</span><span class="nf">GetDeviceSelectorFromPairingState</span><span class="p">(</span><span class="k">false</span><span class="p">),</span>
+                    <span class="n">requestedProperties</span><span class="p">,</span>
+                    <span class="n">DeviceInformationKind</span><span class="p">.</span><span class="n">AssociationEndpoint</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>여기서 주목해야할 점은, <code class="language-plaintext highlighter-rouge">BluetoothLEDevice.GetDeviceSelectorFromPairingState(bool)</code> 입니다. 여기서, bool 은 페어링 되었있는가의 여부 입니다. <code class="language-plaintext highlighter-rouge">true</code>로 설정하면, 이미 페어링 된 장치만 가져오게 되고, <code class="language-plaintext highlighter-rouge">false</code>로 설정하면 페어링 되지 않은 기기를 가져오게 됩니다.</p>
+
+<p>다음은, 각 시점의 이벤트 입니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">deviceWatcher</span><span class="p">.</span><span class="n">Added</span> <span class="p">+=</span> <span class="n">DeviceWatcher_Added</span><span class="p">;</span>
+<span class="n">deviceWatcher</span><span class="p">.</span><span class="n">Updated</span> <span class="p">+=</span> <span class="n">DeviceWatcher_Updated</span><span class="p">;</span>
+<span class="n">deviceWatcher</span><span class="p">.</span><span class="n">Removed</span> <span class="p">+=</span> <span class="n">DeviceWatcher_Removed</span><span class="p">;</span>
+<span class="n">deviceWatcher</span><span class="p">.</span><span class="n">EnumerationCompleted</span> <span class="p">+=</span> <span class="n">DeviceWatcher_EnumerationCompleted</span><span class="p">;</span>
+<span class="n">deviceWatcher</span><span class="p">.</span><span class="n">Stopped</span> <span class="p">+=</span> <span class="n">DeviceWatcher_Stopped</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Added : 새롭게 발견된 기기가 있으면 호출됨</li>
+  <li>Updated : 이미 검색된 기기의 속성 정보가 갱신될 때 호출됨</li>
+  <li>Removed : 더 이상 유효하지 않은 기기가 사라질 때 호출됨</li>
+  <li>EnumerationCompleted : 시스템이 인식 가능한 모든기기를 한번씩 열거했을때 호출됨</li>
+  <li>Stopped : DeviceWatcher가 중단되거나, 오류가 발생했을 때 호출됨</li>
+</ul>
+
+<p>위의 이벤트들을 사용하여 로직을 제어할 수 있습니다.</p>
+
+<h3 id="device에-연결하기">Device에 연결하기</h3>
+
+<p>DeviceWatcher를 통해 찾은 기기들을 연결하는 방법 입니다. Device가 Add 될 때, 콜백으로 넘어오는 DeviceInformation을 사용 합니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">async</span> <span class="k">void</span> <span class="nf">ConnectDevice</span><span class="p">(</span><span class="n">DeviceInformation</span> <span class="n">deviceInfo</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">BluetoothLEDevice</span> <span class="n">bluetoothLeDevice</span> <span class="p">=</span> <span class="k">await</span> <span class="n">BluetoothLEDevice</span><span class="p">.</span><span class="nf">FromIdAsync</span><span class="p">(</span><span class="n">deviceInfo</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>해당 코드로 기기의 값이 넘어오게 되면, 그 후에, 해당 기기가 광고(advertise)하고 있는 서비스와 특성을 찾아야 합니다.</p>
+
+<p>우선, 서비스를 찾는 방법입니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">servicesResult</span> <span class="p">=</span> <span class="k">await</span> <span class="n">bluetoothLeDevice</span><span class="p">.</span><span class="nf">GetGattServicesAsync</span><span class="p">();</span>
+ <span class="k">if</span> <span class="p">(</span><span class="n">servicesResult</span><span class="p">.</span><span class="n">Status</span> <span class="p">==</span> <span class="n">GattCommunicationStatus</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
+ <span class="p">{</span>
+	 <span class="c1">//GATT 서비스를 가져왔을때</span>
+ <span class="p">}</span>
+</code></pre></div></div>
+
+<p>위 코드로 서비스를 가져와서, GATT 서비스를 가져왔는지 확인하게 됩니다. <strong>여기서 주의해야 할 점은, 기기가 Discoverable 인 상태가 아니면 GattCommunicationStatus.Unreachable을 반환하게 되며, 통신이 종료됩니다.</strong></p>
+
+<p>서비스를 찾았다면, 다음은 서비스 안의 특성을 찾아야 합니다. 특성을 찾는 코드는 다음과 같습니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">GattCharacteristicsResult</span> <span class="n">result</span> <span class="p">=</span> <span class="k">await</span> <span class="n">service</span><span class="p">.</span><span class="nf">GetCharacteristicsAsync</span><span class="p">();</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">Status</span> <span class="p">==</span> <span class="n">GattCommunicationStatus</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">characteristics</span> <span class="p">=</span> <span class="n">result</span><span class="p">.</span><span class="n">Characteristics</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>특성을 찾은 후, 서버가 광고하고 있는 특성의 종류를 판별해야 합니다. 특성의 종류에는 Read, Write, Notify 이렇게 3종류가 있습니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">GattCharacteristicProperties</span> <span class="n">properties</span> <span class="p">=</span> <span class="n">characteristic</span><span class="p">.</span><span class="n">CharacteristicProperties</span>
+
+<span class="k">if</span><span class="p">(</span><span class="n">properties</span><span class="p">.</span><span class="nf">HasFlag</span><span class="p">(</span><span class="n">GattCharacteristicProperties</span><span class="p">.</span><span class="n">Read</span><span class="p">))</span>
+<span class="p">{</span>
+    <span class="c1">//읽기만 가능</span>
+<span class="p">}</span>
+<span class="k">if</span><span class="p">(</span><span class="n">properties</span><span class="p">.</span><span class="nf">HasFlag</span><span class="p">(</span><span class="n">GattCharacteristicProperties</span><span class="p">.</span><span class="n">Write</span><span class="p">))</span>
+<span class="p">{</span>
+    <span class="c1">//쓰기만 가능</span>
+<span class="p">}</span>
+<span class="k">if</span><span class="p">(</span><span class="n">properties</span><span class="p">.</span><span class="nf">HasFlag</span><span class="p">(</span><span class="n">GattCharacteristicProperties</span><span class="p">.</span><span class="n">Notify</span><span class="p">))</span>
+<span class="p">{</span>
+    <span class="c1">//알림 구독만 가능</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>읽기와 쓰기를 할때, 데이터를 다루는 방법은 다음과 같습니다.</p>
+
+<ul>
+  <li>읽기 &amp; 알림 구독시
+    <div class="language-cs highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="n">GattReadResult</span> <span class="n">result</span> <span class="p">=</span> <span class="k">await</span> <span class="n">selectedCharacteristic</span><span class="p">.</span><span class="nf">ReadValueAsync</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">Status</span> <span class="p">==</span> <span class="n">GattCommunicationStatus</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="kt">var</span> <span class="n">reader</span> <span class="p">=</span> <span class="n">DataReader</span><span class="p">.</span><span class="nf">FromBuffer</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">Value</span><span class="p">);</span>
+  <span class="kt">byte</span><span class="p">[]</span> <span class="n">input</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="p">[</span><span class="n">reader</span><span class="p">.</span><span class="n">UnconsumedBufferLength</span><span class="p">];</span>
+  <span class="n">reader</span><span class="p">.</span><span class="nf">ReadBytes</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+  <li>쓰기
+```cs
+var writer = new DataWriter();
+writer.WriteByte(0x01);</li>
+</ul>
+
+<p>GattCommunicationStatus result = await selectedCharacteristic.WriteValueAsync(writer.DetachBuffer());
+if (result == GattCommunicationStatus.Success)
+{
+	//성공적으로 쓴 경우
+}</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+그리고, 저전력 기기의 경우 1대1 통신보다는 브로드캐스트 방식을 많이 사용하기 때문에, `알림 구독`을 많이 사용하게 됩니다.
+
+알림을 가져오기 전에는 다음을 수행해야 합니다.
+
+- CCCD(클라이언트 구성 설명자)에 쓰기
+- Characteristic.ValueChanged 이벤트 처리하기
+
+CCCD는 알림 구독을 할 수 있는지 판별하는 녀석이고, Characteristic.ValueChanged 이벤트는 값을 받았을 때, 처리할 행동을 정의하는 부분입니다.
+
+```cs
+GattCommunicationStatus status = await selectedCharacteristic.WriteClientCharacteristicConfigurationDescriptorAsync(
+                        GattClientCharacteristicConfigurationDescriptorValue.Notify);
+if(status == GattCommunicationStatus.Success)
+{
+    characteristic.ValueChanged += Characteristic_ValueChanged;
+}
+</code></pre></div></div>
+
+<p>처음에 이부분에서 많이 갈려나갔습니다. 아무리 해도 알림 구독이 되지 않았기 때문입니다. 그때 <strong>의심해본것이 제 블루투스 동글이였는데, 블루투스 동글이의 버전이 4.0 이었고, 저전력을 지원하지 않는 모델이었습니다. 동글이가 저전력을 지원하는지 여부를 확인하는것도 중요하다는것을 알게 되었습니다.</strong></p>
+
+<h3 id="동작코드">동작코드</h3>
+
+<p>아래는 제가 문서와 다른 글들을 보면서 생각나는대로 작성한 코드 입니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">Windows.Devices.Bluetooth</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Windows.Devices.Bluetooth.GenericAttributeProfile</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Windows.Devices.Enumeration</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Windows.Storage.Streams</span><span class="p">;</span>
+
+
+<span class="k">namespace</span> <span class="nn">MotionMaestro_ver._1.Forms</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">Form1</span> <span class="p">:</span> <span class="n">Form</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="n">DeviceWatcher</span> <span class="n">deviceWatcher</span><span class="p">;</span>
+        <span class="k">private</span> <span class="n">DeviceInformation</span> <span class="n">selectedDevice</span><span class="p">;</span>
+        <span class="k">private</span> <span class="n">BluetoothLEDevice</span> <span class="n">bluetoothLeDevice</span><span class="p">;</span>
+        <span class="k">private</span> <span class="n">GattCharacteristic</span> <span class="n">notifyCharacteristic</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">Form1</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="nf">InitializeComponent</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">StartDeviceWatcher</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">EventArgs</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">string</span><span class="p">[]</span> <span class="n">requestedProperties</span> <span class="p">=</span> <span class="p">{</span> <span class="s">"System.Devices.Aep.DeviceAddress"</span><span class="p">,</span> <span class="s">"System.Devices.Aep.IsConnected"</span> <span class="p">};</span>
+
+            <span class="n">deviceWatcher</span> <span class="p">=</span> <span class="n">DeviceInformation</span><span class="p">.</span><span class="nf">CreateWatcher</span><span class="p">(</span>
+                <span class="n">BluetoothLEDevice</span><span class="p">.</span><span class="nf">GetDeviceSelectorFromPairingState</span><span class="p">(</span><span class="k">false</span><span class="p">),</span><span class="c1">//페어링 되어 있는가 없는가 판단</span>
+                <span class="n">requestedProperties</span><span class="p">,</span>
+                <span class="n">DeviceInformationKind</span><span class="p">.</span><span class="n">AssociationEndpoint</span><span class="p">);</span>
+
+            <span class="n">deviceWatcher</span><span class="p">.</span><span class="n">Added</span> <span class="p">+=</span> <span class="n">DeviceWatcher_Added</span><span class="p">;</span>
+            <span class="n">deviceWatcher</span><span class="p">.</span><span class="n">Updated</span> <span class="p">+=</span> <span class="n">DeviceWatcher_Updated</span><span class="p">;</span>
+            <span class="n">deviceWatcher</span><span class="p">.</span><span class="n">Removed</span> <span class="p">+=</span> <span class="n">DeviceWatcher_Removed</span><span class="p">;</span>
+            <span class="n">deviceWatcher</span><span class="p">.</span><span class="n">EnumerationCompleted</span> <span class="p">+=</span> <span class="n">DeviceWatcher_EnumerationCompleted</span><span class="p">;</span>
+            <span class="n">deviceWatcher</span><span class="p">.</span><span class="n">Stopped</span> <span class="p">+=</span> <span class="n">DeviceWatcher_Stopped</span><span class="p">;</span>
+
+            <span class="n">deviceWatcher</span><span class="p">.</span><span class="nf">Start</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">async</span> <span class="k">void</span> <span class="nf">DeviceWatcher_Added</span><span class="p">(</span><span class="n">DeviceWatcher</span> <span class="n">sender</span><span class="p">,</span> <span class="n">DeviceInformation</span> <span class="n">deviceInfo</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nf">Invoke</span><span class="p">(</span><span class="k">new</span> <span class="nf">Action</span><span class="p">(()</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                <span class="n">textBox1</span><span class="p">.</span><span class="nf">AppendText</span><span class="p">(</span><span class="n">deviceInfo</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
+            <span class="p">}));</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">deviceInfo</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="s">"Heart Monitor"</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">selectedDevice</span> <span class="p">=</span> <span class="n">deviceInfo</span><span class="p">;</span>
+                <span class="n">deviceWatcher</span><span class="p">.</span><span class="nf">Stop</span><span class="p">();</span>
+
+                <span class="n">bluetoothLeDevice</span> <span class="p">=</span> <span class="k">await</span> <span class="n">BluetoothLEDevice</span><span class="p">.</span><span class="nf">FromIdAsync</span><span class="p">(</span><span class="n">selectedDevice</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">bluetoothLeDevice</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="nf">Invoke</span><span class="p">(</span><span class="k">new</span> <span class="nf">Action</span><span class="p">(()</span> <span class="p">=&gt;</span>
+                    <span class="p">{</span>
+                        <span class="n">textBox1</span><span class="p">.</span><span class="nf">AppendText</span><span class="p">(</span><span class="s">"Device connected!\n"</span><span class="p">);</span>
+                    <span class="p">}));</span>
+
+                    <span class="k">await</span> <span class="nf">DiscoverServices</span><span class="p">();</span>
+                <span class="p">}</span>
+                <span class="k">else</span>
+                <span class="p">{</span>
+                    <span class="n">textBox1</span><span class="p">.</span><span class="nf">AppendText</span><span class="p">(</span><span class="s">"Failed to connect to device.\n"</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">DiscoverServices</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="c1">// 블루투스 장치에서 GATT 서비스를 비동기적으로 가져옵니다.</span>
+            <span class="kt">var</span> <span class="n">servicesResult</span> <span class="p">=</span> <span class="k">await</span> <span class="n">bluetoothLeDevice</span><span class="p">.</span><span class="nf">GetGattServicesAsync</span><span class="p">();</span>
+
+            <span class="c1">// GATT 서비스를 성공적으로 가져왔는지 확인합니다.</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">servicesResult</span><span class="p">.</span><span class="n">Status</span> <span class="p">==</span> <span class="n">GattCommunicationStatus</span><span class="p">.</span><span class="n">Success</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">service</span> <span class="k">in</span> <span class="n">servicesResult</span><span class="p">.</span><span class="n">Services</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="kt">string</span> <span class="n">serviceUuid</span> <span class="p">=</span> <span class="n">service</span><span class="p">.</span><span class="n">Uuid</span><span class="p">.</span><span class="nf">ToString</span><span class="p">();</span>
+
+                    <span class="k">if</span> <span class="p">(</span><span class="n">serviceUuid</span><span class="p">.</span><span class="nf">Equals</span><span class="p">(</span><span class="s">"0000180D-0000-1000-8000-00805F9B34FB"</span><span class="p">,</span> <span class="n">StringComparison</span><span class="p">.</span><span class="n">OrdinalIgnoreCase</span><span class="p">))</span>
+                    <span class="p">{</span>
+                        <span class="kt">var</span> <span class="n">characteristicsResult</span> <span class="p">=</span> <span class="k">await</span> <span class="n">service</span><span class="p">.</span><span class="nf">GetCharacteristicsAsync</span><span class="p">();</span>
+
+                        <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">characteristic</span> <span class="k">in</span> <span class="n">characteristicsResult</span><span class="p">.</span><span class="n">Characteristics</span><span class="p">)</span>
+                        <span class="p">{</span>
+                            <span class="kt">string</span> <span class="n">characteristicUuid</span> <span class="p">=</span> <span class="n">characteristic</span><span class="p">.</span><span class="n">Uuid</span><span class="p">.</span><span class="nf">ToString</span><span class="p">();</span>
+
+                            <span class="kt">bool</span> <span class="n">hasNotifyFlag</span> <span class="p">=</span> <span class="n">characteristic</span><span class="p">.</span><span class="n">CharacteristicProperties</span><span class="p">.</span><span class="nf">HasFlag</span><span class="p">(</span><span class="n">GattCharacteristicProperties</span><span class="p">.</span><span class="n">Notify</span><span class="p">);</span>
+                            <span class="kt">bool</span> <span class="n">isTargetCharacteristic</span> <span class="p">=</span> <span class="n">characteristicUuid</span><span class="p">.</span><span class="nf">Equals</span><span class="p">(</span><span class="s">"00002A37-0000-1000-8000-00805F9B34FB"</span><span class="p">,</span> <span class="n">StringComparison</span><span class="p">.</span><span class="n">OrdinalIgnoreCase</span><span class="p">);</span>
+
+                            <span class="k">if</span> <span class="p">(</span><span class="n">hasNotifyFlag</span> <span class="p">&amp;&amp;</span> <span class="n">isTargetCharacteristic</span><span class="p">)</span>
+                            <span class="p">{</span>
+                                <span class="n">notifyCharacteristic</span> <span class="p">=</span> <span class="n">characteristic</span><span class="p">;</span>
+
+                                <span class="n">notifyCharacteristic</span><span class="p">.</span><span class="n">ValueChanged</span> <span class="p">+=</span> <span class="n">NotifyCharacteristic_ValueChanged</span><span class="p">;</span>
+
+                                <span class="k">try</span>
+                                <span class="p">{</span>
+                                    <span class="k">await</span> <span class="n">notifyCharacteristic</span><span class="p">.</span><span class="nf">WriteClientCharacteristicConfigurationDescriptorAsync</span><span class="p">(</span>
+                                        <span class="n">GattClientCharacteristicConfigurationDescriptorValue</span><span class="p">.</span><span class="n">Notify</span><span class="p">);</span>
+
+                                    <span class="c1">// 알림 활성화가 성공적으로 완료되었음을 사용자에게 알려줍니다.</span>
+                                    <span class="k">this</span><span class="p">.</span><span class="nf">Invoke</span><span class="p">(</span><span class="k">new</span> <span class="nf">Action</span><span class="p">(()</span> <span class="p">=&gt;</span>
+                                    <span class="p">{</span>
+                                        <span class="n">textBox1</span><span class="p">.</span><span class="nf">AppendText</span><span class="p">(</span><span class="s">"notification Enabled\n"</span><span class="p">);</span>
+                                    <span class="p">}));</span>
+
+                                    <span class="c1">// 한 개의 Notify 특성만 사용하므로 반복문 종료</span>
+                                    <span class="k">break</span><span class="p">;</span>
+                                <span class="p">}</span>
+                                <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+                                <span class="p">{</span>
+                                    <span class="k">this</span><span class="p">.</span><span class="nf">Invoke</span><span class="p">(</span><span class="k">new</span> <span class="nf">Action</span><span class="p">(()</span> <span class="p">=&gt;</span>
+                                    <span class="p">{</span>
+                                        <span class="n">textBox1</span><span class="p">.</span><span class="nf">AppendText</span><span class="p">(</span><span class="s">"실패 : "</span> <span class="p">+</span> <span class="n">ex</span><span class="p">.</span><span class="n">Message</span> <span class="p">+</span> <span class="s">"\n"</span><span class="p">);</span>
+                                    <span class="p">}));</span>
+                                <span class="p">}</span>
+                            <span class="p">}</span>
+                        <span class="p">}</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="c1">// GATT 서비스를 가져오지 못한 경우 사용자에게 에러 메시지를 표시</span>
+                <span class="n">MessageBox</span><span class="p">.</span><span class="nf">Show</span><span class="p">(</span><span class="s">"Failed to discover GATT services."</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">NotifyCharacteristic_ValueChanged</span><span class="p">(</span><span class="n">GattCharacteristic</span> <span class="n">sender</span><span class="p">,</span> <span class="n">GattValueChangedEventArgs</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">reader</span> <span class="p">=</span> <span class="n">DataReader</span><span class="p">.</span><span class="nf">FromBuffer</span><span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">CharacteristicValue</span><span class="p">);</span>
+            <span class="kt">byte</span><span class="p">[]</span> <span class="n">input</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">byte</span><span class="p">[</span><span class="n">args</span><span class="p">.</span><span class="n">CharacteristicValue</span><span class="p">.</span><span class="n">Length</span><span class="p">];</span>
+            <span class="n">reader</span><span class="p">.</span><span class="nf">ReadBytes</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+            <span class="kt">string</span> <span class="n">received</span> <span class="p">=</span> <span class="n">System</span><span class="p">.</span><span class="n">Text</span><span class="p">.</span><span class="n">Encoding</span><span class="p">.</span><span class="n">UTF8</span><span class="p">.</span><span class="nf">GetString</span><span class="p">(</span><span class="n">input</span><span class="p">);</span>
+
+            <span class="nf">Invoke</span><span class="p">(</span><span class="k">new</span> <span class="nf">Action</span><span class="p">(()</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                <span class="n">textBox1</span><span class="p">.</span><span class="nf">AppendText</span><span class="p">(</span><span class="s">$"Received: </span><span class="p">{</span><span class="n">received</span><span class="p">}</span><span class="s">\n"</span><span class="p">);</span>
+            <span class="p">}));</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">DeviceWatcher_Updated</span><span class="p">(</span><span class="n">DeviceWatcher</span> <span class="n">sender</span><span class="p">,</span> <span class="n">DeviceInformationUpdate</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// 필요에 따라 업데이트 처리</span>
+            <span class="k">this</span><span class="p">.</span><span class="nf">Invoke</span><span class="p">(</span><span class="k">new</span> <span class="nf">Action</span><span class="p">(()</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                <span class="n">textBox1</span><span class="p">.</span><span class="nf">AppendText</span><span class="p">(</span><span class="s">"Updated\n"</span><span class="p">);</span>
+            <span class="p">}));</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">DeviceWatcher_Removed</span><span class="p">(</span><span class="n">DeviceWatcher</span> <span class="n">sender</span><span class="p">,</span> <span class="n">DeviceInformationUpdate</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nf">WorkOnUiThread</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">textBox1</span><span class="p">.</span><span class="nf">AppendText</span><span class="p">(</span><span class="s">"Removed\n"</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">DeviceWatcher_EnumerationCompleted</span><span class="p">(</span><span class="n">DeviceWatcher</span> <span class="n">sender</span><span class="p">,</span> <span class="kt">object</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nf">Invoke</span><span class="p">(</span><span class="k">new</span> <span class="nf">Action</span><span class="p">(()</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                <span class="n">textBox1</span><span class="p">.</span><span class="nf">AppendText</span><span class="p">(</span><span class="s">"Device enumeration completed.\n"</span><span class="p">);</span>
+            <span class="p">}));</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">DeviceWatcher_Stopped</span><span class="p">(</span><span class="n">DeviceWatcher</span> <span class="n">sender</span><span class="p">,</span> <span class="kt">object</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nf">WorkOnUiThread</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">textBox1</span><span class="p">.</span><span class="nf">AppendText</span><span class="p">(</span><span class="s">"Stopped"</span><span class="p">));</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">WorkOnUiThread</span><span class="p">(</span><span class="n">Action</span> <span class="n">_action</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nf">Invoke</span><span class="p">(</span><span class="n">_action</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>서버에서는 hello 라는 문자를 1초마다 Notify 하도록 했고, 동작결과는 다음과 같습니다.</p>
+
+<p><img src="/images/Pasted%20image%2020250118231446.png" alt=""></p>
+
+<p>동작은 하나, 위 코드를 보면 유지보수성과 가독성이라곤 찾아볼 수 없습니다. 아래의 포스팅에서 위 코드를 리팩터링하는 과정을 기술합니다.</p>
+
+<p>👉👉👉<a href="https://kdw98tg.github.io/refactoring/BLE-%EC%BD%94%EB%93%9C-%EB%A6%AC%ED%8C%A9%ED%84%B0%EB%A7%81/">코드 리팩터링 - 마시남의 기술블로그</a></p>
+</body></html>

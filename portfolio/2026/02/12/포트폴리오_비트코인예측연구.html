@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="프로젝트-내용">프로젝트 내용</h2>
+
+<p>인공지능학과 석사를 졸업하며 집필했던 논문의 연구 입니다.</p>
+
+<p>여러가지 의미를 가지는 지표(BTC price, BTC.D, 기술적 지표, Fear &amp; Greed Index)를 조합하여 각 조합에서 예측률이 얼마나 차이가 나는지를 분석한 연구 입니다.</p>
+
+<p>모델의 연구가 아닌, 지표 조합에 따른 예측률의 차이를 뽑아내는 연구였기에, 모델은 속도가 빠르고 시계열에서 좋은 성능을 내는 LightGBM을 사용했습니다.</p>
+
+<p>또한, 시계열 검증 기법중의 하나인 <code class="language-plaintext highlighter-rouge">확장 워크 포워드</code>기법을 사용하여 학습중에 모델을 검증하였습니다.</p>
+
+<p>연구결과, Fear &amp; Greed Index가 가장 높은 예측 기여를 하였습니다.</p>
+
+<p>XAI로 해석한 결과도 마찬가지로, 전날 Fear &amp; Greed Index 가 가장 큰 영향을 미쳤고, 추세를 포착할 때, MACD 와 MSI 등의 기술적 지표가 예측에 많은 기여를 하였습니다.</p>
+
+<p>모의로 실전 트레이딩 전략을 3가지 (Long-Only, Long-Short, Sign-Only)를 돌려보았을 때, Long-Only 전략에서 약 2,700,000%를 달성하였습니다.</p>
+
+<p><img src="/images/Pasted%20image%2020260213093029.png" alt=""></p>
+
+<p><img src="/images/Pasted%20image%2020260213093009.png" alt=""></p>
+
+<h2 id="기술-스택">기술 스택</h2>
+
+<ul>
+  <li>python</li>
+  <li>Expand Walk-Forward Testing</li>
+</ul>
+
+<h2 id="기술적-내용">기술적 내용</h2>
+
+<ul>
+  <li>인공지능 모델을 사용하여 연구를 함</li>
+  <li>실전운용 평가 지표를 위해 3가지 전략을 구축</li>
+  <li>XAI 를 사용하여, 어떤 feature가 영향을 많이 주었는지 해명</li>
+</ul>
+
+<h2 id="배운점">배운점</h2>
+
+<ul>
+  <li>논문을 처음 써봤었음. 논문을 쓰는 방법이나, 내 연구 결과를 논리적으로 풀어나가는 방법에 대해 알게됨</li>
+  <li>python 언어를 사용해서 프로젝트를 수행한 것이 처음이었음. python언어에 대해서 알게됨</li>
+</ul>
+</body></html>

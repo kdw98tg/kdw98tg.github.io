@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="entityframeworkcore-의-orm">EntityFrameWorkCore 의 ORM</h2>
+
+<p>Asp.net core 는 <code class="language-plaintext highlighter-rouge">EntityFrameworkCore</code>라는 ORM 라이브러리를 제공합니다. ORM 이라고 하면, 데이터베이스의 엔티티들을 객체지향적으로 바꾸어 쿼리를 짜지 않고, 지원하는 언어만 가지고 데이터를 조회, 수정, 삭제 할 수 있는 프레임워크를 말합니다.</p>
+
+<p>C#에서는 보통 Linq 식을 사용하여 데이터를 조회하게 됩니다. 형식은 다음과 같습니다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">user</span> <span class="p">=</span> <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="nf">FindAsync</span><span class="p">(</span><span class="n">userId</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>간단한 조건의 데이터를 찾을때는 정말 간편하지만, 다중 조인이 들어가거나, 조건식이 복잡할 경우에는 쿼리를 직접 입력하여 데이터를 가져오는것이 더 편할때가 있습니다. 또한, C#의 Linq식에는 Left Join 등의 기능을 직접적으로 지원하고 있지 않아서 해당 기능을 구현하려면 굉장히 복잡한 식을 사용해야 합니다.</p>
+
+<p>이번 포스팅에서는 <code class="language-plaintext highlighter-rouge">EFCore</code> 에서 RawQuery를 가지고 데이터를 가져오는 방식에 대해 이야기 합니다.</p>
+
+<h2 id="rawquery로-데이터-조회하기">RawQuery로 데이터 조회하기</h2>
+
+<p>RawQuery를 사용하기 위한 라이브러리는 <code class="language-plaintext highlighter-rouge">MySqlConnector</code>를 사용합니다. <code class="language-plaintext highlighter-rouge">MySql.dll</code> 과 비슷하게, Command 객체에 쿼리를 입력하고, Reader 객체가 가져온 데이터를 읽는 형식 입니다.</p>
+
+<h3 id="query-작성하기">Query 작성하기</h3>
+
+<p>우선, Query를 작성 합니다. 간단하게 Id 를 기준으로 User 를 찾는 쿼리를 작성합니다. (이정도의 조회라면 ORM 을 사용하는것이 편하나, 해당 포스팅에서는 예를 들기위해 사용했습니다.)</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span>
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">ActionResult</span><span class="p">&lt;</span><span class="n">UserDTO</span><span class="p">&gt;&gt;</span> <span class="nf">GetUser</span><span class="p">(</span><span class="kt">string</span> <span class="n">_userId</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">_userId</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+	<span class="p">}</span>
+
+	<span class="kt">var</span> <span class="n">sqlQuery</span> <span class="p">=</span> <span class="s">@"
+	SELECT * FROM User Where User_Id = @userId
+	"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>위와같이 Query를 작성합니다. userId 는 Parameter 객체를 사용하여 바인딩 해줍니다.</p>
+
+<h3 id="command-객체에-담아서-보내기">Command 객체에 담아서 보내기</h3>
+
+<p>다음은 해당 쿼리를 Command 객체에 담아서 Mysql 서버에 보내줍니다. 또한, <code class="language-plaintext highlighter-rouge">MySqlParameter</code>객체를 사용하여 Query 문자열에 값을 바인딩 해줍니다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span>
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">ActionResult</span><span class="p">&lt;</span><span class="n">UserDTO</span><span class="p">&gt;&gt;</span> <span class="nf">GetUser</span><span class="p">(</span><span class="kt">string</span> <span class="n">_userId</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">_userId</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+	<span class="p">}</span>
+
+	<span class="kt">var</span> <span class="n">sqlQuery</span> <span class="p">=</span> <span class="s">@"
+	SELECT * FROM User Where User_Id = @userId
+	"</span>
+
+	<span class="k">using</span><span class="p">(</span><span class="kt">var</span> <span class="n">command</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">Database</span><span class="p">.</span><span class="nf">GetDbConnection</span><span class="p">().</span><span class="nf">CreateCommand</span><span class="p">())</span>
+	<span class="p">{</span>
+		<span class="n">command</span><span class="p">.</span><span class="n">CommandText</span> <span class="p">=</span> <span class="n">sqlQuery</span><span class="p">;</span>
+		<span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">MySqlParameter</span><span class="p">(</span><span class="s">"userId"</span><span class="p">,</span> <span class="n">_userId</span><span class="p">))</span>
+
+		<span class="n">context</span><span class="p">.</span><span class="n">Database</span><span class="p">.</span><span class="nf">OpenConnection</span><span class="p">();</span><span class="c1">//커넥션 열기</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>위와같이 쿼리에 값을 바인딩 하고, <code class="language-plaintext highlighter-rouge">OpenConnection()</code>을 사용하여 데이터베이스와 연결합니다.</p>
+
+<h3 id="reader로-값-읽어서-모델클래스에-바인딩">Reader로 값 읽어서 모델클래스에 바인딩</h3>
+
+<p>이제, 값을 읽어야 합니다. <code class="language-plaintext highlighter-rouge">Reader</code>객체를 통하여 값을 읽어줍니다. 여기서 주의할 점은 데이터베이스의 컬럼명을 그대로 입력해야 한다는 것입니다. (Alias를 통해 별칭을 사용했다면 해당 별칭을 사용)</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span>
+<span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">ActionResult</span><span class="p">&lt;</span><span class="n">UserDTO</span><span class="p">&gt;&gt;</span> <span class="nf">GetUser</span><span class="p">(</span><span class="kt">string</span> <span class="n">_userId</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">_userId</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+	<span class="p">}</span>
+
+	<span class="kt">var</span> <span class="n">sqlQuery</span> <span class="p">=</span> <span class="s">@"
+	SELECT * FROM User Where User_Id = @userId
+	"</span>
+
+	<span class="n">UserDTO</span> <span class="n">userDTO</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">UserDTO</span><span class="p">();</span><span class="c1">//값을 담아 보낼 DTO 생성</span>
+
+	<span class="k">using</span><span class="p">(</span><span class="kt">var</span> <span class="n">command</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">Database</span><span class="p">.</span><span class="nf">GetDbConnection</span><span class="p">().</span><span class="nf">CreateCommand</span><span class="p">())</span>
+	<span class="p">{</span>
+		<span class="n">command</span><span class="p">.</span><span class="n">CommandText</span> <span class="p">=</span> <span class="n">sqlQuery</span><span class="p">;</span>
+		<span class="n">command</span><span class="p">.</span><span class="n">Parameters</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">MySqlParameter</span><span class="p">(</span><span class="s">"userId"</span><span class="p">,</span> <span class="n">_userId</span><span class="p">))</span>
+
+		<span class="n">context</span><span class="p">.</span><span class="n">Database</span><span class="p">.</span><span class="nf">OpenConnection</span><span class="p">();</span><span class="c1">//커넥션 열기</span>
+
+		<span class="k">using</span><span class="p">(</span><span class="kt">var</span> <span class="n">reader</span> <span class="p">=</span> <span class="k">await</span> <span class="n">command</span><span class="p">.</span><span class="nf">ExecuteReaderAsync</span><span class="p">())</span>
+		<span class="p">{</span>
+			<span class="k">while</span><span class="p">(</span><span class="k">await</span> <span class="n">reader</span><span class="p">.</span><span class="nf">ReadAsync</span><span class="p">())</span>
+			<span class="p">{</span>
+				 <span class="kt">var</span> <span class="n">userData</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">User</span><span class="p">()</span>
+				 <span class="p">{</span>
+					 <span class="n">User_Id</span> <span class="p">=</span> <span class="n">reader</span><span class="p">[</span><span class="s">"User_Id"</span><span class="p">],</span>
+					 <span class="n">User_Name</span> <span class="p">=</span> <span class="n">reader</span><span class="p">[</span><span class="s">"User_Name"</span><span class="p">],</span>
+				 <span class="p">};</span>
+				 <span class="n">userDTO</span> <span class="p">=</span> <span class="nf">ModelToDTO</span><span class="p">(</span><span class="n">userData</span><span class="p">);</span>
+			<span class="p">}</span> 
+		<span class="p">}</span>
+		
+		<span class="n">context</span><span class="p">.</span><span class="n">Database</span><span class="p">.</span><span class="nf">CloseConnection</span><span class="p">();</span>
+	<span class="p">}</span>
+	
+	<span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">userDTO</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>위의 코드는 유저의 정보를 가지고 와서, DTO 클래스에 매핑한 후, 클라이언트에 반환하도록 하는 코드 입니다.</p>
+
+<p>그리고 반드시 <code class="language-plaintext highlighter-rouge">OpenConnection()</code>으로 커넥션을 열었다면, <code class="language-plaintext highlighter-rouge">CloseConnection()</code>으로 연결을 끊어줘야 합니다. (해당 문제를 방지하기 위해서 언어차원에서 using 이라는 키워드를 제공하지만, 혹시 모르니 명시적으로 코드를 넣어줍시다.)</p>
+
+</body></html>

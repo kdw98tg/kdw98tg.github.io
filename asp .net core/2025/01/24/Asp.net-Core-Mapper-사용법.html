@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="mapper-란">Mapper 란?</h2>
+
+<p>웹에서 작업을 하게 되면, 실제 데이터베이스를 구성하는 <code class="language-plaintext highlighter-rouge">Entity</code> 클래스와 데이터를 실어 나르기 위한 클래스인 <code class="language-plaintext highlighter-rouge">Dto</code>클래스가 생성되는것이 흔합니다. 어떤 경우에는 Entity 를 Dto로, 어떨때는 Dto를 Entity로 변환하는 작업을 많이 하게 됩니다. 예를 들어서 Dto가 5개라면 5개의 변환 함수를 만들어줘야 합니다.</p>
+
+<p>이러한 중복된 작업을 방지하기 위해서 .Net 에서는 <code class="language-plaintext highlighter-rouge">AutoMapper</code>라는 라이브러리를 지원합니다. 해당 라이브러리를 사용하면 따로 함수를 작성하지 않고도 추상화된 Mapper를 사용하여 Entity를 Dto로, Dto를 Entity로 변환할 수 있습니다.</p>
+
+<h2 id="mapper-클래스-사용">Mapper 클래스 사용</h2>
+
+<h3 id="mapper-라이브러리-다운로드">Mapper 라이브러리 다운로드</h3>
+
+<p>우선, Mapper 라이브러리를 다운받아 줍니다. 다음의 명령어를 Termianl 창에 입력합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet add package AutoMapper <span class="nt">--version</span> 13.0.1
+dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection <span class="nt">--version</span> 13.0.1
+</code></pre></div></div>
+
+<p>AutoMapper와 AutoMapperDI 라이브러리의 버전을 맞춰주는것이 중요합니다. 여기서 버전이 틀리면 빌드시 문제가 될 수 있으니 주의해야 합니다.</p>
+
+<h3 id="mapperconfig-만들기">MapperConfig 만들기</h3>
+
+<p>Mapper 를 사용하기 위해서는 어떤 클래스를 어디로 매핑할지 정의해주어야 합니다. 그것을 하는 클래스를 MapperConfig로 정의합니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">AspDemo.Models.User</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">AutoMapper</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">MapperConfig</span> <span class="p">:</span> <span class="n">Profile</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">MapperConfig</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">CreateMap</span><span class="p">&lt;</span><span class="n">User</span><span class="p">,</span> <span class="n">UserInfoDto</span><span class="p">&gt;().</span><span class="nf">ReverseMap</span><span class="p">();</span>
+        <span class="n">CreateMap</span><span class="p">&lt;</span><span class="n">User</span><span class="p">,</span> <span class="n">CreateNewUserDto</span><span class="p">&gt;().</span><span class="nf">ReverseMap</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>여기서, ReverseMap()은 역방향 매핑도 지원할 수 있도록 해줍니다.</p>
+
+<p>그 후에, 해당 설정을 컨테이너에 등록할 수 있도록 <code class="language-plaintext highlighter-rouge">Program.cs</code>로 가서 등록 해줍니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">builder</span><span class="p">.</span><span class="n">Services</span><span class="p">.</span><span class="nf">AddAutoMapper</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">MapperConfig</span><span class="p">));</span>
+</code></pre></div></div>
+
+<p>여기까지하면, AutoMapper의 설정이 끝나게 됩니다.</p>
+
+<h3 id="automapper-사용">AutoMapper 사용</h3>
+
+<p>이제, <code class="language-plaintext highlighter-rouge">IMapper</code> 인터페이스를 사용하고자하는 Context에 DI 해줍니다. 저는 Service 계층에서 사용할것이기 때문에, Service 클래스에 DI 해주었습니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">AspDemo.Data</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">AspDemo.Models.User</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">AutoMapper</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.EntityFrameworkCore</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">UserService</span> <span class="p">:</span> <span class="n">IUserService</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">MySqlContext</span> <span class="n">context</span><span class="p">;</span>
+    <span class="k">public</span> <span class="n">IMapper</span> <span class="n">mapper</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nf">UserService</span><span class="p">(</span><span class="n">MySqlContext</span> <span class="n">_context</span><span class="p">,</span> <span class="n">IMapper</span> <span class="n">_mapper</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">context</span> <span class="p">=</span> <span class="n">_context</span><span class="p">;</span>
+        <span class="n">mapper</span> <span class="p">=</span> <span class="n">_mapper</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">UserInfoDto</span><span class="p">?&gt;</span> <span class="nf">GetUserByIdAsync</span><span class="p">(</span><span class="kt">long</span> <span class="n">_id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">user</span> <span class="p">=</span> <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="nf">FindAsync</span><span class="p">(</span><span class="n">_id</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">user</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">UserInfoDto</span><span class="p">&gt;(</span><span class="n">user</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">UserInfoDto</span><span class="p">&gt;?&gt;</span> <span class="nf">GetAllUsersAsync</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">userEntityList</span> <span class="p">=</span> <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="nf">ToListAsync</span><span class="p">();</span><span class="c1">//ToListAsync 는 요소가 없을 때 리스트를 만들고 Count = 0 을 반환</span>
+
+        <span class="k">return</span> <span class="n">mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">List</span><span class="p">&lt;</span><span class="n">UserInfoDto</span><span class="p">&gt;&gt;(</span><span class="n">userEntityList</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">InsertNewUser</span><span class="p">(</span><span class="n">CreateNewUserDto</span> <span class="n">_createNewUserDto</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">newUser</span> <span class="p">=</span> <span class="n">mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;(</span><span class="n">_createNewUserDto</span><span class="p">);</span>
+
+        <span class="n">context</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">newUser</span><span class="p">);</span>
+
+        <span class="k">await</span> <span class="n">context</span><span class="p">.</span><span class="nf">SaveChangesAsync</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>여기서 보시면, Mapper 를 사용한 코드는 다음과 같습니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">newUser</span> <span class="p">=</span> <span class="n">mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;(</span><span class="n">_createNewUserDto</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>위 코드는 인자로 오는 createNewUserDto 를 User 클래스로 매핑하여 User 클래스를 반환하겠다 라는 뜻입니다.</p>
+
+<p>이렇게 하면 Dto를 매핑하는 매 Dto 마다 작성하지 않아도 손쉽게 Dto에서 Entity로 변환할 수 있습니다.</p>
+</body></html>

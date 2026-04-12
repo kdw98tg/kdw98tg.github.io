@@ -1,0 +1,311 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="브릿지-패턴이란">브릿지 패턴이란?</h2>
+
+<blockquote>
+  <p>브릿지 패턴 이란, 구현부에서 추상층을 분리하여 각자 독립적으로 변형이 가능하고 확장이 가능하도록 합니다.</p>
+
+  <p>즉, 추상체끼리 브릿지 라는 통로를 통해 서로 통신을 하는 것을 의미합니다.</p>
+</blockquote>
+
+<p>브릿지 패턴은, 각 추상층과 구현부를 분리하고, 추상층끼리 서로 소틍을 하게 하여, 구현부분을 확장하기 용이하게 만든 패턴입니다.</p>
+
+<p>해당 패턴을 설명할 때, 예로 드는 것이 바로 <code class="language-plaintext highlighter-rouge">TV</code>와 <code class="language-plaintext highlighter-rouge">Remote Controller</code> 입니다.</p>
+
+<p>TV와 리모컨은 서로의 존재에 대해서 모르지만, 인터페이스만 같다면, 채널을 바꾸거나, 볼륨을 올리거나, 티비를 끄거나 켤 수 있습니다.</p>
+
+<p>이 패턴은, 윈도우에도 적용되어 있는데, 여러 플랫폼에서 사용해야 하는 그래픽스와 윈도우 처리 시스템에서 유용하게 쓰이고 있습니다.</p>
+
+<p>다음은 클래스 다이어그램 입니다. 밑에 빨간색으로 표시한 부분을 소통창구 <code class="language-plaintext highlighter-rouge">브릿지</code>라고 부릅니다.</p>
+
+<p><img src="/images/Pasted%20image%2020241005000225.png" alt=""></p>
+
+<h3 id="패턴의-장점">패턴의 장점</h3>
+
+<ul>
+  <li>구현과 인터페이스를 완전히 결합하지 않았기에 구현과 추상화 부분을 분리할 수 있음</li>
+  <li>추상화된 부분과 실제 구현 부분을 독립적으로 확장할 수 있음</li>
+  <li>추상화 부분을 구현한 구상 클래스가 바뀌어도 클라이언트에는 영향을 끼치지 않음</li>
+</ul>
+
+<h3 id="패턴의-단점">패턴의 단점</h3>
+
+<ul>
+  <li>디자인이 복잡해질 수 있음</li>
+  <li>팩토리를 사용할 때, 클라이언트에 대해 과하게 알아야 할 수 있음</li>
+</ul>
+
+<h2 id="예제">예제</h2>
+
+<p>앞서 언급하였듯이, 리모컨과 TV 간의 통신을 브릿지 패턴으로 구현합니다.</p>
+
+<h3 id="tv-구현하기">TV 구현하기</h3>
+
+<p>우선, TV를 구현 합니다. TV는 <code class="language-plaintext highlighter-rouge">LG</code> 와 <code class="language-plaintext highlighter-rouge">Sony</code> 두종류가 있다고 가정 합니다. 우선, TV 들의 공통점을 추상 클래스로 묶습니다.</p>
+
+<p>TV는 <code class="language-plaintext highlighter-rouge">켜다</code>, <code class="language-plaintext highlighter-rouge">끄다</code>, <code class="language-plaintext highlighter-rouge">채널을 바꾸다</code>, <code class="language-plaintext highlighter-rouge">현재 채널 정보를 가져온다</code> 의 4가지 기능으로 구성되어 있습니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">abstract class TV</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.bridge.tv</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">TV</span> <span class="o">{</span>  
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">on</span><span class="o">();</span>  
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">off</span><span class="o">();</span>  
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">void</span> <span class="nf">tuneChannel</span><span class="o">(</span><span class="kt">int</span> <span class="n">_channel</span><span class="o">);</span>  
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="kt">int</span> <span class="nf">getChannel</span><span class="o">();</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이제 이 추상클래스를 상속받아 실제 TV 구현 클래스를 만듭니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">class LG</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.bridge.tv</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LG</span> <span class="kd">extends</span> <span class="no">TV</span><span class="o">{</span>  
+  
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">channel</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">on</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"TV 키는 중"</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">off</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"TV 끄는 중"</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">tuneChannel</span><span class="o">(</span><span class="kt">int</span> <span class="n">_channel</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">channel</span> <span class="o">=</span> <span class="n">_channel</span><span class="o">;</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"TV 채널을 "</span><span class="o">+</span><span class="n">_channel</span> <span class="o">+</span> <span class="s">" 로 변경합니다."</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getChannel</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">return</span> <span class="n">channel</span><span class="o">;</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>🗅 <strong><span style="color: #c03a92">class Sony</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.bridge.tv</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Sony</span> <span class="kd">extends</span> <span class="no">TV</span> <span class="o">{</span>  
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">station</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">on</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Sony TV 켜는 중"</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">off</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Sony TV 끄는 중"</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">tuneChannel</span><span class="o">(</span><span class="kt">int</span> <span class="n">_channel</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">station</span> <span class="o">=</span> <span class="n">_channel</span><span class="o">;</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"TV 채널을 "</span><span class="o">+</span><span class="n">_channel</span> <span class="o">+</span> <span class="s">" 로 변경합니다."</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getChannel</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">return</span> <span class="n">station</span><span class="o">;</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="tv-factory-만들기">TV Factory 만들기</h3>
+
+<p>TV 객체를 반환할 Factory를 하나 만듭니다. 현재 구현한 Factory 는 단순히 switch case 문에 따라 객체를 반환하는 SimpleFactory를 사용하였습니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">enum TVType</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.bridge.tv</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">enum</span> <span class="nc">TVType</span> <span class="o">{</span>  
+    <span class="no">LG</span><span class="o">,</span>  
+    <span class="nc">Sony</span><span class="o">,</span>  
+    <span class="nc">Length</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>🗅 <strong><span style="color: #c03a92">enum TVFactory</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.bridge</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">src.bridge.tv.LG</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">src.bridge.tv.Sony</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">src.bridge.tv.TV</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">src.bridge.tv.TVType</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TVFactory</span> <span class="o">{</span>  
+    <span class="kd">public</span> <span class="no">TV</span> <span class="nf">getTV</span><span class="o">(</span><span class="nc">TVType</span> <span class="n">_type</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>  
+        <span class="k">switch</span> <span class="o">(</span><span class="n">_type</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="k">case</span> <span class="nl">LG:</span>  
+                <span class="k">return</span> <span class="k">new</span> <span class="nf">LG</span><span class="o">();</span>  
+            <span class="k">case</span> <span class="nl">Sony:</span>  
+                <span class="k">return</span> <span class="k">new</span> <span class="nf">Sony</span><span class="o">();</span>  
+            <span class="k">default</span><span class="o">:</span>  
+                <span class="k">throw</span> <span class="k">new</span> <span class="nf">Exception</span><span class="o">(</span><span class="s">"Invalid TV Type"</span><span class="o">);</span>  
+        <span class="o">}</span>  
+  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="리모컨-만들기">리모컨 만들기</h3>
+
+<p>이제, TV 를 조작할 리모컨을 만듭니다. 리모컨은 TV 에 의존적이게 만들었습니다. 리모컨의 각 버튼에 추상클래스인 TV의 메소드를 호출합니다.</p>
+
+<p>TV 는 추상클래스이기 때문에, 생성자로 호출이 안됩니다. 그래서 생성자에서 DI 를 통해 TV 구현클래스를 받도록 합니다.</p>
+
+<p>해당 리모컨도 추상클래스로 만들어, 각 리모컨에 맞게 구현하도록 만듭니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">abstract class GenericRemote</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.bridge.remote</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">src.bridge.TVFactory</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">src.bridge.tv.TV</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">src.bridge.tv.TVType</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">RemoteControl</span> <span class="o">{</span>  
+    <span class="kd">private</span> <span class="no">TV</span> <span class="n">tv</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="nc">TVFactory</span> <span class="n">tvFactory</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>  
+  
+    <span class="kd">public</span> <span class="nf">RemoteControl</span><span class="o">(</span><span class="nc">TVFactory</span> <span class="n">_tvFactory</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">tvFactory</span> <span class="o">=</span> <span class="n">_tvFactory</span><span class="o">;</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">on</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">tv</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">off</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">tv</span><span class="o">.</span><span class="na">off</span><span class="o">();</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setChannel</span><span class="o">(</span><span class="kt">int</span> <span class="n">_channel</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="n">tv</span><span class="o">.</span><span class="na">tuneChannel</span><span class="o">(</span><span class="n">_channel</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getChannel</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">return</span> <span class="n">tv</span><span class="o">.</span><span class="na">getChannel</span><span class="o">();</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setTV</span><span class="o">(</span><span class="nc">TVType</span> <span class="n">_type</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">try</span> <span class="o">{</span>  
+            <span class="n">tv</span> <span class="o">=</span> <span class="n">tvFactory</span><span class="o">.</span><span class="na">getTV</span><span class="o">(</span><span class="n">_type</span><span class="o">);</span>  
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">_ex</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">_ex</span><span class="o">);</span>  
+        <span class="o">}</span>  
+    <span class="o">}</span>  
+  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이제 이 추상 클래스를 상속받아 다른 타입의 리모컨을 구현 합니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">class GenericRemote</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.bridge.remote</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">src.bridge.TVFactory</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">GenericRemote</span> <span class="kd">extends</span> <span class="nc">RemoteControl</span> <span class="o">{</span>  
+  
+    <span class="kd">public</span> <span class="nf">GenericRemote</span><span class="o">(</span><span class="nc">TVFactory</span> <span class="n">_tvFactory</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="kd">super</span><span class="o">(</span><span class="n">_tvFactory</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">nextChannel</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="kt">int</span> <span class="n">channel</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getChannel</span><span class="o">();</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">setChannel</span><span class="o">(</span><span class="n">channel</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">prevChannel</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="kt">int</span> <span class="n">channel</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getChannel</span><span class="o">();</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">setChannel</span><span class="o">(</span><span class="n">channel</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>🗅 <strong><span style="color: #c03a92">class SpecialRemote</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.bridge.remote</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">src.bridge.TVFactory</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SpecialRemote</span> <span class="kd">extends</span> <span class="nc">RemoteControl</span><span class="o">{</span>  
+    <span class="kd">public</span> <span class="nf">SpecialRemote</span><span class="o">(</span><span class="nc">TVFactory</span> <span class="n">_tvFactory</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="kd">super</span><span class="o">(</span><span class="n">_tvFactory</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">up</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="kt">int</span> <span class="n">channel</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getChannel</span><span class="o">();</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">setChannel</span><span class="o">(</span><span class="n">channel</span><span class="o">+</span><span class="mi">1</span><span class="o">);</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">down</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="kt">int</span> <span class="n">channel</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getChannel</span><span class="o">();</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">setChannel</span><span class="o">(</span><span class="n">channel</span><span class="o">-</span><span class="mi">1</span><span class="o">);</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="main-에서-실행">Main 에서 실행</h3>
+
+<p>이제, 티비와 리모컨을 각각 구현하였으니, Main에서 실행해 봅니다.</p>
+
+<p>Main 에서는 TV Factory를 DI 한 다음, 리모컨의 setTV 를 통해 객체를 생성 합니다.</p>
+
+<p>그리고, 브릿지로 연결되어 tv를 알고 있는 리모컨에게 명령을 내립니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.bridge</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">src.bridge.remote.GenericRemote</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">src.bridge.remote.SpecialRemote</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">src.bridge.tv.TVType</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>  
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="nc">TVFactory</span> <span class="n">tvFactory</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">TVFactory</span><span class="o">();</span>  
+        <span class="nc">SpecialRemote</span> <span class="n">remoteSony</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SpecialRemote</span><span class="o">(</span><span class="n">tvFactory</span><span class="o">);</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"TV 랑 리모컨이랑 연결하세요"</span><span class="o">);</span>  
+  
+        <span class="n">remoteSony</span><span class="o">.</span><span class="na">setTV</span><span class="o">(</span><span class="nc">TVType</span><span class="o">.</span><span class="na">Sony</span><span class="o">);</span>  
+        <span class="n">remoteSony</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>  
+        <span class="n">remoteSony</span><span class="o">.</span><span class="na">up</span><span class="o">();</span>  
+        <span class="n">remoteSony</span><span class="o">.</span><span class="na">down</span><span class="o">();</span>  
+        <span class="n">remoteSony</span><span class="o">.</span><span class="na">off</span><span class="o">();</span>  
+  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\n\n"</span><span class="o">);</span>  
+  
+        <span class="nc">GenericRemote</span> <span class="n">remoteLG</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GenericRemote</span><span class="o">(</span><span class="n">tvFactory</span><span class="o">);</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"TV랑 리모컨이랑 연결하세요"</span><span class="o">);</span>  
+        <span class="n">remoteLG</span><span class="o">.</span><span class="na">setTV</span><span class="o">(</span><span class="nc">TVType</span><span class="o">.</span><span class="na">LG</span><span class="o">);</span>  
+        <span class="n">remoteLG</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>  
+        <span class="n">remoteLG</span><span class="o">.</span><span class="na">nextChannel</span><span class="o">();</span>  
+        <span class="n">remoteLG</span><span class="o">.</span><span class="na">prevChannel</span><span class="o">();</span>  
+        <span class="n">remoteLG</span><span class="o">.</span><span class="na">off</span><span class="o">();</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><img src="/images/Pasted%20image%2020241005001503.png" alt=""></p>
+
+<p>리모컨과 티비가 상호작용하여, 티비를 조작하는것을 볼 수 있습니다.</p>
+
+<h2 id="정리">정리</h2>
+
+<p>헤드 퍼스트 디자인 패턴이라는 책을 보고 있는데, MVC 패턴이 마지막 패턴인줄 알았습니다. 책을 더 넘겨보니 <code class="language-plaintext highlighter-rouge">기타 패턴들</code> 이라고 해서 실전압축으로 패턴들이 들어가있더군요.</p>
+
+<p>거기에서 제일 처음 만난 패턴이 바로 브릿지 패턴 입니다. 정보처리기사를 할 때, 글자로만 어떤거인지 외웠었는데, 실제로 구현해보니 어떤 패턴인지 이해가 더 잘 되는 것 같습니다.</p>
+
+<p>해당 패턴을 쓰면, 리모컨과 TV 에 무한한 확장성이 생겨서 좋은 것 같습니다. 가령 <code class="language-plaintext highlighter-rouge">Samsung TV</code>나 <code class="language-plaintext highlighter-rouge">apple RemoteControll</code> 을 만들어서 통신을 시킬 수 도 있을 것 같습니다.</p>
+</body></html>

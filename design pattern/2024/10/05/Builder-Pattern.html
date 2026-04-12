@@ -1,0 +1,358 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="빌더-패턴-이란">빌더 패턴 이란?</h2>
+
+<blockquote>
+  <p>빌더 패턴은 복잡한 객체의 생성 과정과 표현 방법을 분리하여 다양한 구성의 인스턴스를 만드는 패턴 입니다.</p>
+
+  <p>선택적인 속성을 유연하게 받아서, 다양한 타입의 인스턴스를 생성할 수 있어서, 선택적 매개변수가 많은 경우 사용 하게 됩니다.</p>
+</blockquote>
+
+<h3 id="패턴의-장점">패턴의 장점</h3>
+
+<ul>
+  <li>복합 객체의 생성 과정을 캡슐화 합니다.</li>
+  <li>여러 단계와 다양한 절차를 거쳐 객체를 만들 수 있습니다.</li>
+  <li>제품의 내부 구조를 클라이언트로부터 보호할 수 있습니다.</li>
+  <li>클라이언트는 추상 인터페이스만 볼 수 있기에 제품을 구현한 코드를 쉽게 바꿀 수 있습니다.</li>
+</ul>
+
+<h3 id="패턴의-단점">패턴의 단점</h3>
+
+<ul>
+  <li>팩토리패턴은 한방에 객체를 만들어주는 반면, 빌더 패턴은 사용자가 어떤 구성요소가 있는지에 대해 더 많이 알아야 합니다.</li>
+  <li>생성자에서 객체를 생성하는것 보다 성능이 떨어집니다.</li>
+</ul>
+
+<h2 id="예제">예제</h2>
+
+<p>빌더패턴을 통하여, 휴가 일정을 정하는 예제를 만들어 봅니다. 휴가는 <code class="language-plaintext highlighter-rouge">도시에서 즐기는 휴가</code> 와 <code class="language-plaintext highlighter-rouge">야외에서 즐기는 휴가</code> 두종류로 나뉘고, 해당 휴가를 만드는 빌더 역시 2가지로 나뉘게 됩니다.</p>
+
+<p>우선, <code class="language-plaintext highlighter-rouge">숙소</code>, <code class="language-plaintext highlighter-rouge">예약</code>, <code class="language-plaintext highlighter-rouge">휴가</code> 의 객체를 만듭니다. <code class="language-plaintext highlighter-rouge">숙소</code>는 여러가지가 나올 수 있기에, 추상클래스로 공통점을 묶습니다.</p>
+
+<h3 id="예약-만들기">예약 만들기</h3>
+
+<p>우선, 예약 이라는 객체를 만듭니다. 예약의 대한 정보를 담고 있습니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">class Reservation</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.builder.elements</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">java.time.LocalDate</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Reservation</span> <span class="o">{</span>  
+    <span class="kd">private</span> <span class="nc">LocalDate</span> <span class="n">arrivalDate</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">nights</span><span class="o">;</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setArrivalDate</span><span class="o">(</span><span class="kt">int</span> <span class="n">_year</span><span class="o">,</span> <span class="kt">int</span> <span class="n">_month</span><span class="o">,</span> <span class="kt">int</span> <span class="n">_day</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">arrivalDate</span> <span class="o">=</span> <span class="nc">LocalDate</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">_year</span><span class="o">,</span> <span class="n">_month</span><span class="o">,</span> <span class="n">_day</span><span class="o">);</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nc">LocalDate</span> <span class="nf">getArrivalDate</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">arrivalDate</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setNights</span><span class="o">(</span><span class="kt">int</span> <span class="n">_nights</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">nights</span> <span class="o">=</span> <span class="n">_nights</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getNights</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">nights</span><span class="o">;</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="숙소-만들기">숙소 만들기</h3>
+
+<p>다음에는 예약을 활용해서, 숙소에 대한 정보를 만듭니다. 숙소는 야회 활동시에는 <code class="language-plaintext highlighter-rouge">Tent</code> 를 활용하게 되고, 도시에서 활동시에는 <code class="language-plaintext highlighter-rouge">Hotel</code>을 활용하게 됩니다. <code class="language-plaintext highlighter-rouge">Tent</code>와 <code class="language-plaintext highlighter-rouge">Hotel</code>을 공통적으로 추상화한 <code class="language-plaintext highlighter-rouge">숙소</code>라는 추상 클래스를 정의 합니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">abstract class Accommodation</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.builder.elements</span><span class="o">;</span>  
+  
+<span class="c1">//숙소  </span>
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Accommodation</span> <span class="o">{</span>  
+  
+    <span class="kd">protected</span> <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="nc">Reservation</span> <span class="n">reservation</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setReservation</span><span class="o">(</span><span class="nc">Reservation</span> <span class="n">_reservation</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">reservation</span> <span class="o">=</span> <span class="n">_reservation</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nc">Reservation</span> <span class="nf">getReservation</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">reservation</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">String</span> <span class="nf">getLocation</span><span class="o">();</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">StringBuffer</span> <span class="n">display</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>  
+        <span class="n">display</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"당신은 "</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"에 머물고 있습니다."</span><span class="o">);</span>  
+        <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">reservation</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="n">display</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"\n도착일: "</span> <span class="o">+</span> <span class="n">reservation</span><span class="o">.</span><span class="na">getArrivalDate</span><span class="o">()</span> <span class="o">+</span>  
+                    <span class="s">", "</span> <span class="o">+</span> <span class="n">reservation</span><span class="o">.</span><span class="na">getNights</span><span class="o">()</span> <span class="o">+</span> <span class="s">"박 동안 예약이 되어 있습니다."</span><span class="o">);</span>  
+        <span class="o">}</span>  
+        <span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">getLocation</span><span class="o">()</span> <span class="o">!=</span> <span class="s">""</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="n">display</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">" 위치는 "</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">getLocation</span><span class="o">()</span> <span class="o">+</span> <span class="s">"입니다."</span><span class="o">);</span>  
+        <span class="o">}</span>  
+        <span class="n">display</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"\n"</span><span class="o">);</span>  
+        <span class="k">return</span> <span class="n">display</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>  
+    <span class="o">}</span>  
+  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>추상클래스를 정의 한 후, 추상 클래스를 상속받아 <code class="language-plaintext highlighter-rouge">Tent</code>와 <code class="language-plaintext highlighter-rouge">Hotel</code>의 구현 클래스를 정의 합니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">class Tent</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.builder.elements</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Tent</span> <span class="kd">extends</span> <span class="nc">Accommodation</span> <span class="o">{</span>  
+    <span class="kt">int</span> <span class="n">siteNumber</span><span class="o">;</span>  
+    <span class="kd">public</span> <span class="nf">Tent</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"텐트"</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nf">Tent</span><span class="o">(</span><span class="nc">String</span> <span class="n">_name</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">_name</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setSiteNumber</span><span class="o">(</span><span class="kt">int</span> <span class="n">_n</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">siteNumber</span> <span class="o">=</span> <span class="n">_n</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getSiteNumber</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">siteNumber</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getLocation</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">if</span> <span class="o">(</span><span class="n">siteNumber</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="s">""</span><span class="o">;</span>  
+        <span class="k">else</span> <span class="k">return</span> <span class="s">"사이트 번호 "</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">siteNumber</span><span class="o">;</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>🗅 <strong><span style="color: #c03a92">class Hotel</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.builder.elements</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hotel</span> <span class="kd">extends</span> <span class="nc">Accommodation</span> <span class="o">{</span>  
+    <span class="kt">int</span> <span class="n">roomNumber</span><span class="o">;</span>  
+    <span class="kd">public</span> <span class="nf">Hotel</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"호텔"</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nf">Hotel</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setRoomNumber</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">roomNumber</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getRoomNumber</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">roomNumber</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getLocation</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">if</span> <span class="o">(</span><span class="n">roomNumber</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="k">return</span> <span class="s">""</span><span class="o">;</span>  
+        <span class="k">else</span> <span class="k">return</span> <span class="s">"방번호:  "</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">roomNumber</span><span class="o">;</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="휴가-객체-만들기">휴가 객체 만들기</h3>
+
+<p>빌더에서 최종적으로 얻을 <code class="language-plaintext highlighter-rouge">휴가</code>라는 객체를 정의 합니다. 해당 객체는 여러개의 <code class="language-plaintext highlighter-rouge">숙소</code>와 여러가지의 <code class="language-plaintext highlighter-rouge">이벤트</code> 들을 담을 수 있도록 설계 합니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">class Vacation</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.builder.elements</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Vacation</span> <span class="o">{</span>  
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Accommodation</span><span class="o">&gt;</span> <span class="n">accommodations</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>  
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">events</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">_name</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">_name</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setAccommodations</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">Accommodation</span><span class="o">&gt;</span> <span class="n">_accommodations</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">accommodations</span> <span class="o">=</span> <span class="n">_accommodations</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setEvents</span><span class="o">(</span><span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">_events</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">events</span> <span class="o">=</span> <span class="n">_events</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">StringBuffer</span> <span class="n">display</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>  
+        <span class="n">display</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"---- "</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">+</span> <span class="s">" ----\n"</span><span class="o">);</span>  
+        <span class="k">for</span> <span class="o">(</span><span class="nc">Accommodation</span> <span class="n">a</span> <span class="o">:</span> <span class="n">accommodations</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="n">display</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>  
+        <span class="o">}</span>  
+        <span class="k">for</span> <span class="o">(</span><span class="nc">String</span> <span class="n">e</span> <span class="o">:</span> <span class="n">events</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="n">display</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">e</span> <span class="o">+</span> <span class="s">"\n"</span><span class="o">);</span>  
+        <span class="o">}</span>  
+        <span class="k">return</span> <span class="n">display</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="빌더-만들기">빌더 만들기</h3>
+
+<p>이제 요소들을 정의 하였으니, 이 요소들을 조합하여 휴가를 만들어 줄, 빌더를 만들도록 합니다. 빌더 역시 <code class="language-plaintext highlighter-rouge">도시에서 즐기는 휴가를 만들어주는 빌더</code>, <code class="language-plaintext highlighter-rouge">야외에서 즐기는 휴가를 만들어주는 빌더</code> 로 나뉘게 됩니다. 그래서 <code class="language-plaintext highlighter-rouge">휴가 빌더</code>라는 추상클래스를 만들어 줍니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">abstract class VacationBuilder</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.builder.builder</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">src.builder.elements.Accommodation</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">src.builder.elements.Vacation</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">VacationBuilder</span> <span class="o">{</span>  
+    <span class="kd">protected</span> <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>  
+    <span class="kd">protected</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Accommodation</span><span class="o">&gt;</span> <span class="n">accommodations</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Accommodation</span><span class="o">&gt;();</span>  
+    <span class="kd">protected</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">events</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>  
+  
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">();</span>  
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">(</span><span class="nc">String</span> <span class="n">_name</span><span class="o">);</span>  
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">(</span><span class="nc">String</span> <span class="n">_name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">_year</span><span class="o">,</span> <span class="kt">int</span> <span class="n">_month</span><span class="o">,</span> <span class="kt">int</span> <span class="n">_day</span><span class="o">,</span> <span class="kt">int</span> <span class="n">_nights</span><span class="o">,</span> <span class="kt">int</span> <span class="n">_location</span><span class="o">);</span>  
+    <span class="kd">public</span> <span class="kd">abstract</span> <span class="nc">VacationBuilder</span> <span class="nf">addEvent</span><span class="o">(</span><span class="nc">String</span> <span class="n">_event</span><span class="o">);</span>  
+  
+    <span class="kd">public</span> <span class="nc">Vacation</span> <span class="nf">getVacation</span><span class="o">(){</span>  
+        <span class="nc">Vacation</span> <span class="n">vacation</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Vacation</span><span class="o">();</span>  
+        <span class="n">vacation</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>  
+        <span class="n">vacation</span><span class="o">.</span><span class="na">setAccommodations</span><span class="o">(</span><span class="n">accommodations</span><span class="o">);</span>  
+        <span class="n">vacation</span><span class="o">.</span><span class="na">setEvents</span><span class="o">(</span><span class="n">events</span><span class="o">);</span>  
+        <span class="k">return</span> <span class="n">vacation</span><span class="o">;</span>  
+    <span class="o">}</span>   
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>해당 추상 클래스는 <code class="language-plaintext highlighter-rouge">숙소를 추가한다</code> 와 <code class="language-plaintext highlighter-rouge">이벤트를 추가한다</code> 라는 기능을 하게 됩니다. 그리고 마지막으로 <code class="language-plaintext highlighter-rouge">getVacation()</code>을 통해서, 만들어진 <code class="language-plaintext highlighter-rouge">휴가</code> 객체를 반환 해줍니다.</p>
+
+<p>이제 이 추상클래스를 상속받아 <code class="language-plaintext highlighter-rouge">도시에서 즐기는 휴가를 만들어주는 빌더</code>, <code class="language-plaintext highlighter-rouge">야외에서 즐기는 휴가를 만들어주는 빌더</code> 를 구현해 봅시다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">class CityVacationBuilder</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.builder.builder</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">src.builder.elements.Hotel</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">src.builder.elements.Reservation</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CityVacationBuilder</span> <span class="kd">extends</span> <span class="nc">VacationBuilder</span><span class="o">{</span>  
+  
+    <span class="kd">public</span> <span class="nf">CityVacationBuilder</span><span class="o">(){</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"씨티 투어 빌더"</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">accommodations</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Hotel</span><span class="o">());</span>  
+        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">(</span><span class="nc">String</span> <span class="n">_name</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">accommodations</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Hotel</span><span class="o">(</span><span class="n">name</span><span class="o">));</span>  
+        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">(</span><span class="nc">String</span> <span class="n">_name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">_year</span><span class="o">,</span> <span class="kt">int</span> <span class="n">_month</span><span class="o">,</span> <span class="kt">int</span> <span class="n">_day</span><span class="o">,</span> <span class="kt">int</span> <span class="n">_nights</span><span class="o">,</span> <span class="kt">int</span> <span class="n">_location</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="nc">Reservation</span> <span class="n">reservation</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Reservation</span><span class="o">();</span>  
+        <span class="n">reservation</span><span class="o">.</span><span class="na">setArrivalDate</span><span class="o">(</span><span class="n">_year</span><span class="o">,</span> <span class="n">_month</span><span class="o">,</span> <span class="n">_day</span><span class="o">);</span>  
+        <span class="n">reservation</span><span class="o">.</span><span class="na">setNights</span><span class="o">(</span><span class="n">_nights</span><span class="o">);</span>  
+  
+        <span class="nc">Hotel</span> <span class="n">hotel</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Hotel</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>  
+        <span class="n">hotel</span><span class="o">.</span><span class="na">setReservation</span><span class="o">(</span><span class="n">reservation</span><span class="o">);</span>  
+        <span class="n">hotel</span><span class="o">.</span><span class="na">setRoomNumber</span><span class="o">(</span><span class="n">_location</span><span class="o">);</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">accommodations</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">hotel</span><span class="o">);</span>  
+        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addEvent</span><span class="o">(</span><span class="nc">String</span> <span class="n">_event</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">events</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">_event</span> <span class="o">+</span> <span class="s">" 공연을 관람합니다."</span><span class="o">);</span>  
+        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>🗅 <strong><span style="color: #c03a92">class OutdoorsVacationBuilder</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.builder.builder</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">src.builder.elements.Reservation</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">src.builder.elements.Tent</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">OutdoorsVacationBuilder</span> <span class="kd">extends</span> <span class="nc">VacationBuilder</span><span class="o">{</span>  
+    <span class="kd">public</span> <span class="nf">OutdoorsVacationBuilder</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="s">"야외 휴가 빌더"</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">accommodations</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Tent</span><span class="o">());</span>  
+        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">(</span><span class="nc">String</span> <span class="n">_name</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">accommodations</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">Tent</span><span class="o">(</span><span class="n">_name</span><span class="o">));</span>  
+        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addAccommodation</span><span class="o">(</span><span class="nc">String</span> <span class="n">_name</span><span class="o">,</span> <span class="kt">int</span> <span class="n">_year</span><span class="o">,</span> <span class="kt">int</span> <span class="n">_month</span><span class="o">,</span> <span class="kt">int</span> <span class="n">_day</span><span class="o">,</span> <span class="kt">int</span> <span class="n">_nights</span><span class="o">,</span> <span class="kt">int</span> <span class="n">_location</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="nc">Reservation</span> <span class="n">reservation</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Reservation</span><span class="o">();</span>  
+        <span class="n">reservation</span><span class="o">.</span><span class="na">setArrivalDate</span><span class="o">(</span><span class="n">_year</span><span class="o">,</span> <span class="n">_month</span><span class="o">,</span> <span class="n">_day</span><span class="o">);</span>  
+        <span class="n">reservation</span><span class="o">.</span><span class="na">setNights</span><span class="o">(</span><span class="n">_nights</span><span class="o">);</span>  
+  
+        <span class="nc">Tent</span> <span class="n">tent</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Tent</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>  
+        <span class="n">tent</span><span class="o">.</span><span class="na">setReservation</span><span class="o">(</span><span class="n">reservation</span><span class="o">);</span>  
+        <span class="n">tent</span><span class="o">.</span><span class="na">setSiteNumber</span><span class="o">(</span><span class="n">_location</span><span class="o">);</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">accommodations</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">tent</span><span class="o">);</span>  
+        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nc">VacationBuilder</span> <span class="nf">addEvent</span><span class="o">(</span><span class="nc">String</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">events</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">"Hike: "</span> <span class="o">+</span> <span class="n">event</span><span class="o">);</span>  
+        <span class="k">return</span> <span class="k">this</span><span class="o">;</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="메인에서-실행">메인에서 실행</h3>
+
+<p>빌더들을 만들고, 생성하여 <code class="language-plaintext highlighter-rouge">휴가</code>일정을 정의 합니다. 여기서 원하는 일정이 있다면, 생성자를 오버라이딩 해서 추가하는것이 아닌, <code class="language-plaintext highlighter-rouge">.addAccommodation()</code> 이나 <code class="language-plaintext highlighter-rouge">.addEvent()</code>로 객체에 속성을 부여하면 됩니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">class Main</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.builder</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">src.builder.builder.CityVacationBuilder</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">src.builder.builder.OutdoorsVacationBuilder</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">src.builder.builder.VacationBuilder</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">src.builder.elements.Vacation</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>  
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="nc">VacationBuilder</span> <span class="n">cityVacationBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CityVacationBuilder</span><span class="o">();</span>  
+        <span class="nc">Vacation</span> <span class="n">cityVacation</span> <span class="o">=</span> <span class="n">cityVacationBuilder</span>  
+                <span class="o">.</span><span class="na">addAccommodation</span><span class="o">(</span><span class="s">"그랜드 파카디안"</span><span class="o">,</span> <span class="mi">2020</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span>  
+                <span class="o">.</span><span class="na">addAccommodation</span><span class="o">(</span><span class="s">"호텔 커맨더"</span><span class="o">,</span> <span class="mi">2020</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">0</span><span class="o">)</span>  
+                <span class="o">.</span><span class="na">addEvent</span><span class="o">(</span><span class="s">"태양의 서커스"</span><span class="o">)</span>  
+                <span class="o">.</span><span class="na">getVacation</span><span class="o">();</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">cityVacation</span><span class="o">);</span>  
+  
+        <span class="nc">VacationBuilder</span> <span class="n">outdoorVacationBuilder</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">OutdoorsVacationBuilder</span><span class="o">();</span>  
+        <span class="nc">Vacation</span> <span class="n">outdoorVacation</span> <span class="o">=</span><span class="n">outdoorVacationBuilder</span>  
+                <span class="o">.</span><span class="na">addAccommodation</span><span class="o">(</span><span class="s">"2인용 텐트"</span><span class="o">,</span> <span class="mi">2020</span><span class="o">,</span> <span class="mi">7</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">34</span><span class="o">)</span>  
+                <span class="o">.</span><span class="na">addEvent</span><span class="o">(</span><span class="s">"해변"</span><span class="o">)</span>  
+                <span class="o">.</span><span class="na">addAccommodation</span><span class="o">(</span><span class="s">"2인용 텐트"</span><span class="o">)</span>  
+                <span class="o">.</span><span class="na">addEvent</span><span class="o">(</span><span class="s">"산"</span><span class="o">)</span>  
+                <span class="o">.</span><span class="na">getVacation</span><span class="o">();</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">outdoorVacation</span><span class="o">);</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><img src="/images/Pasted%20image%2020241005222940.png" alt=""></p>
+
+<h2 id="정리">정리</h2>
+
+<p>빌더 패턴은 제가 안드로이드 앱 개발을 했을 때 많이 접해볼 수 있었습니다. 안드로이드의 통신 라이브러인 <code class="language-plaintext highlighter-rouge">OkHttp</code> 나 <code class="language-plaintext highlighter-rouge">Dialog</code>를 만들 때 선택적인 속성들을 빌더 패턴을 통하여 생성 하였습니다.</p>
+
+<p>처음 빌더 패턴을 접했을때는, 계속 .add() .add() 하는 문법이 어떻게 구성되어 있는지 감이 잡히지 않았습니다. 하지만 간단하게 만들어보니, 안드로이드의 라이브러리도 어떤식으로 구성되어 있는지 조금은 알 것 같습니다.</p>
+
+<p>빌더패턴은 생성자를 오버라이딩 할 필요 없이, 함수 호출만으로 객체에게 상태를 부여할 수 있다는 장점이 있지만, 상속구조가 복잡해지고, 생성자보다 성능이 내려간다는 단점이 있습니다. 즉, 불필요하게 사용하기 보다는 여러가지 상태를 가진 객체를 많이 만들 때 유용한 것 같습니다.</p>
+
+</body></html>

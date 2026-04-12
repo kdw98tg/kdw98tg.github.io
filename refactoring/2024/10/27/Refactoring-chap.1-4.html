@@ -1,0 +1,439 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>이번 포스팅에서는 연극 장르를 추가하고, 장르마다 공연료와 적립 포인트 계산법을 다르게 지정하도록 기능을 수정 합니다.</p>
+
+<p>가장 쉬운 방법으로는 함수 안에 조건을 추가하여 구현하는 것입니다. 하지만, 이렇게 하면 조건이 들어가야하는 함수를 전부 찾아 바꿔주야 합니다. 관리포인트가 엄청 늘어나서 언젠가는 버그가 나서 골머리를 앓게 될것입니다.</p>
+
+<p>그렇기 때문에 객체지향의 <code class="language-plaintext highlighter-rouge">다형성</code>을 사용하여 리팩터링 합니다. (js 는 원래 객체지향 기능이 없었지만, ES6 버전부터 객체지향을 사용할 수 있게 되었습니다.)</p>
+
+<p>저자는 해당 기법을 <code class="language-plaintext highlighter-rouge">조건부 로직을 다형성으로 바꾸기</code>라고 이름 지었습니다.</p>
+
+<p>우선, 객체지향의 다형성인 만큼 클래스를 생성 합니다. 계산을 해주는 계산기 클래스 이름은 <code class="language-plaintext highlighter-rouge">PerformanceCalculator</code>라고 하겠습니다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">PerformanceCalculator</span> <span class="p">{</span>
+    <span class="nf">constructor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">,</span> <span class="nx">aPlay</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">performances</span> <span class="o">=</span> <span class="nx">aPerformance</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">play</span> <span class="o">=</span> <span class="nx">aPlay</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nf">createStatementData</span><span class="p">(</span><span class="nx">invoice</span><span class="p">,</span> <span class="nx">plays</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">statementData</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="nx">statementData</span><span class="p">.</span><span class="nx">customer</span> <span class="o">=</span> <span class="nx">invoice</span><span class="p">.</span><span class="nx">customer</span><span class="p">;</span>
+    <span class="nx">statementData</span><span class="p">.</span><span class="nx">performances</span> <span class="o">=</span> <span class="nx">invoice</span><span class="p">.</span><span class="nx">performances</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nx">enrichPerformance</span><span class="p">);</span>
+    <span class="nx">statementData</span><span class="p">.</span><span class="nx">totalAmount</span> <span class="o">=</span> <span class="nf">totalAmount</span><span class="p">(</span><span class="nx">statementData</span><span class="p">);</span>
+    <span class="nx">statementData</span><span class="p">.</span><span class="nx">totalVolumeCredits</span> <span class="o">=</span> <span class="nf">totalVolumeCredits</span><span class="p">(</span><span class="nx">statementData</span><span class="p">);</span>
+
+    <span class="kd">function</span> <span class="nf">enrichPerformance</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">calculator</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PerformanceCalculator</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">,</span> <span class="nf">playFor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">));</span><span class="c1">//계산기 생성</span>
+        <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nf">assign</span><span class="p">({},</span> <span class="nx">aPerformance</span><span class="p">);</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">play</span> <span class="o">=</span> <span class="nf">playFor</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">amount</span> <span class="o">=</span> <span class="nf">amountFor</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">volumeCredits</span> <span class="o">=</span> <span class="nf">volumeCreditsFor</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nf">playFor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">plays</span><span class="p">[</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">playID</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nf">amountFor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="k">switch </span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">play</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="dl">"</span><span class="s2">tragedy</span><span class="dl">"</span><span class="p">:</span>
+                <span class="nx">thisAmount</span> <span class="o">=</span> <span class="mi">4000</span><span class="p">;</span>
+                <span class="k">if </span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">thisAmount</span> <span class="o">+=</span> <span class="mi">1000</span> <span class="o">*</span> <span class="p">(</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">-</span> <span class="mi">30</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="dl">"</span><span class="s2">comedy</span><span class="dl">"</span><span class="p">:</span>
+                <span class="nx">thisAmount</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+                <span class="k">if </span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">thisAmount</span> <span class="o">+=</span> <span class="mi">10000</span> <span class="o">+</span> <span class="mi">500</span> <span class="o">*</span> <span class="p">(</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">audiece</span> <span class="o">-</span> <span class="mi">20</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="nx">thisAmount</span> <span class="o">+=</span> <span class="mi">300</span> <span class="o">*</span> <span class="nx">aPerformance</span><span class="p">.</span><span class="nx">audience</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="nl">default</span><span class="p">:</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">알 수 없는 장르: ${playFor(aPerformance).type}</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nf">volumeCreditsFor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">volumeCredits</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="nx">volumeCredits</span> <span class="o">+=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">max</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="k">if </span><span class="p">(</span><span class="dl">"</span><span class="s2">comedy</span><span class="dl">"</span> <span class="o">==</span> <span class="nx">aPerformance</span><span class="p">.</span><span class="nx">play</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span>
+            <span class="nx">volumeCredits</span> <span class="o">+=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">/</span> <span class="mi">5</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nx">volumeCredits</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nf">totalAmount</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">data</span><span class="p">.</span><span class="nx">performances</span><span class="p">.</span><span class="nf">reduce</span><span class="p">((</span><span class="nx">total</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">total</span> <span class="o">+</span> <span class="nx">p</span><span class="p">.</span><span class="nx">amount</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nf">totalVolumeCredits</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">data</span><span class="p">.</span><span class="nx">performances</span><span class="p">.</span><span class="nf">reduce</span><span class="p">((</span><span class="nx">total</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">total</span> <span class="o">+</span> <span class="nx">p</span><span class="p">.</span><span class="nx">volumeCredits</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>이제, 함수들을 <code class="language-plaintext highlighter-rouge">PerformanceCalculator</code> 클래스로 옮기는 작업을 합니다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">PerformanceCalculator</span> <span class="p">{</span>
+    <span class="nf">constructor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">,</span> <span class="nx">aPlay</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">performance</span> <span class="o">=</span> <span class="nx">aPerformance</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">play</span> <span class="o">=</span> <span class="nx">aPlay</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">get</span> <span class="nf">amount</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="k">switch </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">play</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="dl">"</span><span class="s2">tragedy</span><span class="dl">"</span><span class="p">:</span>
+                <span class="nx">thisAmount</span> <span class="o">=</span> <span class="mi">4000</span><span class="p">;</span>
+                <span class="k">if </span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">thisAmount</span> <span class="o">+=</span> <span class="mi">1000</span> <span class="o">*</span> <span class="p">(</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">-</span> <span class="mi">30</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="dl">"</span><span class="s2">comedy</span><span class="dl">"</span><span class="p">:</span>
+                <span class="nx">thisAmount</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+                <span class="k">if </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">performance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">thisAmount</span> <span class="o">+=</span> <span class="mi">10000</span> <span class="o">+</span> <span class="mi">500</span> <span class="o">*</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">performance</span><span class="p">.</span><span class="nx">audiece</span> <span class="o">-</span> <span class="mi">20</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="nx">thisAmount</span> <span class="o">+=</span> <span class="mi">300</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">performance</span><span class="p">.</span><span class="nx">audience</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="nl">default</span><span class="p">:</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">알 수 없는 장르: ${this.play.type}</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nf">createStatementData</span><span class="p">(</span><span class="nx">invoice</span><span class="p">,</span> <span class="nx">plays</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">statementData</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="nx">statementData</span><span class="p">.</span><span class="nx">customer</span> <span class="o">=</span> <span class="nx">invoice</span><span class="p">.</span><span class="nx">customer</span><span class="p">;</span>
+    <span class="nx">statementData</span><span class="p">.</span><span class="nx">performances</span> <span class="o">=</span> <span class="nx">invoice</span><span class="p">.</span><span class="nx">performances</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nx">enrichPerformance</span><span class="p">);</span>
+    <span class="nx">statementData</span><span class="p">.</span><span class="nx">totalAmount</span> <span class="o">=</span> <span class="nf">totalAmount</span><span class="p">(</span><span class="nx">statementData</span><span class="p">);</span>
+    <span class="nx">statementData</span><span class="p">.</span><span class="nx">totalVolumeCredits</span> <span class="o">=</span> <span class="nf">totalVolumeCredits</span><span class="p">(</span><span class="nx">statementData</span><span class="p">);</span>
+
+    <span class="kd">function</span> <span class="nf">enrichPerformance</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">calculator</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PerformanceCalculator</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">,</span> <span class="nf">playFor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">));</span><span class="c1">//계산기 생성</span>
+        <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nf">assign</span><span class="p">({},</span> <span class="nx">aPerformance</span><span class="p">);</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">play</span> <span class="o">=</span> <span class="nf">playFor</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">amount</span> <span class="o">=</span> <span class="nf">amountFor</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">volumeCredits</span> <span class="o">=</span> <span class="nf">volumeCreditsFor</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nf">playFor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">plays</span><span class="p">[</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">playID</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nf">amountFor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">)</span> <span class="p">{</span>
+       <span class="k">return</span> <span class="k">new</span> <span class="nc">PerformanceCalculator</span><span class="p">(</span><span class="nx">aperformance</span><span class="p">,</span> <span class="nf">playFor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">)).</span><span class="nx">amount</span><span class="p">;</span><span class="c1">//클래스의 함수 이용하기</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nf">volumeCreditsFor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">volumeCredits</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="nx">volumeCredits</span> <span class="o">+=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">max</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="k">if </span><span class="p">(</span><span class="dl">"</span><span class="s2">comedy</span><span class="dl">"</span> <span class="o">==</span> <span class="nx">aPerformance</span><span class="p">.</span><span class="nx">play</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span>
+            <span class="nx">volumeCredits</span> <span class="o">+=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">/</span> <span class="mi">5</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nx">volumeCredits</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nf">totalAmount</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">data</span><span class="p">.</span><span class="nx">performances</span><span class="p">.</span><span class="nf">reduce</span><span class="p">((</span><span class="nx">total</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">total</span> <span class="o">+</span> <span class="nx">p</span><span class="p">.</span><span class="nx">amount</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nf">totalVolumeCredits</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">data</span><span class="p">.</span><span class="nx">performances</span><span class="p">.</span><span class="nf">reduce</span><span class="p">((</span><span class="nx">total</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">total</span> <span class="o">+</span> <span class="nx">p</span><span class="p">.</span><span class="nx">volumeCredits</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>우선, <code class="language-plaintext highlighter-rouge">amountFor()</code> 함수를 <code class="language-plaintext highlighter-rouge">PerformanceCalculator</code> 클래스에 옮기는 작업을 하였습니다. 처음에는 <code class="language-plaintext highlighter-rouge">amountFor()</code> 함수 안에 클래스를 생성하여 돌리도록 하고, 저자가 강조하는 <code class="language-plaintext highlighter-rouge">컴파일 - 테스트 - 커밋</code> 절차를 통과 하였다면, 해당 <code class="language-plaintext highlighter-rouge">함수를 인라인</code> 하도록 합니다.  (volumeCredit() 함수도 인라인 한 코드를 아래에 작성 해놨습니다.)</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">PerformanceCalculator</span> <span class="p">{</span>
+    <span class="nf">constructor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">,</span> <span class="nx">aPlay</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">performance</span> <span class="o">=</span> <span class="nx">aPerformance</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">play</span> <span class="o">=</span> <span class="nx">aPlay</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">get</span> <span class="nf">amount</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="k">switch </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">play</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="dl">"</span><span class="s2">tragedy</span><span class="dl">"</span><span class="p">:</span>
+                <span class="nx">thisAmount</span> <span class="o">=</span> <span class="mi">4000</span><span class="p">;</span>
+                <span class="k">if </span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">thisAmount</span> <span class="o">+=</span> <span class="mi">1000</span> <span class="o">*</span> <span class="p">(</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">-</span> <span class="mi">30</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="dl">"</span><span class="s2">comedy</span><span class="dl">"</span><span class="p">:</span>
+                <span class="nx">thisAmount</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+                <span class="k">if </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">performance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">thisAmount</span> <span class="o">+=</span> <span class="mi">10000</span> <span class="o">+</span> <span class="mi">500</span> <span class="o">*</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">performance</span><span class="p">.</span><span class="nx">audiece</span> <span class="o">-</span> <span class="mi">20</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="nx">thisAmount</span> <span class="o">+=</span> <span class="mi">300</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">performance</span><span class="p">.</span><span class="nx">audience</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="nl">default</span><span class="p">:</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">알 수 없는 장르: ${this.play.type}</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">get</span> <span class="nf">volumeCredits</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">volumeCredits</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="nx">volumeCredits</span> <span class="o">+=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">max</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="k">if </span><span class="p">(</span><span class="dl">"</span><span class="s2">comedy</span><span class="dl">"</span> <span class="o">==</span> <span class="nx">aPerformance</span><span class="p">.</span><span class="nx">play</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span>
+            <span class="nx">volumeCredits</span> <span class="o">+=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">/</span> <span class="mi">5</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nx">volumeCredits</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nf">createStatementData</span><span class="p">(</span><span class="nx">invoice</span><span class="p">,</span> <span class="nx">plays</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">statementData</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="nx">statementData</span><span class="p">.</span><span class="nx">customer</span> <span class="o">=</span> <span class="nx">invoice</span><span class="p">.</span><span class="nx">customer</span><span class="p">;</span>
+    <span class="nx">statementData</span><span class="p">.</span><span class="nx">performances</span> <span class="o">=</span> <span class="nx">invoice</span><span class="p">.</span><span class="nx">performances</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nx">enrichPerformance</span><span class="p">);</span>
+    <span class="nx">statementData</span><span class="p">.</span><span class="nx">totalAmount</span> <span class="o">=</span> <span class="nf">totalAmount</span><span class="p">(</span><span class="nx">statementData</span><span class="p">);</span>
+    <span class="nx">statementData</span><span class="p">.</span><span class="nx">totalVolumeCredits</span> <span class="o">=</span> <span class="nf">totalVolumeCredits</span><span class="p">(</span><span class="nx">statementData</span><span class="p">);</span>
+
+    <span class="kd">function</span> <span class="nf">enrichPerformance</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">calculator</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PerformanceCalculator</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">,</span> <span class="nf">playFor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">));</span><span class="c1">//계산기 생성</span>
+        <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nf">assign</span><span class="p">({},</span> <span class="nx">aPerformance</span><span class="p">);</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">play</span> <span class="o">=</span> <span class="nf">playFor</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">amount</span> <span class="o">=</span> <span class="nx">calculator</span><span class="p">.</span><span class="nx">amount</span><span class="p">;</span><span class="c1">//함수를 클래스로 이동시킨 후, 인라인</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">volumeCredits</span> <span class="o">=</span> <span class="nx">calculator</span><span class="p">.</span><span class="nx">volumeCredits</span><span class="p">;</span><span class="c1">//함수를 클래스로 이동시킨 후, 인라인</span>
+        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nf">playFor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">plays</span><span class="p">[</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">playID</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nf">totalAmount</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">data</span><span class="p">.</span><span class="nx">performances</span><span class="p">.</span><span class="nf">reduce</span><span class="p">((</span><span class="nx">total</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">total</span> <span class="o">+</span> <span class="nx">p</span><span class="p">.</span><span class="nx">amount</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nf">totalVolumeCredits</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">data</span><span class="p">.</span><span class="nx">performances</span><span class="p">.</span><span class="nf">reduce</span><span class="p">((</span><span class="nx">total</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">total</span> <span class="o">+</span> <span class="nx">p</span><span class="p">.</span><span class="nx">volumeCredits</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">PerformanceCalculator</code>클래스가 완성되었습니다. 이제, 해당 클래스를 부모 클래스로 하는 서브 클래스들을 만들어서 <code class="language-plaintext highlighter-rouge">다형성</code>을 지원하도록 수정해 봅시다.자바스크립트는 부모 클래스에서 자식의 인스턴스를 반환할 수 없다고 합니다. 그래서 팩터리 함수를 만들어서 사용해야 합니다. <code class="language-plaintext highlighter-rouge">생성자를 팩터리 함수로 바꾸기</code> 기법을 적용 합니다.</p>
+
+<p>클래스는 <code class="language-plaintext highlighter-rouge">TragedyCalculator</code> 와 <code class="language-plaintext highlighter-rouge">ComedyCalculator</code>로 구성합니다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">PerformanceCalculator</span> <span class="p">{</span>
+    <span class="nf">constructor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">,</span> <span class="nx">aPlay</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">performance</span> <span class="o">=</span> <span class="nx">aPerformance</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">play</span> <span class="o">=</span> <span class="nx">aPlay</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">get</span> <span class="nf">amount</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="k">switch </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">play</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="dl">"</span><span class="s2">tragedy</span><span class="dl">"</span><span class="p">:</span>
+                <span class="nx">thisAmount</span> <span class="o">=</span> <span class="mi">4000</span><span class="p">;</span>
+                <span class="k">if </span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">thisAmount</span> <span class="o">+=</span> <span class="mi">1000</span> <span class="o">*</span> <span class="p">(</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">-</span> <span class="mi">30</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="dl">"</span><span class="s2">comedy</span><span class="dl">"</span><span class="p">:</span>
+                <span class="nx">thisAmount</span> <span class="o">=</span> <span class="mi">3000</span><span class="p">;</span>
+                <span class="k">if </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">performance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">thisAmount</span> <span class="o">+=</span> <span class="mi">10000</span> <span class="o">+</span> <span class="mi">500</span> <span class="o">*</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">performance</span><span class="p">.</span><span class="nx">audiece</span> <span class="o">-</span> <span class="mi">20</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="nx">thisAmount</span> <span class="o">+=</span> <span class="mi">300</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">performance</span><span class="p">.</span><span class="nx">audience</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="nl">default</span><span class="p">:</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">알 수 없는 장르: ${this.play.type}</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">get</span> <span class="nf">volumeCredits</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">volumeCredits</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="nx">volumeCredits</span> <span class="o">+=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">max</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="k">if </span><span class="p">(</span><span class="dl">"</span><span class="s2">comedy</span><span class="dl">"</span> <span class="o">==</span> <span class="nx">aPerformance</span><span class="p">.</span><span class="nx">play</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span>
+            <span class="nx">volumeCredits</span> <span class="o">+=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">/</span> <span class="mi">5</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nx">volumeCredits</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">TragedyCalculator</span> <span class="kd">extends</span> <span class="nc">PerformanceCalculator</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">ComedyCalculator</span> <span class="kd">extends</span> <span class="nc">PerformanceCalculator</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">createPerformanceCalculator</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">,</span> <span class="nx">aPlay</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch </span><span class="p">(</span><span class="nx">aPlay</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="dl">"</span><span class="s2">tragedy</span><span class="dl">"</span><span class="p">:</span> <span class="k">return</span> <span class="k">new</span> <span class="nc">TragedyCalculator</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">,</span> <span class="nx">aPlay</span><span class="p">);</span>
+        <span class="k">case</span> <span class="dl">"</span><span class="s2">comedy</span><span class="dl">"</span> <span class="p">:</span> <span class="k">return</span> <span class="k">new</span> <span class="nc">ComedyCalculator</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">,</span> <span class="nx">aPlay</span><span class="p">);</span>
+        <span class="nl">default</span> <span class="p">:</span> <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">알 수 없는 장르 : ${aPlay.type}</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nf">createStatementData</span><span class="p">(</span><span class="nx">invoice</span><span class="p">,</span> <span class="nx">plays</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">statementData</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="nx">statementData</span><span class="p">.</span><span class="nx">customer</span> <span class="o">=</span> <span class="nx">invoice</span><span class="p">.</span><span class="nx">customer</span><span class="p">;</span>
+    <span class="nx">statementData</span><span class="p">.</span><span class="nx">performances</span> <span class="o">=</span> <span class="nx">invoice</span><span class="p">.</span><span class="nx">performances</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nx">enrichPerformance</span><span class="p">);</span>
+    <span class="nx">statementData</span><span class="p">.</span><span class="nx">totalAmount</span> <span class="o">=</span> <span class="nf">totalAmount</span><span class="p">(</span><span class="nx">statementData</span><span class="p">);</span>
+    <span class="nx">statementData</span><span class="p">.</span><span class="nx">totalVolumeCredits</span> <span class="o">=</span> <span class="nf">totalVolumeCredits</span><span class="p">(</span><span class="nx">statementData</span><span class="p">);</span>
+
+    <span class="kd">function</span> <span class="nf">enrichPerformance</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">calculator</span> <span class="o">=</span> <span class="nf">createPerformanceCalculator</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">,</span> <span class="nf">playFor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">));</span><span class="c1">//계산기 생성</span>
+        <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nf">assign</span><span class="p">({},</span> <span class="nx">aPerformance</span><span class="p">);</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">play</span> <span class="o">=</span> <span class="nf">playFor</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">amount</span> <span class="o">=</span> <span class="nx">calculator</span><span class="p">.</span><span class="nx">amount</span><span class="p">;</span><span class="c1">//함수를 클래스로 이동시킨 후, 인라인</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">volumeCredits</span> <span class="o">=</span> <span class="nx">calculator</span><span class="p">.</span><span class="nx">volumeCredits</span><span class="p">;</span><span class="c1">//함수를 클래스로 이동시킨 후, 인라인</span>
+        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nf">playFor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">plays</span><span class="p">[</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">playID</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nf">totalAmount</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">data</span><span class="p">.</span><span class="nx">performances</span><span class="p">.</span><span class="nf">reduce</span><span class="p">((</span><span class="nx">total</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">total</span> <span class="o">+</span> <span class="nx">p</span><span class="p">.</span><span class="nx">amount</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nf">totalVolumeCredits</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">data</span><span class="p">.</span><span class="nx">performances</span><span class="p">.</span><span class="nf">reduce</span><span class="p">((</span><span class="nx">total</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">total</span> <span class="o">+</span> <span class="nx">p</span><span class="p">.</span><span class="nx">volumeCredits</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이제, 새로 만든 클래스 안에 <code class="language-plaintext highlighter-rouge">조건부 로직을 다형성으로 바꾸기</code>를 적용하기 위한 함수를 정의 합니다. <code class="language-plaintext highlighter-rouge">amount()</code>의 복잡한 switch 문도 이제 필요없게 되었습니다. 또한 <code class="language-plaintext highlighter-rouge">volumeCredits</code> 도 각 클래스에서 정의하면 되기 때문에 부모클래스에서는 필요없게 되었습니다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">PerformanceCalculator</span> <span class="p">{</span>
+    <span class="nf">constructor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">,</span> <span class="nx">aPlay</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">performance</span> <span class="o">=</span> <span class="nx">aPerformance</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">play</span> <span class="o">=</span> <span class="nx">aPlay</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">get</span> <span class="nf">amount</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">서브클래스에서 이용하세요.</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">TragedyCalculator</span> <span class="kd">extends</span> <span class="nc">PerformanceCalculator</span> <span class="p">{</span>
+    <span class="kd">get</span> <span class="nf">amount</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="mi">40000</span><span class="p">;</span>
+        <span class="k">if </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">performance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">result</span> <span class="o">+=</span> <span class="mi">1000</span> <span class="o">*</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">performance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">-</span> <span class="mi">30</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">get</span> <span class="nf">volumeCredits</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">max</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">performance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">ComedyCalculator</span> <span class="kd">extends</span> <span class="nc">PerformanceCalculator</span> <span class="p">{</span>
+    <span class="kd">get</span> <span class="nf">amount</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="mi">30000</span><span class="p">;</span>
+        <span class="k">if </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">performance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">result</span> <span class="o">+=</span> <span class="mi">10000</span> <span class="o">+</span> <span class="mi">500</span> <span class="o">*</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">performance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">-</span> <span class="mi">20</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">result</span> <span class="o">+=</span> <span class="mi">300</span> <span class="o">*</span> <span class="k">this</span><span class="p">.</span><span class="nx">performance</span><span class="p">.</span><span class="nx">audience</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">get</span> <span class="nf">volumeCredits</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">volumeCredits</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">max</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">performance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">-</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="nx">volumeCredits</span> <span class="o">+=</span> <span class="nb">Math</span><span class="p">.</span><span class="nf">floor</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">performance</span><span class="p">.</span><span class="nx">audience</span> <span class="o">/</span> <span class="mi">5</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">volumeCredits</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nf">createPerformanceCalculator</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">,</span> <span class="nx">aPlay</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch </span><span class="p">(</span><span class="nx">aPlay</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="dl">"</span><span class="s2">tragedy</span><span class="dl">"</span><span class="p">:</span> <span class="k">return</span> <span class="k">new</span> <span class="nc">TragedyCalculator</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">,</span> <span class="nx">aPlay</span><span class="p">);</span>
+        <span class="k">case</span> <span class="dl">"</span><span class="s2">comedy</span><span class="dl">"</span><span class="p">:</span> <span class="k">return</span> <span class="k">new</span> <span class="nc">ComedyCalculator</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">,</span> <span class="nx">aPlay</span><span class="p">);</span>
+        <span class="nl">default</span><span class="p">:</span> <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">알 수 없는 장르 : ${aPlay.type}</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nf">createStatementData</span><span class="p">(</span><span class="nx">invoice</span><span class="p">,</span> <span class="nx">plays</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">statementData</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="nx">statementData</span><span class="p">.</span><span class="nx">customer</span> <span class="o">=</span> <span class="nx">invoice</span><span class="p">.</span><span class="nx">customer</span><span class="p">;</span>
+    <span class="nx">statementData</span><span class="p">.</span><span class="nx">performances</span> <span class="o">=</span> <span class="nx">invoice</span><span class="p">.</span><span class="nx">performances</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nx">enrichPerformance</span><span class="p">);</span>
+    <span class="nx">statementData</span><span class="p">.</span><span class="nx">totalAmount</span> <span class="o">=</span> <span class="nf">totalAmount</span><span class="p">(</span><span class="nx">statementData</span><span class="p">);</span>
+    <span class="nx">statementData</span><span class="p">.</span><span class="nx">totalVolumeCredits</span> <span class="o">=</span> <span class="nf">totalVolumeCredits</span><span class="p">(</span><span class="nx">statementData</span><span class="p">);</span>
+
+    <span class="kd">function</span> <span class="nf">enrichPerformance</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">const</span> <span class="nx">calculator</span> <span class="o">=</span> <span class="nf">createPerformanceCalculator</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">,</span> <span class="nf">playFor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">));</span><span class="c1">//계산기 생성</span>
+        <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nf">assign</span><span class="p">({},</span> <span class="nx">aPerformance</span><span class="p">);</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">play</span> <span class="o">=</span> <span class="nf">playFor</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">amount</span> <span class="o">=</span> <span class="nx">calculator</span><span class="p">.</span><span class="nx">amount</span><span class="p">;</span><span class="c1">//함수를 클래스로 이동시킨 후, 인라인</span>
+        <span class="nx">result</span><span class="p">.</span><span class="nx">volumeCredits</span> <span class="o">=</span> <span class="nx">calculator</span><span class="p">.</span><span class="nx">volumeCredits</span><span class="p">;</span><span class="c1">//함수를 클래스로 이동시킨 후, 인라인</span>
+        <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nf">playFor</span><span class="p">(</span><span class="nx">aPerformance</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">plays</span><span class="p">[</span><span class="nx">aPerformance</span><span class="p">.</span><span class="nx">playID</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nf">totalAmount</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">data</span><span class="p">.</span><span class="nx">performances</span><span class="p">.</span><span class="nf">reduce</span><span class="p">((</span><span class="nx">total</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">total</span> <span class="o">+</span> <span class="nx">p</span><span class="p">.</span><span class="nx">amount</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">function</span> <span class="nf">totalVolumeCredits</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">data</span><span class="p">.</span><span class="nx">performances</span><span class="p">.</span><span class="nf">reduce</span><span class="p">((</span><span class="nx">total</span><span class="p">,</span> <span class="nx">p</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">total</span> <span class="o">+</span> <span class="nx">p</span><span class="p">.</span><span class="nx">volumeCredits</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<p>여기까지 chap.1 의 예제가 끝이 났습니다. 처음코드와 비교하면 코드 라인수는 확실히 늘었지만, 기능별, 단계별로 정리가 잘 되어있어서 유지보수하기가 훨씬 간결하고, 그냥 코드를 읽을때도 더 가독성이 좋아졌습니다.</p>
+
+<p>지금까지의 리팩터링을 정리하면, 크게 3단계로 구성되어 있습니다.
+<code class="language-plaintext highlighter-rouge">원본 중첩함수를 여러개로 나누기</code> -&gt; <code class="language-plaintext highlighter-rouge">단계 쪼개기</code> -&gt; <code class="language-plaintext highlighter-rouge">계산코드와 출력코드 분리</code> 의 순서 입니다.</p>
+
+<p>리팩터링은 대부분 코드가 하는 일을 파악하는 데서 시작합니다. 그래서 코드를 읽고, 개선점을 찾고, 반영하는 식으로 진행 합니다.</p>
+
+<p>저자는 다음과 같은 말을 남깁니다.</p>
+
+<blockquote>
+  <p>좋은 코드를 가늠하는 확실한 방법은 ‘얼마나 수정하기 쉬운가?’ 다.</p>
+</blockquote>
+
+<p>개발자마다 좋은 코드가 무엇인지에 대해 말하는 기준은 다릅니다. 각 개발자의 취향과 경험에 따라 달라질 수 있는거죠. 하지만 <code class="language-plaintext highlighter-rouge">좋은 코드</code>의 본질은 명확하다고 생각합니다. <code class="language-plaintext highlighter-rouge">얼마나 수정하기 쉬운가?</code> 입니다. 소프트웨어를 공부하는 사람이든, 아니든 누구든 소프트웨어를 한번이라도 사용해 보았다면 <code class="language-plaintext highlighter-rouge">ver.1</code>로 배포가 완료된 완벽한 소프트웨어란 존재하지 않습니다. 그렇다면, 코드를 작성할 때 개선될 부분을 생각하면서 작성해야 합니다. 미래를 예측하는것은 불가능하지만, 미래를 대비하는것은 할 수 있습니다. 결국 <code class="language-plaintext highlighter-rouge">리팩터링이란 불확실한 미래를 대비하는 작업</code> 이라고 할 수 있겠습니다.</p>
+
+<p>마지막으로, 저자는 효과적으로 리팩터링 하는 방법을 말합니다.</p>
+
+<blockquote>
+  <p>핵심은, 단계를 잘게 나눠야 더 빠르게 처리할 수 있고, 코드는 절대 깨지지 않으며, 이러한 작은 단계들이 모여서 상항히 큰 변화를 이룰 수 있다는 사실을 깨닫는 것이다. 이 점을 명심하고 그대로 따라주기 바란다.</p>
+</blockquote>
+
+<p>잠시 다른이야기를 하자면, 저는 성공에 굉장히 관심이 많습니다. 제 유튭에도 보면 성공과 관련된 영상들이 많이 올라옵니다. 책도 많이 보구요. 책이든 유튜브 영상이든 다들 똑같이 하는 이야기들이 있습니다.<code class="language-plaintext highlighter-rouge"> 급하지 않게, 한단계식 쌓아가라</code> 라는 이야기 입니다. 하루에 1% 씩 성장할 수 있으면, 1년에 37배 성장할 수 있다고 합니다. 하지만, 단계를 밟지 않고 뛰어넘으려고 하면 결국 무너저 다시 처음부터 하게되는 불상사를 겪게 될것입니다. (맨날 속으로 되내이지만 성격이 급해서 정말 지키기 어렵습니다..)</p>
+
+<p>이야기가 샜지만, 리팩터링도 같은 원리인 것 같습니다. 모듈단위로 보면 모듈을 깨끗하게 정리하는것, 프로젝트로 보면 모듈들을 깔끔하게 정리하는 것이 불확실한 미래에 대비하여 프로젝트를 지속가능하게 만들 수 있는 것 같습니다. 다시한번 되새깁니다. <code class="language-plaintext highlighter-rouge">작은 단계들이 모여 큰 변화를 이룬다!</code></p>
+
+</body></html>

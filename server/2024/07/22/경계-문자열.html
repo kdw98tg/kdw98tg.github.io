@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="경계-문자열">경계 문자열</h2>
+
+<ul>
+  <li>멀티파트 요청의 경계 문자열은 각 파트를 구분하기 위한 문자열</li>
+  <li>이 문자열은 요청 본문 내에 각 파트의 시작과 끝을 표시, 각 파트의 경게를 명확히 정의함</li>
+  <li>경계문자열은 일반적으로 임의로 생성된 문자열로 구성되며, 겹치지 않아야 함</li>
+</ul>
+
+<h3 id="경계-문자열-예시">경계 문자열 예시</h3>
+<pre><code class="language-JSON">--boundary_string
+</code></pre>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">--</code>는 문자열의 시작을 나타냄</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">boundary_string</code>은 경계 문자열의 실제 값이며, 임의로 생성되는 고유한 문자열임</li>
+</ul>
+
+<h3 id="실제-적용된-모습">실제 적용된 모습</h3>
+<pre><code class="language-JSON">--boundary_string Content-Disposition: form-data; name="fieldName" 
+[파트 데이터]
+</code></pre>
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">Content-Disposition</code>은 파트의 이름과 기타 속성을 나타냄</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">name="fieldName"</code>은 파트의 이름을 나타내며, 서버가 파트를 인식할 때 사용</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">[파트데이터]</code>는 파트의 실제 데이터를 나타냄</li>
+</ul>
+
+<p>파트가 끝날때는 경계문자열 뒤에 –를 추가하여 파트를 끝냄</p>
+<pre><code class="language-JSON">--boundary_string--
+</code></pre>
+
+<h4 id="정리">정리</h4>
+
+<ul>
+  <li>경계 문자열을 사용하여 멀티파트 요청을 구성하면 서버는 각 파트를 올바르게 파싱하고 처리함</li>
+  <li><strong>경계 문자열은 중복되지 않아야 하고, 일반적으로 형식상 무작위 문자나 시간정보를 입력</strong></li>
+</ul>
+</body></html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="옵저버-패턴이란">옵저버 패턴이란?</h2>
+
+<blockquote>
+  <p>옵저버 패턴(Observer Pattern)은 한 객체의 상태가 바뀌면 그 객체에 의존하는 다른 객체에게 연락이 가고, 자동으로 내용이 갱신되는 방식으로 일대다(one-to-many) 의존성을 정의합니다.</p>
+</blockquote>
+
+<h3 id="옵저버-패턴이-사용되는-곳">옵저버 패턴이 사용되는 곳</h3>
+<ul>
+  <li>앱이 한정된 시간, 특정한 케이스에만 다른 객체를 관찰해야 하는 경우</li>
+  <li>대상 객체의 상태가 변경될 때마다 다른 객체의 동작을 트리거할 경우</li>
+  <li>한 객체의 상태가 변경되면 다른 객체도 변경해야 할 때. 변경하면서 어떤 객체가 변경되어야 하는지 몰라도 될 때</li>
+</ul>
+
+<h3 id="옵저버패턴의-장점">옵저버패턴의 장점</h3>
+<ul>
+  <li>Subject의 상태 변경을 주기적으로 조회하지 않고, 정보 변경 시, 자동으로 감지 가능</li>
+  <li>발행자의 코드를 변경하지 않고, 새 구독자를 등록할 수 있어 <code class="language-plaintext highlighter-rouge">개방 폐쇠 원직(OCP)</code>를 준수</li>
+  <li>런타임에서 발행자와 구독 알림 관계를 맺을 수 있음</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">정보를 변경하는 객체(Subject)</code>와 <code class="language-plaintext highlighter-rouge">변경을 감지하는 객체(Observer)</code>의 관계를 느슨하게 유지할 수 있음<code class="language-plaintext highlighter-rouge">(느슨한 결합)</code>
+</li>
+</ul>
+
+<h3 id="옵저버패턴의-단점">옵저버패턴의 단점</h3>
+<ul>
+  <li>구독자는 알림 순서를 제어 불가능. 무작위의 순서로 알림을 받음 (구현가능 하지만, 추천 x)</li>
+  <li>옵저버 패턴 남발시, 구조와 동작을 알아보기 힘듦 -&gt; 코드 복잡도 증가</li>
+  <li>다수의 옵저버 객체를 등록 이후, 해지하지 않는다면 메모리 누수 발생</li>
+</ul>
+
+<h3 id="사용된-디자인-원칙">사용된 디자인 원칙</h3>
+<blockquote>
+  <p>느슨한 결합 (Loose Coupling)</p>
+
+  <p>상호작용하는 객체 사이에는 가능하면 느슨한 결합을 사용해야 합니다.</p>
+</blockquote>
+
+<p>옵저버 패턴에는 <code class="language-plaintext highlighter-rouge">Subject 객체</code>가 정보를 등록된 <code class="language-plaintext highlighter-rouge">Observer</code>에게 <strong>push</strong> 해주는 방식과 필요한 정보를 <code class="language-plaintext highlighter-rouge">Observer 객체</code>가 가져오는 <strong>pull</strong> 방식 으로 나뉩니다.</p>
+
+<h2 id="예제---push-방식">예제 - push 방식</h2>
+
+<p>우선 기상 정보를 Observer들에게 뿌려주는 상황을 가정해 봅시다.</p>
+
+<p>정보를 전달하는 <code class="language-plaintext highlighter-rouge">WeatherData</code> 라는 클래스가 있습니다. 이 클래스는 정보가 변경될 때 마다 각 디스플레이에 정보를 전달합니다.</p>
+
+<p>각 디스플레이는 Display와 Observer의 역할을 둘다 하게 됩니다. 즉, 정보를 전달받는 <code class="language-plaintext highlighter-rouge">Observer</code> 인터페이스와 화면을 표시하는 <code class="language-plaintext highlighter-rouge">Display</code>인터페이스를 동시에 상속받게 됩니다.</p>
+
+<p>처음 구현할 방식은 push 방식 입니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Subject</code>에서 정보가 바뀌면, 등록된 <code class="language-plaintext highlighter-rouge">Observer</code> 객체에게 연락을 싹 다 돌리는 방식 입니다.</p>
+
+<p>우선, <code class="language-plaintext highlighter-rouge">Observer</code> 객체와 <code class="language-plaintext highlighter-rouge">DisplayElements</code>, <code class="language-plaintext highlighter-rouge">Subject</code>를 정의할 interface를 만들도록 합니다.</p>
+
+<p>🗅 <strong>interface Observer</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Observer</span> <span class="o">{</span>  
+  
+    <span class="c1">//옵저버들이 가질 update 메소드  </span>
+    <span class="c1">//온도, 습도, 기압 정보를 update   </span>
+     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="kt">float</span> <span class="n">_temp</span><span class="o">,</span> <span class="kt">float</span> <span class="n">_humidity</span><span class="o">,</span> <span class="kt">float</span> <span class="n">_pressure</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>🗅 <strong>interface DisplayElements</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">DisplayElement</span> <span class="o">{</span>  
+  
+    <span class="c1">//표시장치에 있는 display 함수  </span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">display</span><span class="o">();</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>🗅 <strong>interface Subject</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Subject</span> <span class="o">{</span>  
+  
+    <span class="c1">//옵저버 등록  </span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">registerObserver</span><span class="o">(</span><span class="nc">Observer</span> <span class="n">_observer</span><span class="o">);</span>  
+  
+    <span class="c1">//옵저버 제거  </span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">removeObserver</span><span class="o">(</span><span class="nc">Observer</span> <span class="n">_observer</span><span class="o">);</span>  
+  
+    <span class="c1">//옵저버에게 정보가 변경됨을 알리기  </span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">notifyObservers</span><span class="o">();</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="각-observser-subject-구현">각 Observser, Subject 구현</h3>
+
+<p>이제 인터페이스를 만들었으니, 해당 인터페이스를 상속받아 구현할 구상 클래스를 만듭니다.</p>
+
+<p>다음과 같이 구성을 해봅니다.</p>
+
+<ul>
+  <li>Subject : <code class="language-plaintext highlighter-rouge">WeatherData</code>
+</li>
+  <li>Observer : <code class="language-plaintext highlighter-rouge">ForecastDisplay</code>, <code class="language-plaintext highlighter-rouge">CurrentConditionsDisplay</code>
+</li>
+</ul>
+
+<h4 id="subject-클래스-구현">Subject 클래스 구현</h4>
+<p>먼저, Subject 클래스부터 구현을 합니다.</p>
+
+<p>Subject 클래스에는 옵저버를 등록/해지 할 수 있는 함수와, 옵저버에게 연락을 돌리는 함수로 구성되어 있습니다.</p>
+
+<p>🗅 <strong>class WeatherData</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">WeatherData</span> <span class="kd">implements</span> <span class="nc">Subject</span><span class="o">{</span>  
+  
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Observer</span><span class="o">&gt;</span> <span class="n">observerList</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="kt">float</span> <span class="n">temperature</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="kt">float</span> <span class="n">humidity</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="kt">float</span> <span class="n">pressure</span><span class="o">;</span>  
+  
+    <span class="kd">public</span> <span class="nf">WeatherData</span><span class="o">(){</span>  
+        <span class="n">observerList</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">Observer</span><span class="o">&gt;();</span>  
+    <span class="o">}</span>  
+  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">registerObserver</span><span class="o">(</span><span class="nc">Observer</span> <span class="n">_observer</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="n">observerList</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">_observer</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">removeObserver</span><span class="o">(</span><span class="nc">Observer</span> <span class="n">_observer</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="n">observerList</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">_observer</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">notifyObservers</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">for</span><span class="o">(</span><span class="nc">Observer</span> <span class="n">observer</span> <span class="o">:</span> <span class="n">observerList</span><span class="o">){</span>  
+            <span class="n">observer</span><span class="o">.</span><span class="na">update</span><span class="o">(</span><span class="n">temperature</span><span class="o">,</span><span class="n">humidity</span><span class="o">,</span><span class="n">pressure</span><span class="o">);</span>  
+        <span class="o">}</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">measurementsChanged</span><span class="o">(){</span>  
+        <span class="n">notifyObservers</span><span class="o">();</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setMeasurements</span><span class="o">(</span><span class="kt">float</span> <span class="n">_temperature</span><span class="o">,</span> <span class="kt">float</span> <span class="n">_humidity</span><span class="o">,</span> <span class="kt">float</span> <span class="n">_pressure</span><span class="o">){</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">temperature</span> <span class="o">=</span> <span class="n">_temperature</span><span class="o">;</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">humidity</span> <span class="o">=</span> <span class="n">_humidity</span><span class="o">;</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">pressure</span> <span class="o">=</span> <span class="n">_pressure</span><span class="o">;</span>  
+        <span class="n">measurementsChanged</span><span class="o">();</span>  
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<h4 id="observer-클래스-구현">Observer 클래스 구현</h4>
+
+<p>Observer 클래스는 Observer, DisplayElements를 상속받아 옵저버의 역할과 Display 의 역할을 수행 합니다.</p>
+
+<p>그리고 Subject 클래스인 WeatherData를 생성시에 주입받아 옵저버로 등록 합니다.</p>
+
+<p>그리고, Observer 인터페이스에서 정의한 <code class="language-plaintext highlighter-rouge">update</code> 메서드를 재정의하여, Subject 클래스에서 받고싶은 정보들을 멤버 변수에 대입해 줍니다.</p>
+
+<p>🗅 <strong>class ForecastDisplay</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ForecastDisplay</span> <span class="kd">implements</span> <span class="nc">Observer</span><span class="o">,</span><span class="nc">DisplayElement</span><span class="o">{</span>  
+  
+    <span class="kd">private</span> <span class="kt">float</span> <span class="n">currentPressure</span> <span class="o">=</span> <span class="mf">29.9f</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="kt">float</span> <span class="n">lastPressure</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="nc">WeatherData</span> <span class="n">weatherData</span><span class="o">;</span>  
+  
+    <span class="kd">public</span> <span class="nf">ForecastDisplay</span><span class="o">(</span><span class="nc">WeatherData</span> <span class="n">_weatherData</span><span class="o">){</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">weatherData</span> <span class="o">=</span> <span class="n">_weatherData</span><span class="o">;</span>  
+        <span class="n">weatherData</span><span class="o">.</span><span class="na">registerObserver</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">display</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"Forecast: "</span><span class="o">);</span>  
+        <span class="k">if</span> <span class="o">(</span><span class="n">currentPressure</span> <span class="o">&gt;</span> <span class="n">lastPressure</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"날씨가 좋아지고 있습니다"</span><span class="o">);</span>  
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">currentPressure</span> <span class="o">==</span> <span class="n">lastPressure</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"날씨가 지속되고 있습니다"</span><span class="o">);</span>  
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">currentPressure</span> <span class="o">&lt;</span> <span class="n">lastPressure</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"추워지고 비가올 수 있음을 대비하세요"</span><span class="o">);</span>  
+        <span class="o">}</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="kt">float</span> <span class="n">_temp</span><span class="o">,</span> <span class="kt">float</span> <span class="n">_humidity</span><span class="o">,</span> <span class="kt">float</span> <span class="n">_pressure</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="n">lastPressure</span> <span class="o">=</span> <span class="n">currentPressure</span><span class="o">;</span>  
+        <span class="n">currentPressure</span> <span class="o">=</span> <span class="n">_pressure</span><span class="o">;</span>  
+        <span class="n">display</span><span class="o">();</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>🗅 <strong>class CurrentConditionsDisplay</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CurrentConditionsDisplay</span> <span class="kd">implements</span> <span class="nc">Observer</span><span class="o">,</span> <span class="nc">DisplayElement</span><span class="o">{</span>  
+  
+    <span class="kd">private</span> <span class="kt">float</span> <span class="n">temperature</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="kt">float</span> <span class="n">humidity</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="nc">WeatherData</span> <span class="n">weatherData</span><span class="o">;</span>  
+  
+    <span class="kd">public</span> <span class="nf">CurrentConditionsDisplay</span><span class="o">(</span><span class="nc">WeatherData</span> <span class="n">_weatherData</span><span class="o">){</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">weatherData</span> <span class="o">=</span> <span class="n">_weatherData</span><span class="o">;</span>  
+        <span class="n">weatherData</span><span class="o">.</span><span class="na">registerObserver</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">(</span><span class="kt">float</span> <span class="n">_temperature</span><span class="o">,</span> <span class="kt">float</span> <span class="n">_humidity</span><span class="o">,</span> <span class="kt">float</span> <span class="n">_pressure</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">temperature</span> <span class="o">=</span> <span class="n">_temperature</span><span class="o">;</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">humidity</span> <span class="o">=</span> <span class="n">_humidity</span><span class="o">;</span>  
+        <span class="n">display</span><span class="o">();</span>  
+    <span class="o">}</span>  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">display</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"현재 상태 : 온도: "</span><span class="o">+</span><span class="n">temperature</span><span class="o">+</span><span class="s">"F, 습도: "</span><span class="o">+</span><span class="n">humidity</span><span class="o">+</span><span class="s">"%"</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위와 같이 하면, Subject 클래스에서 구현한 <code class="language-plaintext highlighter-rouge">notifyObservers</code>가 호출될 때, 각 Observer들에게 정보가 전달이 됩니다.</p>
+
+<h4 id="main-함수에서-실행">Main 함수에서 실행</h4>
+
+<p>이제 각 <code class="language-plaintext highlighter-rouge">Subject</code>와 <code class="language-plaintext highlighter-rouge">Observer</code>들을 구현했으니, Main 함수에서 실행해 봅니다.</p>
+
+<p>🗅 <strong>class Main</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>  
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="nc">WeatherData</span> <span class="n">weatherData</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WeatherData</span><span class="o">();</span>  
+  
+        <span class="nc">CurrentConditionsDisplay</span> <span class="n">currentConditionsDisplay</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">CurrentConditionsDisplay</span><span class="o">(</span><span class="n">weatherData</span><span class="o">);</span>   
+        <span class="nc">ForecastDisplay</span> <span class="n">forecastDisplay</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ForecastDisplay</span><span class="o">(</span><span class="n">weatherData</span><span class="o">);</span>  
+
+  
+        <span class="n">weatherData</span><span class="o">.</span><span class="na">setMeasurements</span><span class="o">(</span><span class="mi">80</span><span class="n">f</span><span class="o">,</span><span class="mi">65</span><span class="n">f</span><span class="o">,</span><span class="mf">30.45f</span><span class="o">);</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><img src="/images/Pasted%20image%2020240302010538.png" alt=""></p>
+
+<p>다음과 같이 각<code class="language-plaintext highlighter-rouge">Observers</code>를 등록하고 난 후, <code class="language-plaintext highlighter-rouge">Subject</code>클래스의 <code class="language-plaintext highlighter-rouge">setMeasurements</code> 함수가 호출되고, 출력값이 정상적으로 나오는것을 확인할 수 있습니다.</p>
+
+<p>방금 구현한 방식은 객체를 등록하면 모든 객체에게 정보를 <code class="language-plaintext highlighter-rouge">push</code>해주는 방식입니다. 즉, 정보를 뿌리는 주체는 <code class="language-plaintext highlighter-rouge">Subject</code>클래스 인거죠.</p>
+
+<p>하지만, 다음과 같은 요구사항이 생길 수 있습니다. “나는 내가 필요한 정보만을 가져가고 싶어”</p>
+
+<p>해당 요구사항을 만족시키기 위해 사용할 수 있는 방식이 <code class="language-plaintext highlighter-rouge">pull</code>방식 입니다.</p>
+
+<h2 id="예제---push-방식-1">예제 - push 방식</h2>
+
+<p><code class="language-plaintext highlighter-rouge">pull</code>방식은 데이터가 바뀌면 옵저버의<code class="language-plaintext highlighter-rouge">update()</code> 함수를 호출해서 옵저버에 새로운 데이터를 보냅니다.</p>
+
+<p>이제 구현해 볼것은 데이터가 바뀌었다는 알림을 옵저버가 받았을 때, <code class="language-plaintext highlighter-rouge">Subject</code>에 있는 게터 메소드를 호출해서 필요한 값을 당겨오도록 만듭니다.</p>
+
+<h3 id="기존-클래스에서-수정">기존 클래스에서 수정</h3>
+
+<p>우선, <code class="language-plaintext highlighter-rouge">Subject</code> 클래스인 WeatherData를 바꿔 줍니다.
+<code class="language-plaintext highlighter-rouge">push</code>방식에서는 update 함수의 인자로 데이터들을 넘겨줬지만, <code class="language-plaintext highlighter-rouge">pull</code>방식에서는 단순히 update 함수만 호출을 해줍니다.</p>
+
+<p>물론, override method 가 바뀜에 따라 기본 정의인 interface 에서도 update 함수의 정의를 바꿔줘야 합니다.
+🗅 <strong>class WeatherData</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>  
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">notifyObservers</span><span class="o">()</span> <span class="o">{</span>  
+    <span class="k">for</span><span class="o">(</span><span class="nc">Observer</span> <span class="n">observer</span> <span class="o">:</span> <span class="n">observerList</span><span class="o">){</span>  
+        <span class="n">observer</span><span class="o">.</span><span class="na">update</span><span class="o">();</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>🗅 <strong>interface Observer</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Observer</span> <span class="o">{</span>  
+  
+    <span class="c1">//옵저버들이 가질 update 메소드  </span>
+    <span class="c1">//온도, 습도, 기압 정보를 update    </span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>그다음, 각 옵저버의 <code class="language-plaintext highlighter-rouge">update</code> 메서드가 호출될 때, <code class="language-plaintext highlighter-rouge">Subject</code>의 getter 를 활용하여 정보를 가져 오도록 바꿉니다.</p>
+
+<p>🗅 <strong>class CurrentConditionsDisplay</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>  
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">update</span><span class="o">()</span> <span class="o">{</span>  
+    <span class="k">this</span><span class="o">.</span><span class="na">temperature</span> <span class="o">=</span> <span class="n">weatherData</span><span class="o">.</span><span class="na">getTemperature</span><span class="o">();</span>  
+    <span class="k">this</span><span class="o">.</span><span class="na">humidity</span> <span class="o">=</span> <span class="n">weatherData</span><span class="o">.</span><span class="na">getHumidity</span><span class="o">();</span>  
+    <span class="n">display</span><span class="o">();</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>이렇게 바꾸면 <code class="language-plaintext highlighter-rouge">pull</code> 방식으로 구현이 완료가 됩니다.</p>
+
+<h3 id="main-함수-실행">Main 함수 실행</h3>
+
+<p>🗅 <strong>class Main</strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>  
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="nc">WeatherData</span> <span class="n">weatherData</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">WeatherData</span><span class="o">();</span>  
+  
+        <span class="nc">ForecastDisplay</span> <span class="n">currentConditionsDisplay</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ForecastDisplay</span><span class="o">(</span><span class="n">weatherData</span><span class="o">);</span> 
+  
+        <span class="n">weatherData</span><span class="o">.</span><span class="na">setMeasurements</span><span class="o">(</span><span class="mi">80</span><span class="n">f</span><span class="o">,</span><span class="mi">65</span><span class="n">f</span><span class="o">,</span><span class="mf">30.45f</span><span class="o">);</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><img src="/images/Pasted%20image%2020240302131201.png" alt="실행결과"></p>
+
+<p>정상적으로 정보를 가져오는것을 확인할 수 있습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">push</code>방식과 다르게 원하는 데이터만을 가져오는 것을 확인할 수 있습니다.</p>
+
+</body></html>

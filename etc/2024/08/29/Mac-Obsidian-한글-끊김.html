@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="맥북에서-obsidian-사용-시-한글이-끊기는-문제-해결법">맥북에서 obsidian 사용 시 한글이 끊기는 문제 해결법</h2>
+
+<p>맥에서 <code class="language-plaintext highlighter-rouge">Obsidian</code>툴 사용 시 한글이 계속 끊기는 문제가 발생하였습니다. 저는 깃헙 블로그를 작성할 때 <code class="language-plaintext highlighter-rouge">Obisidian</code>으로 편집을 하기 때문에 굉장히 불편하였습니다.</p>
+
+<p>그렇게 자료를 찾던 중 어떤 게시글의 댓글에서 해결책을 찾았습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Obisidian</code>은 Electron 이라는 프레임워크로 만들어 졌고, 이녀석들에게는 특징이 있다고 합니다.
+어떠한 캐시 폴더가 만들어지는데, 그것이 한글을 끊기게 하는 주범이라고 합니다.</p>
+
+<p>그 캐시파일의 경로는 다음과 같습니다.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>~/Library/Application<span class="se">\ </span>Support
+</code></pre></div></div>
+
+<p>Terminal로 지우는 것을 해보면</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-rf</span> ~/Library/Application<span class="se">\ </span>Support/obsidian/Cache/Cache_Data/
+</code></pre></div></div>
+
+<p>이렇게 입력해 주시면 됩니다.</p>
+
+<p>저는 이렇게 하고 나서 말끔하게 문제가 해결 되었습니다.</p>
+</body></html>

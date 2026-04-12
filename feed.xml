@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="/jekyll-theme-yat/feed.xml" rel="self" type="application/atom+xml" /><link href="/jekyll-theme-yat/" rel="alternate" type="text/html" /><updated>2026-04-12T12:08:01+00:00</updated><id>/jekyll-theme-yat/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>GitHub User</name></author><entry><title type="html">[게임 기획] 창의적인 게임을 만들기 위한 제약</title><link href="/jekyll-theme-yat/service%20planning/2026/04/01/%EC%B0%BD%EC%9D%98%EC%A0%81%EC%9D%B8-%EA%B2%8C%EC%9E%84-%EB%A7%8C%EB%93%A4%EA%B8%B0.html" rel="alternate" type="text/html" title="[게임 기획] 창의적인 게임을 만들기 위한 제약" /><published>2026-04-01T00:00:00+00:00</published><updated>2025-04-01T00:00:00+00:00</updated><id>/jekyll-theme-yat/service%20planning/2026/04/01/%EC%B0%BD%EC%9D%98%EC%A0%81%EC%9D%B8%20%EA%B2%8C%EC%9E%84%20%EB%A7%8C%EB%93%A4%EA%B8%B0</id><content type="html" xml:base="/jekyll-theme-yat/service%20planning/2026/04/01/%EC%B0%BD%EC%9D%98%EC%A0%81%EC%9D%B8-%EA%B2%8C%EC%9E%84-%EB%A7%8C%EB%93%A4%EA%B8%B0.html"><![CDATA[<p>인디게임 개발자가 시장에서 승부를 걸 수 있는 방법은 많지 않습니다. 대기업과의 경쟁에서, 게임의 그래픽, 디자인, 음향, 연출 등등 인디게임 개발자가 챙기기 힘든 부분이 많습니다. 결국, 인디게임 개발자는 대기업이 시도하지 못하는 <code class="language-plaintext highlighter-rouge">새로운 장르의 창의적인 게임</code>을 만들어서 승부를 해야 합니다.</p>
+
+<p>그렇다면 <code class="language-plaintext highlighter-rouge">새로운 장르의 창의적인 게임</code>은 어떻게 만들 수 있을까요?</p>
+
+<p><code class="language-plaintext highlighter-rouge">FTL</code>, <code class="language-plaintext highlighter-rouge">인 투 더 브리치</code> 라는 게임을 만들어서 약 400억의 수익을 올린 2인 인디게임 개발자 팀이 GDC에서 <code class="language-plaintext highlighter-rouge">창의적인 게임</code>을 만드는 방법을 공개한 적이 있습니다.</p>
+
+<p>그 방법은 바로 <code class="language-plaintext highlighter-rouge">개발자의 손 발을 묶는것</code> 입니다.</p>
+
+<p>예를들어 RPG 게임을 만든다고 한다면, RPG 게임에 제약을 두는 것입니다. hp 요소가 없는 RPG 게임을 만들면 어떨까?, 마을과 NPC 가 없는 게임을 만들면 어떨까?, 무기를 사용하지 않는 게임을 만들면 어떨까? 와 같은 제약 입니다.</p>
+
+<p>통상적으로 RPG 게임을 만들 때 필수적이라고 생각되는 요소들에 제약을 두는것 입니다. 이렇게 하면, 제약된 요소를 채우기 위해, 사람은 자연스럽게 창의적인 요소를 만들어 낸다고 합니다.</p>
+
+<p>이를 증명하는 한 연구가 있었습니다. 바로 <code class="language-plaintext highlighter-rouge">외계인 그리기</code> 연구 입니다. 이 연구는 참가자들에게 종이와 펜을 지급하고, 처음에는 <code class="language-plaintext highlighter-rouge">외계인</code>을 그려보라고 지시했습니다. 참가자들은 통상적으로 연상이 되는 대머리에 눈이 검은 외계인을 그렸습니다. 여기에서, 연구진은 다시 종이와 펜을 지급하고, 이번에는 <code class="language-plaintext highlighter-rouge">용의 날개와 비늘</code>이 달린 외계인을 그려보라고 제약을 걸었습니다. 참가자들은 이번에는 통상적으로 연상되는 외계인이 아니라, 각각 처음보는 창의적인 그림을 그렸다고 했습니다.</p>
+
+<p>이 연구를 보면 알 수 있듯이, 사람은 제약이 걸리지 않으면 뇌의 에너지를 아끼기 위해서인지 통념적인 생각을 가장 1순위로 생각합니다. 따라서, 창의적인 게임을 만드는 방법중 하나는 통념적인 생각에 <code class="language-plaintext highlighter-rouge">제약</code>을 두는 것입니다.</p>
+
+<p>그리고 그 <code class="language-plaintext highlighter-rouge">제약</code>은 곧 이 게임에 필요한 필수적인 <code class="language-plaintext highlighter-rouge">조건</code>으로 바뀌고, 사람들이 이 게임을 하는 <code class="language-plaintext highlighter-rouge">핵심 재미요소</code>가 됩니다. <code class="language-plaintext highlighter-rouge">핵심 재미요소</code>가 잡히고 나면, 필연적으로 핵심 재미요소에 맞춰서 게임이 알아서 디자인 되게 됩니다.</p>]]></content><author><name>GitHub User</name></author><category term="Service Planning" /><category term="Service Planning" /><category term="Game Design" /><summary type="html"><![CDATA[인디게임 개발자가 시장에서 승부를 걸 수 있는 방법은 많지 않습니다. 대기업과의 경쟁에서, 게임의 그래픽, 디자인, 음향, 연출 등등 인디게임 개발자가 챙기기 힘든 부분이 많습니다. 결국, 인디게임 개발자는 대기업이 시도하지 못하는 새로운 장르의 창의적인 게임을 만들어서 승부를 해야 합니다.]]></summary></entry><entry><title type="html">[포트폴리오] Unity-JustPatrol</title><link href="/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_JustPatrol.html" rel="alternate" type="text/html" title="[포트폴리오] Unity-JustPatrol" /><published>2026-02-12T00:00:00+00:00</published><updated>2026-02-12T00:00:00+00:00</updated><id>/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_JustPatrol</id><content type="html" xml:base="/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_JustPatrol.html"><![CDATA[<h2 id="프로젝트-내용">프로젝트 내용</h2>
+
+<p><code class="language-plaintext highlighter-rouge">JustPatrol</code>은 3D 공포게임 입니다. 학교의 야간 경비에게 벌어지는 기이한 일들을 담았습니다. (스팀에 출시가 되어 있어, 자세한 플레이 영상은 생략합니다.)</p>
+
+<p><img src="/images/just%20patrol%20icon.png" alt="" /></p>
+
+<p><img src="/images/TitleScene.png" alt="" /></p>
+
+<p><img src="/images/SecurityRoom.png" alt="" /></p>
+
+<p><img src="/images/Opend%20Window.png" alt="" /></p>
+
+<p><img src="/images/First%20Floor.png" alt="" /></p>
+
+<h2 id="기술-스택">기술 스택</h2>
+
+<ul>
+  <li>Unity 6.0 (6000.0.64f1) / C#</li>
+  <li>Platform : WIndows</li>
+  <li>Store : Steam</li>
+</ul>
+
+<h2 id="기술적-내용">기술적 내용</h2>
+
+<ul>
+  <li>MonoBehaviour의 커플링을 최대한 없애고자, 각 도메인마다 추상화를 사용함</li>
+  <li>SingleTon 사용을 최대한 지양하고, Command 패턴을 사용해서 이벤트 기반 구조로 관리함</li>
+  <li>Localization Text를 사용하여 영어, 한국어에 대응함</li>
+  <li>확장성을 고려한 공포 이벤트 요소를 관리하는 시스템</li>
+  <li>Object 에 Event를 끼워넣는 ECS(Entity Component System) 방식의 설계</li>
+</ul>
+
+<h2 id="배운점">배운점</h2>
+
+<ul>
+  <li>3인 팀으로 진행하며, 팀장을 맡았음. 3명의 의견을 최대한 수렴하며 프로젝트를 진행하려고 하였음. 하지만, 잡음도 너무 많아지고 통일성이 없어지는 결과를 낳았음. 어느정도는 팀장이 이끌고 가야한다라는것을 느낌</li>
+  <li>프로토타이핑 없이 바로 게임 제작에 들어갔음. 핵심 재미요소를 잘 정한것 같아, 프로토타이핑을 하는것이 시간낭비라고 생각했음. 하지만, 재미요소를 제대로 검증하지 않고 프로젝트를 완성해 보니, 처음 생각했던것과는 결과가 많이 달랐음. 프로토타이핑의 중요성을 깨달았음</li>
+  <li>유니티는 자유도가 높음 프레임워크임. 유니티만 하면, 구조에 매몰되는 습관이 있었음. 하지만, 결국 사용자들은 코드의 구성을 모르기 때문에, 큰 문제가 되지 않는다면 먼저 프로젝트를 완성하고 완성본을 가지고 구조를 고민해보는것이 정답이라는것을 깨달음</li>
+  <li>컴파일 타임에 관리가 잘 안되는 주석 사용을 지양하고, 코드를 최대한 깔끔하게 짜는것이 철학이었음. 지금까지는 문제가 없었으나, 규모가 꽤 있는 게임 작업을 하니, 언제 짠지 모를 코드들을 해석하는데 시간이 걸렸음. 코드를 설명하는 주석이 아닌, 코드를 짤때의 의도가 담긴 주석 사용을 지향해야겠다 라는 생각을 가짐</li>
+</ul>]]></content><author><name>GitHub User</name></author><category term="Portfolio" /><category term="Portfolio" /><category term="JustPatrol" /><summary type="html"><![CDATA[프로젝트 내용]]></summary></entry><entry><title type="html">[포트폴리오] Winform-RDC</title><link href="/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_RDC.html" rel="alternate" type="text/html" title="[포트폴리오] Winform-RDC" /><published>2026-02-12T00:00:00+00:00</published><updated>2026-02-12T00:00:00+00:00</updated><id>/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_RDC</id><content type="html" xml:base="/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_RDC.html"><![CDATA[<h2 id="프로젝트-내용">프로젝트 내용</h2>
+
+<p>Raw Data Collector 는 제조업 중소기업에서 재고를 관리를 전산화 할 수 있도록 제작되었음. 실무에 아버지가 계시는데, 전산화가 되지 않아 일일이 손으로 적어야 하는 불편함에 시작하였음. 프로그램을 만들고 사업화 과정에서 실패하여 지금은 사용되지 않는 프로그램임. (Android, Window 플랫폼 지원되나, 둘다 서버가 닫혀서 더이상 실행하기 힘들어 남아있는 사진만 첨부함)</p>
+
+<p><img src="/images/Pasted%20image%2020260212213350.png" alt="" /></p>
+
+<p><img src="/images/Pasted%20image%2020260212213400.png" alt="" /></p>
+
+<p><img src="/images/Pasted%20image%2020260212213803.png" alt="" /></p>
+
+<p><img src="/images/Pasted%20image%2020260212213841.png" alt="" /></p>
+
+<p><img src="/images/Pasted%20image%2020260212213433.png" alt="" /></p>
+
+<p><img src="/images/Pasted%20image%2020260212213453.png" alt="" /></p>
+
+<p><img src="/images/Pasted%20image%2020260212213634.png" alt="" /></p>
+
+<h2 id="기술-스택">기술 스택</h2>
+
+<ul>
+  <li>Platform - Android / Window</li>
+  <li>Language - Koltin / C#</li>
+  <li>Server - Linux</li>
+  <li>DB - MariaDB</li>
+</ul>
+
+<h2 id="기술적-내용">기술적 내용</h2>
+
+<ul>
+  <li>Window에서 이더넷 통신을 통해, 데이터베이스 직접 연결하여 통신함</li>
+  <li>Android 를 클라이언트, Window를 Admin 으로 사용할 수 있도록 설계함</li>
+</ul>
+
+<h2 id="배운점">배운점</h2>
+
+<ul>
+  <li>데이터베이스와 소통하는 도메인을 따로 만들지 않고, 비지니스 로직이 정의되어 있는 곳에서 바로 통신을 했었음. 이렇게 하니, 같은 로직들이 반복되고 수정이 일어났을 때 관리가 되지 않았었음. MVC, MVP 패턴에 관심을 가짐</li>
+  <li>위와 같은 맥락으로, 소프트웨어는 쉽게 변할 수 있다는걸 꺠달음. 소프트웨어 유지보수 기법에 대해 관심이 생겼음</li>
+  <li>RDC가 실패한 이유는 BM의 부실함이었음. 업체당 유지보수 비용으로 2만원이 최대였음. 일반 월급처럼 벌려면 150군데와 계약해야 했는데, 사실상 불가능 했음. 이걸 통해서 먼저, 사업성을 확보한 후에 개발에 착수해야 한다는것을 깨달았음</li>
+</ul>]]></content><author><name>GitHub User</name></author><category term="Portfolio" /><category term="Portfolio" /><category term="RawDataCollector" /><summary type="html"><![CDATA[프로젝트 내용]]></summary></entry><entry><title type="html">[포트폴리오] 교재작성-android 책 집필</title><link href="/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_android-%EC%B1%85-%EC%A7%91%ED%95%84.html" rel="alternate" type="text/html" title="[포트폴리오] 교재작성-android 책 집필" /><published>2026-02-12T00:00:00+00:00</published><updated>2026-02-12T00:00:00+00:00</updated><id>/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_android%20%EC%B1%85%20%EC%A7%91%ED%95%84</id><content type="html" xml:base="/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_android-%EC%B1%85-%EC%A7%91%ED%95%84.html"><![CDATA[<h2 id="프로젝트-내용">프로젝트 내용</h2>
+
+<p>동의대학교 박성훈 겸임교수와 함께 연구용 책 <code class="language-plaintext highlighter-rouge">효과적인 안드로이드 애플리케이션 만들기 (p.251)</code> 집필.</p>
+
+<p>책의 목차만 올려두겠습니다.</p>
+
+<h1 id="안드로이드-프로그래밍-목차">안드로이드 프로그래밍 목차</h1>
+
+<h2 id="1장-안드로이드의-개요-1">1장. 안드로이드의 개요 (1)</h2>
+<h3 id="1절-안드로이드의-개요-1">1절. 안드로이드의 개요 (1)</h3>
+<h4 id="1항-스마트폰의-개요-1">1항. 스마트폰의 개요 (1)</h4>
+<h4 id="2항-안드로이드-3">2항. 안드로이드 (3)</h4>
+<h3 id="2절-안드로이드-개발-환경-7">2절. 안드로이드 개발 환경 (7)</h3>
+<h4 id="1항-안드로이드-개발을-위한-운영체제-7">1항. 안드로이드 개발을 위한 운영체제 (7)</h4>
+<h4 id="2항-안드로이드-개발-환경의-구성-7">2항. 안드로이드 개발 환경의 구성 (7)</h4>
+<h3 id="3절-안드로이드-개발-환경-설치-9">3절. 안드로이드 개발 환경 설치 (9)</h3>
+<h4 id="1항-안드로이드-개발-환경-설치-순서-9">1항. 안드로이드 개발 환경 설치 순서 (9)</h4>
+<h4 id="2항-애뮬레이터avd-가속기-설치-9">2항. 애뮬레이터(AVD) 가속기 설치 (9)</h4>
+<h4 id="3항-avd-생성-16">3항. AVD 생성 (16)</h4>
+
+<hr />
+
+<h2 id="2장-애플리케이션-제작-시작하기-25">2장. 애플리케이션 제작 시작하기 (25)</h2>
+<h3 id="1절-hello-android-프로그램-25">1절. Hello Android 프로그램 (25)</h3>
+<h4 id="1항-hello-android-프로젝트-25">1항. Hello Android 프로젝트 (25)</h4>
+<h3 id="2절-완전한-기능의-안드로이드-애플리케이션-작성-33">2절. 완전한 기능의 안드로이드 애플리케이션 작성 (33)</h3>
+<h4 id="1항-android-studio-프로젝트-관리-33">1항. Android Studio 프로젝트 관리 (33)</h4>
+<h4 id="2항-안드로이드-프로젝트의-표준틀-34">2항. 안드로이드 프로젝트의 표준틀 (34)</h4>
+<h3 id="3절-안드로이드-프로젝트-구성-43">3절. 안드로이드 프로젝트 구성 (43)</h3>
+<h4 id="1항-baseapp-프로젝트의-구성-43">1항. BaseApp 프로젝트의 구성 (43)</h4>
+<h4 id="2항-프로젝트에서-사용되는-폴더와-파일의-용도-44">2항. 프로젝트에서 사용되는 폴더와 파일의 용도 (44)</h4>
+
+<hr />
+
+<h2 id="3장-안드로이드를-위한-javakotlin-문법-46">3장. 안드로이드를 위한 Java/Kotlin 문법 (46)</h2>
+<h3 id="1절-javakotlin의-개요-46">1절. Java/Kotlin의 개요 (46)</h3>
+<h4 id="1항-javakotlin-소개-46">1항. Java/Kotlin 소개 (46)</h4>
+<h4 id="2항-intellij-설치-47">2항. IntelliJ 설치 (47)</h4>
+<h3 id="2절-javakotlin의-기본-문법-50">2절. Java/Kotlin의 기본 문법 (50)</h3>
+<h4 id="1항-변수와-데이터-형식-50">1항. 변수와 데이터 형식 (50)</h4>
+<h4 id="2항-조건문-if-switchcase-53">2항. 조건문: if, switch()~case (53)</h4>
+<h4 id="3항-배열-55">3항. 배열 (55)</h4>
+<h4 id="4항-반복문-for-while-56">4항. 반복문: for, while (56)</h4>
+<h4 id="5항-메소드와-전역변수-지역변수-58">5항. 메소드와 전역변수, 지역변수 (58)</h4>
+<h4 id="6항-예외-처리-trycatch-60">6항. 예외 처리 try~catch (60)</h4>
+<h3 id="3절-클래스와-인스턴스-62">3절. 클래스와 인스턴스 (62)</h3>
+<h4 id="1항-클래스-정의와-인스턴스-생성-62">1항. 클래스 정의와 인스턴스 생성 (62)</h4>
+<h4 id="2항-생성자-64">2항. 생성자 (64)</h4>
+<h4 id="3항-메소드-오버로딩-67">3항. 메소드 오버로딩 (67)</h4>
+<h3 id="4절-클래스-상속-69">4절. 클래스 상속 (69)</h3>
+<h4 id="1항-클래스-상속과-메소드-오버라이딩-69">1항. 클래스 상속과 메소드 오버라이딩 (69)</h4>
+<h4 id="2항-추상-클래스와-추상-메소드-70">2항. 추상 클래스와 추상 메소드 (70)</h4>
+
+<hr />
+
+<h2 id="4장-기본-위젯-73">4장. 기본 위젯 (73)</h2>
+<h3 id="1절-뷰의-개요-73">1절. 뷰의 개요 (73)</h3>
+<h4 id="1항-뷰와-뷰-그룹-73">1항. 뷰와 뷰 그룹 (73)</h4>
+<h4 id="2항-view-클래스의-xml-속성-74">2항. View 클래스의 XML 속성 (74)</h4>
+<h3 id="2절-기본-위젯-다루기-83">2절. 기본 위젯 다루기 (83)</h3>
+<h4 id="1항-텍스트-뷰-83">1항. 텍스트 뷰 (83)</h4>
+<h4 id="2항-java-코드로-xml-속성-설정-84">2항. Java 코드로 XML 속성 설정 (84)</h4>
+<h4 id="3항-버튼과-에디트텍스트-86">3항. 버튼과 에디트텍스트 (86)</h4>
+<h3 id="3절-기본-위젯-활용하기-92">3절. 기본 위젯 활용하기 (92)</h3>
+<h4 id="1항-컴파운드-버튼-92">1항. 컴파운드 버튼 (92)</h4>
+<h4 id="2항-이미지뷰와-이미지-버튼-96">2항. 이미지뷰와 이미지 버튼 (96)</h4>
+
+<hr />
+
+<h2 id="5장-레이아웃-98">5장. 레이아웃 (98)</h2>
+<h3 id="1절-레이아웃의-개요-98">1절. 레이아웃의 개요 (98)</h3>
+<h4 id="1항-레이아웃의-기본-개념-98">1항. 레이아웃의 기본 개념 (98)</h4>
+<h4 id="2항-레이아웃의-종류-98">2항. 레이아웃의 종류 (98)</h4>
+<h3 id="2절-리니어레이아웃-100">2절. 리니어레이아웃 (100)</h3>
+<h4 id="1항-기본-리니어레이아웃의-형태-100">1항. 기본 리니어레이아웃의 형태 (100)</h4>
+<h4 id="2항-중복-리니어레이아웃의-형태-104">2항. 중복 리니어레이아웃의 형태 (104)</h4>
+<h3 id="3절-기타-레이아웃-107">3절. 기타 레이아웃 (107)</h3>
+<h4 id="1항-렐러티브레이아웃-107">1항. 렐러티브레이아웃 (107)</h4>
+<h4 id="2항-테이블레이아웃-113">2항. 테이블레이아웃 (113)</h4>
+<h4 id="3항-그리드레이아웃-115">3항. 그리드레이아웃 (115)</h4>
+<h4 id="4항-프레임레이아웃-117">4항. 프레임레이아웃 (117)</h4>
+
+<hr />
+
+<h2 id="6장-고급-위젯-120">6장. 고급 위젯 (120)</h2>
+<h3 id="1절-고급-위젯-120">1절. 고급 위젯 (120)</h3>
+<h4 id="1항-날짜와-시간-관련-위젯-120">1항. 날짜와 시간 관련 위젯 (120)</h4>
+<h4 id="2항-기타-위젯-124">2항. 기타 위젯 (124)</h4>
+<h3 id="2절-뷰-컨테이너-128">2절. 뷰 컨테이너 (128)</h3>
+<h4 id="1항-간단한-기능의-뷰-컨테이너-128">1항. 간단한 기능의 뷰 컨테이너 (128)</h4>
+<h4 id="2항-복잡한-기능의-뷰-컨테이너-131">2항. 복잡한 기능의 뷰 컨테이너 (131)</h4>
+
+<hr />
+
+<h2 id="7장-메뉴와-대화상자-142">7장. 메뉴와 대화상자 (142)</h2>
+<h3 id="1절-메뉴-142">1절. 메뉴 (142)</h3>
+<h4 id="1항-xml을-이용한-옵션-메뉴-143">1항. XML을 이용한 옵션 메뉴 (143)</h4>
+<h3 id="2절-토스트-146">2절. 토스트 (146)</h3>
+
+<hr />
+
+<h2 id="8장-액티비티와-인텐트-149">8장. 액티비티와 인텐트 (149)</h2>
+<h3 id="1절-액티비티와-인텐트의-기본-149">1절. 액티비티와 인텐트의 기본 (149)</h3>
+<h4 id="1항-안드로이드의-4대-컴포넌트-149">1항. 안드로이드의 4대 컴포넌트 (149)</h4>
+<h4 id="2항-액티비티의-개요-151">2항. 액티비티의 개요 (151)</h4>
+<h4 id="3항-명시적-인텐트-157">3항. 명시적 인텐트 (157)</h4>
+<h3 id="2절-액티비티와-인텐트의-응용-160">2절. 액티비티와 인텐트의 응용 (160)</h3>
+<h4 id="1항-양방향-액티비티-160">1항. 양방향 액티비티 (160)</h4>
+<h4 id="2항-암시적-인텐트-163">2항. 암시적 인텐트 (163)</h4>
+<h4 id="3항-액티비티-생명주기-165">3항. 액티비티 생명주기 (165)</h4>
+
+<hr />
+
+<h2 id="9장-어댑터-뷰-168">9장. 어댑터 뷰 (168)</h2>
+<h3 id="1절-리스트-뷰와-그리드-뷰-168">1절. 리스트 뷰와 그리드 뷰 (168)</h3>
+<h4 id="1항-어댑터-뷰-168">1항. 어댑터 뷰 (168)</h4>
+<h4 id="2항-리스트-뷰-169">2항. 리스트 뷰 (169)</h4>
+<h4 id="3항-그리드-뷰-175">3항. 그리드 뷰 (175)</h4>
+<h3 id="2절-갤러리와-스피너-176">2절. 갤러리와 스피너 (176)</h3>
+<h4 id="1항-갤러리-176">1항. 갤러리 (176)</h4>
+<h4 id="2항-스피너-178">2항. 스피너 (178)</h4>
+
+<hr />
+
+<h2 id="10장-멀티미디어와-구글-지도-180">10장. 멀티미디어와 구글 지도 (180)</h2>
+<h3 id="1절-오디오-180">1절. 오디오 (180)</h3>
+<h3 id="2절-스레드-183">2절. 스레드 (183)</h3>
+<h4 id="1항-프로그레스바와-시크바-183">1항. 프로그레스바와 시크바 (183)</h4>
+<h4 id="2항-스레드의-기본-185">2항. 스레드의 기본 (185)</h4>
+<h4 id="3항-ui-스레드-190">3항. UI 스레드 (190)</h4>
+
+<hr />
+
+<h2 id="11장-서비스와-브로드캐스트-리시버-192">11장. 서비스와 브로드캐스트 리시버 (192)</h2>
+<h3 id="1절-서비스-192">1절. 서비스 (192)</h3>
+<h3 id="2절-브로드캐스트-리시버-196">2절. 브로드캐스트 리시버 (196)</h3>
+<h3 id="3절-콘텐트-프로바이더-199">3절. 콘텐트 프로바이더 (199)</h3>
+<h4 id="1항-안드로이드-제공-콘텐트-프로바이더-199">1항. 안드로이드 제공 콘텐트 프로바이더 (199)</h4>
+
+<hr />
+
+<h2 id="12장-부록-201">12장. 부록 (201)</h2>
+<h3 id="1절-뷰-바인딩viewbinding-201">1절. 뷰 바인딩(viewBinding) (201)</h3>
+<h4 id="1항-뷰-바인딩의-기본-개념-201">1항. 뷰 바인딩의 기본 개념 (201)</h4>
+<h3 id="2절-커스텀-콜백-만들기-208">2절. 커스텀 콜백 만들기 (208)</h3>
+<h3 id="3절-안드로이드-shared-preference-213">3절. 안드로이드 Shared Preference (213)</h3>
+<h3 id="4절-alertdialog의-개요-216">4절. AlertDialog의 개요 (216)</h3>
+<h4 id="1항-alertdialog의-기본-개념-216">1항. AlertDialog의 기본 개념 (216)</h4>
+<h3 id="5절-apm-프레임워크-구축-221">5절. APM 프레임워크 구축 (221)</h3>
+<h3 id="6절-github-연동하기-235">6절. Github 연동하기 (235)</h3>
+
+<h2 id="기술-스택">기술 스택</h2>
+
+<ul>
+  <li>Andoid OS Tiramisu(API Level 33)</li>
+  <li>Android Studio</li>
+</ul>
+
+<h2 id="기술적-내용">기술적 내용</h2>
+
+<ul>
+  <li>Android OS 개발에 대한 내용들을 전반적으로 다뤘음</li>
+  <li>부록에 실무에서 사용하는 기술들을 추가하였음</li>
+</ul>
+
+<h2 id="배운점">배운점</h2>
+
+<ul>
+  <li>책 집필 하는 방식에 대해 배웠음</li>
+  <li>효과적으로 ppt를 작성하여 독자가 이해하기 쉽도록 하는 방법을 배웠음</li>
+</ul>]]></content><author><name>GitHub User</name></author><category term="Portfolio" /><category term="Portfolio" /><category term="Book" /><summary type="html"><![CDATA[프로젝트 내용]]></summary></entry><entry><title type="html">[포트폴리오] python-비트코인예측연구</title><link href="/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_%EB%B9%84%ED%8A%B8%EC%BD%94%EC%9D%B8%EC%98%88%EC%B8%A1%EC%97%B0%EA%B5%AC.html" rel="alternate" type="text/html" title="[포트폴리오] python-비트코인예측연구" /><published>2026-02-12T00:00:00+00:00</published><updated>2026-02-12T00:00:00+00:00</updated><id>/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_%EB%B9%84%ED%8A%B8%EC%BD%94%EC%9D%B8%EC%98%88%EC%B8%A1%EC%97%B0%EA%B5%AC</id><content type="html" xml:base="/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_%EB%B9%84%ED%8A%B8%EC%BD%94%EC%9D%B8%EC%98%88%EC%B8%A1%EC%97%B0%EA%B5%AC.html"><![CDATA[<h2 id="프로젝트-내용">프로젝트 내용</h2>
+
+<p>인공지능학과 석사를 졸업하며 집필했던 논문의 연구 입니다.</p>
+
+<p>여러가지 의미를 가지는 지표(BTC price, BTC.D, 기술적 지표, Fear &amp; Greed Index)를 조합하여 각 조합에서 예측률이 얼마나 차이가 나는지를 분석한 연구 입니다.</p>
+
+<p>모델의 연구가 아닌, 지표 조합에 따른 예측률의 차이를 뽑아내는 연구였기에, 모델은 속도가 빠르고 시계열에서 좋은 성능을 내는 LightGBM을 사용했습니다.</p>
+
+<p>또한, 시계열 검증 기법중의 하나인 <code class="language-plaintext highlighter-rouge">확장 워크 포워드</code>기법을 사용하여 학습중에 모델을 검증하였습니다.</p>
+
+<p>연구결과, Fear &amp; Greed Index가 가장 높은 예측 기여를 하였습니다.</p>
+
+<p>XAI로 해석한 결과도 마찬가지로, 전날 Fear &amp; Greed Index 가 가장 큰 영향을 미쳤고, 추세를 포착할 때, MACD 와 MSI 등의 기술적 지표가 예측에 많은 기여를 하였습니다.</p>
+
+<p>모의로 실전 트레이딩 전략을 3가지 (Long-Only, Long-Short, Sign-Only)를 돌려보았을 때, Long-Only 전략에서 약 2,700,000%를 달성하였습니다.</p>
+
+<p><img src="/images/Pasted%20image%2020260213093029.png" alt="" /></p>
+
+<p><img src="/images/Pasted%20image%2020260213093009.png" alt="" /></p>
+
+<h2 id="기술-스택">기술 스택</h2>
+
+<ul>
+  <li>python</li>
+  <li>Expand Walk-Forward Testing</li>
+</ul>
+
+<h2 id="기술적-내용">기술적 내용</h2>
+
+<ul>
+  <li>인공지능 모델을 사용하여 연구를 함</li>
+  <li>실전운용 평가 지표를 위해 3가지 전략을 구축</li>
+  <li>XAI 를 사용하여, 어떤 feature가 영향을 많이 주었는지 해명</li>
+</ul>
+
+<h2 id="배운점">배운점</h2>
+
+<ul>
+  <li>논문을 처음 써봤었음. 논문을 쓰는 방법이나, 내 연구 결과를 논리적으로 풀어나가는 방법에 대해 알게됨</li>
+  <li>python 언어를 사용해서 프로젝트를 수행한 것이 처음이었음. python언어에 대해서 알게됨</li>
+</ul>]]></content><author><name>GitHub User</name></author><category term="Portfolio" /><category term="Portfolio" /><category term="Kiosk" /><category term="Pos" /><summary type="html"><![CDATA[프로젝트 내용]]></summary></entry><entry><title type="html">[포트폴리오] Winform-송도 케이블카</title><link href="/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_%EC%86%A1%EB%8F%84-%EC%BC%80%EC%9D%B4%EB%B8%94%EC%B9%B4-KIOSK,POS.html" rel="alternate" type="text/html" title="[포트폴리오] Winform-송도 케이블카" /><published>2026-02-12T00:00:00+00:00</published><updated>2026-02-12T00:00:00+00:00</updated><id>/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_%EC%86%A1%EB%8F%84%20%EC%BC%80%EC%9D%B4%EB%B8%94%EC%B9%B4%20KIOSK,POS</id><content type="html" xml:base="/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_%EC%86%A1%EB%8F%84-%EC%BC%80%EC%9D%B4%EB%B8%94%EC%B9%B4-KIOSK,POS.html"><![CDATA[<h2 id="프로젝트-내용">프로젝트 내용</h2>
+
+<p>실제 <code class="language-plaintext highlighter-rouge">송도 해상 케이블카</code> 라는 업체에서 사용하는 Kiosk 및 Pos 를 제작하였습니다. 상용 프로그램이라, 자세한 설명은 생략합니다.</p>
+
+<p><img src="/images/Pasted%20image%2020260212211118.png" alt="" /></p>
+
+<p><img src="/images/Pasted%20image%2020260212211208.png" alt="" /></p>
+
+<p><img src="/images/Pasted%20image%2020260212211227.png" alt="" /></p>
+
+<p><img src="/images/Pasted%20image%2020260212211249.png" alt="" /></p>
+
+<p><img src="/images/Pasted%20image%2020260212211143.png" alt="" /></p>
+
+<h2 id="기술-스택">기술 스택</h2>
+
+<ul>
+  <li>Window Forms (.Net Framework 4.6) / C#</li>
+  <li>DB : MariaDB</li>
+  <li>서드파티 결제 시스템 : Kakao Pay, Samsung Pay, WeChat Pay</li>
+  <li>인원 : 3</li>
+</ul>
+
+<h2 id="기술적-내용">기술적 내용</h2>
+
+<ul>
+  <li>MVC 패턴 적용</li>
+  <li>여러가지 결제 시스템 구현</li>
+  <li>영수증 프린팅 기능 구현</li>
+  <li>하루당 10만 트랜지션 처리
+    <h2 id="배운점">배운점</h2>
+  </li>
+  <li>큰 외주를 경험하면서, 미팅하는 법, 요구사항 수렴하는 법, 인수인계 하는법 등을 배움</li>
+  <li>대규모 트래픽에서, 데이터 베이스와 통신시, 서버에 부하를 많이 주지 않게하는 전략 수립</li>
+  <li>MVC 패턴으로 관심사 분리</li>
+  <li>고객이 감동할 수 있는 디테일 챙기는 방법</li>
+  <li>데이터 처리시 LINQ를 활용</li>
+  <li>공용 메서드 추출하여 재사용성 높이기</li>
+  <li>클래스 라이브러리(dll) 활용법</li>
+  <li>클라이언트가 사용하다가, 에러 발생시, 해결할 수 있는 Logging 전략 수립</li>
+</ul>]]></content><author><name>GitHub User</name></author><category term="Portfolio" /><category term="Portfolio" /><category term="Kiosk" /><category term="Pos" /><summary type="html"><![CDATA[프로젝트 내용]]></summary></entry><entry><title type="html">[포트폴리오] Unity-은재팜</title><link href="/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_%EC%9D%80%EC%9E%AC%ED%8C%9C-%EA%B2%8C%EC%9E%84.html" rel="alternate" type="text/html" title="[포트폴리오] Unity-은재팜" /><published>2026-02-12T00:00:00+00:00</published><updated>2026-02-12T00:00:00+00:00</updated><id>/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_%EC%9D%80%EC%9E%AC%ED%8C%9C%20%EA%B2%8C%EC%9E%84</id><content type="html" xml:base="/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_%EC%9D%80%EC%9E%AC%ED%8C%9C-%EA%B2%8C%EC%9E%84.html"><![CDATA[<h2 id="프로젝트-내용">프로젝트 내용</h2>
+
+<p><code class="language-plaintext highlighter-rouge">은재팜</code>은 아쿠아포닉스 기술을 활용한 스마트팜입니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">은재팜</code>의 인프라를 넓히기 위해 게임이라는 플랫폼을 통해 게임을 하면 실물 채소를 얻을 수 있는 구조를 만드려고 했던 프로젝트 입니다.</p>
+
+<video width="100%" height="auto" controls="" autoplay="" loop="" muted="" playsinline="">
+  <source src="/images/KakaoTalk_Video_2026-02-13-15-25-16.mp4" type="video/mp4" />
+  해당 브라우저는 비디오 태그를 지원하지 않습니다.
+</video>
+
+<p><img src="/images/Pasted%20image%2020260212124850.png" alt="" /></p>
+
+<p><img src="/images/Pasted%20image%2020260212125256.png" alt="" /></p>
+
+<p><img src="/images/Pasted%20image%2020260212125313.png" alt="" /></p>
+
+<p><img src="/images/Pasted%20image%2020260212125326.png" alt="" /></p>
+
+<p><img src="/images/Pasted%20image%2020260212125339.png" alt="" /></p>
+
+<p><img src="/images/Pasted%20image%2020260212125353.png" alt="" /></p>
+
+<p><img src="/images/Pasted%20image%2020260212125418.png" alt="" /><img src="/images/Pasted%20image%2020260212125438.png" alt="" /></p>
+
+<p><img src="/images/Pasted%20image%2020260212125505.png" alt="" /></p>
+
+<h2 id="기술-스택">기술 스택</h2>
+
+<ul>
+  <li>Client : Unity 2022.3.23f / C#</li>
+  <li>Server : Ubuntu 22.0.3 / Asp.net 8.0</li>
+  <li>DataBase : MariaDB</li>
+</ul>
+
+<h2 id="기술적-내용">기술적 내용</h2>
+
+<ul>
+  <li>UI가 중요한 게임이었음. UI가 엄청 많아서, UI를 관리하는 메니저를 SingleTon으로 설정하고, PoolManager를 설정하여, UI의 인스턴스가 한개씩만 만들어지고, 그 만들어진 인스턴스를 공유하는 식으로 사용했음. 또한, 추상화와 제네릭을 사용하여 함수를 유연하게 만들었고, UI에 콜백을 이용하여 행동을 유연하게 정의하였음</li>
+  <li>UI에 중복되는 기능들이 많았음. UnityEngine.UI 의 의존성을 최대한 제거하기 위해, 컴포넌트 마다 Wrapper 클래스를 만들었고, 중복되는 기능들을 해당 클래스에 정의하여 사용하였음</li>
+  <li>2D Grid 시스템을 도입하였음</li>
+  <li>유니티의 인스펙터에 직접 참조를 넣는것은, 커플링을 증가시킬 수 있고, 변수 네이밍이 바뀌거나, 메타파일이 조금이라도 수정되면 바인딩이 풀리는 문제가 있음. 그것을 막고자 ResourceManager를 통해 인스펙터의 의존성을 제거함</li>
+  <li>유니티에서는 하이어라키 계층 구조에 따라서 유니티의 이벤트가 진행되는 것이 아니라, 같은 Start 함수라면 실행 순서를 보장하지 못하는 문제가 있음. 따라서, .Lazy Init 기법을 사용하여 객체들의 초기화 순서를 보장하는 식으로 해결함</li>
+  <li>서버를 구축하여 백엔드 인프라 구성</li>
+  <li>Ubuntu의 그래픽카드 드라이버를 만지다가, 어떤 설정을 잘못 만졌었음. 그 뒤로, 랜카드 드라이버가 먹통이 되어, Ubuntu를 리셋한 경험이 있음. 여기서, 가상화 시스템과 이미지 파일로 서버를 백업할 수 있다는 사실을 알게됨</li>
+  <li>Asp.net 과 Swagger 를 활용하여 API 서버 구축. ORM 을 사용하여 데이터베이스 자동화를 구현</li>
+</ul>
+
+<h2 id="배운점">배운점</h2>
+
+<ul>
+  <li>유니티를 배우고, 처음으로 유니티를 활용하여 상용 프로그램을 제작하였음. 여기서, 학생의 마음가짐이 들어갔던거 같음. 우선, 프로젝트를 만들고 난 후에, 배운점을 정리해야 하는데, 프로젝트를 하는 도중에 자꾸 리팩터링하여 개발 속도가 엄청 더뎠음</li>
+  <li>성공한 프로젝트에는 좋은 코드 구조가 있겠지만, 좋은 코드 구조가 있다고 해서 무조건 성공하는것은 아니다 라는것을 배움</li>
+  <li>2D에서는 GridSystem에 고질적인 문제인 Z fighting을 해결할 방법이 모호하다는것을 알게됨. Grid가 중요한 게임이면, 3D 기반으로 만들고, 2D처럼 보이게 하는 흔히 2.5D라는 기법을 도입할 수 있다는 것을 알게됨</li>
+  <li>게임마다 효율적인 구조가 있다는것을 깨달음</li>
+  <li>서버 구축 방법을 알게 되었고, 인프라를 구축하며 인프라에 이해도가 생겼음</li>
+  <li>게임을 만들다가 서버의 쿨러가 고장났던적이 있었음. 어떻게든 소프트웨어적으로 풀려고 했는데, 결국 찾아보니 하드웨어 문제였음. 디버깅을 할 때, 어느 한 곳에 매몰되면 안된다는것을 알게됨</li>
+</ul>]]></content><author><name>GitHub User</name></author><category term="Portfolio" /><category term="Portfolio" /><category term="Eunjaefarm" /><summary type="html"><![CDATA[프로젝트 내용]]></summary></entry><entry><title type="html">[포트폴리오] Winform-지휘봉프로그램</title><link href="/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_%EC%A7%80%ED%9C%98%EB%B4%89%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8.html" rel="alternate" type="text/html" title="[포트폴리오] Winform-지휘봉프로그램" /><published>2026-02-12T00:00:00+00:00</published><updated>2026-02-12T00:00:00+00:00</updated><id>/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_%EC%A7%80%ED%9C%98%EB%B4%89%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8</id><content type="html" xml:base="/jekyll-theme-yat/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_%EC%A7%80%ED%9C%98%EB%B4%89%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8.html"><![CDATA[<h2 id="프로젝트-내용">프로젝트 내용</h2>
+
+<p>해당 프로젝트는 지휘봉의 움직임에 따라서 음원 재생 속도를 제어하기 위해 개발 되었습니다.</p>
+
+<ul>
+  <li>지휘봉을 크게 흔듦 - 음원의 소리가 커짐</li>
+  <li>지휘봉을 빠르게 흔듦 - 음원의 재생속도가 빨라짐</li>
+  <li>지휘봉을 멈춤 - 음원 정지</li>
+</ul>
+
+<p>연구용 모델이라서, 라즈베리파이 서버를 사용했습니다.</p>
+
+<h3 id="실제-구동-장면">실제 구동 장면</h3>
+
+<video width="100%" height="auto" controls="" autoplay="" loop="" muted="" playsinline="">
+  <source src="/images/KakaoTalk_20260212_134608996.mp4" type="video/mp4" />
+  해당 브라우저는 비디오 태그를 지원하지 않습니다.
+</video>
+
+<h3 id="실제-구동-장면화면">실제 구동 장면(화면)</h3>
+
+<video width="100%" height="auto" controls="" autoplay="" loop="" muted="" playsinline="">
+  <source src="/images/KakaoTalk_20260212_134533162.mp4" type="video/mp4" />
+  해당 브라우저는 비디오 태그를 지원하지 않습니다.
+</video>
+
+<h3 id="라즈베리파이-서버-및-가속도센서가-달린-지휘봉">라즈베리파이 서버 및 가속도센서가 달린 지휘봉</h3>
+
+<p><img src="/images/KakaoTalk_20260212_134508552_01.jpg" alt="" /></p>
+
+<h3 id="결과-출력-기능">결과 출력 기능</h3>
+
+<p><img src="/images/KakaoTalk_20260212_134508552.png" alt="" /></p>
+
+<h2 id="기술-스택">기술 스택</h2>
+<ul>
+  <li>Window Forms</li>
+  <li>라즈베리파이 Server</li>
+  <li>BLE 5.0</li>
+</ul>
+
+<h2 id="기술적-내용">기술적 내용</h2>
+
+<ul>
+  <li>그라데이션 및 UI 등을 UserControl 클래스를 활용하여 커스텀 클래스로 만듦</li>
+  <li>라즈베리파이 서버(python)와 Window Client 간의 실시간 통신</li>
+  <li>BLE 통신을 구현</li>
+  <li>가속도 센서를 2개 사용하여 지휘봉의 움직임을 수치화 시킴</li>
+  <li>FFT(Fast Fourier Transform)알고리즘을 구현 및 사용하여 지휘봉의 진폭 및 주파수를 구함</li>
+  <li>LiveChart를 실시간으로 랜더링함</li>
+  <li>프린트 라이브러리를 사용하여 결과값 출력</li>
+  <li>Client에 MVP 패턴을 적용하여 관심사 분리</li>
+</ul>
+
+<h2 id="배운점">배운점</h2>
+
+<ul>
+  <li>외주가 끝나기 하루 전에 FFT 알고리즘이 아닌 다른 알고리즘으로 교체해달라고 요청함. 자주 바뀔 수 있는 로직들은 interface를 사용하여 유연하게 대처하는것이 좋다고 생각하게 됨</li>
+  <li>클라이언트와 자주 소통하여 진행했음에도, 마지막날에 요구사항이 바뀌었음. 끝날때까지 방심을 하면안됨</li>
+</ul>]]></content><author><name>GitHub User</name></author><category term="Portfolio" /><category term="Portfolio" /><category term="MotionMaestro" /><summary type="html"><![CDATA[프로젝트 내용]]></summary></entry><entry><title type="html">[Unity] Unity의 GameObject와 행동의 분리</title><link href="/jekyll-theme-yat/unity/2026/02/12/Object-,-Event-%ED%8C%A8%ED%84%B4.html" rel="alternate" type="text/html" title="[Unity] Unity의 GameObject와 행동의 분리" /><published>2026-02-12T00:00:00+00:00</published><updated>2025-02-12T00:00:00+00:00</updated><id>/jekyll-theme-yat/unity/2026/02/12/Object%20,%20Event%20%ED%8C%A8%ED%84%B4</id><content type="html" xml:base="/jekyll-theme-yat/unity/2026/02/12/Object-,-Event-%ED%8C%A8%ED%84%B4.html"><![CDATA[<p>이번에 공포게임을 만들고, 리팩터링을 고민하다가 선배 개발자로부터 피드백을 받은 내용을 바탕으로 간단한 예제를 만들었습니다.</p>
+
+<p>피드백의 내용은 다음과 같습니다.</p>
+
+<blockquote>
+  <p>지금 만든 공포게임은 어떤 오브젝트가, 어떤 행동을 한다로 거의 다 정의가 된다.
+그렇다면, 특정 오브젝트에 특정 행동을 정의하면 같은 로직이 반복되고, 유지보수가 어렵다.
+오브젝트는 껍데기만 놔두고, 특정 행동을 캡슐화 하여 오브젝트에 끼워넣으면 관리가 좋다.</p>
+</blockquote>
+
+<p>이것을 듣고 무한한 확장성에 충격을 받고 좀 검색을 해봤습니다.</p>
+
+<p>게임 오브젝트를 빈 껍데기로 쓰고, 로직을 갈아끼우는 방식은 이미 유니티에서 만들어둔 ECS (Entity Component System)과 닯아 있었습니다.</p>
+
+<p>ECS 란, Entity, Component, System 3가지 구성요소로 프로그래밍을 하는 기법 입니다. Entity는 그저 빈 껍데기, Component는 데이터만 담고 있는 주머니, System은 실제 로직을 처리하는 엔진 이라는 뜻을 내포하고 있습니다.</p>
+
+<p>여튼, 이런 식으로 게임을 구성하면, 공통되는 로직들을 그냥 오브젝트에 끼워넣기만 하면 됩니다. 즉, 다음과 같은게 가능해 집니다.</p>
+
+<ol>
+  <li>축구공이 앞으로 이동하다가 펑! 터진다.</li>
+  <li>농구공이 앞으로 이동하다가 펑! 터진다.</li>
+  <li>리모컨이 앞으로 이동하다가 펑! 터진다.</li>
+  <li>컴퓨터가 앞으로 이동하다가 펑! 터진다.</li>
+  <li>세면대가 앞으로 이동하다가 펑! 터진다.</li>
+</ol>
+
+<p>위 로직들은 지금의 공포게임 구조로는 축구공, 농구공, 리모컨, 컴퓨터, 세면대 오브젝트에 일일이 기능들을 구현해야 했습니다.</p>
+
+<p>하지만 선배 개발자가 피드백해준 방식으로 풀면, 축구공, 농구공, 리모컨, 컴퓨터, 세면대 등의 오브젝트는 무엇이 되든 상관이 없고, <code class="language-plaintext highlighter-rouge">이동하다가 펑! 터진다</code> 라는 로직한 하나 정의 한 다음 빈 껍데기인 오브젝트에 넣어주면 됩니다.</p>
+
+<p>이렇게 되니, 어떤 오브젝트던, 조건만 갖추면 특정 기능을 할 수 있게 되었습니다.</p>
+
+<p>예제가 조금 길어서, 예제는 깃허브 링크를 남겨두겠습니다. 아래의 깃허브 주소에 <code class="language-plaintext highlighter-rouge">ObjectManager1</code> 폴더를 찾아 보시면 됩니다.</p>
+
+<p>https://github.com/kdw98tg/UnityStudy</p>
+
+<h2 id="예제">예제</h2>
+
+<p>간단하게 Event (행동) 과 Object (빈껍데기)를 구현한 예제를 보여드리겠습니다. Player가 이동하는 로직을 위 패턴으로 구현한 예제입니다.</p>
+
+<p>Event_MoveWithTransform.cs</p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System.Collections</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ObjectManager1</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Event_MoveWithTransform</span> <span class="p">:</span> <span class="n">EventBase</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Init</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">base</span><span class="p">.</span><span class="nf">Init</span><span class="p">();</span>
+            <span class="n">id</span> <span class="p">=</span> <span class="n">EventId</span><span class="p">.</span><span class="n">Event_MoveWithTransform</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Execute</span><span class="p">(</span><span class="n">ObjectBase</span> <span class="n">_objectBase</span><span class="p">,</span> <span class="n">EventDataBase</span> <span class="n">_data</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">EventData_MoveWithTransform</span> <span class="n">data</span> <span class="p">=</span> <span class="n">_data</span> <span class="k">as</span> <span class="n">EventData_MoveWithTransform</span><span class="p">;</span>
+            <span class="n">_objectBase</span><span class="p">.</span><span class="n">transform</span><span class="p">.</span><span class="n">position</span> <span class="p">+=</span> <span class="n">data</span><span class="p">.</span><span class="n">Direction</span> <span class="p">*</span> <span class="n">data</span><span class="p">.</span><span class="n">Speed</span> <span class="p">*</span> <span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>위 코드는 추상화된 Object 를 받아서, 그 오브젝트의 위치를 참조하여 앞으로 움직이게 하는 코드 입니다. 여기에 ObjectBase를 상속받는 그 어떤객체가 들어와도 잘 동작하게 됩니다.</p>
+
+<p>Object_Player.cs</p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">ObjectManager1</span><span class="p">;</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Object_Player</span> <span class="p">:</span> <span class="n">ObjectBase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">Init</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">base</span><span class="p">.</span><span class="nf">Init</span><span class="p">();</span>
+        <span class="n">id</span> <span class="p">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">ObjectId</span><span class="p">.</span><span class="n">Player</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>위 코드는 단지 ID만 붙어 있는 오브젝트 입니다. 즉, 빈 껍데기 입니다.</p>
+
+<p>Player.cs</p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">ObjectManager1</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Player</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="n">EventData_MoveWithTransform</span> <span class="n">moveEventData</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+        <span class="p">[</span><span class="n">SerializeField</span><span class="p">]</span> <span class="k">private</span> <span class="kt">float</span> <span class="n">speed</span> <span class="p">=</span> <span class="m">1f</span><span class="p">;</span>
+
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">Awake</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">moveEventData</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">EventData_MoveWithTransform</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Init</span><span class="p">()</span>
+        <span class="p">{</span>
+
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Move</span><span class="p">(</span><span class="n">ObjectId</span> <span class="n">objectId</span><span class="p">,</span> <span class="n">Vector3</span> <span class="n">moveDirection</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">moveEventData</span><span class="p">.</span><span class="n">Direction</span> <span class="p">=</span> <span class="n">moveDirection</span><span class="p">;</span>
+            <span class="n">moveEventData</span><span class="p">.</span><span class="n">Speed</span> <span class="p">=</span> <span class="n">speed</span><span class="p">;</span>
+
+            <span class="n">CommandInvoker</span><span class="p">&lt;</span><span class="n">DoActionParam</span><span class="p">&gt;.</span><span class="nf">Execute</span><span class="p">(</span><span class="k">new</span> <span class="n">DoActionParam</span>
+            <span class="p">{</span>
+                <span class="n">ObjectId</span> <span class="p">=</span> <span class="n">objectId</span><span class="p">,</span>
+                <span class="n">EventId</span> <span class="p">=</span> <span class="n">EventId</span><span class="p">.</span><span class="n">Event_MoveWithTransform</span><span class="p">,</span>
+                <span class="n">EventData</span> <span class="p">=</span> <span class="n">moveEventData</span><span class="p">,</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>위 코드는 Player의 행동을 정의하는 일종의 컴포지션 클래스 입니다. 위 코드에서, Move에 필요한 데이터를 넣은 다음, GameManager에게 어떤 오브젝트를 어떻게 움직여라, 라는 커맨드를 보내주면, GameManager에서 알아서 그 오브젝트를 찾아서 처리하게 됩니다.</p>
+
+<p>GameManager.cs</p>
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Unity.VisualScripting</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEngine</span><span class="p">;</span>
+<span class="k">namespace</span> <span class="nn">ObjectManager1</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">GameManager</span> <span class="p">:</span> <span class="n">MonoBehaviour</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="n">ObjectManager</span> <span class="n">objectManager</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+        <span class="k">private</span> <span class="n">EventManager</span> <span class="n">eventManager</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">Awake</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">objectManager</span> <span class="p">=</span> <span class="n">GetComponentInChildren</span><span class="p">&lt;</span><span class="n">ObjectManager</span><span class="p">&gt;();</span>
+            <span class="n">eventManager</span> <span class="p">=</span> <span class="n">GetComponentInChildren</span><span class="p">&lt;</span><span class="n">EventManager</span><span class="p">&gt;();</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">Start</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="nf">InitCommands</span><span class="p">();</span>
+
+            <span class="n">eventManager</span><span class="p">.</span><span class="nf">Init</span><span class="p">();</span>
+            <span class="n">objectManager</span><span class="p">.</span><span class="nf">Init</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">DoAction</span><span class="p">(</span><span class="n">DoActionParam</span> <span class="n">_param</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">eventBase</span> <span class="p">=</span> <span class="n">eventManager</span><span class="p">.</span><span class="nf">GetEvent</span><span class="p">(</span><span class="n">_param</span><span class="p">.</span><span class="n">EventId</span><span class="p">);</span>
+            <span class="n">objectManager</span><span class="p">.</span><span class="nf">DoAction</span><span class="p">(</span><span class="n">_param</span><span class="p">.</span><span class="n">ObjectId</span><span class="p">,</span> <span class="n">eventBase</span><span class="p">,</span> <span class="n">_param</span><span class="p">.</span><span class="n">EventData</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">InitCommands</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">CommandInvoker</span><span class="p">&lt;</span><span class="n">DoActionParam</span><span class="p">&gt;.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">Command_DoAction</span><span class="p">(</span><span class="n">DoAction</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이렇게 하면, 어떤 오브젝트든, 행동을 주입받으면 그대로 움직이게 할 수 있습니다.</p>
+
+<h2 id="마무리">마무리</h2>
+
+<p>우선, 지금은 Event (행동)객체가 MonoBehaviour를 상속받아서, 게임오브젝트로 나와있습니다. 여기서 MonoBehaviour의 행동을 받지 않는데, 굳이 리소스를 낭비할 필요가 없다고 생각됩니다. 우선 놔둔것은 코루틴을 돌리는 로직이 필요할까봐서 인데, 일단 이렇게 사용하다가 더이상 필요가 없어진다고 하면 일반 C# 클래스로 빼는게 좋아보입니다.</p>
+
+<p>이 방법을 들었을때, 무한한 확장성에 새로운 시야가 트인 느낌이었습니다. 만드는데는 한 2일정도 걸린거 같습니다. 처음에는 어떻게 구현할까 했는데, 막상 구현해보니 또 간단해 보이네요.</p>
+
+<p>또, 느낀것은 지식의 전달 입니다. 문어와 사람은 기본 지능은 비슷하다고 합니다. 하지만 사람은 문명을 이루었고, 문어는 아직 사람에게 잡아먹히고 있습니다. 이 차이는 바로, <code class="language-plaintext highlighter-rouge">지식의 전달</code>에서 온다고 생각합니다.</p>
+
+<p>사람은 선배의 지식을 후배에게 전달할 수단 (말, 글 등)이 있고, 문어는 지식을 전달할 수단을 가지고 있지 않습니다. 따라서 문어는 오랜 시간에 걸친 경험과 지식이 자기 세대에서 끝이 나는것이죠.</p>
+
+<p>이 패턴을 들었을 때, 그런 느낌이 들었습니다. 제가 혼자 고민했더라면, 꽤 오랜시간에 걸쳐 이 해답을 찾았을거 같습니다. 그 시간을 아끼며 한층 더 발전한것 같습니다. 선배 개발자에게 감사를 표합니다.</p>]]></content><author><name>GitHub User</name></author><category term="Unity" /><category term="Unity" /><category term="Design Pattern" /><summary type="html"><![CDATA[이번에 공포게임을 만들고, 리팩터링을 고민하다가 선배 개발자로부터 피드백을 받은 내용을 바탕으로 간단한 예제를 만들었습니다.]]></summary></entry><entry><title type="html">[Unity] 비동기로 Scene 전환</title><link href="/jekyll-theme-yat/unity/2026/02/12/Scene-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%A0%84%ED%99%98.html" rel="alternate" type="text/html" title="[Unity] 비동기로 Scene 전환" /><published>2026-02-12T00:00:00+00:00</published><updated>2025-02-12T00:00:00+00:00</updated><id>/jekyll-theme-yat/unity/2026/02/12/Scene%20%EB%B9%84%EB%8F%99%EA%B8%B0%20%EC%A0%84%ED%99%98</id><content type="html" xml:base="/jekyll-theme-yat/unity/2026/02/12/Scene-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%A0%84%ED%99%98.html"><![CDATA[<p>유니티에서는 여러가지 씬을 활용하여 게임을 구현합니다. 씬은 로드가 될 때, 현재의 씬의 모든 오브젝트를 파괴하고, 새로운 씬의 모든 오브젝트를 새로 로드하게 됩니다.</p>
+
+<p>메모리 입장에서 가장 무거운 작업이 할당과 해제 입니다. 즉, 씬을 로드할 때, 파괴할 오브젝트나 다시 생성할 오브젝트에 따라서 씬 마다 로드할 시간이 달라집니다.</p>
+
+<p>즉, 어떤 전환효과를 넣게 됐을 때, 씬 마다 전환시간이 달라 전환효과가 중간에 끊길 수도 있습니다. 따라서, 전환효과가 나올 때, 씬을 로딩하는 작업을 비동기로 하여 해당 문제를 해결할 수 있습니다.</p>
+
+<div class="language-cs highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="c1">// 지연시간 기다렸다가 씬 전환함</span>
+        <span class="c1">// 지연시간은 디폴트 3초</span>
+        <span class="k">private</span> <span class="n">IEnumerator</span> <span class="nf">LoadingAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">_name</span><span class="p">,</span> <span class="kt">float</span> <span class="n">_shouldWaitTime</span><span class="p">,</span> <span class="n">Action</span><span class="p">&lt;</span><span class="kt">float</span><span class="p">&gt;</span> <span class="n">_onLoadingAction</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">AsyncOperation</span> <span class="n">asyncOperation</span> <span class="p">=</span> <span class="n">UnityEngine</span><span class="p">.</span><span class="n">SceneManagement</span><span class="p">.</span><span class="n">SceneManager</span><span class="p">.</span><span class="nf">LoadSceneAsync</span><span class="p">(</span><span class="n">_name</span><span class="p">);</span>
+
+            <span class="c1">//로딩이 완료되는대로 씬을 활성화할것인지</span>
+            <span class="n">asyncOperation</span><span class="p">.</span><span class="n">allowSceneActivation</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+
+            <span class="kt">float</span> <span class="n">waitTime</span> <span class="p">=</span> <span class="m">0f</span><span class="p">;</span>
+
+            <span class="c1">//로딩이 완료되지 않았을 때</span>
+            <span class="k">while</span> <span class="p">(!</span><span class="n">asyncOperation</span><span class="p">.</span><span class="n">isDone</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">Debug</span><span class="p">.</span><span class="nf">Log</span><span class="p">(</span><span class="n">asyncOperation</span><span class="p">.</span><span class="n">progress</span><span class="p">);</span>
+
+                <span class="n">waitTime</span> <span class="p">+=</span> <span class="n">Time</span><span class="p">.</span><span class="n">deltaTime</span><span class="p">;</span>
+
+                <span class="c1">//로딩할 때 할 행동이 있으면 함</span>
+                <span class="n">_onLoadingAction</span><span class="p">?.</span><span class="nf">Invoke</span><span class="p">(</span><span class="n">asyncOperation</span><span class="p">.</span><span class="n">progress</span><span class="p">);</span>
+
+                <span class="c1">//시간 다 채울때까지 기다림</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">waitTime</span> <span class="p">&gt;</span> <span class="n">_shouldWaitTime</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="c1">//씬 활성화</span>
+                    <span class="n">asyncOperation</span><span class="p">.</span><span class="n">allowSceneActivation</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="k">yield</span> <span class="k">return</span> <span class="k">null</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<p>비동기로 씬을 전환할 때, <code class="language-plaintext highlighter-rouge">AsyncOperation</code> 이라는 객체를 사용합니다. 해당 객체를 사용하면, 비동기 작업이 얼마나 진행되었는지, 비동기작업이 끝이 났는지 등을 알 수 있습니다.</p>
+
+<p>비동기로 작업을 한다고 해도, 2D 게임이나 가벼운 3D 게임은 거의 지연시간 없이 로딩이 되므로, 전환효과가 깜빡하며 끊기듯 없어질 수 있습니다. 따라서, 지연시간을 임의로 설정해, 로드가 다 되었더라도 지연시간이 지난 후에 씬이 바뀌도록 할 수도 있습니다.</p>]]></content><author><name>GitHub User</name></author><category term="Unity" /><category term="Unity" /><category term="Async" /><summary type="html"><![CDATA[유니티에서는 여러가지 씬을 활용하여 게임을 구현합니다. 씬은 로드가 될 때, 현재의 씬의 모든 오브젝트를 파괴하고, 새로운 씬의 모든 오브젝트를 새로 로드하게 됩니다.]]></summary></entry></feed>

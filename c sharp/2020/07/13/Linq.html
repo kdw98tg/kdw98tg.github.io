@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>C#의 강력한 기능중 하나인 LINQ 입니다. C#의 LINQ는 foreach … if 문으로 <code class="language-plaintext highlighter-rouge">IEnumerable</code>타입을 순회할 때 작업하는 코드를 획기적으로 줄여줄 수 있습니다.</p>
+
+<p>LINQ는 쿼리식의 형태와, 람다식의 형태 두가지로 존재 합니다. 이것을 쓰면 리스트에서 어떤 조건에 해당하는 녀석들을 끄집어 낸다던지 하는 작업을 편하게 할 수 있습니다.</p>
+
+<p>본 예제는 C#책에 있는 예제를 그대로 사용하였습니다.</p>
+
+<h2 id="예시">예시</h2>
+
+<h3 id="키가-175-이상인-친구들을-가려내는-프로그램">키가 175 이상인 친구들을 가려내는 프로그램</h3>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">Profile</span><span class="p">[]</span> <span class="n">arrProfile</span> <span class="p">=</span>
+<span class="p">{</span>
+    <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"정우성"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">186</span><span class="p">},</span>
+    <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"김태희"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">158</span><span class="p">},</span>
+    <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"고현정"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">172</span><span class="p">},</span>
+    <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"이문세"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">178</span><span class="p">},</span>
+    <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"하동훈"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">171</span><span class="p">}</span>
+<span class="p">};</span>
+ 
+<span class="n">List</span><span class="p">&lt;</span><span class="n">Profile</span><span class="p">&gt;</span> <span class="n">profiles</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Profile</span><span class="p">&gt;();</span>
+<span class="k">foreach</span><span class="p">(</span><span class="n">Profile</span> <span class="n">profile</span> <span class="k">in</span> <span class="n">arrProfile</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">profile</span><span class="p">.</span><span class="n">Height</span> <span class="p">&lt;</span> <span class="m">175</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">profiles</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">profile</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//키의 오름차순으로 정렬</span>
+<span class="n">profiles</span><span class="p">.</span><span class="nf">Sort</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">profile1</span><span class="p">,</span> <span class="n">profile2</span><span class="p">)</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">profile1</span><span class="p">.</span><span class="n">Height</span> <span class="p">-</span> <span class="n">profile2</span><span class="p">.</span><span class="n">Height</span><span class="p">;</span>
+    <span class="p">});</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">profile</span> <span class="k">in</span> <span class="n">profiles</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"{0}, {1}"</span><span class="p">,</span> <span class="n">profile</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">profile</span><span class="p">.</span><span class="n">Height</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h3 id="결과">결과</h3>
+<p><img src="/images/Pasted%20image%2020240722160443.png" alt=""></p>
+
+<p>LinQ를 쓰면 코드를 더 간단하게 만들 수 있음</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Profile</span><span class="p">[]</span> <span class="n">arrProfile</span> <span class="p">=</span>
+<span class="p">{</span>
+    <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"정우성"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">186</span><span class="p">},</span>
+    <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"김태희"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">158</span><span class="p">},</span>
+    <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"고현정"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">172</span><span class="p">},</span>
+    <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"이문세"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">178</span><span class="p">},</span>
+    <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"하동훈"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">171</span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">//LinQ 구문</span>
+<span class="kt">var</span> <span class="n">profiles</span> <span class="p">=</span> <span class="k">from</span> <span class="n">profile</span> <span class="k">in</span> <span class="n">arrProfile</span> 
+               <span class="k">where</span> <span class="n">profile</span><span class="p">.</span><span class="n">Height</span> <span class="p">&lt;</span> <span class="m">175</span> 
+               <span class="k">orderby</span> <span class="n">profile</span><span class="p">.</span><span class="n">Height</span> 
+               <span class="n">select</span> <span class="n">profile</span><span class="p">;</span>
+
+<span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">profile</span> <span class="k">in</span> <span class="n">profiles</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"{0},{1}"</span><span class="p">,</span> <span class="n">profile</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">profile</span><span class="p">.</span><span class="n">Height</span><span class="p">);</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h2 id="linq-사용법">LinQ 사용법</h2>
+
+<h4 id="from">from</h4>
+<ul>
+  <li>모든 쿼리식은 반드시 from절로 시작함</li>
+  <li>원본과 원본안에 들어가있는 요소 데이터를 변수로 지정</li>
+  <li>foreach의 괄호안에 들어가는 것과 비슷함(범위변수가 차이, foreach는 변수에 데이터를 저장 x, LINQ의 범위변수에는 저장 )</li>
+  <li>[[IEnumerable]] 객체만 사용 가능 (변수 할당 시에)
+    <h4 id="where">where</h4>
+  </li>
+  <li>필터 역할</li>
+  <li>조건에 부합하는 데이터만 선별함</li>
+</ul>
+
+<h4 id="orderby">orderby</h4>
+<ul>
+  <li>데이터의 정렬을 수행하는 연산자</li>
+  <li>데이터베이스처럼 ASEC 가 있음 - &gt; ascending 물론 반대는 decending</li>
+</ul>
+
+<h4 id="select">select</h4>
+<ul>
+  <li>최종 결과를 추출하는 쿼리식의 마침표 같은 존재</li>
+  <li>[[IEnumerable]]의 T는 select 문에 의해서 결정됨</li>
+  <li>무명형식도 가능</li>
+</ul>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Profile</span><span class="p">[]</span> <span class="n">arrProfile</span> <span class="p">=</span>
+<span class="p">{</span>
+    <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"정우성"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">186</span><span class="p">},</span>
+    <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"김태희"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">158</span><span class="p">},</span>
+    <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"고현정"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">172</span><span class="p">},</span>
+    <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"이문세"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">178</span><span class="p">},</span>
+    <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"하동훈"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">171</span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">var</span> <span class="n">profiles</span> <span class="p">=</span> <span class="k">from</span> <span class="n">profile</span> <span class="k">in</span> <span class="n">arrProfile</span> 
+               <span class="k">where</span> <span class="n">profile</span><span class="p">.</span><span class="n">Height</span> <span class="p">&lt;</span> <span class="m">175</span> 
+               <span class="k">orderby</span> <span class="n">profile</span><span class="p">.</span><span class="n">Height</span> 
+               <span class="n">select</span> <span class="k">new</span> <span class="p">{</span> <span class="n">Name</span> <span class="p">=</span> <span class="n">profile</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">InchHeight</span> <span class="p">=</span> <span class="n">profile</span><span class="p">.</span><span class="n">Height</span> <span class="p">*</span> <span class="m">0.393</span><span class="p">};</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">profile</span> <span class="k">in</span> <span class="n">profiles</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"{0},{1}"</span><span class="p">,</span> <span class="n">profile</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">profile</span><span class="p">.</span><span class="n">InchHeight</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="여러-개의-데이터-원본에-질의하기">여러 개의 데이터 원본에 질의하기</h4>
+
+<ul>
+  <li>그 as 해서 다시 가공하는 느낌임</li>
+  <li>처음 가공된 정보를 가지고 한번더 가공함
+    <div class="language-csharp highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MainApp</span>
+<span class="p">{</span>
+  <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="n">Class</span><span class="p">[]</span> <span class="n">arrClasses</span> <span class="p">=</span>
+      <span class="p">{</span>
+              <span class="k">new</span> <span class="nf">Class</span><span class="p">(){</span><span class="n">name</span> <span class="p">=</span> <span class="s">"연두반"</span><span class="p">,</span> <span class="n">score</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[]{</span> <span class="m">99</span><span class="p">,</span><span class="m">80</span><span class="p">,</span><span class="m">70</span><span class="p">,</span><span class="m">24</span><span class="p">}</span> <span class="p">},</span>
+              <span class="k">new</span> <span class="nf">Class</span><span class="p">(){</span><span class="n">name</span> <span class="p">=</span> <span class="s">"분홍반"</span><span class="p">,</span> <span class="n">score</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[]{</span> <span class="m">60</span><span class="p">,</span><span class="m">45</span><span class="p">,</span><span class="m">87</span><span class="p">,</span><span class="m">72</span><span class="p">}</span> <span class="p">},</span>
+              <span class="k">new</span> <span class="nf">Class</span><span class="p">(){</span><span class="n">name</span> <span class="p">=</span> <span class="s">"파랑반"</span><span class="p">,</span> <span class="n">score</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[]{</span> <span class="m">92</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="m">85</span><span class="p">,</span><span class="m">94</span><span class="p">}</span> <span class="p">},</span>
+              <span class="k">new</span> <span class="nf">Class</span><span class="p">(){</span><span class="n">name</span> <span class="p">=</span> <span class="s">"노랑반"</span><span class="p">,</span> <span class="n">score</span> <span class="p">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">[]{</span> <span class="m">90</span><span class="p">,</span><span class="m">88</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">17</span><span class="p">}</span> <span class="p">}</span>
+          <span class="p">};</span>
+
+      <span class="kt">var</span> <span class="n">classes</span> <span class="p">=</span> <span class="k">from</span> <span class="n">c</span> <span class="k">in</span> <span class="n">arrClasses</span>
+                    <span class="k">from</span> <span class="n">s</span> <span class="k">in</span> <span class="n">c</span><span class="p">.</span><span class="n">score</span>
+                    <span class="k">where</span> <span class="n">s</span> <span class="p">&lt;</span> <span class="m">60</span>
+                    <span class="k">orderby</span> <span class="n">s</span>
+                    <span class="n">select</span> <span class="k">new</span> <span class="p">{</span> <span class="n">c</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">Lowest</span> <span class="p">=</span> <span class="n">s</span> <span class="p">};</span>
+
+      <span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">c</span> <span class="k">in</span> <span class="n">classes</span><span class="p">)</span>
+      <span class="p">{</span>
+          <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"낙제 : </span><span class="p">{</span><span class="n">c</span><span class="p">.</span><span class="n">name</span><span class="p">}</span><span class="s"> (</span><span class="p">{</span><span class="n">c</span><span class="p">.</span><span class="n">Lowest</span><span class="p">}</span><span class="s">)"</span><span class="p">);</span>
+      <span class="p">}</span>
+
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h4 id="group-by">group by</h4>
+
+<ul>
+  <li>데이터를 분류하는 문구</li>
+  <li>분류기준으로 데이터를 분류</li>
+  <li>Key로 그룹을 나눈 기준의 값을 찾아옴</li>
+</ul>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">Profile</span><span class="p">[]</span> <span class="n">arrProfile</span> <span class="p">=</span>
+    <span class="p">{</span>
+        <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"정우성"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">186</span><span class="p">},</span>
+        <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"김태희"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">158</span><span class="p">},</span>
+        <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"고현정"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">172</span><span class="p">},</span>
+        <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"이문세"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">178</span><span class="p">},</span>
+        <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"하동훈"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">171</span><span class="p">}</span>
+    <span class="p">};</span>
+<span class="kt">var</span> <span class="n">listProfile</span> <span class="p">=</span> <span class="k">from</span> <span class="n">profile</span> <span class="k">in</span> <span class="n">arrProfile</span>
+                  <span class="k">group</span> <span class="n">profile</span> <span class="k">by</span> <span class="n">profile</span><span class="p">.</span><span class="n">Height</span> <span class="p">&lt;</span> <span class="m">175</span> <span class="k">into</span> <span class="n">g</span>
+                  <span class="n">select</span> <span class="k">new</span> <span class="p">{</span> <span class="n">GroupKey</span> <span class="p">=</span> <span class="n">g</span><span class="p">.</span><span class="n">Key</span><span class="p">,</span> <span class="n">Profiles</span> <span class="p">=</span> <span class="n">g</span> <span class="p">};</span>
+
+<span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">Group</span> <span class="k">in</span> <span class="n">listProfile</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"- 175 미만? : </span><span class="p">{</span><span class="n">Group</span><span class="p">.</span><span class="n">GroupKey</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">profile</span> <span class="k">in</span> <span class="n">Group</span><span class="p">.</span><span class="n">Profiles</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"&gt;&gt;&gt; </span><span class="p">{</span><span class="n">profile</span><span class="p">.</span><span class="n">Name</span><span class="p">}</span><span class="s">, </span><span class="p">{</span><span class="n">profile</span><span class="p">.</span><span class="n">Height</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><img src="/images/Pasted%20image%2020240722160531.png" alt=""></p>
+
+<h4 id="join">Join</h4>
+<ul>
+  <li>두개의 데이터 원본을 연결하는 연산</li>
+  <li>특정 필드의 값을 비교하여 일치하는 데이터끼리 연결을 수행</li>
+  <li>내부조인과 외부조인이 있음</li>
+  <li>내부조인은 하나를 기준으로 두개의 테이블을 합치는 개념이고, 외부조인은 기본적으로 내부조인과 비슷하지만 조인 결과에 기준이 되는 데이터 원본이 모두 포함된다는 점이 다름</li>
+</ul>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MainApp</span>
+<span class="p">{</span>
+
+    <span class="k">class</span> <span class="nc">Profile</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Height</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="p">}</span>
+    <span class="k">class</span> <span class="nc">Product</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Title</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Star</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+ <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+ <span class="p">{</span>
+   <span class="n">Profile</span><span class="p">[]</span> <span class="n">arrProfile</span> <span class="p">=</span>
+  <span class="p">{</span>
+      <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"정우성"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">186</span><span class="p">},</span>
+      <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"김태희"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">158</span><span class="p">},</span>
+      <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"고현정"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">172</span><span class="p">},</span>
+      <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"이문세"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">178</span><span class="p">},</span>
+      <span class="k">new</span> <span class="nf">Profile</span><span class="p">(){</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"하동훈"</span><span class="p">,</span> <span class="n">Height</span> <span class="p">=</span> <span class="m">171</span><span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="n">Product</span><span class="p">[]</span> <span class="n">arrProduct</span> <span class="p">=</span>
+  <span class="p">{</span>
+      <span class="k">new</span> <span class="nf">Product</span><span class="p">(){</span><span class="n">Title</span> <span class="p">=</span> <span class="s">"비트"</span><span class="p">,</span> <span class="n">Star</span> <span class="p">=</span> <span class="s">"정우성"</span><span class="p">},</span>
+      <span class="k">new</span> <span class="nf">Product</span><span class="p">(){</span><span class="n">Title</span> <span class="p">=</span> <span class="s">"CF 다수"</span><span class="p">,</span> <span class="n">Star</span> <span class="p">=</span> <span class="s">"김태희"</span><span class="p">},</span>
+      <span class="k">new</span> <span class="nf">Product</span><span class="p">(){</span><span class="n">Title</span> <span class="p">=</span> <span class="s">"아이리스"</span><span class="p">,</span> <span class="n">Star</span> <span class="p">=</span> <span class="s">"김태희"</span><span class="p">},</span>
+      <span class="k">new</span> <span class="nf">Product</span><span class="p">(){</span><span class="n">Title</span> <span class="p">=</span> <span class="s">"모래시계"</span><span class="p">,</span> <span class="n">Star</span> <span class="p">=</span> <span class="s">"고현정"</span><span class="p">},</span>
+      <span class="k">new</span> <span class="nf">Product</span><span class="p">(){</span><span class="n">Title</span> <span class="p">=</span> <span class="s">"Solo 예찬"</span><span class="p">,</span> <span class="n">Star</span> <span class="p">=</span> <span class="s">"이문세"</span><span class="p">}</span>
+  <span class="p">};</span>
+
+  <span class="kt">var</span> <span class="n">listProfile</span> <span class="p">=</span> <span class="k">from</span> <span class="n">profile</span> <span class="k">in</span> <span class="n">arrProfile</span>
+                    <span class="k">join</span> <span class="n">product</span> <span class="k">in</span> <span class="n">arrProduct</span> <span class="k">on</span> <span class="n">profile</span><span class="p">.</span><span class="n">Name</span> <span class="k">equals</span> <span class="n">product</span><span class="p">.</span><span class="n">Star</span>
+                    <span class="n">select</span> <span class="k">new</span>
+                    <span class="p">{</span>
+                        <span class="n">Name</span> <span class="p">=</span> <span class="n">profile</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
+                        <span class="n">Work</span> <span class="p">=</span> <span class="n">product</span><span class="p">.</span><span class="n">Title</span><span class="p">,</span>
+                        <span class="n">Height</span> <span class="p">=</span> <span class="n">profile</span><span class="p">.</span><span class="n">Height</span>
+                    <span class="p">};</span>
+
+  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"--- 내부 조인 결과 ---"</span><span class="p">);</span>
+  <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">profile</span> <span class="k">in</span> <span class="n">listProfile</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"이름</span><span class="p">{</span><span class="n">profile</span><span class="p">.</span><span class="n">Name</span><span class="p">}</span><span class="s">, 작품</span><span class="p">{</span><span class="n">profile</span><span class="p">.</span><span class="n">Work</span><span class="p">}</span><span class="s">, 키</span><span class="p">{</span><span class="n">profile</span><span class="p">.</span><span class="n">Height</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="n">listProfile</span> <span class="p">=</span> <span class="k">from</span> <span class="n">profile</span> <span class="k">in</span> <span class="n">arrProfile</span>
+                <span class="k">join</span> <span class="n">product</span> <span class="k">in</span> <span class="n">arrProduct</span> <span class="k">on</span> <span class="n">profile</span><span class="p">.</span><span class="n">Name</span> <span class="k">equals</span> <span class="n">product</span><span class="p">.</span><span class="n">Star</span> <span class="k">into</span> <span class="n">ps</span>
+                <span class="k">from</span> <span class="n">product</span> <span class="k">in</span> <span class="n">ps</span><span class="p">.</span><span class="nf">DefaultIfEmpty</span><span class="p">(</span><span class="k">new</span> <span class="nf">Product</span><span class="p">()</span> <span class="p">{</span> <span class="n">Title</span> <span class="p">=</span> <span class="s">"그런거 없음"</span> <span class="p">})</span>
+                <span class="n">select</span> <span class="k">new</span>
+                <span class="p">{</span>
+                    <span class="n">Name</span> <span class="p">=</span> <span class="n">profile</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span>
+                    <span class="n">Work</span> <span class="p">=</span> <span class="n">product</span><span class="p">.</span><span class="n">Title</span><span class="p">,</span>
+                    <span class="n">Height</span> <span class="p">=</span> <span class="n">profile</span><span class="p">.</span><span class="n">Height</span>
+                <span class="p">};</span>
+
+  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">""</span><span class="p">);</span>
+  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"--- 외부 조인 결과 ---"</span><span class="p">);</span>
+  <span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">profile</span> <span class="k">in</span> <span class="n">listProfile</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"이름</span><span class="p">{</span><span class="n">profile</span><span class="p">.</span><span class="n">Name</span><span class="p">}</span><span class="s">, 작품</span><span class="p">{</span><span class="n">profile</span><span class="p">.</span><span class="n">Work</span><span class="p">}</span><span class="s">, 키</span><span class="p">{</span><span class="n">profile</span><span class="p">.</span><span class="n">Height</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
+  <span class="p">}</span>
+ <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><img src="/images/Pasted%20image%2020240722160558.png" alt=""></p>
+
+<h4 id="linq의-함수형-출력">Linq의 함수형 출력</h4>
+<ul>
+  <li>Linq는 사실 쿼리처럼 보이지만 컴파일러 단에서 함수로 바꾸어서 컴파일함</li>
+  <li>아래가 그 예시임</li>
+  <li>53개의 표준 LinQ 연산 메소드 중에 C#의 쿼리식에서 지원하는 것은 11개 뿐임</li>
+  <li>물론 11개로 대부분의 데이터 처리가 가능하지만, 나머지 42개를 모두 활용할 수 있다면 삶이 좀더 편해짐</li>
+</ul>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">profiles</span> <span class="p">=</span> <span class="n">arrProfile</span><span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">profile</span> <span class="p">=&gt;</span> <span class="n">profile</span><span class="p">.</span><span class="n">Height</span> <span class="p">&lt;</span> <span class="m">175</span><span class="p">)</span>
+               <span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">profile</span> <span class="p">=&gt;</span> <span class="n">profile</span><span class="p">.</span><span class="n">Height</span><span class="p">)</span>
+               <span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">profile</span> <span class="p">=&gt;</span> <span class="k">new</span>
+<span class="p">{</span>
+    <span class="n">Name</span> <span class="p">=</span> <span class="n">profile</span><span class="p">.</span><span class="n">Name</span><span class="p">,</span> <span class="n">InchHeight</span> <span class="p">=</span> <span class="n">profile</span><span class="p">.</span><span class="n">Height</span> <span class="p">*</span> <span class="m">0.393</span>
+<span class="p">});</span>
+
+
+ <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">""</span><span class="p">);</span>
+ <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"--- Linq 함수형 출력 ---"</span><span class="p">);</span>
+ <span class="k">foreach</span> <span class="p">(</span><span class="kt">var</span> <span class="n">profile</span> <span class="k">in</span> <span class="n">listProfile</span><span class="p">)</span>
+ <span class="p">{</span>
+     <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"이름</span><span class="p">{</span><span class="n">profile</span><span class="p">.</span><span class="n">Name</span><span class="p">}</span><span class="s">, 작품</span><span class="p">{</span><span class="n">profile</span><span class="p">.</span><span class="n">Work</span><span class="p">}</span><span class="s">, 키</span><span class="p">{</span><span class="n">profile</span><span class="p">.</span><span class="n">Height</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
+ <span class="p">}</span>
+</code></pre></div></div>
+
+<p>근데 쿼리식만 적으면 함수들을 못씀
+그래서 섞어서 씀</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">profiles</span> <span class="p">=</span> <span class="k">from</span> <span class="n">profile</span> <span class="k">in</span> <span class="n">arrProfile</span>
+               <span class="k">where</span> <span class="n">profile</span><span class="p">.</span><span class="n">Height</span> <span class="p">&lt;</span> <span class="m">180</span>
+               <span class="n">select</span> <span class="n">profile</span><span class="p">;</span>
+
+<span class="kt">double</span> <span class="n">Average</span> <span class="p">=</span> <span class="n">profiles</span><span class="p">.</span><span class="nf">Average</span><span class="p">(</span><span class="n">profile</span> <span class="p">=&gt;</span> <span class="n">profile</span><span class="p">.</span><span class="n">Height</span><span class="p">);</span>
+
+<span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="n">Average</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="/images/Pasted%20image%2020240722160626.png" alt=""></p>
+</body></html>

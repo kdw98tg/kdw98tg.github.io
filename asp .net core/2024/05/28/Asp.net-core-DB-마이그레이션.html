@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>마이그레이션(Migration)은 ‘이주’ 라는 뜻을 가지고 있는 영어단어 입니다.</p>
+
+<p>IT 쪽에서 마이그레이션은 데이터, 애플리케이션, 시스템 또는 기타 컴퓨팅 리소스를 한 환경에서 다른 환경으로 옮기는 과정을 의미합니다.</p>
+
+<p>해당 포스팅은 Asp.net core 를 사용하여 DB Migration을 구현하는 방법을 다룹니다.</p>
+
+<h2 id="프로젝트-설정">프로젝트 설정</h2>
+
+<p>우선 EF Core를 사용하여 DB 마이그레이션을 관리하기 위한 패키지를 설치해야 합니다.</p>
+
+<p>패키지를 설치하는 명령어는 다음과 같습니다.</p>
+
+<p>Visaul Studio의 CMD 창에 입력하면 됩니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer  <span class="c"># SQL Server를 사용하는 경우</span>
+</code></pre></div></div>
+
+<h2 id="db-context-클래스설정">DB Context 클래스설정</h2>
+
+<p>DB Context 클래스는 EF Core 가 데이터베이스와 상호작용 하기 위해 만드는 클래스 입니다.</p>
+
+<p>DB Context를 생성하고 데이터 모델을 정의합니다.</p>
+
+<p>해당 클래스는 Asp.net core를 사용하고 있다면 필히 있을 것이므로, 예시는 생략하고 넘어가겠습니다.</p>
+
+<h2 id="초기-마이그레이션-생성">초기 마이그레이션 생성</h2>
+
+<h3 id="터미널-창에서-실행">터미널 창에서 실행</h3>
+
+<p>마이그레이션을 생성하기 위해서 터미널에 다음과 같은 명령어를 실행합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet ef migrations add InitialCreate
+</code></pre></div></div>
+
+<p>해당 명령어를 입력하면, 프로젝트에 <code class="language-plaintext highlighter-rouge">Migration</code>이라는 폴더가 생기며, 만들어놓은 엔티티를 기준으로 생성된 <code class="language-plaintext highlighter-rouge">Migration</code> 파일이 생성이 됩니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Migration</code> 생성이 완료되면, 데이터베이스에 업데이트를 해줘야 합니다. 명령어는 다음과 같습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet ef database update
+</code></pre></div></div>
+
+<h3 id="패키지-관리자-콘솔에서-실행">패키지 관리자 콘솔에서 실행</h3>
+
+<p>위와같이 터미널창에서 실행을 하게 되면 명령어가 길어지게 됩니다.</p>
+
+<p>패키지 관리자 콘솔에서는 좀 더 간단한 명령어로 마이그레이션 작업을 수행할 수 있습니다.</p>
+
+<p>해당 기능을 사용하기 위해 아래와 같은 명령어로 패키지를 다운로드 합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dotnet add package Microsoft.EntityFrameworkCore.Tools
+</code></pre></div></div>
+
+<p>해당 패키지가 다운로드가 완료되었다면, 패키지 관리자 콘솔을 엽니다.</p>
+
+<p>명령어는 다음과 같습니다.</p>
+
+<h4 id="마이그레이션-생성">마이그레이션 생성</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Add-Migration &lt;마이그레이션 이름&gt;
+</code></pre></div></div>
+
+<h4 id="데이터베이스-업데이트">데이터베이스 업데이트</h4>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Update-Database
+</code></pre></div></div>
+
+<p><strong>여기서 주의하실 점은, 마이그레이션을 할 때, 컴파일 에러 또는 엔티티 관계 에러가 뜨게 되면 데이터베이스에 이상한 값이 들어갈 수 있으니 주의해야 합니다.</strong></p>
+
+<h2 id="마이그레이션-삭제">마이그레이션 삭제</h2>
+
+<p>간혹, 마이그레이션을 할때, 디비에 제대로 반영되지 않는 경우가 생겼습니다.</p>
+
+<p>우선, 컴파일에러 또는 엔티티를 살펴보고, 그래도 이상이 없다면, 마이그레이션을 다시 설정해야 합니다.</p>
+
+<p>마지막으로 반영된 마이그레이션을 지우는 명령어는 다음과 같습니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Remove-Migration 
+</code></pre></div></div>
+
+<p>해당 명령어를 사용하면 마지막으로 생성한 마이그레이션(아직 데이터베이스에 반영되지 못함)이 삭제가 됩니다.</p>
+
+<p>그리고, 지금까지 모아놓았던 마이그레이션 파일들을 모두 삭제합니다.</p>
+
+<p>그 후, 새로운 마이그레이션을 생성하여 데이터베이스에 업데이트가 되는지 확인합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Add-Migration InitialCreate
+</code></pre></div></div>
+
+<p>해당 작업까지 수행했을 때, 마이그레이션이 생성이 안되거나, 데이터베이스에 업데이트가 되지 않는 경우, 컴파일 에러가 있거나, 엔티티의 관계가 모호한 경우가 대부분이니 다시한번 확인하여 오류를 고쳐야 합니다.</p>
+
+</body></html>

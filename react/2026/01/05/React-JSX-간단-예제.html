@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="jsx-란">JSX 란?</h2>
+
+<p>순수 html 를 작성하다 보면, 계층이 복잡해지거나, 코드가 너무 많아져서 관리하기가 힘듭니다. 그 문제를 해결하기 위해서 페이스북에서 만든 Javascript 확장 문법으로, Html + Javascript를 의미합니다.</p>
+
+<p>JSX는 일반 html과 조금 다르게, 속성명이 조금 다릅니다. class 속성명은 className, onclick 은 onClick 으로 작성해야 합니다 . 이는 이미 js 에서 예약된 단어들이 존재하기 때문입니다. 또한, JSX는 하나의 태그로 묶여있어야 합니다. 보통 <code class="language-plaintext highlighter-rouge">div</code>태그로 많이 묶어서 사용합니다.</p>
+
+<h2 id="문법">문법</h2>
+
+<p>다음은 강의에서 소개되는 JSX의 간단한 문법들 입니다.</p>
+
+<h2 id="변수값-넣기">변수값 넣기</h2>
+
+<p>jsx에서는 변수의 값을 <code class="language-plaintext highlighter-rouge">{}</code>를 통해서 감싸줘야 변수 값이 제대로 화면에 렌더링 됩니다. 우선, 문자열을 대입하는 예제 입니다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Hello, world!</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="p">(</span>
+<span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+	<span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">변수</span> <span class="nx">넣기</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>	<span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+	  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">text</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>	  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">text</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">test</span><span class="dl">'</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>	<span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">root</span> <span class="o">=</span> <span class="nx">ReactDOM</span><span class="p">.</span><span class="nf">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">));</span>
+<span class="nx">root</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="/images/Pasted%20image%2020260105110648.png" alt=""></p>
+
+<p>위 결과를 보면, text를 <code class="language-plaintext highlighter-rouge">{}</code>로 감싸서 변수 안에 담겨있는 값을 출력한것을 볼 수 있습니다. 또한, 문자열 변수에 리터럴 문자열을 더하면, 문자열 더하기가 되어있는 문자열이 랜더링 됩니다.</p>
+
+<h2 id="숫자-및-계산식-넣기">숫자 및 계산식 넣기</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">num</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="p">(</span>
+<span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+	<span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">숫자</span> <span class="nx">및</span> <span class="nx">계산식</span> <span class="nx">넣기</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>	<span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+	  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">num</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>	  <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">num</span> <span class="o">+</span> <span class="mi">15</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>	<span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">root</span> <span class="o">=</span> <span class="nx">ReactDOM</span><span class="p">.</span><span class="nf">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">));</span>
+<span class="nx">root</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="/images/Pasted%20image%2020260105111239.png" alt=""></p>
+
+<p>숫자를 대입할때도 마찬가지로 <code class="language-plaintext highlighter-rouge">{}</code>를 사용합니다. <code class="language-plaintext highlighter-rouge">{}</code>안에서 연산을 하게 되면, 연산이 완료된 값이 랜더링 됩니다.</p>
+
+<h2 id="bool-null-값-대입">Bool, Null 값 대입</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="p">(</span>
+<span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nb">Boolean</span><span class="p">,</span> <span class="nx">Nullish</span> <span class="nx">값</span> <span class="nx">넣기</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">{</span><span class="kc">true</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">{</span><span class="kc">false</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">{</span><span class="kc">undefined</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">{</span><span class="kc">null</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">root</span> <span class="o">=</span> <span class="nx">ReactDOM</span><span class="p">.</span><span class="nf">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">));</span>
+<span class="nx">root</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="/images/Pasted%20image%2020260105111422.png" alt=""></p>
+
+<p>bool 값과 null 값들을 넣어보면 아무것도 랜더링 되지 않습니다. 이것은 jsx에서 의미없는 값들은 랜더링 하지 않도록 설계하였습니다. 또한, 이를 통해 조건부 랜터링을 가능하게 합니다.</p>
+
+<h2 id="object-array-넣기">Object, Array 넣기</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">c</span><span class="dl">'</span><span class="p">];</span>
+
+<span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="p">(</span>
+<span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nb">Object</span><span class="p">,</span> <span class="nb">Array</span> <span class="nx">넣기</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="cm">/* &lt;li&gt;{obj}&lt;/li&gt; */</span><span class="p">}</span>
+      <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">arr</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">root</span> <span class="o">=</span> <span class="nx">ReactDOM</span><span class="p">.</span><span class="nf">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">));</span>
+<span class="nx">root</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="/images/Pasted%20image%2020260105111836.png" alt=""></p>
+
+<p>우선, object 형은 리스트의 아이템으로 들어가면 랜더링 되지 않습니다. 인터프리터에서 오류라고 생각하여 js 파일 전체를 랜더링 하지 않습니다.</p>
+
+<p>반면, 배열은 자동으로 안에 있는 내용들을 합쳐서 랜더링하게 됩니다.</p>
+
+<h2 id="태그-속에-속성-넣기">태그 속에 속성 넣기</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">imageUrl</span> <span class="o">=</span>
+<span class="err"> </span> <span class="dl">'</span><span class="s1">https://dst6jalxvbuf5.cloudfront.net/static/img/logo/logo.svg</span><span class="dl">'</span><span class="p">;</span>
+<span class="err"> </span><span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="p">(</span>
+<span class="err"> </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">태그</span> <span class="nx">속석에</span> <span class="nx">넣기</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">img</span> <span class="nx">src</span><span class="o">=</span><span class="p">{</span><span class="nx">imageUrl</span><span class="p">}</span> <span class="nx">alt</span><span class="o">=</span><span class="dl">"</span><span class="s2">logo</span><span class="dl">"</span> <span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">root</span> <span class="o">=</span> <span class="nx">ReactDOM</span><span class="p">.</span><span class="nf">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">));</span>
+<span class="nx">root</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="/images/Pasted%20image%2020260105112140.png" alt=""></p>
+
+<p>jsx에서 태그에 속성을 넣는 방식은 기존 html과 같습니다. 여기서 조금 다른 점은 속성값을 넣을 때, 변수값이 들어가야 한다면, 위와 마찬가지로 <code class="language-plaintext highlighter-rouge">{}</code>를 사용하여야 합니다.</p>
+
+<h2 id="삼항연산자">삼항연산자</h2>
+
+<p>여기서부터는 jsx에서 사용하는 조건문들 입니다. 기존 다른언어들에서 사용하는 조건문과 살짝 다른 부분이 있어서 포스팅 합니다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err"> </span><span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="p">(</span>
+<span class="err"> </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">삼항연산자</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">===</span> <span class="mi">2</span> <span class="p">?</span> <span class="dl">"</span><span class="s2">참입니다</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">거짓입니다.</span><span class="dl">"</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">root</span> <span class="o">=</span> <span class="nx">ReactDOM</span><span class="p">.</span><span class="nf">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">));</span>
+<span class="nx">root</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="/images/Pasted%20image%2020260105112612.png" alt=""></p>
+
+<p>jsx에서는 식이 복잡해지는것을 최대한 막기 위해서, if~else 와 같은 조건문 보다는 축약이 된 삼항연산자를 많이 사용한다고 합니다.</p>
+
+<h2 id="and-연산자">AND 연산자</h2>
+
+<p>And 연산자는 기본적으로 조건이 전부 true 인지를 검사하는 논리게이트 입니다. 하지만 jsx에서는 조금 다르게 사용합니다. jsx에서의 And 연산자는 조건이 참이면, 두번째의 요소를 출력하는 식으로 동작합니다. 반대로, 앞의 조건이 거짓이면, 아무것도 출력하지 않게 됩니다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err"> </span><span class="kd">const</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+ <span class="kd">const</span> <span class="nx">text1</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+ 
+<span class="err"> </span><span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="p">(</span>
+<span class="err"> </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">AND</span> <span class="nx">연산자</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">===</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="dl">'</span><span class="s1">AND 연산자1</span><span class="dl">'</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">arr1</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="dl">'</span><span class="s1">AND 연산자2</span><span class="dl">'</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">arr1</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="dl">'</span><span class="s1">AND 연산자3</span><span class="dl">'</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">root</span> <span class="o">=</span> <span class="nx">ReactDOM</span><span class="p">.</span><span class="nf">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">));</span>
+<span class="nx">root</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="/images/Pasted%20image%2020260105113331.png" alt=""></p>
+
+<p>결과를 보면, <code class="language-plaintext highlighter-rouge">1+1 === 2</code> 가 참이기 때문에, 그 다음에 있는 <code class="language-plaintext highlighter-rouge">AND 연산자1</code>을 출력한것을 볼 수 있습니다. 다음으로, <code class="language-plaintext highlighter-rouge">arr1.length === 1</code>은 거짓이기 때문에, 화면에 아무것도 출력하지 않는것을 볼 수 있습니다. (jsx에서 기본적으로 bool 값은 랜더링 하지 않음) 마지막으로 <code class="language-plaintext highlighter-rouge">arr1.length === 3</code>이 참이기 때문에 <code class="language-plaintext highlighter-rouge">AND 연산자3</code>은 정상적으로 출력됐음을 알 수 있습니다.</p>
+
+<h2 id="or-연산자">OR 연산자</h2>
+
+<p>OR 연산자도 AND 연산자와 마찬가지로 조금 다르게 동작합니다. 두 조건을 비교하여 앞의 값이 참이면, 앞의 값을 반환, 앞의값이 거짓이면, B를 반환하는 식으로 동작합니다. AND 연산자와 다른점은 참인값을 반환한다는 점입니다.</p>
+
+<p>AND 연산자 : A &amp;&amp; B</p>
+<ul>
+  <li>A가 참 -&gt; B 반환</li>
+  <li>A가 거짓 -&gt; A반환 (랜더링 안함)</li>
+</ul>
+
+<p>OR 연산자 : A || B</p>
+<ul>
+  <li>A가 참 -&gt; A 반환</li>
+  <li>A가 거짓 -&gt; B 반환</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err"> </span><span class="kd">const</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+ <span class="kd">const</span> <span class="nx">text1</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+ 
+<span class="err"> </span><span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="p">(</span>
+<span class="err"> </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">OR</span> <span class="nx">연산자</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">{</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">!==</span> <span class="mi">2</span> <span class="o">||</span> <span class="dl">'</span><span class="s1">OR 연산자1</span><span class="dl">'</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">text</span> <span class="o">||</span> <span class="dl">'</span><span class="s1">OR 연산자2</span><span class="dl">'</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/li</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">root</span> <span class="o">=</span> <span class="nx">ReactDOM</span><span class="p">.</span><span class="nf">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">));</span>
+<span class="nx">root</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="/images/Pasted%20image%2020260105114118.png" alt=""></p>
+
+<p>결과를 보면, 처음 식에서 <code class="language-plaintext highlighter-rouge">1+1 !== 2</code>는 거짓이기 때문에, 뒤에 있는 문자열 <code class="language-plaintext highlighter-rouge">OR 연산자1</code>이 랜더링 된 것을 알 수 있습니다. 두번째 아이템을 보면, <code class="language-plaintext highlighter-rouge">text</code>는 항상 참인 값이기 때문에 text 변수 안에 담겨있는 값인 <code class="language-plaintext highlighter-rouge">Hello, World!</code>가 출력되는것을 볼 수 있습니다.</p>
+
+<h2 id="배열에-있는-요소-리스트에-넣기">배열에 있는 요소 리스트에 넣기</h2>
+
+<p>배열로 받아온 정보들을 리스트에 뿌려주는 로직은 정말 많이 사용하는 로직 중에 하나입니다. jsx에서는 for문을 사용하는것 대신에 <code class="language-plaintext highlighter-rouge">map()</code>이라는 함수를 사용하여 반복합니다. 여기서 주의해야 하는 점은 리스트의 아이템을 바꿀 때가 존재할 수 있기 때문에, 반드시 리스트의 아이템에 <code class="language-plaintext highlighter-rouge">key</code>값을 넣어줘야 합니다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err"> </span><span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">c</span><span class="dl">'</span><span class="p">];</span>
+ 
+<span class="err"> </span><span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="p">(</span>
+<span class="err"> </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nb">Array</span><span class="p">.</span><span class="nx">map</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">arr</span><span class="p">.</span><span class="nf">map</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span>  <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">index</span><span class="p">}</span><span class="o">&gt;&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">item</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h4&gt;&lt;/</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">;</span>
+      <span class="p">})}</span>
+    <span class="o">&lt;</span><span class="sr">/ul</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">root</span> <span class="o">=</span> <span class="nx">ReactDOM</span><span class="p">.</span><span class="nf">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">));</span>
+<span class="nx">root</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><img src="/images/Pasted%20image%2020260105114916.png" alt=""></p>
+
+<h2 id="스타일-적용하기">스타일 적용하기</h2>
+
+<p>jsx에서 스타일을 적용하는 방법입니다. 첫번째 방법으로는 css 파일을 만들어서 <code class="language-plaintext highlighter-rouge">import</code>구문으로 참조를 넣어주는 방법, 두번째 방법으로는 style을 변수에 정의해서 사용하는 방법이 있습니다.</p>
+
+<p>index.css 라는 파일을 다음과 같이 만들어 줍니다.</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">.highlight</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="nx">#fff</span><span class="p">;</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">36px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>그 후에, index.js에 해당 파일을 <code class="language-plaintext highlighter-rouge">import</code> 해주면 됩니다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="dl">'</span><span class="s1">./index.css</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">ReactDOM</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-dom</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="p">(</span>
+<span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">highlight</span><span class="dl">"</span><span class="o">&gt;</span> 
+	
+<span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>다음 방법은, 변수로 style을 저장하여 사용하는 방법입니다. 스타일을 변수로 만들때는, 객체형으로 만들게 되며, key값으로 CammelCase로 이루어진 속성명을 넣어주면 됩니다. 마찬가지로 변수이기 때문에 <code class="language-plaintext highlighter-rouge">{}</code>안에 넣어서 사용해야 합니다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="dl">'</span><span class="s1">./index.css</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">ReactDOM</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-dom</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">roundBoxStyle</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">top</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+  <span class="na">left</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+  <span class="na">width</span><span class="p">:</span> <span class="dl">'</span><span class="s1">50%</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">height</span><span class="p">:</span> <span class="dl">'</span><span class="s1">200px</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">padding</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+  <span class="na">background</span><span class="p">:</span> <span class="dl">'</span><span class="s1">rgba(162,216,235,0.6)</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">borderRadius</span><span class="p">:</span> <span class="mi">50</span>
+<span class="p">};</span>
+ 
+<span class="err"> </span><span class="kd">const</span> <span class="nx">element</span> <span class="o">=</span> <span class="p">(</span>
+<span class="o">&lt;</span><span class="nx">div</span> <span class="nx">style</span><span class="o">=</span><span class="p">{</span><span class="nx">roundBoxStyle</span><span class="p">}</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">highlight</span><span class="dl">"</span><span class="o">&gt;</span>
+	<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="p">,</span> <span class="nx">World</span><span class="o">!&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">root</span> <span class="o">=</span> <span class="nx">ReactDOM</span><span class="p">.</span><span class="nf">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nf">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">));</span>
+<span class="nx">root</span><span class="p">.</span><span class="nf">render</span><span class="p">(</span><span class="nx">element</span><span class="p">);</span>
+
+</code></pre></div></div>
+
+<p><img src="/images/Pasted%20image%2020260105120348.png" alt=""></p>
+
+<p>이런식으로 스타일이 적용된 요소가 랜더링 되는것을 볼 수 있습니다.</p>
+
+<h2 id="조건부-스타일">조건부 스타일</h2>
+
+<p>스타일을 조건적으로 넣을 수 있습니다. 앞서 살펴보았던 AND, OR 게이트를 속성에 넣어서 사용합니다.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">===</span> <span class="mi">2</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">highlight</span><span class="dl">'</span> <span class="p">:</span> <span class="kc">false</span><span class="p">}</span><span class="o">&gt;</span>
+ <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<p>이런식으로 사용하면, 조건에 따라서 스타일을 입힐 수 있습니다.</p>
+</body></html>

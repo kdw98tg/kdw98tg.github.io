@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>어떤 문제에 따라 어떤 딥러닝 층을 쌓을 것인가?</p>
+<h3 id="문제-유형에-따라-출력층-구성">문제 유형에 따라 출력층 구성</h3>
+
+<ul>
+  <li>이진 분류 → <code class="language-plaintext highlighter-rouge">Dense(units=1, activation='sigmoid')</code>
+</li>
+  <li>다중 클래스 분류 (예: 3종류) → <code class="language-plaintext highlighter-rouge">Dense(units=3, activation='softmax')</code>
+</li>
+  <li>회귀 문제 → <code class="language-plaintext highlighter-rouge">Dense(units=1, activation='linear')</code> (또는 생략)\</li>
+  <li>input_dim 은 입력 데이터의 특성과 수치에 따라 결정함</li>
+  <li>
+    <p>입력 데이터가 8개의 특성을 가지고 있따면 input_dim = 8</p>
+  </li>
+  <li>대부분의 일반적인 문제는 1~3개의 은닉층이면 충분함</li>
+  <li>너무 많은 층은 오히려 과적합을 유발할 수 있음</li>
+  <li>
+    <p>하지만 CNN, RNN, Transormer 등은 구조적으로 더 깊은 네트워크 사용함</p>
+  </li>
+  <li>뉴런수는 일반적으로 입력보다 많게 시작해서 점차 줄여나가는 구조가 많음
+```python
+model = Sequential()
+    <h1 id="첫번째-레이어는-dense-층이고-이름을-dense_1로-정함">첫번째 레이어는 Dense() 층이고 이름을 Dense_1로 정함</h1>
+  </li>
+</ul>
+
+<h1 id="output-shape-는-각-층에-몇-개의-출력이-발생하는지-나타냄-8개의-입력이-다음에는-12개-다음에는-8개-그다음-출력은-1개-이렇게-됨">output shape 는 각 층에 몇 개의 출력이 발생하는지 나타냄. 8개의 입력이 다음에는 12개, 다음에는 8개 그다음 출력은 1개 이렇게 됨</h1>
+<p>model.add(Dense(units = 12, input_dim = 8, activation = ‘relu’, name =’Dense_1’))
+model.add(Dense(units = 8, activation = ‘relu’, name = “Dense_2”))
+model.add(Dense(units = 1, activation = “sigmoid”, name = “Dense_3”))
+model.summary()</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+위 코드보면 출력층이 [12, 8, 1]로 구성되어 있음을 알 수 있음 -&gt; 이거는 자주 쓰는 구조중 하나
+근데 만약 다중 분류 문제라고 하면 마지막 출력층은 1이 아니라 분류해야할 대상의 갯수가 될것임
+
+
+활성화 함수 선택 기준
+![](/images/Pasted%20image%2020250526142647.png)
+
+예시로 이진 분류 예측 모델이 있음
+```python
+model = Sequential()
+model.add(Dense(32, input_dim=8, activation='relu'))
+model.add(Dense(16, activation='relu'))
+model.add(Dense(1, activation='sigmoid'))
+</code></pre></div></div>
+
+<p>8개의 input_dim 을 받아서 32, 16, 1로 줄여나가며 예측함</p>
+
+<p>그리고 결국 실험과 검증을 통해 튜닝해야함.</p>
+
+<p>그래프 보고 오차 비율이나 이런것도 확인해봐야함</p>
+
+<h3 id="손실함수---loss">손실함수 - loss</h3>
+
+<p>categorical-교차 엔트로피와 바이너리-교챠엔트로피와 평균제곱오차</p>
+
+<p>예측값과 실제값 사이의 차이를 수치화해서 학습이 가능하도록 함
+categorical crossentropy는 다중 클래스 분류에서 사용됨</p>
+
+<h3 id="최적화-함수---optimizer">최적화 함수 - optimizer</h3>
+
+<p>adam을 주로 사용함. 거의 대부분의 경우에서 기본값으로 사용해도 좋은 성능을 냄
+필요에 따라 learning_rate를 직접 설정 가능</p>
+
+<h3 id="모델-평가-지표">모델 평가 지표</h3>
+<p>metrics = [“accuracy]
+분류 문제에서 가장 일반적인 성능지표임</p>
+
+<h2 id="학습셋과-테스트셋">학습셋과 테스트셋</h2>
+</body></html>

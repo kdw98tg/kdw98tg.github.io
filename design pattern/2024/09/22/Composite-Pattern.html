@@ -1,0 +1,372 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="컴포지트-패턴-composite-pattern-이란">컴포지트 패턴 (Composite Pattern) 이란?</h2>
+
+<blockquote>
+  <p>컴포지트 패턴 이란 복합객체(Composite) 와 단일객체(Leaf)를 동일한 컴포넌트로 취급하여 이 둘을 구분하지 않고 동일한 인터페이스를 사용하도록 하는 패턴입니다.</p>
+
+  <p>Iterator 패턴에서 각 노드의 자식 객체도 순회해야 할 때 이 패턴을 사용할 수 있습니다.</p>
+
+  <p>또한, 객체 사이들의 관계를 트리계층 구조로 정의해야 할때 유용 합니다.</p>
+
+  <p>즉, Composite 패턴은 그릇과, 내용물을 동일시해서 재귀적인 구조를 만들기 위한 패턴 입니다.</p>
+</blockquote>
+
+<h3 id="구조-및-용어">구조 및 용어</h3>
+<p><img src="/images/Pasted%20image%2020240922223628.png" alt=""></p>
+
+<ul>
+  <li>Component : Leaf와 Compsite를 묶는 공통적인 상위 인터페이스</li>
+  <li>Composite : 복합 객체로서, Leaf 역할이나 Composite 역할을 넣어 관리하는 역할을 함</li>
+  <li>Leaf : 단일 객체로서, 단순하게 내용물을 표시하는 역할을 함</li>
+</ul>
+
+<h3 id="패턴의-사용-시기">패턴의 사용 시기</h3>
+
+<ul>
+  <li>데이터를 다룰 때 계층적 트리 표현을 다루어야 할 때</li>
+  <li>복잡하고 난해한 단일/복합 객체 관계를 간편히 단순화 하여 균일하게 처리하고 싶을 때</li>
+</ul>
+
+<h3 id="패턴-장점">패턴 장점</h3>
+
+<ul>
+  <li>단일체와 복합체를 동일하게 여기기 때문에, 묶어서 계산하기 좋음</li>
+  <li>재귀를 통해 복잡한 트리구조를 보다 편하게 구성할 수 있음</li>
+</ul>
+
+<h3 id="패턴-단점">패턴 단점</h3>
+
+<ul>
+  <li>트리의 깊이가 깊어질 수록 디버깅이 어려워짐</li>
+  <li>아무 객체나 같은 객체로 취급하기 때문에, 예외처리하기가 힘듦</li>
+</ul>
+
+<h2 id="예제">예제</h2>
+
+<p>이번에 살펴볼 예제는 <code class="language-plaintext highlighter-rouge">Iterator Pattern</code> 에서 다루었던 예제와 비슷합니다. 모든 메뉴들을 순회하는 예제 입니다.</p>
+
+<p>하지만 <code class="language-plaintext highlighter-rouge">Iterator Pattern</code>에서 살펴본 예제와 다른 점은, 어떤 메뉴 안에 자식 메뉴가 들어있다는 것입니다.</p>
+
+<p>즉, 계층이 1개가 아니라 2개 이상이 되는 경우 입니다.</p>
+
+<h3 id="component-클래스-생성">Component 클래스 생성</h3>
+
+<p>우선, 모든 노드가 상속받을 하나의 객체를 만들어 줍니다. 해당 객체의 이름은 <code class="language-plaintext highlighter-rouge">MenuComponent</code> 입니다.</p>
+
+<p>이중, 어떤 메소드는 MenuItem 에서만 쓸 수 있고, 또 어떤 메소드는 Menu 에서만 쓸 수 있기에 기본적으로 모두 UnsupportedOperationException을 던지도록 했습니다.</p>
+
+<p>이러면 자기 역할에 맞지 않는 메소드는 오버라이드 하지 않고, 기본 구현을 그대로 사용할 수 있습니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">class MenuComponent</span></strong></p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.composite.menu</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">MenuComponent</span> <span class="o">{</span>  
+<span class="c1">//////////////////////////////////////////////////////////////////////////</span>
+	<span class="c1">//MenuComponent 를 추가하거나 제거하는 메소드</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="nc">MenuComponent</span> <span class="n">_menuComponent</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">UnsupportedOperationException</span><span class="o">();</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">remove</span><span class="o">(</span><span class="nc">MenuComponent</span> <span class="n">_menuComponent</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">UnsupportedOperationException</span><span class="o">();</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nc">MenuComponent</span> <span class="nf">getChild</span><span class="o">(</span><span class="kt">int</span> <span class="n">_i</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">UnsupportedOperationException</span><span class="o">();</span>  
+    <span class="o">}</span>  
+<span class="c1">//////////////////////////////////////////////////////////////////////////</span>
+
+<span class="c1">//////////////////////////////////////////////////////////////////////////</span>
+	<span class="c1">//MenuItem 에서 작업을 처리하는 메소드</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">UnsupportedOperationException</span><span class="o">();</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">UnsupportedOperationException</span><span class="o">();</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getPrice</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">UnsupportedOperationException</span><span class="o">();</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isVegetarian</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">UnsupportedOperationException</span><span class="o">();</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">UnsupportedOperationException</span><span class="o">();</span>  
+    <span class="o">}</span>  
+<span class="c1">//////////////////////////////////////////////////////////////////////////</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="menucomponent를-상속받는-menuitem-만들기">MenuComponent를 상속받는 MenuItem 만들기</h3>
+
+<p>이제 <code class="language-plaintext highlighter-rouge">MenuItem</code>을 만들어서 컬렉션에 들어갈 형태를 정의 합니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.composite.menu</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MenuItem</span> <span class="kd">extends</span> <span class="nc">MenuComponent</span> <span class="o">{</span>  
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">description</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">isVegetarian</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">price</span> <span class="o">=</span> <span class="mi">0</span><span class="n">d</span><span class="o">;</span>  
+  
+    <span class="kd">public</span> <span class="nf">MenuItem</span><span class="o">(</span><span class="nc">String</span> <span class="n">_name</span><span class="o">,</span> <span class="nc">String</span> <span class="n">_description</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">_isVegetarian</span><span class="o">,</span> <span class="kt">double</span> <span class="n">_price</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">_name</span><span class="o">;</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">description</span> <span class="o">=</span> <span class="n">_description</span><span class="o">;</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">isVegetarian</span> <span class="o">=</span> <span class="n">_isVegetarian</span><span class="o">;</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">price</span> <span class="o">=</span> <span class="n">_price</span><span class="o">;</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDescription</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">return</span> <span class="n">description</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getPrice</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">return</span> <span class="n">price</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isVegetarian</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">return</span> <span class="n">isVegetarian</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"  "</span> <span class="o">+</span> <span class="n">getName</span><span class="o">());</span>  
+        <span class="k">if</span> <span class="o">(</span><span class="n">isVegetarian</span><span class="o">())</span> <span class="o">{</span>  
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"(v)"</span><span class="o">);</span>  
+        <span class="o">}</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">", "</span> <span class="o">+</span> <span class="n">getPrice</span><span class="o">());</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"     -- "</span> <span class="o">+</span> <span class="n">getDescription</span><span class="o">());</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="menucomponent-를-상속받는-menu-만들기">MenuComponent 를 상속받는 Menu 만들기</h3>
+
+<p>이제 복합 객체 클래스인 Menu를 만듭니다.
+해당 클래스는 <code class="language-plaintext highlighter-rouge">MenuItem</code>을 리스트 형태로 관리 합니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.composite.menu</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">java.util.Iterator</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Menu</span> <span class="kd">extends</span> <span class="nc">MenuComponent</span><span class="o">{</span>  
+    <span class="kd">private</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MenuComponent</span><span class="o">&gt;</span> <span class="n">menuComponents</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">MenuComponent</span><span class="o">&gt;();</span>  
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">description</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>  
+  
+    <span class="kd">public</span> <span class="nf">Menu</span><span class="o">(</span><span class="nc">String</span> <span class="n">_name</span><span class="o">,</span> <span class="nc">String</span> <span class="n">_description</span><span class="o">){</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">_name</span><span class="o">;</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">description</span> <span class="o">=</span> <span class="n">_description</span><span class="o">;</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="o">(</span><span class="nc">MenuComponent</span> <span class="n">_menuComponent</span><span class="o">){</span>  
+        <span class="n">menuComponents</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">_menuComponent</span><span class="o">);</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">remove</span><span class="o">(</span><span class="nc">MenuComponent</span> <span class="n">_menuComponent</span><span class="o">){</span>  
+        <span class="n">menuComponents</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">_menuComponent</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="nc">MenuComponent</span> <span class="nf">getChild</span><span class="o">(</span><span class="kt">int</span> <span class="n">_i</span><span class="o">){</span>  
+        <span class="k">return</span> <span class="o">(</span><span class="nc">MenuComponent</span><span class="o">)</span><span class="n">menuComponents</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">_i</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">(){</span>  
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getDescription</span><span class="o">(){</span>  
+        <span class="k">return</span> <span class="n">description</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">print</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">"\n"</span> <span class="o">+</span> <span class="n">getName</span><span class="o">());</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">", "</span> <span class="o">+</span> <span class="n">getDescription</span><span class="o">());</span>  
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"---------------------"</span><span class="o">);</span>  
+  
+        <span class="k">for</span> <span class="o">(</span><span class="nc">MenuComponent</span> <span class="n">menuComponent</span> <span class="o">:</span> <span class="n">menuComponents</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="n">menuComponent</span><span class="o">.</span><span class="na">print</span><span class="o">();</span>  
+        <span class="o">}</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="menu-에-들어있는-menuitem-을-읽어줄-waitress-클래스-만들기">Menu 에 들어있는 MenuItem 을 읽어줄 Waitress 클래스 만들기</h3>
+
+<p>이제 메뉴와 그 안에 들어갈 아이템들을 정의 하였으니, 그것들을 순환하면서 읽어줄 <code class="language-plaintext highlighter-rouge">Waitress</code>클래스를 정의 합니다.</p>
+
+<p>해당 클래스는 메뉴들이 담겨있는 MenuComponent 를 받아서 그 안에 구현되어있는 <code class="language-plaintext highlighter-rouge">print()</code>메서드를 호출하여, 모든 요소들을 순회하도록 합니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.composite.menu</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Waitress</span> <span class="o">{</span>  
+    <span class="kd">private</span> <span class="nc">MenuComponent</span> <span class="n">allMenus</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>  
+    <span class="kd">public</span> <span class="nf">Waitress</span><span class="o">(</span><span class="nc">MenuComponent</span> <span class="n">_allMenus</span><span class="o">){</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">allMenus</span> <span class="o">=</span> <span class="n">_allMenus</span><span class="o">;</span>  
+    <span class="o">}</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">printMenu</span><span class="o">(){</span>  
+        <span class="n">allMenus</span><span class="o">.</span><span class="na">print</span><span class="o">();</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="main-클래스-정의">Main 클래스 정의</h3>
+
+<p>메인 클래스에서 각 컴포넌트들을 생성한 후, MenuItem 들을 밀어넣고, Waitress 를 생성하여 <code class="language-plaintext highlighter-rouge">printMenu()</code> 함수를 호출 합니다.</p>
+
+<p>1번째 계층으로는 <code class="language-plaintext highlighter-rouge">pancakeHouseMenu</code>, <code class="language-plaintext highlighter-rouge">dinerMenu</code>, <code class="language-plaintext highlighter-rouge">cafeMenu</code>를 정의 합니다.</p>
+
+<p>2번째 계층으로는 <code class="language-plaintext highlighter-rouge">dinerMenu</code> 의 자식 노드로 <code class="language-plaintext highlighter-rouge">dessertMenu</code> 를 정의 합니다.
+2번째 계층으로는 <code class="language-plaintext highlighter-rouge">cafeMenu</code> 의 자식 노드로 <code class="language-plaintext highlighter-rouge">coffeeMenu</code> 를 정의 합니다.</p>
+
+<p>이렇게 구성한 후, <code class="language-plaintext highlighter-rouge">Waitress</code> 를 생성하여 <code class="language-plaintext highlighter-rouge">printMenu()</code> 함수를 호출 합니다. 이전과 다르게, 각 <code class="language-plaintext highlighter-rouge">Iterator</code>마다 <code class="language-plaintext highlighter-rouge">Waitress</code>의 생성자로 넣어줄 필요 없이, <code class="language-plaintext highlighter-rouge">MenuComponent</code>의 형태인 <code class="language-plaintext highlighter-rouge">allMenu</code> 하나만 넣어주면 됩니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.composite.menu</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>  
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">_args</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="nc">MenuComponent</span> <span class="n">pancakeHouseMenu</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Menu</span><span class="o">(</span><span class="s">"팬케이크 하우스 메뉴"</span><span class="o">,</span> <span class="s">"아침식사"</span><span class="o">);</span>  
+        <span class="nc">MenuComponent</span> <span class="n">dinerMenu</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Menu</span><span class="o">(</span><span class="s">"다이너 메뉴"</span><span class="o">,</span> <span class="s">"점심식사"</span><span class="o">);</span>  
+        <span class="nc">MenuComponent</span> <span class="n">cafeMenu</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Menu</span><span class="o">(</span><span class="s">"카페 메뉴"</span><span class="o">,</span> <span class="s">"저녁식사"</span><span class="o">);</span>  
+        <span class="nc">MenuComponent</span> <span class="n">dessertMenu</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Menu</span><span class="o">(</span><span class="s">"디저트 메뉴"</span><span class="o">,</span> <span class="s">"당연히 디저트!"</span><span class="o">);</span>  
+        <span class="nc">MenuComponent</span> <span class="n">coffeeMenu</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Menu</span><span class="o">(</span><span class="s">"커피 메뉴"</span><span class="o">,</span> <span class="s">"오후 커피와 함께할 메뉴"</span><span class="o">);</span>  
+  
+        <span class="nc">MenuComponent</span> <span class="n">allMenus</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Menu</span><span class="o">(</span><span class="s">"모든 메뉴"</span><span class="o">,</span> <span class="s">"모든 메뉴를 합친 것"</span><span class="o">);</span>  
+  
+        <span class="n">allMenus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pancakeHouseMenu</span><span class="o">);</span>  
+        <span class="n">allMenus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">dinerMenu</span><span class="o">);</span>  
+        <span class="n">allMenus</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">cafeMenu</span><span class="o">);</span>  
+  
+        <span class="n">pancakeHouseMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MenuItem</span><span class="o">(</span>  
+                <span class="s">"K&amp;B의 팬케이크 아침식사"</span><span class="o">,</span>  
+                <span class="s">"스크램블 에그와 토스트를 곁들인 팬케이크"</span><span class="o">,</span>  
+                <span class="kc">true</span><span class="o">,</span>  
+                <span class="mf">2.99</span><span class="o">));</span>  
+        <span class="n">pancakeHouseMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MenuItem</span><span class="o">(</span>  
+                <span class="s">"일반 팬케이크 아침식사"</span><span class="o">,</span>  
+                <span class="s">"프라이드 에그와 소시지를 곁들인 팬케이크"</span><span class="o">,</span>  
+                <span class="kc">false</span><span class="o">,</span>  
+                <span class="mf">2.99</span><span class="o">));</span>  
+        <span class="n">pancakeHouseMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MenuItem</span><span class="o">(</span>  
+                <span class="s">"블루베리 팬케이크"</span><span class="o">,</span>  
+                <span class="s">"신선한 블루베리와 블루베리 시럽을 넣은 팬케이크"</span><span class="o">,</span>  
+                <span class="kc">true</span><span class="o">,</span>  
+                <span class="mf">3.49</span><span class="o">));</span>  
+        <span class="n">pancakeHouseMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MenuItem</span><span class="o">(</span>  
+                <span class="s">"와플"</span><span class="o">,</span>  
+                <span class="s">"블루베리 또는 딸기를 선택할 수 있는 와플"</span><span class="o">,</span>  
+                <span class="kc">true</span><span class="o">,</span>  
+                <span class="mf">3.59</span><span class="o">));</span>  
+  
+        <span class="n">dinerMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MenuItem</span><span class="o">(</span>  
+                <span class="s">"채식주의자 BLT"</span><span class="o">,</span>  
+                <span class="s">"베이컨 대신 채식 베이컨을 사용한 상추와 토마토 샌드위치"</span><span class="o">,</span>  
+                <span class="kc">true</span><span class="o">,</span>  
+                <span class="mf">2.99</span><span class="o">));</span>  
+        <span class="n">dinerMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MenuItem</span><span class="o">(</span>  
+                <span class="s">"BLT"</span><span class="o">,</span>  
+                <span class="s">"베이컨과 상추, 토마토를 곁들인 샌드위치"</span><span class="o">,</span>  
+                <span class="kc">false</span><span class="o">,</span>  
+                <span class="mf">2.99</span><span class="o">));</span>  
+        <span class="n">dinerMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MenuItem</span><span class="o">(</span>  
+                <span class="s">"오늘의 스프"</span><span class="o">,</span>  
+                <span class="s">"감자 샐러드를 곁들인 오늘의 스프"</span><span class="o">,</span>  
+                <span class="kc">false</span><span class="o">,</span>  
+                <span class="mf">3.29</span><span class="o">));</span>  
+        <span class="n">dinerMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MenuItem</span><span class="o">(</span>  
+                <span class="s">"핫도그"</span><span class="o">,</span>  
+                <span class="s">"사워크라우트, 렐리쉬, 양파, 치즈를 얹은 핫도그"</span><span class="o">,</span>  
+                <span class="kc">false</span><span class="o">,</span>  
+                <span class="mf">3.05</span><span class="o">));</span>  
+        <span class="n">dinerMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MenuItem</span><span class="o">(</span>  
+                <span class="s">"찐 야채와 현미"</span><span class="o">,</span>  
+                <span class="s">"현미 위에 찐 야채를 얹은 요리"</span><span class="o">,</span>  
+                <span class="kc">true</span><span class="o">,</span>  
+                <span class="mf">3.99</span><span class="o">));</span>  
+  
+        <span class="n">dinerMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MenuItem</span><span class="o">(</span>  
+                <span class="s">"파스타"</span><span class="o">,</span>  
+                <span class="s">"마리나라 소스를 곁들인 스파게티와 사워도우 빵 한 조각"</span><span class="o">,</span>  
+                <span class="kc">true</span><span class="o">,</span>  
+                <span class="mf">3.89</span><span class="o">));</span>  
+  
+        <span class="n">dinerMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">dessertMenu</span><span class="o">);</span>  
+  
+        <span class="n">dessertMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MenuItem</span><span class="o">(</span>  
+                <span class="s">"애플파이"</span><span class="o">,</span>  
+                <span class="s">"바삭한 크러스트와 바닐라 아이스크림을 얹은 애플파이"</span><span class="o">,</span>  
+                <span class="kc">true</span><span class="o">,</span>  
+                <span class="mf">1.59</span><span class="o">));</span>  
+  
+        <span class="n">dessertMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MenuItem</span><span class="o">(</span>  
+                <span class="s">"치즈케이크"</span><span class="o">,</span>  
+                <span class="s">"초콜릿 그레이엄 크러스트를 곁들인 뉴욕 스타일 크림치즈 케이크"</span><span class="o">,</span>  
+                <span class="kc">true</span><span class="o">,</span>  
+                <span class="mf">1.99</span><span class="o">));</span>  
+        <span class="n">dessertMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MenuItem</span><span class="o">(</span>  
+                <span class="s">"셔벗"</span><span class="o">,</span>  
+                <span class="s">"라즈베리 셔벗과 라임 셔벗 한 스쿱씩"</span><span class="o">,</span>  
+                <span class="kc">true</span><span class="o">,</span>  
+                <span class="mf">1.89</span><span class="o">));</span>  
+  
+        <span class="n">cafeMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MenuItem</span><span class="o">(</span>  
+                <span class="s">"베지 버거와 에어프라이드 감자튀김"</span><span class="o">,</span>  
+                <span class="s">"통밀 빵에 상추, 토마토를 넣은 베지 버거와 감자튀김"</span><span class="o">,</span>  
+                <span class="kc">true</span><span class="o">,</span>  
+                <span class="mf">3.99</span><span class="o">));</span>  
+        <span class="n">cafeMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MenuItem</span><span class="o">(</span>  
+                <span class="s">"오늘의 스프"</span><span class="o">,</span>  
+                <span class="s">"샐러드를 곁들인 오늘의 스프"</span><span class="o">,</span>  
+                <span class="kc">false</span><span class="o">,</span>  
+                <span class="mf">3.69</span><span class="o">));</span>  
+        <span class="n">cafeMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MenuItem</span><span class="o">(</span>  
+                <span class="s">"부리또"</span><span class="o">,</span>  
+                <span class="s">"전체 통 팥, 살사, 과카몰리를 넣은 큰 부리또"</span><span class="o">,</span>  
+                <span class="kc">true</span><span class="o">,</span>  
+                <span class="mf">4.29</span><span class="o">));</span>  
+  
+        <span class="n">cafeMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">coffeeMenu</span><span class="o">);</span>  
+  
+        <span class="n">coffeeMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MenuItem</span><span class="o">(</span>  
+                <span class="s">"커피 케이크"</span><span class="o">,</span>  
+                <span class="s">"시나몬과 호두가 올라간 바삭한 케이크"</span><span class="o">,</span>  
+                <span class="kc">true</span><span class="o">,</span>  
+                <span class="mf">1.59</span><span class="o">));</span>  
+        <span class="n">coffeeMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MenuItem</span><span class="o">(</span>  
+                <span class="s">"베이글"</span><span class="o">,</span>  
+                <span class="s">"참깨, 양귀비씨, 시나몬 건포도, 호박 맛 중 선택 가능"</span><span class="o">,</span>  
+                <span class="kc">false</span><span class="o">,</span>  
+                <span class="mf">0.69</span><span class="o">));</span>  
+        <span class="n">coffeeMenu</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nc">MenuItem</span><span class="o">(</span>  
+                <span class="s">"비스코티"</span><span class="o">,</span>  
+                <span class="s">"아몬드 또는 헤이즐넛 비스코티 세 개"</span><span class="o">,</span>  
+                <span class="kc">true</span><span class="o">,</span>  
+                <span class="mf">0.89</span><span class="o">));</span>  
+  
+        <span class="nc">Waitress</span> <span class="n">waitress</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Waitress</span><span class="o">(</span><span class="n">allMenus</span><span class="o">);</span>  
+  
+        <span class="n">waitress</span><span class="o">.</span><span class="na">printMenu</span><span class="o">();</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><img src="/images/Pasted%20image%2020240922230235.png" alt=""></p>
+
+<p><img src="/images/Pasted%20image%2020240922230255.png" alt=""></p>
+
+<p>위 사진과 같이 모든 자식의 노드까지 순회한 것을 알 수 있습니다.</p>
+
+<h2 id="결론">결론</h2>
+
+<p><code class="language-plaintext highlighter-rouge">MenuComponent</code>를 보면, <code class="language-plaintext highlighter-rouge">MenuComponent</code>를 관리하는 메서드와 메뉴 아이템을 관리하는 메서드 두가지 역할을 담당하고 있습니다.</p>
+
+<p>이는 객체지향 원칙 중 <code class="language-plaintext highlighter-rouge">OCP</code> 원칙을 위배하고 있습니다.</p>
+
+<p>그러나, <code class="language-plaintext highlighter-rouge">MenuComponent</code>의 설계는 투명성을 제공합니다.</p>
+
+<p>여기서 투명성이란, <code class="language-plaintext highlighter-rouge">Component</code> 인터페이스에 자식 요소를 관리하는 기능과 개별 요소(Leaf)로서의 기능을 모두 포함시켜, 클라이언트가 복합 객체(Composite)와 잎(Leaf)을 동일한 방식으로 처리할 수 있도록 만드는 것입니다. 이렇게 하면 클라이언트는 객체의 구체적인 타입을 신경 쓰지 않고도 일관된 방식으로 객체를 사용할 수 있습니다.</p>
+
+<p>이는 객체지향 원칙을 상황에 따라 적절하게 사용해야 한다는것을 보여주는 대표적인 예 입니다.</p>
+
+</body></html>

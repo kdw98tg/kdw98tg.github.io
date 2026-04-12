@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="hello-world-출력하기">Hello, World 출력하기</h2>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//주석(Comments)</span>
+<span class="c1">//IDE(Intergratded Development Environments) -&gt; 통합 개발 환경</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
+</span>
+<span class="c1">//함수(function)</span>
+<span class="c1">//컴파일(Compile), 빌드(Build) -&gt; 컴퓨터가 이해할 수 있는 언어로 바꿔주는 작업</span>
+<span class="c1">// 반환형(Return Value) - 함수명(Function Name) - 반환형 함수명() -&gt; 뒤에 소괄호가있으면 컴퓨터가 함수로 인식</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="c1">//int - 정수라는뜻, 따라서 반환은 정수로 반환 , Main 함수가 시작점이다. -&gt; Entry Point 라고 부른다.</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Hello, World"</span><span class="p">);</span> <span class="c1">//Print Format    "" -&gt; 큰따옴표를 문자열(String) 이라고 부른다</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//함수 종료</span>
+<span class="p">}</span>
+<span class="c1">// C언어는 대표적인 절차지향언어</span>
+<span class="c1">// 함수 호출(Function Call) -&gt; 특정한 함수를 실행</span>
+
+</code></pre></div></div>
+
+<p>오늘은 ‘Hello World’라는 문장을 화면에 출력하는 방법에 대해 학습했습니다.</p>
+
+<p>소스코드는 아래와 같습니다.</p>
+
+<p>먼저, <code class="language-plaintext highlighter-rouge">#include &lt;stdio.h&gt;</code>를 사용함으로써 <code class="language-plaintext highlighter-rouge">stdio.h</code>에 정의된 함수들을 사용할 수 있게 됩니다.</p>
+
+<p>이후에는 함수의 반환형을 정의합니다. <code class="language-plaintext highlighter-rouge">int</code>는 ‘integer’(정수)를 의미합니다. <code class="language-plaintext highlighter-rouge">int main()</code>을 통해 메인 함수의 시작을 컴퓨터에 알리게 되며, 이를 프로그램의 진입점(Entry Point)이라고 합니다. <code class="language-plaintext highlighter-rouge">int</code> 타입의 함수는 함수의 종료 시점에 반환값을 명시해야 합니다. <code class="language-plaintext highlighter-rouge">return 0;</code>은 해당 역할을 수행하며, 여기서 <code class="language-plaintext highlighter-rouge">0</code>은 정수 타입의 반환값을 나타냅니다.</p>
+
+<p>또한, <code class="language-plaintext highlighter-rouge">printf(Print Format)</code> 함수에 대해 배웠습니다. 이 함수는 큰따옴표(<code class="language-plaintext highlighter-rouge">""</code>) 안에 포함된 텍스트를 화면에 출력해주는 역할을 합니다.</p>
+</body></html>

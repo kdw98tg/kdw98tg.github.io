@@ -1,0 +1,422 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<h2 id="mvc-패턴-이란">MVC 패턴 이란?</h2>
+
+<p>MVC 은 Model, View, Controller 의 앞글자만 따서 만든 패턴의 이름 입니다. MVC 패턴은 전략패턴, 옵저버 패턴, 컴포지트 패턴 등이 어우러진 복합 패턴 입니다.</p>
+
+<p>MVC가 없을 때는 사용자에게 보여지는 View 코드와, 엔티티의 속성을 담당하는 Model 과, 그것들을 제어하는 Controller 코드가 한 스크립트에 합쳐져 있어서, 유지보수하기가 힘들고 분업을 하기가 힘들었습니다.</p>
+
+<p>그래서 과거에 만들어진 소프트웨어들은 디자인 보다는 기능 중심이 많았습니다.</p>
+
+<p>하지만 MVC 패턴이 등장하고, 각 기능에 대한 역할분담이 이루어지면서, 소프트웨어들의 디자인 및 기능이 확연하게 발전하였습니다.</p>
+
+<p>MVC 패턴의 동작과정을 살펴보면, 사용자가 View를 통해 상호작용을 합니다. View 는 사용자가 상호작용 했다는 사실을 Controller 에게 알려 줍니다. 그러면 Controller 는 해당 엔티티의 정보를 가지고 있는 Model 에게 상태를 바꿔달라고 요청을 합니다. Model 에서 상태가 바뀌면, View 에게 상태가 바뀐것을 알려주고, View 를 갱신하게 됩니다.</p>
+
+<p>다시한번 보기좋게 정리한다면 다음과 같습니다.</p>
+
+<ol>
+  <li>사용자가 뷰와 상호작용 합니다.</li>
+  <li>컨트롤러는 모델에게 상태를 변경하라고 요청합니다.(컨트롤러가 뷰를 바꿔달라고 요청할 수도 있음)</li>
+  <li>모델에서 상태가 변경되면 모델이 뷰에게 그 사실을 알립니다.</li>
+</ol>
+
+<p>이를 그림으로 표현하면 다음과 같습니다.</p>
+
+<p>MVC 패턴을 표현하는 많은 그림들이 있지만, 이 그림이 가장 적절하다고 생각합니다.</p>
+
+<p><img src="/images/Pasted%20image%2020241004122611.png" alt=""></p>
+
+<p>MVC 패턴은 다양한 웹 프레임워크에 적용되어 있습니다. 각 프레임워크마다 MVC 를 구현한 방법은 조금씩 다르긴 합니다. 대표적인 예로 Spring Boot, ASP.net 이 있습니다.</p>
+
+<h2 id="예제">예제</h2>
+
+<p>MVC 패턴을 활용해서 BPM 제어 도구를 만드는 예제를 만들어 봅니다.</p>
+
+<p>(이번 예제는 View 를 생성하는 라이브러리를 사용합니다. 뷰를 만드는 과정은 주석으로 대체 하겠습니다.)</p>
+
+<h3 id="model-만들기">Model 만들기</h3>
+
+<p>우선, 모델클래스를 먼저 만듭니다. 모델클래스는 위에서 말했던 대로, 각 상태들(데이터)를 가지고 있고, 상태가 변경되었을 때, View 에 알려줘야 하기 때문에, <code class="language-plaintext highlighter-rouge">Observer</code> 패턴을 사용하여 구현합니다.</p>
+
+<p>모델을 만들 때, 재사용성과 확장성을 고려하여 Interface로 틀을 잡습니다. 또한, 옵저버 패턴을 구현하기 위한 Observer 인터페이스도 만듭니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">interface BeatModelInterface</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.combine_mvc.model</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">BeatModelInterface</span> <span class="o">{</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initialize</span><span class="o">();</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">on</span><span class="o">();</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">off</span><span class="o">();</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setBPM</span><span class="o">(</span><span class="kt">int</span> <span class="n">_bpm</span><span class="o">);</span>  
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getBPM</span><span class="o">();</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">registerObserver</span><span class="o">(</span><span class="nc">BeatObserver</span> <span class="n">_observer</span><span class="o">);</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">removeObserver</span><span class="o">(</span><span class="nc">BeatObserver</span> <span class="n">_observer</span><span class="o">);</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">registerObserver</span><span class="o">(</span><span class="nc">BPMObserver</span> <span class="n">_observer</span><span class="o">);</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">removeObserver</span><span class="o">(</span><span class="nc">BPMObserver</span> <span class="n">_observer</span><span class="o">);</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>🗅 <strong><span style="color: #c03a92">interface BeatObserver</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.combine_mvc.model</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">BeatObserver</span> <span class="o">{</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateBeat</span><span class="o">();</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>🗅 <strong><span style="color: #c03a92">interface BPMObserver</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.combine_mvc.model</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">BPMObserver</span> <span class="o">{</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateBPM</span><span class="o">();</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>인터페이스들을 만든 뒤, <code class="language-plaintext highlighter-rouge">BeatModel</code>클래스를 만들어서, <code class="language-plaintext highlighter-rouge">BeatModelInterface</code>를 상속시켜 줍니다.</p>
+
+<p>해당 클래스는 <code class="language-plaintext highlighter-rouge">Observer</code> 들을 담을 수 있는 리스트가 있고, 데이터가 변경되면 <code class="language-plaintext highlighter-rouge">notifyObservers()</code>함수를 통해서 <code class="language-plaintext highlighter-rouge">View</code> 에게 상태가 변경되었음을 알려줍니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">class BeatModel</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.combine_mvc.model</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">javax.sound.sampled.AudioSystem</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">javax.sound.sampled.Clip</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">javax.sound.sampled.Line</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BeatModel</span> <span class="kd">implements</span> <span class="nc">BeatModelInterface</span><span class="o">,</span> <span class="nc">Runnable</span> <span class="o">{</span>  
+  
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">BeatObserver</span><span class="o">&gt;</span> <span class="n">beatObservers</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">BeatObserver</span><span class="o">&gt;();</span>  
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">BPMObserver</span><span class="o">&gt;</span> <span class="n">bpmObservers</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">BPMObserver</span><span class="o">&gt;();</span>  
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">bpm</span> <span class="o">=</span> <span class="mi">90</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="nc">Thread</span> <span class="n">thread</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="nc">Clip</span> <span class="n">clip</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">stop</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">initialize</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">try</span> <span class="o">{</span>  
+            <span class="nc">File</span> <span class="n">resource</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="s">"clap.wav"</span><span class="o">);</span>  
+            <span class="n">clip</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Clip</span><span class="o">)</span> <span class="nc">AudioSystem</span><span class="o">.</span><span class="na">getLine</span><span class="o">(</span><span class="k">new</span> <span class="nc">Line</span><span class="o">.</span><span class="na">Info</span><span class="o">(</span><span class="nc">Clip</span><span class="o">.</span><span class="na">class</span><span class="o">));</span>  
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Error: Can't load clip"</span><span class="o">);</span>  
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ex</span><span class="o">);</span>  
+        <span class="o">}</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">on</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="n">bpm</span> <span class="o">=</span> <span class="mi">90</span><span class="o">;</span>  
+        <span class="n">notifyBPMObservers</span><span class="o">();</span>  
+        <span class="n">thread</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Thread</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>  
+        <span class="n">stop</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>  
+        <span class="n">thread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">off</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="n">stopBeat</span><span class="o">();</span>  
+        <span class="n">stop</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setBPM</span><span class="o">(</span><span class="kt">int</span> <span class="n">_bpm</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">bpm</span> <span class="o">=</span> <span class="n">_bpm</span><span class="o">;</span>  
+        <span class="n">notifyBPMObservers</span><span class="o">();</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getBPM</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">return</span> <span class="n">bpm</span><span class="o">;</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">registerObserver</span><span class="o">(</span><span class="nc">BeatObserver</span> <span class="n">_observer</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="n">beatObservers</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">_observer</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">removeObserver</span><span class="o">(</span><span class="nc">BeatObserver</span> <span class="n">o</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">beatObservers</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="n">o</span><span class="o">);</span>  
+        <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="n">beatObservers</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>  
+        <span class="o">}</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">notifyBeatObservers</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">for</span> <span class="o">(</span><span class="nc">BeatObserver</span> <span class="n">beatObserver</span> <span class="o">:</span> <span class="n">beatObservers</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="o">((</span><span class="nc">BeatObserver</span><span class="o">)</span> <span class="n">beatObserver</span><span class="o">).</span><span class="na">updateBeat</span><span class="o">();</span>  
+        <span class="o">}</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">registerObserver</span><span class="o">(</span><span class="nc">BPMObserver</span> <span class="n">_observer</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">for</span> <span class="o">(</span><span class="nc">BPMObserver</span> <span class="n">bpmObserver</span> <span class="o">:</span> <span class="n">bpmObservers</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="o">((</span><span class="nc">BPMObserver</span><span class="o">)</span> <span class="n">bpmObserver</span><span class="o">).</span><span class="na">updateBPM</span><span class="o">();</span>  
+        <span class="o">}</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">removeObserver</span><span class="o">(</span><span class="nc">BPMObserver</span> <span class="n">_observer</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">bpmObservers</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="n">_observer</span><span class="o">);</span>  
+        <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="n">bpmObservers</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>  
+        <span class="o">}</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">notifyBPMObservers</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">for</span> <span class="o">(</span><span class="nc">BPMObserver</span> <span class="n">bpmObserver</span> <span class="o">:</span> <span class="n">bpmObservers</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="n">bpmObserver</span><span class="o">.</span><span class="na">updateBPM</span><span class="o">();</span>  
+        <span class="o">}</span>  
+    <span class="o">}</span>  
+  
+    <span class="nd">@Override</span>  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">while</span> <span class="o">(!</span><span class="n">stop</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="n">playBeat</span><span class="o">();</span>  
+            <span class="n">notifyBeatObservers</span><span class="o">();</span>  
+            <span class="k">try</span> <span class="o">{</span>  
+                <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">60000</span> <span class="o">/</span> <span class="n">getBPM</span><span class="o">());</span>  
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>  
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">ex</span><span class="o">.</span><span class="na">getMessage</span><span class="o">());</span>  
+            <span class="o">}</span>  
+        <span class="o">}</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">playBeat</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="n">clip</span><span class="o">.</span><span class="na">setFramePosition</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>  
+        <span class="n">clip</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">stopBeat</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="n">clip</span><span class="o">.</span><span class="na">setFramePosition</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>  
+        <span class="n">clip</span><span class="o">.</span><span class="na">stop</span><span class="o">();</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="view-만들기">View 만들기</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Model</code> 을 만들었으니, 해당 데이터를 사용자에게 보여줄 <code class="language-plaintext highlighter-rouge">View</code> 객체를 만듭니다. 해당 객체는 Java 에서 제공하는 UI 프레임워크를 사용하는데, MVC 패턴과 직접적인 연관이 없어 주석으로 대체 하겠습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">View</code>는 <code class="language-plaintext highlighter-rouge">Model</code> 의 옵저버 이므로, Observer 인터페이스를 상속시켜 줍니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">class DJView</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.combine_mvc.view</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">src.combine_mvc.controller.ControllerInterface</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">src.combine_mvc.model.BPMObserver</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">src.combine_mvc.model.BeatModelInterface</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">src.combine_mvc.model.BeatObserver</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">javax.swing.*</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">java.awt.*</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">java.awt.event.ActionEvent</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">java.awt.event.ActionListener</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DJView</span> <span class="kd">implements</span> <span class="nc">ActionListener</span><span class="o">,</span>  <span class="nc">BeatObserver</span><span class="o">,</span> <span class="nc">BPMObserver</span>  <span class="o">{</span>  
+    <span class="nc">BeatModelInterface</span> <span class="n">model</span><span class="o">;</span>  
+    <span class="nc">ControllerInterface</span> <span class="n">controller</span><span class="o">;</span>  
+    <span class="nc">JFrame</span> <span class="n">viewFrame</span><span class="o">;</span>  
+    <span class="nc">JPanel</span> <span class="n">viewPanel</span><span class="o">;</span>  
+    <span class="nc">BeatBar</span> <span class="n">beatBar</span><span class="o">;</span>  
+    <span class="nc">JLabel</span> <span class="n">bpmOutputLabel</span><span class="o">;</span>  
+    <span class="nc">JFrame</span> <span class="n">controlFrame</span><span class="o">;</span>  
+    <span class="nc">JPanel</span> <span class="n">controlPanel</span><span class="o">;</span>  
+    <span class="nc">JLabel</span> <span class="n">bpmLabel</span><span class="o">;</span>  
+    <span class="nc">JTextField</span> <span class="n">bpmTextField</span><span class="o">;</span>  
+    <span class="nc">JButton</span> <span class="n">setBPMButton</span><span class="o">;</span>  
+    <span class="nc">JButton</span> <span class="n">increaseBPMButton</span><span class="o">;</span>  
+    <span class="nc">JButton</span> <span class="n">decreaseBPMButton</span><span class="o">;</span>  
+    <span class="nc">JMenuBar</span> <span class="n">menuBar</span><span class="o">;</span>  
+    <span class="nc">JMenu</span> <span class="n">menu</span><span class="o">;</span>  
+    <span class="nc">JMenuItem</span> <span class="n">startMenuItem</span><span class="o">;</span>  
+    <span class="nc">JMenuItem</span> <span class="n">stopMenuItem</span><span class="o">;</span>  
+  
+    <span class="kd">public</span> <span class="nf">DJView</span><span class="o">(</span><span class="nc">ControllerInterface</span> <span class="n">controller</span><span class="o">,</span> <span class="nc">BeatModelInterface</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">controller</span> <span class="o">=</span> <span class="n">controller</span><span class="o">;</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">;</span>  
+        <span class="n">model</span><span class="o">.</span><span class="na">registerObserver</span><span class="o">((</span><span class="nc">BeatObserver</span><span class="o">)</span><span class="k">this</span><span class="o">);</span>  
+        <span class="n">model</span><span class="o">.</span><span class="na">registerObserver</span><span class="o">((</span><span class="nc">BPMObserver</span><span class="o">)</span><span class="k">this</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">createView</span><span class="o">()</span> <span class="o">{</span>  
+		<span class="c1">//View를 만드는 함수 </span>
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">createControls</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="c1">//제어 요소를 구성하는 함수</span>
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">enableStopMenuItem</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="n">stopMenuItem</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">disableStopMenuItem</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="n">stopMenuItem</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">enableStartMenuItem</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="n">startMenuItem</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">disableStartMenuItem</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="n">startMenuItem</span><span class="o">.</span><span class="na">setEnabled</span><span class="o">(</span><span class="kc">false</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">actionPerformed</span><span class="o">(</span><span class="nc">ActionEvent</span> <span class="n">event</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">if</span> <span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getSource</span><span class="o">()</span> <span class="o">==</span> <span class="n">setBPMButton</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="kt">int</span> <span class="n">bpm</span> <span class="o">=</span> <span class="mi">90</span><span class="o">;</span>  
+            <span class="nc">String</span> <span class="n">bpmText</span> <span class="o">=</span> <span class="n">bpmTextField</span><span class="o">.</span><span class="na">getText</span><span class="o">();</span>  
+            <span class="k">if</span> <span class="o">(</span><span class="n">bpmText</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">bpmText</span><span class="o">.</span><span class="na">contentEquals</span><span class="o">(</span><span class="s">""</span><span class="o">))</span> <span class="o">{</span>  
+                <span class="n">bpm</span> <span class="o">=</span> <span class="mi">90</span><span class="o">;</span>  
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>  
+                <span class="n">bpm</span> <span class="o">=</span> <span class="nc">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">bpmTextField</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span>  
+            <span class="o">}</span>  
+            <span class="n">controller</span><span class="o">.</span><span class="na">setBPM</span><span class="o">(</span><span class="n">bpm</span><span class="o">);</span>  
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getSource</span><span class="o">()</span> <span class="o">==</span> <span class="n">increaseBPMButton</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="n">controller</span><span class="o">.</span><span class="na">increaseBPM</span><span class="o">();</span>  
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">event</span><span class="o">.</span><span class="na">getSource</span><span class="o">()</span> <span class="o">==</span> <span class="n">decreaseBPMButton</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="n">controller</span><span class="o">.</span><span class="na">decreaseBPM</span><span class="o">();</span>  
+        <span class="o">}</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateBPM</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">if</span> <span class="o">(</span><span class="n">model</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="kt">int</span> <span class="n">bpm</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="na">getBPM</span><span class="o">();</span>  
+            <span class="k">if</span> <span class="o">(</span><span class="n">bpm</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>  
+                <span class="k">if</span> <span class="o">(</span><span class="n">bpmOutputLabel</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>  
+                    <span class="n">bpmOutputLabel</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"offline"</span><span class="o">);</span>  
+                <span class="o">}</span>  
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>  
+                <span class="k">if</span> <span class="o">(</span><span class="n">bpmOutputLabel</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>  
+                    <span class="n">bpmOutputLabel</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="s">"Current BPM: "</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="na">getBPM</span><span class="o">());</span>  
+                <span class="o">}</span>  
+            <span class="o">}</span>  
+        <span class="o">}</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">updateBeat</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="k">if</span> <span class="o">(</span><span class="n">beatBar</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>  
+            <span class="n">beatBar</span><span class="o">.</span><span class="na">setValue</span><span class="o">(</span><span class="mi">100</span><span class="o">);</span>  
+        <span class="o">}</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="controller-만들기">Controller 만들기</h3>
+
+<p>다음은 <code class="language-plaintext highlighter-rouge">View</code>와 <code class="language-plaintext highlighter-rouge">Model</code> 사이에서 중재자 역할을 할 Controller 를 만들어 보겠습니다.</p>
+
+<p>Controller 역시 재사용성과 확장성을 고려하여 Interface로 틀을 먼저 만듭니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">interface ControllerInterface</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.combine_mvc.controller</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">interface</span> <span class="nc">ControllerInterface</span> <span class="o">{</span>  
+    <span class="kt">void</span> <span class="nf">start</span><span class="o">();</span>  
+    <span class="kt">void</span> <span class="nf">stop</span><span class="o">();</span>  
+    <span class="kt">void</span> <span class="nf">increaseBPM</span><span class="o">();</span>  
+    <span class="kt">void</span> <span class="nf">decreaseBPM</span><span class="o">();</span>  
+    <span class="kt">void</span> <span class="nf">setBPM</span><span class="o">(</span><span class="kt">int</span> <span class="n">bpm</span><span class="o">);</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>그 후에, 해당 Interface 를 상속하여 Controller 클래스를 만듭니다.</p>
+
+<p>Controller 는 생성자에서 View 를 만드는 코드를 가지고 있습니다. 해당 클래스는 View 와 Model 에게 명령을 전달하는 명령 집합체 라고 생각하시면 됩니다.</p>
+
+<p>예를들어, 어플리케이션이 Stop 되어야 한다면, Stop 시에 model 과 view 가 해야할 행동들이 있을 겁니다. 해당 행동들을 함수로 만들어 놓았다고 생각하면 됩니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">class BeatController</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.combine_mvc.controller</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">src.combine_mvc.model.BeatModelInterface</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">src.combine_mvc.view.DJView</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BeatController</span> <span class="kd">implements</span> <span class="nc">ControllerInterface</span><span class="o">{</span>  
+    <span class="kd">private</span> <span class="nc">BeatModelInterface</span> <span class="n">model</span><span class="o">;</span>  
+    <span class="kd">private</span> <span class="nc">DJView</span> <span class="n">view</span><span class="o">;</span>  
+  
+    <span class="kd">public</span> <span class="nf">BeatController</span><span class="o">(</span><span class="nc">BeatModelInterface</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="k">this</span><span class="o">.</span><span class="na">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">;</span>  
+        <span class="n">view</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DJView</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">model</span><span class="o">);</span>  
+        <span class="n">view</span><span class="o">.</span><span class="na">createView</span><span class="o">();</span>  
+        <span class="n">view</span><span class="o">.</span><span class="na">createControls</span><span class="o">();</span>  
+        <span class="n">view</span><span class="o">.</span><span class="na">disableStopMenuItem</span><span class="o">();</span>  
+        <span class="n">view</span><span class="o">.</span><span class="na">enableStartMenuItem</span><span class="o">();</span>  
+        <span class="n">model</span><span class="o">.</span><span class="na">initialize</span><span class="o">();</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="n">model</span><span class="o">.</span><span class="na">on</span><span class="o">();</span>  
+        <span class="n">view</span><span class="o">.</span><span class="na">disableStartMenuItem</span><span class="o">();</span>  
+        <span class="n">view</span><span class="o">.</span><span class="na">enableStopMenuItem</span><span class="o">();</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">stop</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="n">model</span><span class="o">.</span><span class="na">off</span><span class="o">();</span>  
+        <span class="n">view</span><span class="o">.</span><span class="na">disableStopMenuItem</span><span class="o">();</span>  
+        <span class="n">view</span><span class="o">.</span><span class="na">enableStartMenuItem</span><span class="o">();</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">increaseBPM</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="kt">int</span> <span class="n">bpm</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="na">getBPM</span><span class="o">();</span>  
+        <span class="n">model</span><span class="o">.</span><span class="na">setBPM</span><span class="o">(</span><span class="n">bpm</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">decreaseBPM</span><span class="o">()</span> <span class="o">{</span>  
+        <span class="kt">int</span> <span class="n">bpm</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="na">getBPM</span><span class="o">();</span>  
+        <span class="n">model</span><span class="o">.</span><span class="na">setBPM</span><span class="o">(</span><span class="n">bpm</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>  
+    <span class="o">}</span>  
+  
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setBPM</span><span class="o">(</span><span class="kt">int</span> <span class="n">bpm</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="n">model</span><span class="o">.</span><span class="na">setBPM</span><span class="o">(</span><span class="n">bpm</span><span class="o">);</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="main-에서-실행">Main 에서 실행</h3>
+
+<p>이제 MVC 패턴을 완성 하였으니 Main 에서 실행을 해봅니다.</p>
+
+<p>위에서 말했듯, Controller 의 생성자에서 view 를 생성하도록 만들어 놨기 때문에, view를 따로 생성하거나, Model 을 초기화 하는 코드는 Main에서 없습니다.</p>
+
+<p>🗅 <strong><span style="color: #c03a92">class DJTestDrive</span></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">src.combine_mvc</span><span class="o">;</span>  
+  
+<span class="kn">import</span> <span class="nn">src.combine_mvc.controller.BeatController</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">src.combine_mvc.controller.ControllerInterface</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">src.combine_mvc.model.BeatModel</span><span class="o">;</span>  
+<span class="kn">import</span> <span class="nn">src.combine_mvc.model.BeatModelInterface</span><span class="o">;</span>  
+  
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">DJTestDrive</span> <span class="o">{</span>  
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>  
+        <span class="nc">BeatModelInterface</span> <span class="n">model</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BeatModel</span><span class="o">();</span>  
+        <span class="nc">ControllerInterface</span> <span class="n">controller</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">BeatController</span><span class="o">(</span><span class="n">model</span><span class="o">);</span>  
+    <span class="o">}</span>  
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>모델과 컨트롤러를 만들고, Controller 에 모델을 DI 해주면 끝입니다.</p>
+
+<h2 id="정리">정리</h2>
+
+<p>언젠가 잠깐 공부해본 <code class="language-plaintext highlighter-rouge">Spring Boot</code> 라는 프레임워크에서 MVC 패턴을 구현하면서 Model과 Controller에 인터페이스를 사용하는 이유를 고민해보았습니다. 그때는 이 짓거리를 왜 하나? 했었는데, 직접 MVC 를 만들어보니 그 이유를 조금은 알 것 같습니다.</p>
+
+<p>결합도를 낮추고 유지 보수를 용이하게 하는 데 인터페이스가 중요한 역할을 한다는 점은 이해가 됩니다. 하지만, 여전히 궁금한 점은, 어디까지 인터페이스로 나누어야 하고, 어떤 부분은 구체적인 클래스로 작성하는 것이 좋은지입니다.</p>
+
+<p>책에서, 위 궁금증과 관련된 예제를 만들어 놓긴 했습니다. 음악의 Beat 가 아닌 사람의 심장 Beat를 측정하는 어플리케이션을 만들어놓았던 <code class="language-plaintext highlighter-rouge">BeatModelInterface</code>와 <code class="language-plaintext highlighter-rouge">ControllerInterface</code>를 활용해서 만드는 과정이었습니다. 책에서는 아주 간단하게 구현을 해놓아서, 만들어놓았던 인터페이스들을 사용하는데 무리가 없어 보였지만, 인터페이스에 보면 <code class="language-plaintext highlighter-rouge">on()</code> 과 <code class="language-plaintext highlighter-rouge">off()</code> 라는 함수가 있는데, 음악의 Beat는 끌 수 있고, 사람의 심장 Beat는 끌 수 없다라는 점에서 인터페이스를 굳이 사용해야 하는가? 에 대한 의문이 들었습니다.</p>
+
+<p>프로젝트의 요구사항과 규모에 따라 달라지겠지만, 이러한 선택의 기준에 대해서는 더 많은 경험이 필요할 것 같습니다.</p>
+</body></html>

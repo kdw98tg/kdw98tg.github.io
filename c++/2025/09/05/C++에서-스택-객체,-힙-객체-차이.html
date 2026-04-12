@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>C++는 대표적인 객체지향 언매니지드(Unmanaged) 언어입니다.<br>
+언매니지드 언어란 가비지 컬렉터(GC)가 메모리를 자동으로 관리해 주지 않고, 개발자가 직접 메모리를 할당하고 해제해야 하는 언어를 의미합니다.</p>
+
+<p>반면, 매니지드(Managed) 언어에서는 객체를 생성할 때 모든 객체가 힙(Heap)에 할당되며, 변수에는 해당 힙 객체의 주소(참조값)가 저장됩니다. 즉, 매니지드 언어의 객체는 모두 참조 타입(Reference Type) 으로 동작하게 됩니다.</p>
+
+<p>하지만 C++는 이와 달리 객체를 스택(Stack) 에 직접 생성할 수도 있습니다. 따라서 스택에 생성된 객체와 힙에 생성된 객체는 동작 방식과 수명 관리에서 차이가 발생합니다.</p>
+
+<p>이 차이를 좀 더 명확히 이해하고자, 본 예제를 작성해 확인해 보았습니다.</p>
+
+<h2 id="int-자료형의-stack--heap-생성-차이">int 자료형의 Stack / Heap 생성 차이</h2>
+
+<p>우선, int는 C++의 대표적인 기본 자료형 입니다. 그리고, 기본적으로 int형의 변수를 만들고 값을 넣으면, Stack 메모리에 공간을 할당하여 값을 집어넣는다 라고 알고 있습니다.</p>
+
+<p>그리고 동적할당을 배우고 난 뒤에는 int* 형으로 변수를 생성하고, 거기에 <code class="language-plaintext highlighter-rouge">new int()</code>를 통해서 Heap에 객체를 만들고, Stack 메모리에 int* 변수를 만들어 Heap에 만들어진 객체의 주소를 담도록 되어 있습니다.</p>
+
+<p>아래는 함수를 통해서, int 형 변수를 return 하는것과 int* 형 변수를 return 할 때, 메모리에서 어떤 동작이 일어나는지 확인해보는 예제 입니다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span>
+<span class="k">class</span> <span class="nc">SomeClass</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+	<span class="kt">int</span> <span class="n">Number</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">GetInt</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">someInt</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"GetInt() Local Variable Address : "</span> <span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">someInt</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"GetInt() Local Variable Value : "</span> <span class="o">&lt;&lt;</span> <span class="n">someInt</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="k">return</span> <span class="n">someInt</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="o">*</span> <span class="nf">GetIntPtr</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span><span class="o">*</span> <span class="n">someIntPtr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="p">();</span>
+	<span class="o">*</span><span class="n">someIntPtr</span> <span class="o">=</span> <span class="mi">200</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"GetIntPtr() Local Variable Address : "</span> <span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">someIntPtr</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"GetIntPtr() Instance Address : "</span> <span class="o">&lt;&lt;</span> <span class="n">someIntPtr</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"GetIntPtr() Instance Variable Value : "</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">someIntPtr</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="k">return</span> <span class="n">someIntPtr</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">SomeClass</span> <span class="nf">GetSomeClass</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">SomeClass</span> <span class="n">someClass</span><span class="p">;</span>
+	<span class="n">someClass</span><span class="p">.</span><span class="n">Number</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"GetSomeClass() Instance Address : "</span> <span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">someClass</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"GetSomeClass() Instance Number Value : "</span> <span class="o">&lt;&lt;</span> <span class="n">someClass</span><span class="p">.</span><span class="n">Number</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="k">return</span> <span class="n">someClass</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">SomeClass</span><span class="o">*</span> <span class="nf">GetSomeClassPtr</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">SomeClass</span><span class="o">*</span> <span class="n">someClass</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SomeClass</span><span class="p">();</span>
+	<span class="n">someClass</span><span class="o">-&gt;</span><span class="n">Number</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"GetSomeClassPtr() Local Variable Address : "</span> <span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">someClass</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"GetSomeClassPtr() Instance Address : "</span> <span class="o">&lt;&lt;</span> <span class="n">someClass</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"GetSomeClassPtr() Instance Number Value : "</span> <span class="o">&lt;&lt;</span> <span class="n">someClass</span><span class="o">-&gt;</span><span class="n">Number</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="k">return</span> <span class="n">someClass</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">someInt</span> <span class="o">=</span> <span class="n">GetInt</span><span class="p">();</span>
+	<span class="kt">int</span><span class="o">*</span> <span class="n">someIntPtr</span> <span class="o">=</span> <span class="n">GetIntPtr</span><span class="p">();</span>
+
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"main() Stack Instance Address : "</span> <span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">someInt</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"main() Stack Instance Number Value : "</span> <span class="o">&lt;&lt;</span> <span class="n">someInt</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"main() Heap Instance Local Variable Address : "</span> <span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">someIntPtr</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"main() Heap Instance Address : "</span> <span class="o">&lt;&lt;</span> <span class="n">someIntPtr</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"main() Heap Instance Address : "</span> <span class="o">&lt;&lt;</span> <span class="o">*</span><span class="n">someIntPtr</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+	<span class="k">delete</span> <span class="n">someIntPtr</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>우선 결과값을 보면 다음과 같습니다.</p>
+
+<p><img src="/images/Pasted%20image%2020250905164624.png" alt=""></p>
+
+<p>결과를 보면 <code class="language-plaintext highlighter-rouge">GetIntPtr() Instance Address</code> 와 <code class="language-plaintext highlighter-rouge">main() Heap Instance Address</code> 두개의 주소만 동일하다는것을 알 수 있습니다.</p>
+
+<p>그리고, Stack / Heap 에 상관없이 int 에 할당한 값은 같다는것을 볼 수 있습니다.</p>
+
+<p>따라서 다음 결론을 내릴 수 있습니다.</p>
+
+<p><strong>Stack</strong></p>
+<ol>
+  <li>함수 안에서 생성된 지역 변수는 해당 함수의 실행 동안만 유효하다.</li>
+  <li>지역 변수는 스택(Stack) 메모리에 할당되며, 고유한 주소를 가진다.</li>
+  <li>함수가 종료되면 지역 변수는 스택에서 제거되어 메모리에서 사라진다.</li>
+  <li>따라서 지역 변수를 반환하면, 반환 시점에는 그 값이 복사되어 다른 함수의 지역 변수에 저장되고, 그 주소는 당연히 달라진다.</li>
+</ol>
+
+<p><strong>Heap</strong></p>
+<ol>
+  <li>
+<code class="language-plaintext highlighter-rouge">new</code>를 사용해 동적으로 생성된 객체는 힙(Heap) 메모리에 할당된다.</li>
+  <li>이 객체를 가리키는 포인터 변수는 지역 변수이므로, 스택에 저장된다.</li>
+  <li>함수가 종료되면 포인터 지역 변수는 스택에서 제거되지만, 힙에 있는 객체 자체는 그대로 남아있다.</li>
+  <li>다른 함수(예: <code class="language-plaintext highlighter-rouge">main</code>)에서 반환받은 포인터를 저장하면, 그 포인터는 힙에 있는 같은 객체를 계속 가리키게 된다.</li>
+  <li>즉, 포인터 지역 변수의 주소는 달라질 수 있지만, 힙에 생성된 객체의 주소는 변하지 않는다.</li>
+</ol>
+
+<h2 id="class-자료형의-stack--heap-생성-차이">class 자료형의 Stack / Heap 생성 차이</h2>
+
+<p>그렇다면, 해당 로직이 사용자 정의 자료형 <code class="language-plaintext highlighter-rouge">class</code>를 생성할때도 같은지 확인해보겠습니다.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="k">class</span> <span class="nc">SomeClass</span>
+<span class="p">{</span>
+<span class="nl">public:</span>
+	<span class="kt">int</span> <span class="n">Number</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">SomeClass</span> <span class="nf">GetSomeClass</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">SomeClass</span> <span class="n">someClass</span><span class="p">;</span>
+	<span class="n">someClass</span><span class="p">.</span><span class="n">Number</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"GetSomeClass() Instance Address : "</span> <span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">someClass</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"GetSomeClass() Instance Number Value : "</span> <span class="o">&lt;&lt;</span> <span class="n">someClass</span><span class="p">.</span><span class="n">Number</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="k">return</span> <span class="n">someClass</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">SomeClass</span><span class="o">*</span> <span class="nf">GetSomeClassPtr</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">SomeClass</span><span class="o">*</span> <span class="n">someClass</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SomeClass</span><span class="p">();</span>
+	<span class="n">someClass</span><span class="o">-&gt;</span><span class="n">Number</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"GetSomeClassPtr() Local Variable Address : "</span> <span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">someClass</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"GetSomeClassPtr() Instance Address : "</span> <span class="o">&lt;&lt;</span> <span class="n">someClass</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"GetSomeClassPtr() Instance Number Value : "</span> <span class="o">&lt;&lt;</span> <span class="n">someClass</span><span class="o">-&gt;</span><span class="n">Number</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="k">return</span> <span class="n">someClass</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">SomeClass</span> <span class="n">someClass</span> <span class="o">=</span> <span class="n">GetSomeClass</span><span class="p">();</span>
+	<span class="n">SomeClass</span><span class="o">*</span> <span class="n">someClassPtr</span> <span class="o">=</span> <span class="n">GetSomeClassPtr</span><span class="p">();</span>
+
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"main() Stack Instance Address : "</span> <span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">someClass</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"main() Stack Instance Number Value : "</span> <span class="o">&lt;&lt;</span> <span class="n">someClass</span><span class="p">.</span><span class="n">Number</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"main() Heap Instance Local Variable Address : "</span> <span class="o">&lt;&lt;</span> <span class="o">&amp;</span><span class="n">someClassPtr</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"main() Heap Instance Address : "</span> <span class="o">&lt;&lt;</span> <span class="n">someClassPtr</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"main() Heap Instance Number Value : "</span> <span class="o">&lt;&lt;</span> <span class="n">someClassPtr</span><span class="o">-&gt;</span><span class="n">Number</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+	
+	<span class="k">delete</span> <span class="n">someClassPtr</span><span class="p">;</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>아래는 출력 결과 입니다.</p>
+
+<p><img src="/images/Pasted%20image%2020250905164842.png" alt=""></p>
+
+<p>이 출력결과도 마찬가지로, Heap 메모리에 생성된 객체를 가르키는 포인터의 주소만 같고, 그 외에 지역변수들은 모드 주소가 다르게 할당된것을 볼 수 있습니다.</p>
+
+<p>따라서, int 형의 예제와 같은 방식으로 작동되고 있는것을 알 수 있습니다.</p>
+
+<h2 id="결론">결론</h2>
+
+<p>위 과정을 요약하면 다음과 같습니다.</p>
+
+<ol>
+  <li>스택 변수는 함수가 끝나면 사라지고, 다른 함수에 반환할 때는 값 복사가 일어납니다.</li>
+  <li>값 복사가 일어나면 메모리에서는 불필요한 삭제와 생성을 반복하게 됩니다.</li>
+  <li>힙 객체는 함수가 끝나도 메모리에 남아 있으며, “포인터”를 통해 그 객체에 접근할 수 있습니다.</li>
+</ol>
+
+<p>따라서, 한번 쓰고 버릴 값이 아닌, 여러군데에서 한 객체에 접근해야 한다고 하면, Stack에 생성되는 Instance가 아니라 Heap에 생성되는 Instance를 사용하는것이 더 좋습니다. 반대로, 금방 쓰고 버릴 객체는 Stack에 생성해 주는게 좋습니다.</p>
+
+<p>하지만 Heap 객체는 개발자가 직접 해제하기 전까지는 계속 Heap에 상주하고 있기 때문에 해제해주는 과정을 까먹지 말아야 합니다.</p>
+</body></html>

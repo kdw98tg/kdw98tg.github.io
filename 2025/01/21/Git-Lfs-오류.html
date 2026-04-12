@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<table>
+  <tbody>
+    <tr>
+      <td>git –no-optional-locks -c color.branch=false -c color.diff=false -c color.status=false -c diff.mnemonicprefix=false -c core.quotepath=false -c credential.helper=sourcetree push -v –tags origin refs/heads/main:refs/heads/main Pushing to https://github.com/kdw98tg/UnitySystemProgramming.git POST git-receive-pack (chunked) error: RPC failed; HTTP 400 curl 22 The requested URL returned error: 400 send-pack: unexpected disconnect while reading sideband packet fatal: the remote end hung up unexpectedly Everything up-to-date Uploading LFS objects: 100% (46/46), 131 MB</td>
+      <td>0 B/s, done. Completed with errors, see above</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>이 에러는 Git이 원격 저장소로 데이터를 푸시하려고 할 때 발생한 문제입니다. <code class="language-plaintext highlighter-rouge">RPC failed</code>와 <code class="language-plaintext highlighter-rouge">unexpected disconnect</code> 메시지는 주로 네트워크 연결 문제나 Git LFS(대형 파일 저장소) 관련 설정 문제로 인해 발생할 수 있습니다. 이 문제를 해결하려면 다음과 같은 방법을 시도해 볼 수 있습니다:</p>
+
+<h3 id="1-git-http-버퍼-크기-증가">1. Git HTTP 버퍼 크기 증가</h3>
+
+<p>HTTP 연결이 끊어지는 문제를 해결하려면 Git의 HTTP 버퍼 크기를 증가시킬 수 있습니다. 아래 명령어를 실행하여 버퍼 크기를 설정해 보세요:</p>
+
+<p>bash</p>
+
+<p>Copy</p>
+
+<p><code class="language-plaintext highlighter-rouge">git config http.postBuffer 524288000</code></p>
+
+<p>이 명령어는 Git의 HTTP POST 버퍼 크기를 500MB로 설정합니다.</p>
+</body></html>

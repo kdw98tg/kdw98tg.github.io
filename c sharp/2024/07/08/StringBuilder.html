@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>처음 프로그래밍을 시작할 때, C 언어를 배워보신 분들이라면 <code class="language-plaintext highlighter-rouge">string</code>이라는 녀석의 정체를 알 수 있습니다.
+<code class="language-plaintext highlighter-rouge">string</code>은 사실 <code class="language-plaintext highlighter-rouge">char[]</code> 라는 것 입니다.</p>
+
+<p>그래서, c언어에서 문자열 합치기, 문자열 복사하기 같은것을 하면 char[] 형태의 buffer를 만들어서 문자열을 수정할 수 있었습니다.</p>
+
+<p>C#은 string이라는 불변타입을 제공하고 있습니다. 그래서, string 자체에는 가비지가 생기지 않습니다. 하지만, string값을 바꾸게 되면, 내부적으로 buffer 를 만들어서 작업을 수행하게 됩니다.</p>
+
+<p>이 과정에서 buffer는 한번 쓰고 버리는 것이기 때문에, 가비지가 생깁니다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">SomeClass</span>
+<span class="p">{</span>
+	<span class="k">private</span> <span class="kt">string</span> <span class="n">someString</span> <span class="p">=</span> <span class="kt">string</span><span class="p">.</span><span class="n">Empty</span><span class="p">;</span>
+	<span class="k">private</span> <span class="kt">int</span> <span class="n">someInt</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+	<span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span> <span class="n">args</span><span class="p">[])</span>
+	<span class="p">{</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span> <span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">100</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+		<span class="p">{</span>
+			<span class="c1">//가비지 생성</span>
+			<span class="n">someString</span> <span class="p">+=</span> <span class="n">someInt</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>혹시나, string을 자주 바꿔야 한다면 <code class="language-plaintext highlighter-rouge">StringBuilder</code>를 사용하시는 것이 좋습니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">StringBuilder</code>는 객체를 생성하여, 전역변수로 buffer를 가지고 있기 때문에, <code class="language-plaintext highlighter-rouge">StringBuilder</code>객체가 사라지기 전까지는 buffer의 가비지가 생성되지 않습니다.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">SomeClass</span>
+<span class="p">{</span>
+	<span class="k">private</span> <span class="n">StringBuilder</span> <span class="n">someString</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">StringBuilder</span><span class="p">();</span>
+	<span class="k">private</span> <span class="kt">int</span> <span class="n">someInt</span> <span class="p">=</span> <span class="m">100</span><span class="p">;</span>
+
+	<span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span> <span class="n">args</span><span class="p">[])</span>
+	<span class="p">{</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span> <span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="m">100</span><span class="p">;</span> <span class="n">i</span><span class="p">++)</span>
+		<span class="p">{</span>
+			<span class="c1">//가비지 안생김</span>
+			<span class="n">someString</span><span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="n">someInt</span><span class="p">);</span>
+			<span class="n">someString</span><span class="p">.</span><span class="nf">Append</span><span class="p">(</span><span class="s">"값을 출력"</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>이런식으로 사용할 수 있습니다.</p>
+
+<p>아직 string 까지 최적화 해보지는 않았지만, 매프레임 string을 바꾼다던지 한다면 <code class="language-plaintext highlighter-rouge">StringBuilder</code>가 좋은 선택지 일 것 같습니다.</p>
+</body></html>
