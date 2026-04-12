@@ -100,6 +100,7 @@ html {
     font-weight: $base-font-weight;
     letter-spacing: -1px;
     transition: 0.1s filter color;
+    font-size: 1.5rem;
 
     &, &:visited {
       color: $header-text-color;
@@ -423,6 +424,7 @@ html {
 
     .post-title {
       margin-bottom: 6px;
+      line-height: 1.5;
     }
 
     .post-subtitle {
