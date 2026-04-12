@@ -26,7 +26,7 @@
 
 title: "CoMok Studio 의 기술 블로그"
 email: kdw98tg@gmail.com
-author: kdw98tg # 이거 Comok 해도 되는지 알아보기
+author: CoMok
 
 # Copyright setting
 # You can use any html code, currently below placeholders are available:
@@ -48,7 +48,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Google search results) and in your feed.xml site description.
 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. https://example.com
+url: "https://kdw98tg.github.io" # the base hostname & protocol for your site, e.g. https://example.com
 favicon: "" # the favicon for your site
 
 # Yat date format
