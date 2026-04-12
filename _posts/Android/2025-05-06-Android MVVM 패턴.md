@@ -1,5 +1,7 @@
 ---
-title:  "[Android/Kotlin] Android MVVM 패턴 적용하기" 
+layout: post
+
+title: "[Android/Kotlin] Android MVVM 패턴 적용하기" 
 
 categories:
   -  Android

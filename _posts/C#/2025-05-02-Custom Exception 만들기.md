@@ -1,5 +1,7 @@
 ---
-title:  "[C#] C# Custom Exception 만들기" 
+layout: post
+
+title: "[C#] C# Custom Exception 만들기" 
 
 categories:
   -  C Sharp

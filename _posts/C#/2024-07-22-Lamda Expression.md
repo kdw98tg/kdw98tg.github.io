@@ -1,5 +1,7 @@
 ---
-title:  "[C#] 람다식 이란?" 
+layout: post
+
+title: "[C#] 람다식 이란?" 
 
 categories:
   -  C Sharp

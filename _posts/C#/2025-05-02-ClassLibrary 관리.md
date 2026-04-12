@@ -1,5 +1,7 @@
 ---
-title:  "[C#] C# ClassLibrary로 재사용 가능한 모듈 만들기" 
+layout: post
+
+title: "[C#] C# ClassLibrary로 재사용 가능한 모듈 만들기" 
 
 categories:
   -  C Sharp
