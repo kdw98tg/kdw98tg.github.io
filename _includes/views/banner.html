@@ -30,9 +30,13 @@
       position: absolute;
       right: 40px;
       bottom: 40px;
-      text-align: right;
+      text-align: left;
       z-index: 10;
-
+      @media screen and (max-width : 786px) {
+        right: 20px;
+        bottom:20px;
+        text-align: center;
+      }
     }
 
     .contact-title {
@@ -43,10 +47,7 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            border: 1px solid #1e1e1e;
-      border-radius: 24px;
-      padding: 12px;
-    }
+      }
 
     .contact-list {
       display: flex;
@@ -55,6 +56,9 @@
       padding: 0;
       margin: 0;
       justify-content: flex-end;
+      border: 1px solid #1e1e1e;
+      border-radius: 24px;
+      padding: 12px;
     }
 
     .contact-list a {
