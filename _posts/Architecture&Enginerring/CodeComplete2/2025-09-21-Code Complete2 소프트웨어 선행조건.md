@@ -1,19 +1,13 @@
 ---
 layout: post
-
 title: "[Code Complete 2] 소프트웨어에 선행 조건"
-
 categories:
-  - Code Complete
-
+  - Architecture&Engineering
 tags:
-  - [Code Complete2]
-
+  - Code-Complete-2
 toc: true
 toc_sticky: true
-
 published: true
-
 date: 2025-10-05
 last_modified_at: 2025-10-05
 ---

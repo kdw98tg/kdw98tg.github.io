@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Architecture&Enginerring/ReadableCode/2026-01-12-루프와 논리를 단순하게 만들기.md",
+                "file": "_posts/Architecture&Enginerring/CodeComplete2/2025-09-21-Code Complete2 소프트웨어 선행조건.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-01-12-루프와 논리를 단순하게 만들기"
+              "title": "2025-09-21-Code Complete2 소프트웨어 선행조건"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_posts/Architecture&Enginerring/ReadableCode/2026-01-12-루프와 논리를 단순하게 만들기.md",
+                "file": "_posts/Architecture&Enginerring/CodeComplete2/2025-09-21-Code Complete2 소프트웨어 선행조건.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "2026-01-12-루프와 논리를 단순하게 만들기 의 백링크"
+              "title": "2025-09-21-Code Complete2 소프트웨어 선행조건 의 백링크"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_posts/Architecture&Enginerring/ReadableCode/2026-01-12-루프와 논리를 단순하게 만들기.md",
+                "file": "_posts/Architecture&Enginerring/CodeComplete2/2025-09-21-Code Complete2 소프트웨어 선행조건.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "2026-01-12-루프와 논리를 단순하게 만들기 의 나가는 링크"
+              "title": "2025-09-21-Code Complete2 소프트웨어 선행조건 의 나가는 링크"
             }
           },
           {
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_posts/Architecture&Enginerring/ReadableCode/2026-01-12-루프와 논리를 단순하게 만들기.md",
+                "file": "_posts/Architecture&Enginerring/CodeComplete2/2025-09-21-Code Complete2 소프트웨어 선행조건.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "2026-01-12-루프와 논리를 단순하게 만들기 의 개요"
+              "title": "2025-09-21-Code Complete2 소프트웨어 선행조건 의 개요"
             }
           }
         ]
@@ -185,6 +185,13 @@
   },
   "active": "d0f86d65db1758b4",
   "lastOpenFiles": [
+    "_posts/Architecture&Enginerring/CodeComplete2/2025-09-21-Code Complete2 비유의 힘.md",
+    "_posts/Web/React/2026-02-02- 일단 정리.md",
+    "_posts/Web/React/2026-01-06-React Hooks.md",
+    "_posts/Web/React/2026-01-06-React 컴포넌트.md",
+    "_posts/Web/React/2026-01-05-React JSX 간단 예제.md",
+    "_posts/Web/React/2026-01-05-React 프로젝트 생성.md",
+    "_posts/Architecture&Enginerring/ReadableCode/2026-01-12-루프와 논리를 단순하게 만들기.md",
     "assets/images/banners/home.png",
     "assets/images/banners/image.png",
     "_posts/Architecture&Enginerring/ReadableCode/2026-01-07-표면적 수준에서의 코드 개선.md",
@@ -206,12 +213,6 @@
     "_posts/AI/2025-05-26-AI 공부.md",
     "_posts/AI/2025-05-26-훈련셋과 검증셋.md",
     "_posts/AI/2025-05-26-머신러닝, 딥러닝.md",
-    "_posts/AI/2025-05-26-딥러닝 신경망 구축.md",
-    "_posts/AI/2024-03-23-산업 AI 강의3.md",
-    "_posts/AI/2024-03-16-산업 AI 강의2.md",
-    "_posts/AI/2024-03-09-AI 프로그래밍 기초.md",
-    "_posts/AI/2024-03-09-산업 AI 강의1.md",
-    "_posts/AI/공부 해야할것들 메모.md",
     "_posts/Architecture&Enginerring",
     "_posts/Languages",
     "_posts/Game/무제",
@@ -225,7 +226,6 @@
     "images/Pasted image 20260212213841.png",
     "images/Pasted image 20260212213803.png",
     "images/Pasted image 20260212213746.png",
-    "images/Pasted image 20260212213634.png",
     "images/KakaoTalk_Video_2026-02-13-15-25-16.mp4",
     "images/KakaoTalk_20260212_134608996.mp4",
     "images/KakaoTalk_20260212_134533162.mp4",

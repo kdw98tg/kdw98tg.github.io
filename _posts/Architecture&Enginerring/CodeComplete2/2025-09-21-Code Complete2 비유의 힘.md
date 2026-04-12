@@ -1,19 +1,14 @@
 ---
 layout: post
-
 title: "[Code Complete 2] 소프트웨어에서의 비유"
-
 categories:
-  - Code Complete
-
+  - Architecture&Engineering
 tags:
-  - [Code Complete2, Comparison]
-
+  - Code-Complete-2
+  - Book
 toc: true
 toc_sticky: true
-
 published: true
-
 date: 2025-09-21
 last_modified_at: 2025-09-21
 ---
