@@ -1,19 +1,14 @@
 ---
 layout: post
-
 title: "[SpringBoot] SpringBoot 패키지 구조"
-
 categories:
-  - SpringBoot
-  
+  - Web
 tags:
-  - [Java, Spring Boot]
-
+  - - Java
+    - Spring Boot
 toc: true
 toc_sticky: true
-
 published: true
-
 date: 2025-08-01
 last_modified_at: 2025-08-01
 ---

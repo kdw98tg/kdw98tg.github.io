@@ -1,19 +1,14 @@
 ---
 layout: post
-
 title: "[SpringBoot] Spring Boot 프로젝트 생성"
-
 categories:
-  - SpringBoot
-  
+  - Web
 tags:
-  - [Java, Spring Boot]
-
+  - - Java
+    - Spring Boot
 toc: true
 toc_sticky: true
-
 published: false
-
 date: 2025-06-06
 last_modified_at: 2025-06-06
 ---
