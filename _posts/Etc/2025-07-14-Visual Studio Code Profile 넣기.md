@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Window] Visual Studio Code Profile 넣기"
 
 categories:

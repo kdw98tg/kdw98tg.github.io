@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Design Pattern] 복합 패턴 (Combine Pattern)"
 
 categories:

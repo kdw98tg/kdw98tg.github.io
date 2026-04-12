@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Clean Architecture] 소리치는 아키텍처, 클린 아키텍쳐 소개"
 
 categories:

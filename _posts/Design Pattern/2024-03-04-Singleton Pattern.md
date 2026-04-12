@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Design Pattern] 싱글턴 패턴 (Singleton Pattern)"
 
 categories:

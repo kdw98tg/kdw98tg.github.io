@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Winform] Winform MVP 패턴 구축"
 
 categories:

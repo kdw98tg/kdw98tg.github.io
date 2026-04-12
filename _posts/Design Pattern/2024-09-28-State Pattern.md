@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Design Pattern] 상태 패턴 (State Pattern)"
 
 categories:

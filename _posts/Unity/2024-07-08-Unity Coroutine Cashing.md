@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Unity] 코루틴 관리를 도와주는 CoroutineCashManager"
 
 categories:

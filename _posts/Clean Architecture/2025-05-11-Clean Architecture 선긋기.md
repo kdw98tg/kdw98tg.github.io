@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Clean Architecture] 선긋기"
 
 categories:

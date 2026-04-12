@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Unity] SoundPooling 과 Resource 관리를 통한 SoundManager 만들기"
 
 categories:

@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[python] Python 가상환경 설정하기"
 
 categories:

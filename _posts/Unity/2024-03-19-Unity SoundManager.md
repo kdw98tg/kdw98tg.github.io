@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Unity] SoundPool을 활용하여 간단하게 SoundManager 구현하기"
 
 categories:

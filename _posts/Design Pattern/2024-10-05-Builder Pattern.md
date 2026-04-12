@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Design Pattern] 빌더 패턴(Builder Pattern)"
 
 categories:

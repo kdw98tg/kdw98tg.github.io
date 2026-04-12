@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Refactoring] 리팩터링 2판 Chapter.01 (다형성을 활용해 계산 코드 재구성하기)"
 
 categories:

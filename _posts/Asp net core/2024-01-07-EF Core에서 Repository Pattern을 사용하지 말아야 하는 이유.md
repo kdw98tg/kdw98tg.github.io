@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[ASP.NET Core] EF Core에서 Repository Pattern을 사용하지 말아야 하는 이유"
 
 categories:

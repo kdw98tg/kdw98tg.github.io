@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[C++] C++의 Functional를 사용해 Delegate를 구현하는 방법"
 
 categories:

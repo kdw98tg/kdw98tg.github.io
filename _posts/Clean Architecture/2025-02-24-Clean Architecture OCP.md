@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Clean Architecture] Clean Architecture OCP(Open-Closed Principle 개방-페쇄 원칙)"
 
 categories:

@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Refactoring] 리팩터링 2판 Chapter.12 (상속 다루기)"
 
 categories:

@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[SpringBoot] Repository 계층 이란?"
 
 categories:

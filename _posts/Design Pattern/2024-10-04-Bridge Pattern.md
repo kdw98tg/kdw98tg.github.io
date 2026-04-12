@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Design Pattern] 브릿지 패턴 (Bridge Pattern)"
 
 categories:

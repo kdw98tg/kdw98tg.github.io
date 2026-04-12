@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Winform] UI 커스터마이징"
 
 categories:

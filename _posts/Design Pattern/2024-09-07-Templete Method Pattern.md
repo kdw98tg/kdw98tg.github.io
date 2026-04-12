@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Design Pattern] 템플릿 메소드 패턴 (Templete Method Pattern)"
 
 categories:

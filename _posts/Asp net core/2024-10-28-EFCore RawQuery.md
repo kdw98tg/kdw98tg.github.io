@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[ASP.NET Core] ASP.Net Core 에서 RawQuery로 데이터 조회하기"
 
 categories:

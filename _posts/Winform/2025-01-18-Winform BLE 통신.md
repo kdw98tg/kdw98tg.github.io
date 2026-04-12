@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Winform] 블루투스 저전력(BLE) 통신 예제"
 
 categories:

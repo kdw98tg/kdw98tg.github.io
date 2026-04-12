@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Unity] Reset() 사용법 및 컴포넌트 초기화 방법"
 
 categories:

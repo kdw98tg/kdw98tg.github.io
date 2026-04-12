@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Server] 포트포워딩이란? 포트포워딩 하는 법"
 
 categories:

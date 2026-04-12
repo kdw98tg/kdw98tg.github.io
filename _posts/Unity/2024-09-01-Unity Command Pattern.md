@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Unity] Unity에서 CommandPattern 구현하기"
 
 categories:

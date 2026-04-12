@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Unity] UnityWebRequest를 사용한 통신 로직 구현"
 
 categories:

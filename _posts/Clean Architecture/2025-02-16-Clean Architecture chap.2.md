@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Clean Architecture] Clean Architecture chap 2 정리"
 
 categories:

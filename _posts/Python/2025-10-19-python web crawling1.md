@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[python] python 웹 크롤링 기초"
 
 categories:

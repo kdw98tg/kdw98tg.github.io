@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Design Pattern] 이터레이터 패턴 (Iterator Pattern)"
 
 categories:

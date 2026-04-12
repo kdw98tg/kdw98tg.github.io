@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Winform] Winform Custom UI 만들기"
 
 categories:

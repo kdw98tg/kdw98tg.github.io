@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[SpringBoot] Model Struct 사용하여 Model, Dto간 매핑하기"
 
 categories:

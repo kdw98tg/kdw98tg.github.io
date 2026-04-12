@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Clean Architecture] 아키텍처란?"
 
 categories:

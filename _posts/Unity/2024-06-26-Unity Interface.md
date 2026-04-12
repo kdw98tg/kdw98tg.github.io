@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Unity] Interface를 활용하여 느슨한 결합 만들기"
 
 categories:

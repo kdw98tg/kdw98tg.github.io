@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[SpringBoot] Controller 계층 이란?"
 
 categories:

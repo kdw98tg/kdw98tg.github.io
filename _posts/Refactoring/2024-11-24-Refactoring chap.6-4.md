@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Refactoring] 리팩터링 2판 Chapter.06 part 4 (기본적인 리팩터링)"
 
 categories:

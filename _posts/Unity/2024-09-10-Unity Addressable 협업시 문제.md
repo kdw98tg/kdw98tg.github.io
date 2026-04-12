@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Unity] Unity에서 협업 시 Addressable 관리 문제"
 
 categories:

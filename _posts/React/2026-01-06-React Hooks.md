@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[react/js] React Hooks 살펴보기"
 
 categories:

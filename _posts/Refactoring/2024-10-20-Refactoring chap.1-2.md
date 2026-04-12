@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Refactoring] 리팩터링 2판 Chapter.01 (반복문 쪼개기, 문장 슬라이드하기)"
 
 categories:

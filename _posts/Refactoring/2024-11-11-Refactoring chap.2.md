@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Refactoring] 리팩터링 2판 Chapter.02 (리펙터링 원칙)"
 
 categories:

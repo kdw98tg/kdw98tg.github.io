@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Code Complete 2] 소프트웨어에 선행 조건"
 
 categories:

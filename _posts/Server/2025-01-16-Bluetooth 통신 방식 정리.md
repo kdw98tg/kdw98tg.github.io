@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Bluetooth] Bluetooth 통신 방식 정리 (Classic/LowEnergy)"
 
 categories:

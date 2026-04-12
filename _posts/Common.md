@@ -3,6 +3,8 @@
 
 ```yml
 ---
+layout: post
+
 title: "Title"
 
 categories:

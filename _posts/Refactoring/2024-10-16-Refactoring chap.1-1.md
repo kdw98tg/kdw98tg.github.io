@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Refactoring] 리팩터링 2판 Chapter.01 (함수 추출하기, 변수 인라인하기)"
 
 categories:

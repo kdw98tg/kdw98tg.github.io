@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Clean Architecture] 데이터베이스/웹/프레임워크는 세부사항이다."
 
 categories:

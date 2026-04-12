@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[SpringBoot] Spring Boot 프로젝트 생성"
 
 categories:

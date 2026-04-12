@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Design Pattern] 플라이웨이트 (Flyweight) 패턴"
 
 categories:

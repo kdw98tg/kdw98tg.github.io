@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[python] python requirements 파일 만들기"
 
 categories:

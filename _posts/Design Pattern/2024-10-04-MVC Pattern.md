@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Design Pattern] MVC 패턴 (MVC Pattern)"
 
 categories:

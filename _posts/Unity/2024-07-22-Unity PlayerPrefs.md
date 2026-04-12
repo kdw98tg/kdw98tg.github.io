@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Unity] Unity PlayerPrefs 관리법"
 
 categories:

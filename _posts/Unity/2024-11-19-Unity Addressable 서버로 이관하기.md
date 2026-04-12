@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Unity] Unity Addressable 서버로 이관하기"
 
 categories:

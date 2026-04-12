@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[SpringBoot] Transactional 과 Lazy Loading"
 
 categories:

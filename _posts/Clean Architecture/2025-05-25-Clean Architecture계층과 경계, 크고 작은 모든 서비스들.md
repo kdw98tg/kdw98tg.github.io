@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Clean Architecture] 크고 작은 모든 서비스들"
 
 categories:

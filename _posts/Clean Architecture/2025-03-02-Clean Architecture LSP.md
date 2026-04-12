@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Clean Architecture] Clean Architecture LSP(Liskov Substitution Principle 라스코프 치환 원칙)"
 
 categories:

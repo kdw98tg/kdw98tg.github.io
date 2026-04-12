@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Unity] Addressable Asset 활용법"
 
 categories:

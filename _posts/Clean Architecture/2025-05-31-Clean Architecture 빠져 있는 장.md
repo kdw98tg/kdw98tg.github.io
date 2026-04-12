@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Clean Architecture] 빠져 있는 장"
 
 categories:

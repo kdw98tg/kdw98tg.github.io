@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Design Pattern] 팩토리 패턴 (Factory Pattern)"
 
 categories:

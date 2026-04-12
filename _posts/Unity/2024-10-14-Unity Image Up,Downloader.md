@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Unity] Unity Image 업로드/다운로드 (Upload/Download) 하기"
 
 categories:

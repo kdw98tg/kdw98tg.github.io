@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Refactoring] 리팩터링 2판 Chapter.10 part 1 (조건부 로직 간소화)"
 
 categories:

@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Unity] Unity 빌드시 멈추는 현상 해결"
 
 categories:

@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[AI] 앙상블(Ensemble)기법과 배깅(Bagging), 부스팅(Boosting), 스태킹(Stacking) 기법"
 
 categories:

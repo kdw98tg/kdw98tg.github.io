@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[SpringBoot] SpringBoot 패키지 구조"
 
 categories:

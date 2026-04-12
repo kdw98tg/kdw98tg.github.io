@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Clean Architecture] 사례 연구 : 비디오 판매"
 
 categories:

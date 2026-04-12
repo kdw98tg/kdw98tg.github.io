@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Design Pattern] 전략 패턴 (Strategy Pattern)"
 
 categories:

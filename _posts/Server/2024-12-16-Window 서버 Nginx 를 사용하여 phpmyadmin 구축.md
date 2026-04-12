@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Server] Window 서버에 Nginx를 사용하여 phpmyadmin 구축하기"
 
 categories:

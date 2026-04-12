@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Unity] Coroutine 이란? Coroutine 의 활용법"
 
 categories:

@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Unity] Unity의 GameObject와 행동의 분리"
 
 categories:

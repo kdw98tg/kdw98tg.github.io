@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Unity] DragHandler를 이용하여 오브젝트 옮기기"
 
 categories:

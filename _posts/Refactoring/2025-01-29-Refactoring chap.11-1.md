@@ -1,4 +1,6 @@
 ---
+layout: post
+
 title: "[Refactoring] 리팩터링 2판 Chapter.11 part 1 (API 리팩터링)"
 
 categories:
