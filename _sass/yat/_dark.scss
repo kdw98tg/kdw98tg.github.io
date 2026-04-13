@@ -32,7 +32,8 @@ html[data-theme="dark"]  {
   }
 
   blockquote {
-    border-left: 4px solid #484848;
+    border-left: 4px solid #d8a374;
+    color: #d8a374
   }
 
   table {
@@ -172,32 +173,52 @@ html[data-theme="dark"]  {
     }
   }
 
-  .post-menu {
-    .post-menu-title {
-      color: #ddd;
-    }
+.post-menu {
+  .post-menu-title {
+    color: #eee; // 조금 더 밝게 조정하여 가독성 확보
+    font-weight: 700;
+  }
 
-    .post-menu-content {
-      ul {
-        border-left: 1px solid #787878;
+  .post-menu-content {
+    ul {
+      border-left: 1px solid #444; // 배경과 너무 대비되지 않는 차분한 가이드 라인
+      list-style: none;
+      padding: 0;
 
-        .active {
-          background-color: #2d2d2d;
-          border-left: 2px solid #aaa;
+      a {
+        display: block;
+        padding: 6px 12px;
+        color: #999; // 기본 상태는 차분한 회색
+        text-decoration: none;
+        transition: all 0.2s ease;
+        border-left: 2px solid transparent;
+        margin-left: -1px;
+
+        &:hover {
+          color: #fff !important;
+          background-color: rgba(255, 255, 255, 0.05); // 미세한 하이라이트
+          border-left: 2px solid #666; // 호버 시 가이드라인 살짝 강조
         }
+      }
+
+      .active {
+        background-color: #2d2d2d; // 선택된 영역 배경
+        border-left: 2px solid #aaa; // 명확한 활성 표시
+        transition: all 0.3s;
+        margin-left: -1px;
 
         a {
-          color: $dark-text-color;
-          font-size: 16px;
-          border-bottom: 1px solid #e1b7a3;
-        }
-
-        a:hover {
-          color: #fff !important;
+          color: #fff; // 활성 텍스트는 완전한 흰색
+          font-weight: 600;
+          
+          &:hover {
+            background-color: transparent; // active 상태에선 추가 배경 불필요
+          }
         }
       }
     }
   }
+}
 
   a .post-badges .post-badge {
     color: $dark-background-color !important;
