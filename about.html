@@ -96,12 +96,13 @@ width: 100%;
       .resume-category {
         margin-bottom: 30px;
       }
-      .resume-category h3 {
-        font-size: 1.1em;
-        color: var(--theme-color, #007bff);
-        margin-bottom: 15px;
-        font-weight: 600;
-      }
+      /* 테마의 CSS를 이기기 위해 선택자를 더 길게 쓰고(!important) 방어합니다 */
+.post .post-content .resume-category h3 {
+  margin: 10px 0 !important;
+  font-size: 1.1em !important;    /* 🌟 테마의 29.25px 대신 원래 원했던 크기로 고정 */
+  color: var(--theme-color, #007bff);
+  font-weight: 600;
+}
       .resume-item {
         display: flex;
         gap: 20px;
