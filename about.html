@@ -81,15 +81,16 @@ title: About
       .about-section {
         margin-bottom: 50px;
     }
-    .about-section h2 {
-        font-size: 1.4em;
-        font-weight: 700;
-        margin-bottom: 25px;
-        padding-bottom: 10px;
-        border-bottom: 2px solid var(--text-color, #222);
-        display: inline-block;
-        width: 100%;
-      }
+/* 테마의 CSS를 이기기 위해 선택자를 더 길게 쓰고(!important) 방어합니다 */
+.post .post-content .about-section h2 {
+  margin-top: 0 !important;       /* 🌟 테마의 60px 위쪽 마진 완벽 제거 */
+  margin-bottom: 25px !important; /* 기존에 설정한 아래쪽 마진 유지 */
+  font-size: 1.4em !important;    /* 🌟 테마의 36px 대신, 우리가 원했던 크기로 강제 고정 */
+  font-weight: 700;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--text-color, #222);
+  display: inline-block;
+}
     
       /* Experience */
       .resume-category {
@@ -196,7 +197,6 @@ title: About
       .project-list {
         display: flex;
         flex-direction: column;
-        gap: 25px;
       }
 /* 기존 .project-item을 아래 코드로 덮어씌워 주세요 */
 .project-item {
