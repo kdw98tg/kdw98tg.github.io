@@ -76,7 +76,7 @@ title: About
     display: inline-block;
   }
 
-  /* Experience Table-like Layout */
+  /* Experience */
   .resume-category {
     margin-bottom: 30px;
   }
@@ -111,7 +111,7 @@ title: About
     font-size: 0.9em;
   }
 
-  /* Tech Stack (Devicon) */
+  /* Tech Stack */
   .tech-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
@@ -140,7 +140,7 @@ title: About
     color: #444;
   }
 
-  /* Projects (Simplified) */
+  /* Projects */
   .project-list {
     display: flex;
     flex-direction: column;
@@ -172,10 +172,32 @@ title: About
     font-size: 0.95em;
     color: #555;
   }
+  
+  /* Project Tags (Icon + Text) */
   .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .tech-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background-color: var(--bg-secondary-color, #f4f4f5);
+    border: 1px solid var(--border-color, #eaeaea);
+    border-radius: 6px;
     font-size: 0.85em;
-    color: var(--theme-color, #007bff);
+    color: #444;
     font-weight: 500;
+  }
+  .tech-tag img {
+    width: 14px;
+    height: 14px;
+  }
+  .tech-tag i {
+    font-size: 14px;
   }
 
   /* Mobile Responsive */
@@ -243,7 +265,8 @@ title: About
     <div class="resume-category">
       <h3>Education</h3>
       <div class="resume-item">
-        <div class="resume-date">20XX.XX - 20XX.XX</div> <div class="resume-content">
+        <div class="resume-date">20XX.XX - 20XX.XX</div>
+        <div class="resume-content">
           <div class="resume-role">인공지능 공학 석사</div>
           <div class="resume-desc">Master's in Artificial Intelligence Engineering</div>
         </div>
@@ -253,13 +276,15 @@ title: About
     <div class="resume-category">
       <h3>Certifications</h3>
       <div class="resume-item">
-        <div class="resume-date">20XX.XX</div> <div class="resume-content">
+        <div class="resume-date">20XX.XX</div>
+        <div class="resume-content">
           <div class="resume-role">정보처리기사</div>
           <div class="resume-desc">한국산업인력공단</div>
         </div>
       </div>
       <div class="resume-item">
-        <div class="resume-date">20XX.XX</div> <div class="resume-content">
+        <div class="resume-date">20XX.XX</div>
+        <div class="resume-content">
           <div class="resume-role">SQLD (SQL Developer)</div>
           <div class="resume-desc">한국데이터산업진흥원</div>
         </div>
@@ -321,7 +346,13 @@ title: About
           <span class="project-date">2026.02 - Present</span>
         </div>
         <p class="project-desc">문법 학습 전, 의사코드를 통해 프로그래밍의 논리 구조를 먼저 익힐 수 있는 교육용 웹 서비스입니다.</p>
-        <div class="project-tags">#React #SpringBoot #Vite #MySQL #Java</div>
+        <div class="project-tags">
+          <span class="tech-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React"> React</span>
+          <span class="tech-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" alt="Spring"> Spring Boot</span>
+          <span class="tech-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" alt="Vite"> Vite</span>
+          <span class="tech-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL"> MySQL</span>
+          <span class="tech-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java"> Java</span>
+        </div>
       </div>
 
       <div class="project-item">
@@ -330,7 +361,11 @@ title: About
           <span class="project-date">2026.02 - Present</span>
         </div>
         <p class="project-desc">리듬 액션 서부 결투 게임. 매크로 방지 룰렛 시스템 등 공정한 게임 밸런싱을 위한 메커니즘을 설계했습니다.</p>
-        <div class="project-tags">#Unity #C# #PhotonFusion</div>
+        <div class="project-tags">
+          <span class="tech-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg" alt="Unity"> Unity</span>
+          <span class="tech-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="C#"> C#</span>
+          <span class="tech-tag"><i class="fas fa-network-wired" style="color: #FF5722;"></i> Photon Fusion</span>
+        </div>
       </div>
 
       <div class="project-item">
@@ -339,7 +374,11 @@ title: About
           <span class="project-date">2026.01 - 2026.04</span>
         </div>
         <p class="project-desc">Steam 플랫폼에 정식 출시된 1인칭 공포 게임입니다. 전체적인 기획과 상업적 런칭 프로세스를 총괄했습니다.</p>
-        <div class="project-tags">#Unity #C# #Steam</div>
+        <div class="project-tags">
+          <span class="tech-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg" alt="Unity"> Unity</span>
+          <span class="tech-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="C#"> C#</span>
+          <span class="tech-tag"><i class="fab fa-steam" style="color: #1b2838;"></i> Steam</span>
+        </div>
       </div>
     </div>
   </section>
