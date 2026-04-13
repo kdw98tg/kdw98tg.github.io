@@ -3,13 +3,320 @@ layout: about
 title: About
 ---
 
-<div class="user-profile">
-    <img src="/assets/images/profile.jpg" style="border-radius: 50%; width: 150px;">
-    <h2>Kim Dong-woo</h2>
-    <p>Software Developer & Freelance Instructor</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+  .about-container {
+    max-width: 760px;
+    margin: 0 auto;
+    font-family: inherit;
+    color: var(--text-color, #333);
+    line-height: 1.6;
+  }
+  
+  /* Profile Section */
+  .profile-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 50px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border-color, #eaeaea);
+  }
+  .profile-image {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .profile-intro h1 {
+    margin: 0 0 10px 0;
+    font-size: 1.8em;
+    font-weight: 700;
+  }
+  .profile-intro p {
+    margin: 0 0 15px 0;
+    color: var(--text-muted-color, #555);
+    font-size: 0.95em;
+  }
+  
+  /* Channel Icons */
+  .channel-links {
+    display: flex;
+    gap: 12px;
+  }
+  .channel-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background-color: var(--bg-secondary-color, #f4f4f5);
+    color: var(--text-color, #333);
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: background-color 0.2s;
+  }
+  .channel-links a:hover {
+    background-color: var(--theme-color, #000);
+    color: #fff;
+  }
+
+  /* Section Titles */
+  .about-section {
+    margin-bottom: 50px;
+  }
+  .about-section h2 {
+    font-size: 1.4em;
+    font-weight: 700;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--text-color, #222);
+    display: inline-block;
+  }
+
+  /* Experience (Subdivided) */
+  .resume-category {
+    margin-bottom: 25px;
+  }
+  .resume-category h3 {
+    font-size: 1.1em;
+    color: var(--theme-color, #007bff);
+    margin-bottom: 12px;
+  }
+  .resume-item {
+    display: flex;
+    margin-bottom: 12px;
+    font-size: 0.95em;
+  }
+  .resume-role {
+    font-weight: 600;
+    width: 200px;
+    flex-shrink: 0;
+  }
+  .resume-desc {
+    color: var(--text-muted-color, #555);
+  }
+
+  /* Tech Stack (Devicon) */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  .tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+  }
+  .tech-item img {
+    width: 40px;
+    height: 40px;
+  }
+  .tech-item span {
+    font-size: 0.85em;
+    color: #555;
+    font-weight: 500;
+  }
+  .tech-subtitle {
+    font-size: 1em;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #444;
+  }
+
+  /* Projects (Simplified) */
+  .project-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  .project-item {
+    padding-left: 15px;
+    border-left: 3px solid var(--border-color, #eaeaea);
+  }
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+  .project-header h3 {
+    margin: 0;
+    font-size: 1.25em;
+  }
+  .project-date {
+    font-size: 0.85em;
+    color: #888;
+  }
+  .project-desc {
+    margin: 0 0 10px 0;
+    font-size: 0.95em;
+    color: #555;
+  }
+  .project-tags {
+    font-size: 0.85em;
+    color: var(--theme-color, #007bff);
+    font-weight: 500;
+    word-spacing: 5px;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 600px) {
+    .profile-header {
+      flex-direction: column;
+      text-align: center;
+    }
+    .resume-item {
+      flex-direction: column;
+    }
+    .resume-role {
+      width: 100%;
+      margin-bottom: 4px;
+    }
+    .project-header {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<div class="about-container">
+  
+  <section class="profile-header">
+    <img src="/assets/images/profile.jpg" alt="Profile Picture" class="profile-image">
+    <div class="profile-intro">
+      <h1>김동우 (Dongwoo Kim)</h1>
+      <p>
+        <strong>"코드를 작성하기 전, 코드의 목적(Purpose)을 먼저 생각합니다."</strong><br>
+        기술적인 방법론에 앞서 본질적인 의도를 파악하는 PDD(Purpose Driven Design) 철학을 바탕으로 개발합니다. Better Service Tomorrow (BST)의 대표이자, 논리적 사고의 기반을 다져주는 프로그래밍 강사로 활동 중입니다.
+      </p>
+      
+      <div class="channel-links">
+        <a href="mailto:your-email@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/kdw98tg" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://youtube.com/@CoMok" target="_blank" title="YouTube (CoMok)"><i class="fab fa-youtube"></i></a>
+        <a href="https://your-company-site.com" target="_blank" title="BST Homepage"><i class="fas fa-home"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <h2>Experiences & Education</h2>
+    
+    <div class="resume-category">
+      <h3>Work Experience</h3>
+      <div class="resume-item">
+        <div class="resume-role">Better Service Tomorrow (BST)</div>
+        <div class="resume-desc">대표 (CEO)</div>
+      </div>
+      <div class="resume-item">
+        <div class="resume-role">프리랜서 프로그래밍 강사</div>
+        <div class="resume-desc">코딩 입문자 대상 프로그래밍 논리 및 구현 지도</div>
+      </div>
+    </div>
+
+    <div class="resume-category">
+      <h3>Education</h3>
+      <div class="resume-item">
+        <div class="resume-role">인공지능 공학 석사</div>
+        <div class="resume-desc">Master's in Artificial Intelligence Engineering</div>
+      </div>
+    </div>
+
+    <div class="resume-category">
+      <h3>Certifications</h3>
+      <div class="resume-item">
+        <div class="resume-role">정보처리기사</div>
+        <div class="resume-desc">한국산업인력공단</div>
+      </div>
+      <div class="resume-item">
+        <div class="resume-role">SQLD (SQL Developer)</div>
+        <div class="resume-desc">한국데이터산업진흥원</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <h2>Tech Stack</h2>
+    
+    <div class="tech-subtitle">Languages</div>
+    <div class="tech-grid">
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" />
+        <span>JavaScript</span>
+      </div>
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" />
+        <span>Java</span>
+      </div>
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="C#" />
+        <span>C#</span>
+      </div>
+    </div>
+
+    <div class="tech-subtitle">Frameworks & Tools</div>
+    <div class="tech-grid">
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" />
+        <span>React</span>
+      </div>
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" alt="Spring Boot" />
+        <span>Spring Boot</span>
+      </div>
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" alt="Vite" />
+        <span>Vite</span>
+      </div>
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL" />
+        <span>MySQL</span>
+      </div>
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg" alt="Unity" />
+        <span>Unity</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <h2>Projects</h2>
+    
+    <div class="project-list">
+      
+      <div class="project-item">
+        <div class="project-header">
+          <h3>CodeSequence</h3>
+          <span class="project-date">2026.02 ~ 진행중</span>
+        </div>
+        <p class="project-desc">코딩 입문자들이 문법에 얽매이지 않고 의사코드(Pseudocode)를 통해 논리의 흐름을 학습할 수 있도록 돕는 교육용 웹 서비스 플랫폼입니다.</p>
+        <div class="project-tags">#React #SpringBoot #Vite #MySQL #Java</div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <h3>WesternGunBeater</h3>
+          <span class="project-date">2026.02 ~ 진행중</span>
+        </div>
+        <p class="project-desc">리듬 기반 서부 결투 멀티플레이 게임. 매크로(마사지건 등) 플레이를 방지하기 위해 50% 확률의 룰렛 시스템을 기획하여 공정한 밸런스를 구현했습니다.</p>
+        <div class="project-tags">#Unity #C# #PhotonFusion</div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header">
+          <h3>JustPatrol</h3>
+          <span class="project-date">2026.01 ~ 2026.04</span>
+        </div>
+        <p class="project-desc">Steam 플랫폼에 공식 런칭한 1인칭 상업용 공포 게임입니다. 게임 기획부터 네트워크 구현, 출시까지 전체 사이클을 경험했습니다.</p>
+        <div class="project-tags">#Unity #C# #Steam</div>
+      </div>
+
+    </div>
+  </section>
+
 </div>
-
-<hr>
-
-### Purpose Driven Design
-기술보다 목적이 우선시되는 개발을 지향합니다.
