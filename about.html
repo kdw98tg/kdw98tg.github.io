@@ -14,22 +14,22 @@ title: About
     line-height: 1.6;
   }
   
-  /* Profile Section */
-  .profile-header {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    margin-bottom: 50px;
-    padding-bottom: 40px;
-    border-bottom: 1px solid var(--border-color, #eaeaea);
-  }
-  .profile-image {
-    width: 140px;
-    height: 140px;
-    flex-shrink: 0 !important;
-    border-radius: 50%; 
-    object-fit: cover;
-  }
+/* 부엉이 이미지를 감싸게 될 a 태그가 줄어들지 않도록 설정 */
+.profile-header .photo-swipe {
+  flex-shrink: 0 !important;
+  display: block; /* a 태그는 기본이 inline이라 block으로 변경해야 크기 유지가 잘 됩니다 */
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+}
+
+/* 이미지 자체의 설정 유지 */
+.profile-image {
+  width: 100% !important;  /* 부모(a태그) 크기에 맞춤 */
+  height: 100% !important; /* 부모(a태그) 크기에 맞춤 */
+  border-radius: 50%;
+  object-fit: cover;
+}
   .profile-intro h1 {
     margin: 0 0 10px 0;
     font-size: 1.8em;
@@ -260,6 +260,11 @@ title: About
           <div class="resume-role">프리랜서 강의</div>
           <div class="resume-desc">대학교 특강 강의 경험 多</div>
         </div>
+        <div class="resume-date">2025.06 - </div>
+        <div class="resume-content">
+          <div class="resume-role">프리랜서 강의</div>
+          <div class="resume-desc">예일 직업 전문학교 게임/웹 강사</div>
+        </div>
       </div>
     </div>
 
@@ -280,17 +285,17 @@ title: About
     <div class="resume-category">
       <h3>자격증 | Certification</h3>
       <div class="resume-item">
-        <div class="resume-date">20XX.XX</div>
+        <div class="resume-date">2024.09.19</div>
         <div class="resume-content">
           <div class="resume-role">정보처리기사</div>
           <div class="resume-desc">한국산업인력공단</div>
         </div>
       </div>
       <div class="resume-item">
-        <div class="resume-date">20XX.XX</div>
+        <div class="resume-date">2024.06.21</div>
         <div class="resume-content">
           <div class="resume-role">SQLD (SQL Developer)</div>
-          <div class="resume-desc">한국데이터산업진흥원</div>
+          <div class="resume-desc">K data 데이터자격검정</div>
         </div>
       </div>
     </div>
