@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Architecture&Enginerring/CodeComplete2/2025-09-21-Code Complete2 소프트웨어 선행조건.md",
+                "file": "_posts/Architecture&Enginerring/ReadableCode/2026-01-12-루프와 논리를 단순하게 만들기.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-09-21-Code Complete2 소프트웨어 선행조건"
+              "title": "2026-01-12-루프와 논리를 단순하게 만들기"
             }
           }
         ]
@@ -185,6 +185,9 @@
   },
   "active": "d0f86d65db1758b4",
   "lastOpenFiles": [
+    "_posts/Architecture&Enginerring/ReadableCode/2026-01-07-표면적 수준에서의 코드 개선.md",
+    "_posts/Architecture&Enginerring/ReadableCode/2026-01-12-루프와 논리를 단순하게 만들기.md",
+    "_posts/Architecture&Enginerring/CodeComplete2/2025-09-21-Code Complete2 소프트웨어 선행조건.md",
     "assets/images/banners/home.jpeg",
     "assets/images/banners/home1.jpeg",
     "assets/images/banners/단색 사진.png",
@@ -198,10 +201,8 @@
     "_posts/Web/React/2026-01-06-React 컴포넌트.md",
     "_posts/Web/React/2026-01-05-React JSX 간단 예제.md",
     "_posts/Web/React/2026-01-05-React 프로젝트 생성.md",
-    "_posts/Architecture&Enginerring/ReadableCode/2026-01-12-루프와 논리를 단순하게 만들기.md",
     "assets/images/banners/home.png",
     "assets/images/banners/image.png",
-    "_posts/Architecture&Enginerring/ReadableCode/2026-01-07-표면적 수준에서의 코드 개선.md",
     "_posts/Portfolio/2026-02-12-포트폴리오_비트코인예측연구.md",
     "_posts/Game Engine/Unreal/Unreal 에러.md",
     "_posts/Game Engine/Unity/2024-04-03-UnitySoundManager.md",
@@ -225,7 +226,6 @@
     "_posts/Game Engine",
     "_posts/Web/Asp.net Core",
     "images/TitleScene.png",
-    "images/SecurityRoom.png",
     "images/KakaoTalk_Video_2026-02-13-15-25-16.mp4",
     "images/KakaoTalk_20260212_134608996.mp4",
     "images/KakaoTalk_20260212_134533162.mp4",
