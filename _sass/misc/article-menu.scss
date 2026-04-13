@@ -13,49 +13,67 @@
     font-weight: 600;
   }
 
-  .post-menu-content {
-    ul {
-      border-left: 1px solid #e9ecef;
-      $indent: divide($base-font-size, 4);
-      $active-bgcolor: #ecebec;
+ .post-menu-content {
+  ul {
+    border-left: 1px solid #e9ecef;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 
-      @for $i from 2 to 7 {
-        .h-h#{$i} {
-          padding-inline-start: $indent + ($i - 2) * $base-font-size * 1.3;
-          font-size: $base-font-size * 1.1;
-          line-height: 1.4;
-        }
+    $indent-step: 12px; // 계층별 들여쓰기 간격
+    $primary-color: #e67e22; // 활성 포인트 컬러 (취향에 맞게 수정)
+
+    @for $i from 2 to 7 {
+      .h-h#{$i} {
+        padding-inline-start: ($i - 2) * $indent-step;
+        
+        // 하위 계층으로 갈수록 폰트를 살짝 작게 (선택 사항)
+        font-size: if($i == 2, 16px, 14px);
       }
+    }
+
+    li {
+      position: relative;
+    }
+
+    a {
+      display: block; // flex 대신 block이나 flow-root 권장
+      padding: 6px 12px;
+      color: lighten($text-color, 10%);
+      text-decoration: none;
+      line-height: 1.5;
+      transition: all 0.2s ease-in-out;
+      border-left: 2px solid transparent; // 기본은 투명한 선
+      margin-left: -1px; // 부모 ul의 border와 겹치게 하여 일체감 부여
+
+      * {
+        pointer-events: none;
+      }
+
+      &:hover {
+        color: $primary-color;
+        background-color: rgba($primary-color, 0.05); // 연한 배경색
+        border-left: 2px solid lighten($primary-color, 20%);
+        text-decoration: none;
+      }
+    }
+
+    // 활성화된 항목 스타일
+    .active {
+      background-color: rgba($primary-color, 0.1);
+      transition: all 0.3s;
+      border-left: 2px solid $primary-color; // 강조된 왼쪽 선
+      margin-left: -1px;
 
       a {
-        display: flex;
-        padding: 2px 8px;
-        color: darken($text-color, 10%);
-
-        * {
-          pointer-events: none;
-        }
-
-        &:hover {
-          text-decoration: none;
-          color: lighten($text-color, 30%)!important;
-        }
+        color: #121416;
+        font-weight: 600;
       }
 
-      .active {
-        background-color: $active-bgcolor;
-        transition: background 0.5s;
-        border-left: 2px solid #202020;
-        margin-left: -2px;
-
-        &:hover {
-          background-color: lighten($active-bgcolor, 2%);
-        }
-
-        a {
-          color: #121416;
-        }
+      &:hover {
+        background-color: rgba($primary-color, 0.15);
       }
     }
   }
+}
 }
