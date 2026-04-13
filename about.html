@@ -215,6 +215,12 @@ title: About
   border-bottom: none;
 }
 
+/* 테마의 CSS를 이길 수 있도록 선택자를 더 길게 쓰고, !important를 붙여 방어합니다 */
+.post .post-content .project-header h3 {
+  margin: 0 0 6px 0 !important; /* 위쪽 마진 0, 아래쪽 마진 6px로 콤팩트하게! */
+  font-size: 1.2em !important;  /* 글씨 크기도 테마(29.25px)에 밀리지 않게 고정 */
+}
+
 /* 🌟 마우스를 올렸을 때 살짝 떠오르며 배경색이 변하는 효과 */
 .project-item:hover {
   background-color: #f9f9f9;  /* 아주 연한 회색 배경 */
