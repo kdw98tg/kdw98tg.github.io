@@ -16,6 +16,9 @@ title: About
   
 /* 부엉이 이미지를 감싸게 될 a 태그가 줄어들지 않도록 설정 */
 .profile-header .photo-swipe {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   flex-shrink: 0 !important;
   display: block; /* a 태그는 기본이 inline이라 block으로 변경해야 크기 유지가 잘 됩니다 */
   width: 140px;
