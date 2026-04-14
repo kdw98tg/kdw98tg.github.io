@@ -1,7 +1,7 @@
 ---
 layout: post
 
-title: "[포트폴리오] Unity-JustPatrol"
+title: "[포트폴리오] Just Patrol 게임 제작 및 출시"
 
 categories:
   -  Portfolio
