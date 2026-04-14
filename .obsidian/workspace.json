@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 414.5
   },
   "right": {
     "id": "471b93de1b600014",
@@ -185,6 +185,23 @@
   },
   "active": "47cb1338e1d97789",
   "lastOpenFiles": [
+    "images/Pastedimage20260414154332.png",
+    "_posts/Portfolio/2026-04-14-ENOMONT 홈페이지 제작.md",
+    "_posts/Portfolio/2026-02-12-포트폴리오_JustPatrol.md",
+    "_posts/Portfolio/2026-02-12-포트폴리오_비트코인예측연구.md",
+    "_posts/Portfolio/2026-02-12-포트폴리오_지휘봉프로그램.md",
+    "_posts/Portfolio/2026-02-12-포트폴리오_은재팜 게임.md",
+    "_posts/Portfolio/2026-02-12-포트폴리오_android 책 집필.md",
+    "_posts/Portfolio/2026-02-12-포트폴리오_RDC.md",
+    "_posts/Portfolio/2026-02-12-포트폴리오_송도 케이블카 KIOSK,POS.md",
+    "images/Pasted image 20260414113200.png",
+    "images/Pastedimage20260414113200.png",
+    "images/Pasted image 20260414113154.png",
+    "images/Pastedimage20260414113154.png",
+    "images/Pasted image 20260414113039.png",
+    "images/Pastedimage20260414113039.png",
+    "images/Pasted image 20260414113126.png",
+    "images/Pastedimage20260414113126.png",
     "_site/portfolio/2026/04/14/ENOMONT-홈페이지-제작.html",
     "_site/portfolio/2026/04/14",
     "_site/portfolio/2026/04",
@@ -194,25 +211,8 @@
     "_site/2026/04/14/홈페이지-제작.html",
     "_site/2026/04/14",
     "_site/2026/04",
-    "_posts/Portfolio/2026-02-12-포트폴리오_송도 케이블카 KIOSK,POS.md",
-    "_posts/Portfolio/2026-02-12-포트폴리오_은재팜 게임.md",
-    "_posts/Portfolio/2026-02-12-포트폴리오_비트코인예측연구.md",
-    "_posts/Portfolio/2026-02-12-포트폴리오_android 책 집필.md",
-    "_posts/Portfolio/2026-02-12-포트폴리오_JustPatrol.md",
-    "_posts/Portfolio/2026-02-12-포트폴리오_RDC.md",
-    "_posts/Portfolio/2026-04-14-ENOMONT 홈페이지 제작.md",
     "_site/2025/01/21/Git-Lfs-오류.html",
-    "_site/2025/01/21",
     "_site/images/just patrol icon.png",
-    "_site/images/TitleScene.png",
-    "_site/images/SecurityRoom.png",
-    "_site/images/Pasted image 20260414113200.png",
-    "_site/images/Pasted image 20260414113154.png",
-    "_site/images/Pasted image 20260414113126.png",
-    "_site/images/Pasted image 20260414113039.png",
-    "_site/images/Pasted image 20260213093029.png",
-    "_site/images/Pasted image 20260213093009.png",
-    "_site/images/Pasted image 20260213092945.png",
     "_site/README.md",
     "_posts/Architecture&Enginerring/ReadableCode/2026-01-12-루프와 논리를 단순하게 만들기.md",
     "_posts/Architecture&Enginerring/ReadableCode/2026-01-07-표면적 수준에서의 코드 개선.md",
@@ -229,7 +229,6 @@
     "_posts/Game Engine/Unity/2024-03-19-Unity SoundManager.md",
     "_posts/Game Engine/Unity/2024-03-19-Coroutine 활용법.md",
     "_posts/Etc/2025-07-14-Visual Studio Code Profile 넣기.md",
-    "_posts/Etc/2024-10-17-코드 총 라인수 구하기.md",
-    "_posts/Etc/2024-08-28-Mac Obsidian 한글 끊김.md"
+    "_posts/Etc/2024-10-17-코드 총 라인수 구하기.md"
   ]
 }
