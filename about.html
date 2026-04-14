@@ -4,507 +4,726 @@ title: About
 toc: false
 ---
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-      .about-container {
-        max-width: 760px;
-        margin: 0 auto;
-        font-family: inherit;
-        color: var(--text-color, #333);
-        line-height: 1.6;
-      }
-      
-      /* Profile Section */
-      .profile-header {
-        display: flex;
-        align-items: center;
-        gap: 30px;
-        margin-bottom: 50px;
-        padding-bottom: 40px;
-        border-bottom: 1px solid var(--border-color, #eaeaea);
-      }
-    
-      /* 자바스크립트가 나중에 입혀줄 겉옷 (a 태그) */
-      .profile-header .photo-swipe {
-        display: block;
-        width: 140px;
-        height: 140px;
-        flex-shrink: 0;
-        border-radius: 50%;
-      }
-    
-      /* 알맹이 부엉이 이미지 */
-      .profile-image {
-        width: 140px;
-        height: 140px;
-        flex-shrink: 0;
-        border-radius: 50%; 
-        object-fit: cover;
-      }
-      .profile-intro h1 {
-        margin: 0 0 10px 0;
-        font-size: 1.8em;
-        font-weight: 700;
-      }
-      .profile-intro p {
-        margin: 0 0 15px 0;
-        color: var(--text-muted-color, #555);
-        font-size: 0.95em;
-        text-align: left;
-      }
-      .profile-description-strong{
-        display:block;
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        font-size: 1.2rem;
-      }
-      
-      /* Channel Icons */
-      .channel-links {
-        display: flex;
-        gap: 12px;
-      }
-      .channel-links a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        border-radius: 8px;
-        background-color: var(--bg-secondary-color, #f4f4f5);
-        color: var(--text-color, #333);
-        text-decoration: none;
-        font-size: 1.1em;
-        transition: background-color 0.2s;
-      }
-      .channel-links a:hover {
-        background-color: var(--theme-color, #000);
-        color: #fff;
-      }
-    
-      /* Section Titles */
-      .about-section {
-        margin-bottom: 50px;
-      }
+<style>
+  .about-container {
+    max-width: 760px;
+    margin: 0 auto;
+    font-family: inherit;
+    color: var(--text-color, #333);
+    line-height: 1.6;
+  }
 
-      /* 테마의 CSS를 이기기 위해 선택자를 더 길게 쓰고(!important) 방어합니다 */
-      .post .post-content .about-section h2 {
-        margin-top: 0 !important;
-        width: 100%;
-        font-weight: 700;
-        padding-bottom: 10px;
-        border-bottom: 2px solid var(--text-color, #222);
-        display: inline-block;
-      }
-    
-      /* Experience */
-      .resume-category {
-        margin-bottom: 30px;
-      }
+  /* Profile Section */
+  .profile-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 50px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border-color, #eaeaea);
+  }
 
-      /* 테마의 CSS를 이기기 위해 선택자를 더 길게 쓰고(!important) 방어합니다 */
-      .post .post-content .resume-category h3 {
-        margin: 10px 0 !important;
-        font-size: 1.1em !important;
-        color: var(--theme-color, #007bff);
-        font-weight: 600;
-      }
+  /* 자바스크립트가 나중에 입혀줄 겉옷 (a 태그) */
+  .profile-header .photo-swipe {
+    display: block;
+    width: 140px;
+    height: 140px;
+    flex-shrink: 0;
+    border-radius: 50%;
+  }
 
-      .resume-item {
-        display: flex;
-        gap: 20px;
-        margin-bottom: 12px;
-        font-size: 0.95em;
-        border-bottom: 1px solid #f6f8ff;
-        align-items: flex-start;
-      }
-      .resume-date {
-        width: 140px;
-        flex-shrink: 0;
-        color: #888;
-        font-variant-numeric: tabular-nums;
-      }
-      .resume-content {
-        flex-grow: 1;
-      }
-      .resume-role {
-        font-weight: 600;
-        margin-bottom: 2px;
-      }
-      .resume-desc {
-        color: var(--text-muted-color, #666);
-        font-size: 0.9em;
-      }
-    
-      /* Tech Stack */
-      .tech-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-        gap: 20px;
-        margin-bottom: 30px;
-      }
+  /* 알맹이 부엉이 이미지 */
+  .profile-image {
+    width: 140px;
+    height: 140px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 
-      .tech-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        gap: 10px;
-        padding: 10px;
-        background-color: #ffffff;
-        border: 1px solid #eaeaea;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
-        transition: all 0.3s ease;
-        cursor: default;
-      }
+  .profile-intro h1 {
+    margin: 0 0 10px 0;
+    font-size: 1.8em;
+    font-weight: 700;
+  }
 
-      .tech-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
-        border-color: #d1d5db;
-      }
+  .profile-intro p {
+    margin: 0 0 15px 0;
+    color: var(--text-muted-color, #555);
+    font-size: 0.95em;
+    text-align: left;
+  }
 
-      /* 아이콘 이미지 및 FontAwesome 아이콘 설정 (AI 아이콘 대응) */
-      .tech-item img, .tech-item i {
-        width: 38px;
-        height: 38px;
-        font-size: 38px; /* FontAwesome 아이콘 크기 */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.3s ease;
-      }
+  .profile-description-strong {
+    display: block;
 
-      .tech-item:hover img, .tech-item:hover i {
-        transform: scale(1.1);
-      }
+    font-size: 1.2rem;
+  }
 
-      .tech-item span {
-        font-size: 0.65rem;
-        font-weight: 500;
-        color: #555;
-        transition: color 0.3s ease;
-      }
+  /* Channel Icons */
+  .channel-links {
+    display: flex;
+    gap: 12px;
+  }
 
-      .tech-item:hover span {
-        color: #222;
-      }
+  .channel-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background-color: var(--bg-secondary-color, #f4f4f5);
+    color: var(--text-color, #333);
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: background-color 0.2s;
+  }
 
-      .tech-subtitle {
-        font-size: 1em;
-        font-weight: 600;
-        color: #444;
-        margin-bottom: 15px;
-      }
-    
-      /* Projects */
-      .project-list {
-        display: flex;
-        flex-direction: column;
-      }
+  .channel-links a:hover {
+    background-color: var(--theme-color, #000);
+    color: #fff;
+  }
 
-      .project-item {
-        display: block;
-        text-decoration: none;
-        color: inherit;
-        padding: 15px;
-        margin-bottom: 10px;
-        border-bottom: 1px solid var(--border-color, #f0f0f0);
-        border-radius: 8px;
-        transition: background-color 0.2s ease, transform 0.2s ease;
-      }
+  /* Section Titles */
+  .about-section {
+    margin-bottom: 50px;
+  }
 
-      .project-item:last-child {
-        border-bottom: none;
-      }
+  /* 테마의 CSS를 이기기 위해 선택자를 더 길게 쓰고(!important) 방어합니다 */
+  .post .post-content .about-section h2 {
+    margin-top: 0 !important;
+    width: 100%;
+    font-weight: 700;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--text-color, #222);
+    display: inline-block;
+  }
 
-      .post .post-content .project-header h3 {
-        margin: 0 0 6px 0 !important;
-        font-size: 1.2em !important;
-      }
+  /* Experience */
+  .resume-category {
+    margin-bottom: 30px;
+  }
 
-      .project-item:hover {
-        background-color: #f9f9f9;
-        transform: translateY(-3px);
-        border-bottom-color: transparent;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      }
+  /* 테마의 CSS를 이기기 위해 선택자를 더 길게 쓰고(!important) 방어합니다 */
+  .post .post-content .resume-category h3 {
+    margin: 10px 0 !important;
+    font-size: 1.1em !important;
+    color: var(--theme-color, #007bff);
+    font-weight: 600;
+  }
 
-      .project-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 6px;
-      }
-      .project-header h3 {
-        margin: 10px 0;
-        font-size: 1.2em;
-      }
-      .project-date {
-        font-size: 0.85em;
-        color: #999;
-      }
-      .project-desc {
-        margin: 0 0 10px 0;
-        font-size: 0.95em;
-        color: #555;
-      }
-      
-      .project-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 12px;
-      }
-      .tech-tag {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 4px 10px;
-        background-color: var(--bg-secondary-color, #f4f4f5);
-        border: 1px solid var(--border-color, #eaeaea);
-        border-radius: 6px;
-        font-size: 0.85em;
-        color: #444;
-        font-weight: 500;
-      }
-      .tech-tag img {
-        width: 14px;
-        height: 14px;
-      }
-      .tech-tag i {
-        font-size: 14px;
-      }
-    
-      /* Mobile Responsive */
-      @media (max-width: 600px) {
-        .profile-header {
-          flex-direction: column;
-          text-align: center;
-        }
-        .resume-item {
-          flex-direction: column;
-          gap: 5px;
-        }
-        .resume-date {
-          width: 100%;
-          font-weight: 600;
-          color: var(--theme-color);
-        }
-        .project-header {
-          flex-direction: column;
-        }
-      }
-    </style>
-    
-    <div class="about-container">
-      
-      <section class="profile-header">
-        <img src="/assets/images/profile/profile-image.jpg" alt="Profile Picture" class="profile-image">
-        <div class="profile-intro">
-          <h1>김동우 (DongWoo Kim)</h1>
-          <p>
-            <strong class="profile-description-strong">"기술은 도구일 뿐, 유일한 목적은 '고객이 만족하는 서비스'입니다."</strong><br>
-            사용자가 진정으로 원하고 만족하는 경험을 제공하는 것, 그것이 제가 코드를 작성하는 이유입니다. 이 확고한 목적을 달성하기 위해 저는 특정 기술에 얽매이지 않습니다. 필요하다면 어떤 영역이든 경계 없이 학습하고, 폭넓은 기술 스택을 무기 삼아 상황에 맞는 최적의 해결책을 구현하는 실용주의 개발자입니다.
-          </p>
+  .resume-item {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 12px;
+    font-size: 0.95em;
+    border-bottom: 1px solid #f6f8ff;
+    align-items: flex-start;
+  }
 
-          <div class="channel-links">
-            <a href="mailto:kdw98tg@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://github.com/kdw98tg" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://youtube.com/@CoMok-Studio" target="_blank" title="YouTube (CoMok)"><i class="fab fa-youtube"></i></a>
-            <a href="https://comok.co.kr" target="_blank" title="BST Homepage"><i class="fas fa-home"></i></a>
-            <a href="https://blog.naver.com/98tg" target="_blank" title="Previous Blog"><i class="fas fa-rss"></i></a>
-          </div>
-        </div>
-      </section>
-    
-      <section class="about-section">
-        <h2>이력 사항 | Resume</h2>
-        
-        <div class="resume-category">
-          <h3>이력 | Resume</h3>
-          <div class="resume-item">
-            <div class="resume-date">2025.06 - </div>
-            <div class="resume-content">
-              <div class="resume-role">직업 전문학교 강사</div>
-              <div class="resume-desc">예일 직업 전문학교 게임/웹 강사</div>
-            </div>
-          </div>
-          <div class="resume-item">
-            <div class="resume-date">2023.06 - </div>
-            <div class="resume-content">
-              <div class="resume-role">프리랜서 강사</div>
-              <div class="resume-desc">대학교 특강 강의 경험 多</div>
-            </div>
-          </div>
-          <div class="resume-item">
-            <div class="resume-date">2023.07 - </div>
-            <div class="resume-content">
-              <div class="resume-role">Better Service Tomorrow (BST)</div>
-              <div class="resume-desc">대표</div>
-            </div>
-          </div>
-        </div>
-    
-        <div class="resume-category">
-          <h3>학위 | Degree</h3>
-          <div class="resume-item">
-            <div class="resume-date">2026.02 - </div>
-            <div class="resume-content">
-              <div class="resume-role">인공지능 공학 석사</div>
-            </div>
-          </div>
-          <div class="resume-item">
-            <div class="resume-date">2024.02 - </div>
-            <div class="resume-content">
-              <div class="resume-role">전자공학 학사</div>
-            </div>
-          </div>
-        </div>
-    
-        <div class="resume-category">
-          <h3>자격증 | Certification</h3>
-          <div class="resume-item">
-            <div class="resume-date">2024.09.19</div>
-            <div class="resume-content">
-              <div class="resume-role">정보처리기사</div>
-              <div class="resume-desc">한국산업인력공단</div>
-            </div>
-          </div>
-          <div class="resume-item">
-            <div class="resume-date">2024.06.21</div>
-            <div class="resume-content">
-              <div class="resume-role">SQLD (SQL Developer)</div>
-              <div class="resume-desc">K data 데이터자격검정</div>
-            </div>
-          </div>
-        </div>
-      </section>
-    
-      <section class="about-section">
-        <h2>보유 기술 | Tech Stack</h2>
-        
-        <div class="tech-subtitle">언어 | Languages</div>
-        <div class="tech-grid">
-          <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="C#" />
-            <span>C#</span>
-          </div>
-          
-          <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" />
-            <span>Java</span>
-          </div>
-          
-          <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg" alt="Kotlin" />
-            <span>Kotlin</span>
-          </div>
-          <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" />
-            <span>Python</span>
-          </div>
-          <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript" />
-            <span>JavaScript</span>
-          </div>
-          <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5" />
-            <span>HTML5</span>
-          </div>
-          <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3" />
-            <span>CSS3</span>
-          </div>
-        </div>
-    
-        <div class="tech-subtitle">프레임워크 | Frameworks & Libraries</div>
-        <div class="tech-grid">
-          <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg" alt="Unity" />
-            <span>Unity</span>
-          </div>
-          <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original.svg" alt="WinForms" />
-            <span>WinForms</span>
-          </div>
-          <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" />
-            <span>React</span>
-          </div>
-          <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" alt="Spring" />
-            <span>Spring Boot</span>
-          </div>
-          <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-original.svg" alt="ASP.NET Core" />
-            <span>ASP.NET Core</span>
-          </div>
-          <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" alt="Vite" />
-            <span>Vite</span>
-          </div>
-          <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL" />
-            <span>MySQL</span>
-          </div>
-          <div class="tech-item">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg" alt="Android" />
-            <span>Android</span>
-          </div>
-          <div class="tech-item">
-            <i class="fas fa-brain" style="color: #ff6f61;"></i>
-            <span>AI</span>
-          </div>
-        </div>
-      </section>
-    
-      <section class="about-section">
-        <h2>프로젝트 | Projects</h2>
-        
-        <div class="project-list">
-            <a href="https://github.com/본인아이디/CodeSequence" target="_blank" class="project-item">
-              <div class="project-header">
-                <h3>CodeSequence</h3>
-                <span class="project-date">2026.02 - Present</span>
-              </div>
-              <p class="project-desc">문법 학습 전, 의사코드를 통해 프로그래밍의 논리 구조를 먼저 익힐 수 있는 교육용 웹 서비스입니다.</p>
-              <div class="project-tags">
-                <span class="tech-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React"> React</span>
-                <span class="tech-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" alt="Spring"> Spring Boot</span>
-                <span class="tech-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" alt="Vite"> Vite</span>
-                <span class="tech-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL"> MySQL</span>
-                <span class="tech-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java"> Java</span>
-              </div>
-            </a> 
+  .resume-date {
+    width: 140px;
+    flex-shrink: 0;
+    color: #888;
+    font-variant-numeric: tabular-nums;
+  }
 
-            <a href="https://youtube.com/..." target="_blank" class="project-item">
-              <div class="project-header">
-                <h3>WesternGunBeater</h3>
-                <span class="project-date">2026.02 - Present</span>
-              </div>
-              <p class="project-desc">리듬 액션 서부 결투 게임. 매크로 방지 룰렛 시스템 등 공정한 게임 밸런싱을 위한 메커니즘을 설계했습니다.</p>
-              <div class="project-tags">
-                <span class="tech-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg" alt="Unity"> Unity</span>
-                <span class="tech-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="C#"> C#</span>
-                <span class="tech-tag"><i class="fas fa-network-wired" style="color: #FF5722;"></i> Photon Fusion</span>
-              </div>
-            </a>
-          
-            <a href="https://kdw98tg.github.io/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_JustPatrol.html" target="_blank" class="project-item">
-              <div class="project-header">
-                <h3>JustPatrol</h3>
-                <span class="project-date">2026.01 - 2026.04</span>
-              </div>
-              <p class="project-desc">Steam 플랫폼에 정식 출시된 1인칭 공포 게임입니다. 전체적인 기획과 상업적 런칭 프로세스를 총괄했습니다.</p>
-              <div class="project-tags">
-                <span class="tech-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg" alt="Unity"> Unity</span>
-                <span class="tech-tag"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="C#"> C#</span>
-                <span class="tech-tag"><i class="fab fa-steam" style="color: #1b2838;"></i> Steam</span>
-              </div>
-            </a>
-        </div>
-      </section>
+  .resume-content {
+    flex-grow: 1;
+  }
+
+  .resume-role {
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .resume-desc {
+    color: var(--text-muted-color, #666);
+    font-size: 0.9em;
+  }
+
+  /* Tech Stack */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+
+  .tech-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+    border-color: #d1d5db;
+  }
+
+  /* 아이콘 이미지 및 FontAwesome 아이콘 설정 (AI 아이콘 대응) */
+  .tech-item img,
+  .tech-item i {
+    width: 38px;
+    height: 38px;
+    font-size: 38px;
+    /* FontAwesome 아이콘 크기 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+  }
+
+  .tech-item:hover img,
+  .tech-item:hover i {
+    transform: scale(1.1);
+  }
+
+  .tech-item span {
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: #555;
+    transition: color 0.3s ease;
+  }
+
+  .tech-item:hover span {
+    color: #222;
+  }
+
+  .tech-subtitle {
+    font-size: 1em;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 15px;
+  }
+
+  /* Projects */
+  .project-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-item {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border-color, #f0f0f0);
+    border-radius: 8px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .project-item:last-child {
+    border-bottom: none;
+  }
+
+  .post .post-content .project-header h3 {
+    margin: 0 0 6px 0 !important;
+    font-size: 1.2em !important;
+    max-width: 510px;
+  }
+
+  .project-item:hover {
+    background-color: #f9f9f9;
+    transform: translateY(-3px);
+    border-bottom-color: transparent;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+  }
+
+  .project-header h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+  }
+
+  .project-subinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-team {
+    font-size: 0.85em;
+    color: #999;
+  }
+
+  .project-date {
+    font-size: 0.85em;
+    color: #999;
+  }
+
+  .project-desc {
+    margin: 0 0 10px 0;
+    font-size: 0.95em;
+    color: #555;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .tech-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background-color: var(--bg-secondary-color, #f4f4f5);
+    border: 1px solid var(--border-color, #eaeaea);
+    border-radius: 6px;
+    font-size: 0.85em;
+    color: #444;
+    font-weight: 500;
+  }
+
+  .tech-tag img {
+    width: 14px;
+    height: 14px;
+  }
+
+  .tech-tag i {
+    font-size: 14px;
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 600px) {
+    .profile-header {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .resume-item {
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .resume-date {
+      width: 100%;
+      font-weight: 600;
+      color: var(--theme-color);
+    }
+
+    .project-header {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<div class="about-container">
+
+  <section class="profile-header">
+    <img src="/assets/images/profile/profile-image.jpg" alt="Profile Picture" class="profile-image">
+    <div class="profile-intro">
+      <h1>김동우 (DongWoo Kim)</h1>
+      <p>
+        <strong class="profile-description-strong">"기술은 도구일 뿐, 유일한 목적은 '고객이 만족하는 서비스'입니다."</strong><br>
+        사용자가 진정으로 원하고 만족하는 경험을 제공하는 것, 그것이 제가 코드를 작성하는 이유입니다. 이 확고한 목적을 달성하기 위해 저는 특정 기술에 얽매이지 않습니다. 필요하다면 어떤 영역이든 경계 없이
+        학습하고, 폭넓은 기술 스택을 무기 삼아 상황에 맞는 최적의 해결책을 구현하는 실용주의 개발자입니다.
+      </p>
+
+      <div class="channel-links">
+        <a href="mailto:kdw98tg@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/kdw98tg" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://youtube.com/@CoMok-Studio" target="_blank" title="YouTube (CoMok)"><i
+            class="fab fa-youtube"></i></a>
+        <a href="https://comok.co.kr" target="_blank" title="BST Homepage"><i class="fas fa-home"></i></a>
+        <a href="https://blog.naver.com/98tg" target="_blank" title="Previous Blog"><i class="fas fa-rss"></i></a>
+      </div>
     </div>
+  </section>
+
+  <section class="about-section">
+    <h2>이력 사항 | Resume</h2>
+
+    <div class="resume-category">
+      <h3>이력 | Resume</h3>
+      <div class="resume-item">
+        <div class="resume-date">2025.06 - </div>
+        <div class="resume-content">
+          <div class="resume-role">직업 전문학교 강사</div>
+          <div class="resume-desc">예일 직업 전문학교 게임/웹 강사</div>
+        </div>
+      </div>
+      <div class="resume-item">
+        <div class="resume-date">2023.06 - </div>
+        <div class="resume-content">
+          <div class="resume-role">프리랜서 강사</div>
+          <div class="resume-desc">대학교 특강 강의 경험 多</div>
+        </div>
+      </div>
+      <div class="resume-item">
+        <div class="resume-date">2023.07 - </div>
+        <div class="resume-content">
+          <div class="resume-role">Better Service Tomorrow (BST)</div>
+          <div class="resume-desc">대표</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="resume-category">
+      <h3>학위 | Degree</h3>
+      <div class="resume-item">
+        <div class="resume-date">2026.02 - </div>
+        <div class="resume-content">
+          <div class="resume-role">인공지능 공학 석사</div>
+        </div>
+      </div>
+      <div class="resume-item">
+        <div class="resume-date">2024.02 - </div>
+        <div class="resume-content">
+          <div class="resume-role">전자공학 학사</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="resume-category">
+      <h3>자격증 | Certification</h3>
+      <div class="resume-item">
+        <div class="resume-date">2024.09.19</div>
+        <div class="resume-content">
+          <div class="resume-role">정보처리기사</div>
+          <div class="resume-desc">한국산업인력공단</div>
+        </div>
+      </div>
+      <div class="resume-item">
+        <div class="resume-date">2024.06.21</div>
+        <div class="resume-content">
+          <div class="resume-role">SQLD (SQL Developer)</div>
+          <div class="resume-desc">K data 데이터자격검정</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <h2>보유 기술 | Tech Stack</h2>
+
+    <div class="tech-subtitle">언어 | Languages</div>
+    <div class="tech-grid">
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" alt="C#" />
+        <span>C#</span>
+      </div>
+
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" />
+        <span>Java</span>
+      </div>
+
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg" alt="Kotlin" />
+        <span>Kotlin</span>
+      </div>
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" />
+        <span>Python</span>
+      </div>
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+          alt="JavaScript" />
+        <span>JavaScript</span>
+      </div>
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5" />
+        <span>HTML5</span>
+      </div>
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3" />
+        <span>CSS3</span>
+      </div>
+    </div>
+
+    <div class="tech-subtitle">프레임워크 | Frameworks & Libraries</div>
+    <div class="tech-grid">
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg" alt="Unity" />
+        <span>Unity</span>
+      </div>
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original.svg"
+          alt="WinForms" />
+        <span>WinForms</span>
+      </div>
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" />
+        <span>React</span>
+      </div>
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg" alt="Spring" />
+        <span>Spring Boot</span>
+      </div>
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-original.svg"
+          alt="ASP.NET Core" />
+        <span>ASP.NET Core</span>
+      </div>
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg" alt="Vite" />
+        <span>Vite</span>
+      </div>
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg" alt="MySQL" />
+        <span>MySQL</span>
+      </div>
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mariadb/mariadb-original.svg"
+          alt="MariaDB"><span>MariaDB</span>
+      </div>
+      <div class="tech-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg"
+          alt="Android" />
+        <span>Android</span>
+      </div>
+      <div class="tech-item">
+        <i class="fas fa-brain" style="color: #ff6f61;"></i>
+        <span>AI</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <h2>프로젝트 | Projects</h2>
+
+    <div class="project-list">
+
+      <a href="https://kdw98tg.github.io/portfolio/2026/04/14/ENOMONT-홈페이지-제작.html" target="_blank"
+        class="project-item">
+        <div class="project-header">
+          <h3>ENOMONT 홈페이지 제작 | Web</h3>
+          <div class="project-subInfo">
+            <span class="project-team">팀 규모 1 | </span>
+            <span class="project-date">2026.04 - 2026.04</span>
+          </div>
+        </div>
+        <p class="project-desc">한의학적으로 생체 신호를 분석하는 기업인 ENOMONT의 홈페이지를 제작하였습니다.</p>
+        <div class="project-tags">
+
+          <span class="tech-tag">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" alt="React" />
+            React
+          </span>
+
+          <span class="tech-tag">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+              alt="JavaScript" />
+            JavaScript
+          </span>
+
+          <span class="tech-tag">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" alt="HTML5" />
+            Html5
+          </span>
+
+          <span class="tech-tag">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" alt="CSS3" />
+            CSS3
+          </span>
+          
+        </div>
+      </a>
+
+      <a href="https://kdw98tg.github.io/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_JustPatrol.html"
+        target="_blank" class="project-item">
+        <div class="project-header">
+          <h3>공포게임 JustPatrol 제작 | Game</h3>
+          <div class="project-subInfo">
+            <span class="project-team">팀 규모 3 | </span>
+            <span class="project-date">2025.08 - 2026.02</span>
+          </div>
+        </div>
+        <p class="project-desc">스팀에 라이브 서비스 중인 공포게임 "JustPatrol"을 제작하였습니다.</p>
+        <div class="project-tags">
+          <span class="tech-tag">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg" alt="Unity" />
+            Unity
+          </span>
+          <span class="tech-tag"> <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-original.svg"
+              alt="ASP.NET Core" />ASP.NET Core</span>
+          <span class="tech-tag"><img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"
+              alt="C#">C#</span>
+        </div>
+      </a>
+
+
+      <a href="https://kdw98tg.github.io/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_%EB%B9%84%ED%8A%B8%EC%BD%94%EC%9D%B8%EC%98%88%EC%B8%A1%EC%97%B0%EA%B5%AC.html"
+        target="_blank" class="project-item">
+        <div class="project-header">
+          <h3>다중지표 조합 비트코인 수익률 예측 연구 | AI</h3>
+          <div class="project-subInfo">
+            <span class="project-team">팀 규모 1 | </span>
+            <span class="project-date">2025.03 - 2025.11</span>
+          </div>
+        </div>
+        <p class="project-desc">MACD, RSI, BTC.D, FGI 등의 지표를 조합하여 어떤 조합에서 가장 수익률 예측이 정확했는지를 연구하였습니다.</p>
+        <div class="project-tags">
+          <span class="tech-tag">
+            <i class="fas fa-brain" style="color: #ff6f61;"></i>
+            AI
+          </span>
+          <span class="tech-tag"> <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" />
+            Python</span>
+        </div>
+      </a>
+
+
+      <a href="https://kdw98tg.github.io/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_%EC%A7%80%ED%9C%98%EB%B4%89%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8.html"
+        target="_blank" class="project-item">
+        <div class="project-header">
+          <h3>모션 인식 지휘 프로그램 제작 | Windows App</h3>
+          <div class="project-subInfo">
+            <span class="project-team">팀 규모 1 | </span>
+            <span class="project-date">2025.01 - 2025.03</span>
+          </div>
+        </div>
+        <p class="project-desc">지휘자가 지휘하는 동작에 따라서, 음악의 재생속도, 볼륨을 제어하는 프로그램을 제작하였습니다. 해당 제품은 강남 코엑스에서도 전시가 되었습니다.</p>
+        <div class="project-tags">
+          <span class="tech-tag">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg" alt="Unity" />
+            Unity
+          </span>
+          <span class="tech-tag"><img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original.svg"
+              alt="WinForms" />WinForms</span>
+          <span class="tech-tag"><img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"
+              alt="C#">C#</span>
+          <span class="tech-tag"> <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python" />
+            Python</span>
+        </div>
+      </a>
+
+
+      <a href="https://kdw98tg.github.io/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_%EC%9D%80%EC%9E%AC%ED%8C%9C-%EA%B2%8C%EC%9E%84.html"
+        target="_blank" class="project-item">
+        <div class="project-header">
+          <h3>스마트팜 시뮬레이션 게임 EunjaeFarm 제작 | Game</h3>
+          <div class="project-subInfo">
+            <span class="project-team">팀 규모 5 | </span>
+            <span class="project-date">2024.12 - 2025.11</span>
+          </div>
+        </div>
+        <p class="project-desc">실제 스마트팜과 연동되는 게임을 제작하였습니다. 기획, 디자인, 개발의 총괄을 맡았습니다.</p>
+        <div class="project-tags">
+          <span class="tech-tag">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg" alt="Unity" />
+            Unity
+          </span>
+          <span class="tech-tag"> <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-original.svg"
+              alt="ASP.NET Core" />ASP.NET Core</span>
+          <span class="tech-tag"><img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"
+              alt="C#">C#</span>
+          <span class="tech-tag"><img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mariadb/mariadb-original.svg"
+              alt="MariaDB">MariaDB</span>
+        </div>
+      </a>
+
+      <a href="https://kdw98tg.github.io/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_android-%EC%B1%85-%EC%A7%91%ED%95%84.html"
+        target="_blank" class="project-item">
+        <div class="project-header">
+          <h3>Android 연구용 책 집필 | Android App</h3>
+          <div class="project-subInfo">
+            <span class="project-team">팀 규모 2 | </span>
+            <span class="project-date">2023.10 - 2024.06</span>
+          </div>
+        </div>
+        <p class="project-desc">대학교에서 연구용으로 사용할 Android 책을 공동 집필 하였습니다.</p>
+        <div class="project-tags">
+          <span class="tech-tag"> <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg"
+              alt="Android" />
+            Android</span>
+          <span class="tech-tag"> <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" />
+            Java</span>
+        </div>
+      </a>
+
+
+      <a href="https://kdw98tg.github.io/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_%EC%86%A1%EB%8F%84-%EC%BC%80%EC%9D%B4%EB%B8%94%EC%B9%B4-KIOSK,POS.html"
+        target="_blank" class="project-item">
+        <div class="project-header">
+          <h3>송도 해상 케이블카 POS, KIOSK 제작 | Windows App</h3>
+          <div class="project-subInfo">
+            <span class="project-team">팀 규모 3 | </span>
+            <span class="project-date">2023.10 - 2024.06</span>
+          </div>
+        </div>
+        <p class="project-desc">송도 해상 케이블카의 POS 와 KIOSK 시스템을 제작하였습니다.</p>
+        <div class="project-tags">
+          <span class="tech-tag"><img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original.svg"
+              alt="WinForms" />WinForms</span>
+          <span class="tech-tag"> <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dotnetcore/dotnetcore-original.svg"
+              alt="ASP.NET Core" />ASP.NET Core</span>
+          <span class="tech-tag"><img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"
+              alt="C#">C#</span>
+          <span class="tech-tag"><img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mariadb/mariadb-original.svg"
+              alt="MariaDB">MariaDB</span>
+        </div>
+      </a>
+
+      <a href="https://kdw98tg.github.io/portfolio/2026/02/12/%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4_RDC.html"
+        target="_blank" class="project-item">
+        <div class="project-header">
+          <h3>중소기업 데이터 수집 솔루션 RDC(Raw-Data-Collector) 제작 | Windows App, Android App</h3>
+          <div class="project-subInfo">
+            <span class="project-team">팀 규모 1 | </span>
+            <span class="project-date">2023.05 - 2023.10</span>
+          </div>
+        </div>
+        <p class="project-desc">중소기업의 장비, 입출고, 직원을 관리하는 데이터 관리 솔루션 입니다.</p>
+        <div class="project-tags">
+          <span class="tech-tag"><img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dot-net/dot-net-original.svg"
+              alt="WinForms" />WinForms</span>
+          <span class="tech-tag"> <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg"
+              alt="Android" />
+            Android</span>
+          <span class="tech-tag"><img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg"
+              alt="C#">C#</span>
+          <span class="tech-tag"> <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java" />
+            Java</span>
+          <span class="tech-tag"><img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mariadb/mariadb-original.svg"
+              alt="MariaDB">MariaDB</span>
+        </div>
+      </a>
+    </div>
+  </section>
+</div>
