@@ -39,12 +39,14 @@
             "id": "1f980b77dedb0bd9",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "images/just patrol icon.png"
+                "file": "_posts/Portfolio/2026-04-14-ENOMONT 홈페이지 제작.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "just patrol icon"
+              "icon": "lucide-file",
+              "title": "2026-04-14-ENOMONT 홈페이지 제작"
             }
           }
         ],
@@ -212,6 +214,9 @@
   },
   "active": "1f980b77dedb0bd9",
   "lastOpenFiles": [
+    "thumbnail.png",
+    "images/thumbnail.png",
+    "images/just patrol icon.png",
     "_posts/Portfolio/2026-02-12-포트폴리오_JustPatrol.md",
     "_posts/Portfolio/2026-02-12-포트폴리오_RDC.md",
     "_posts/Portfolio/2026-02-12-포트폴리오_송도 케이블카 KIOSK,POS.md",
@@ -228,7 +233,6 @@
     "images/Pastedimage20260414113154.png",
     "images/Pasted image 20260414113039.png",
     "images/Pastedimage20260414113039.png",
-    "images/Pasted image 20260414113126.png",
     "_site/portfolio/2026/04/14/ENOMONT-홈페이지-제작.html",
     "_site/portfolio/2026/04/14",
     "_site/portfolio/2026/04",
@@ -239,7 +243,6 @@
     "_site/2026/04/14",
     "_site/2026/04",
     "_site/2025/01/21/Git-Lfs-오류.html",
-    "_site/images/just patrol icon.png",
     "_site/README.md",
     "_posts/Architecture&Enginerring/ReadableCode/2026-01-12-루프와 논리를 단순하게 만들기.md",
     "_posts/Architecture&Enginerring/ReadableCode/2026-01-07-표면적 수준에서의 코드 개선.md",
