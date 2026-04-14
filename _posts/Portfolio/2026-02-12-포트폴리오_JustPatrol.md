@@ -20,7 +20,7 @@ last_modified_at: 2026-02-12
 
 학교 야간 경비원에게 벌어지는 기이한 현상을 다룬 3D 1인칭 공포 게임입니다. 현재 스팀(Steam) 플랫폼을 통해 라이브 서비스 중이며, 출시 초기부터 유의미한 판매 성과를 기록하며 상용 게임 개발 및 서비스 사이클을 온전히 경험한 프로젝트입니다.
 
-Steam Link : https://store.steampowered.com/app/4343170/Just_Patrol/
+Steam Link : [Steam 페이지 바로가기](https://store.steampowered.com/app/4343170/Just_Patrol/)
 
 ![](/images/just%20patrol%20icon.png)
 
