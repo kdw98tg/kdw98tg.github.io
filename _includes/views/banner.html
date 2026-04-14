@@ -101,6 +101,13 @@
       box-shadow: 0 8px 20px rgba(108, 92, 231, 0.4);
     }
 
+    .brand-img{
+      width:100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
     /* 기존 배너 반응형 스타일들 */
     {%- if banner_height -%}
       {%- assign num = banner_height | times: 1 -%}
@@ -138,7 +145,7 @@
         {%- else -%}
           <div>
             <h1 class="page-banner-heading">
-              CoMok <span style="color: #6C5CE7">Studio</span>
+              CoMok <span style="color: #6C5CE7">Studio</span> <img class="brand-img" src="assets/images/brand/comok_fabicon.png"/>
             </h1>
             <h2 class="page-banner-subheading">
               백만명을 만족하는 서비스가 백만불을 벌어들인다.
