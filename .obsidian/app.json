@@ -1,4 +1,8 @@
 {
   "spellcheck": false,
-  "propertiesInDocument": "source"
+  "propertiesInDocument": "source",
+  "useMarkdownLinks": true,
+  "newLinkFormat": "relative",
+  "alwaysUpdateLinks": false,
+  "attachmentFolderPath": "./images"
 }
