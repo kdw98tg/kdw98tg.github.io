@@ -2,7 +2,7 @@
   "spellcheck": false,
   "propertiesInDocument": "source",
   "useMarkdownLinks": true,
-  "newLinkFormat": "relative",
+  "newLinkFormat": "absolute",
   "alwaysUpdateLinks": false,
   "attachmentFolderPath": "./images"
 }

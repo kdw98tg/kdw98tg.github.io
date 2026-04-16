@@ -205,3 +205,4 @@ export default Timer;
 
 이런식으로 컴포넌트가 언마운트될 때, Interval을 해제해주면 됩니다. 그러면 정상작동을 하게 됩니다.
 
+![](_posts/Web/React/images/Pasted%20image%2020260416100345.png)
