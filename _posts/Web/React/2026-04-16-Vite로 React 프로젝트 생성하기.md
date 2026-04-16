@@ -40,9 +40,9 @@ Vite 를 사용하려면 당연하게도 `Node Js` 설치가 필수입니다. (1
 npm create vite@latest
 
 # 시작하면서 프로젝트 이름이나 템플릿을 지정할 때
-npm create vite@latest my-react-app [projectname] --template react
+npm create vite@latest my-react-app --template react
 # 위 설정에서 ts 로 만들고 싶을 때
-npm create vite@latest my-react-app [projectname] --template react-ts
+npm create vite@latest my-react-app --template react-ts
 ```
 
 ### yarn으로 빌드하기
