@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Portfolio/2026-04-14-ENOMONT 홈페이지 제작.md",
+                "file": "_posts/Web/React/2026-04-16-React UseEffect.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-04-14-ENOMONT 홈페이지 제작"
+              "title": "2026-04-16-React UseEffect"
             }
           }
         ]
@@ -185,34 +185,35 @@
   },
   "active": "885191f21a038b49",
   "lastOpenFiles": [
+    "_site/assets/images/posts/2026-04-16-React UseEffect/file-20260416104519225.png",
+    "assets/images/posts/2026-04-16-React UseEffect/file-20260416104519225.png",
+    "_site/assets/images/posts/thumbnail.png",
+    "_posts/Web/React/assets/images/posts/2026-04-16-React UseEffect/file-20260416104326313.png",
+    "_posts/Web/React/assets/images/posts/2026-04-16-React UseEffect",
+    "_posts/Web/React/assets/images/posts",
+    "_posts/Web/React/assets/images",
+    "_posts/Web/React/assets",
+    "_site/assets/images/posts/2026-04-16-React UseEffect/file-20260416104227026.png",
+    "_site/assets/images/posts/2026-04-16-React UseEffect",
+    "assets/images/posts/2026-04-16-React UseEffect/file-20260416104227026.png",
+    "assets/images/posts/2026-04-16-React UseEffect",
+    "_site/assets/images/post/2026-04-16-React UseEffect/file-20260416104212072.png",
+    "_site/assets/images/post/2026-04-16-React UseEffect",
+    "_site/assets/images/post",
+    "assets/images/post/2026-04-16-React UseEffect/file-20260416104212072.png",
+    "assets/images/post/2026-04-16-React UseEffect",
+    "assets/images/post",
+    "_posts/Web/React/2026-01-06-React Hooks.md",
+    "_posts/Portfolio/2026-04-14-ENOMONT 홈페이지 제작.md",
     "_posts/Portfolio/2026-02-12-포트폴리오_JustPatrol.md",
     "_posts/Web/React/2026-04-16-React UseEffect.md",
-    "_posts/Portfolio/2026-04-14-ENOMONT 홈페이지 제작.md",
     "_posts/Portfolio/2026-02-12-포트폴리오_지휘봉프로그램.md",
-    "_posts/Web/React/2026-01-06-React Hooks.md",
     "_posts/Web/React/2026-01-06-React 컴포넌트.md",
     "assets/images/posts/First Floor.png",
     "_site/assets/images/posts/just patrol icon.png",
     "_site/assets/images/posts/TitleScene.png",
-    "_site/assets/images/posts/SecurityRoom.png",
-    "_site/assets/images/posts/Pastedimage20260414154332.png",
-    "_site/assets/images/posts/Pastedimage20260414113200.png",
-    "_site/assets/images/posts/Pastedimage20260414113154.png",
-    "_site/assets/images/posts/Pastedimage20260414113126.png",
-    "_site/assets/images/posts/Pastedimage20260414113039.png",
     "_site/assets/images/posts/Pasted.md",
-    "_site/assets/images/posts/Pasted image 20260416102912.png",
-    "_site/assets/images/posts/KakaoTalk_Video_2026-02-13-15-25-16.mp4",
-    "_site/assets/images/posts/KakaoTalk_20260212_134608996.mp4",
-    "_site/assets/images/posts/KakaoTalk_20260212_134533162.mp4",
-    "_site/assets/images/posts",
-    "assets/images/posts",
     "_site/post-images/Pasted.md",
-    "_site/post-images/KakaoTalk_Video_2026-02-13-15-25-16.mp4",
-    "_site/post-images/KakaoTalk_20260212_134608996.mp4",
-    "_site/post-images/KakaoTalk_20260212_134533162.mp4",
-    "_site/post-images",
-    "_site/web/2026/04/16/React-UseEffect.html",
     "_site/images/Pasted.md",
     "_posts/Web/React/2026-04-16-React StrictMode란.md",
     "_posts/Web/React/2026-04-16-Vite로 React 프로젝트 생성하기.md",
@@ -229,7 +230,6 @@
     "_posts/Architecture&Enginerring/CodeComplete2/2025-09-21-Code Complete2 소프트웨어 선행조건.md",
     "_posts/Architecture&Enginerring/CodeComplete2/2025-09-21-Code Complete2 비유의 힘.md",
     "_posts/Web/React/2026-01-05-React JSX 간단 예제.md",
-    "_posts/Web/React/2026-01-05-React 프로젝트 생성.md",
-    "_posts/Game Engine/Unreal/Unreal 에러.md"
+    "_posts/Web/React/2026-01-05-React 프로젝트 생성.md"
   ]
 }

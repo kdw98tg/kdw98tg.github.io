@@ -1,5 +1,5 @@
 {
-  "attachmentFolderPath": "assets/images/post/${noteFileName}",
+  "attachmentFolderPath": "assets/images/posts/${noteFileName}",
   "attachmentRenameMode": "Only pasted images",
   "collectAttachmentUsedByMultipleNotesMode": "Skip",
   "collectedAttachmentFileName": "",
