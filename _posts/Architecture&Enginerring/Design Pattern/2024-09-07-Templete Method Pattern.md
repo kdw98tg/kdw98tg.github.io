@@ -143,7 +143,7 @@ public class Main {
 ```
 
 
-![Run Main](/images/Pasted%20image%2020240907165414.png)
+![Run Main](/assets/images/posts/Pasted%20image%2020240907165414.png)
 
 위와같이 순서는 동일하되, 만드는 방법만이 다른 음료가 탄생하였습니다.
 
@@ -252,13 +252,13 @@ public class Main {
 }
 ```
 
-![](/images/Pasted%20image%2020240907165954.png)
+![](/assets/images/posts/Pasted%20image%2020240907165954.png)
 
 실행 후, 살펴보면, 아까와 다른점은 `차에 레몬을 넣겠냐?` 라는 사용자의 의사를 물어보고 있다는 점입니다. 
 
 y 라고 답했기 때문에, 레몬을 넣는 모습입니다. 반면, y 가 아니라 다른 답이 들어가면, 상위 클래스에서 정의한 대로 if(false)가 되어, 첨가물을 넣는 로직은 돌아가지 않게 됩니다.
 
-![](/images/Pasted%20image%2020240907170134.png)
+![](/assets/images/posts/Pasted%20image%2020240907170134.png)
 
 ## 디자인 원칙
 

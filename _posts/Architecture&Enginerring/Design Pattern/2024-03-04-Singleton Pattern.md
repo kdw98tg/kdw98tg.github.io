@@ -78,7 +78,7 @@ public class ClassicSingleton {
 
 다음 사진과 같은 경우 입니다.
 
-![싱글턴 멀티스레드 문제](/images/Pasted%20image%2020240304233316.png)
+![싱글턴 멀티스레드 문제](/assets/images/posts/Pasted%20image%2020240304233316.png)
 
 ## 예제 - getInstance() 동기화
 

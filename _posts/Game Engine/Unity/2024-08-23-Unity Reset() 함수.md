@@ -24,7 +24,7 @@ last_modified_at: 2024-08-23
 
 생명주기는 다음과 같습니다.
 
-![Unity LifeCycle](/images/Pasted%20image%2020240823155242.png)
+![Unity LifeCycle](/assets/images/posts/Pasted%20image%2020240823155242.png)
 
 여기서 항상 `Reset()` 함수는 어디에 사용하는거지? 라는 의문이 있었습니다.
 
@@ -62,7 +62,7 @@ public class SomeClass : MonoBehaviour
 
 이렇게 Reset() 함수를 쓰고 카톡방에 공유하니, 이미 알고있는 분들이 많았습니다. 그리고 인스펙터에서 컴포넌트 오른쪽 상단에 점 세개짜리 메뉴를 누르면 나오는 Reset 이 해당 Reset() 함수를 돌리는 것 이었다는 것도 알게 되었습니다.
 
-![](/images/Pasted%20image%2020240823160332.png)
+![](/assets/images/posts/Pasted%20image%2020240823160332.png)
 
 따라서 해당 Reset 을 누르면 제가 새로 정의한 Reset() 함수가 돌아가면서 초기화가 진행되게 됩니다.
 

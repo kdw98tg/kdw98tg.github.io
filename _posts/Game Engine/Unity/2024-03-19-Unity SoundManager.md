@@ -31,7 +31,7 @@ last_modified_at: 2024-03-19
 
 본 Sound 로직의 구조 입니다. 단순한 하향식 구조 입니다.
 
-![Sound 구조도](/images/Pasted%20image%2020240319162404.png)
+![Sound 구조도](/assets/images/posts/Pasted%20image%2020240319162404.png)
 
 ### Sound Model 클래스 만들기
 
@@ -219,7 +219,7 @@ public class SoundManager : MonoBehaviour
 
 ```
 
-![SoundManager 등록](/images/Pasted%20image%2020240319160234.png)
+![SoundManager 등록](/assets/images/posts/Pasted%20image%2020240319160234.png)
 
 등록한 후, Sound 들의 이름과 AudioClip을 매핑시켜 줍니다.
 

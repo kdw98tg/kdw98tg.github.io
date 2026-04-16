@@ -52,7 +52,7 @@ last_modified_at: 2024-04-15
 
 컴퓨터 1에서 VMWare로 가상환경을 구축하여, 거기에 IIS 웹서버를 깔아놨습니다.
 
-![LAN 구성](/images/Pasted%20image%2020240416121938.png)
+![LAN 구성](/assets/images/posts/Pasted%20image%2020240416121938.png)
 
 ### ip주소 확인하는 방법
 
@@ -71,7 +71,7 @@ IP는 `Public IP`, `Private IP`이렇게 구성되어 있습니다.
 ipconfig
 ```
 
-![ipconfig](/images/Pasted%20image%2020240416122503.png)
+![ipconfig](/assets/images/posts/Pasted%20image%2020240416122503.png)
 
 밑줄친IPv4 주소옆에 있는 숫자가 `Private IP` 입니다.
 
@@ -89,7 +89,7 @@ ipconfig
 
 공유기 설정에서 포트포워딩을 설정할 수 있습니다. 저는 ASUS 공유기를 사용하고 있습니다.
 
-![port forwarding](/images/Pasted%20image%2020240416123053.png)
+![port forwarding](/assets/images/posts/Pasted%20image%2020240416123053.png)
 
 첫번째 칸부터 `통신규약 이름`, `외부에서 접속할 포트`, `내부로 연결할 포트`, `접속하고싶은 Private IP `, `통신 프로토콜` 입니다.
 
@@ -101,7 +101,7 @@ ipconfig
 
 윈도우 검색에서 방화벽 상태 확인 -> 고급설정으로 들어가 줍니다.
 
-![방화벽 설정](/images/Pasted%20image%2020240416123723.png)
+![방화벽 설정](/assets/images/posts/Pasted%20image%2020240416123723.png)
 
 인바운드 규칙에서 오른쪽에 `새 규칙`을 눌러 8888번 포트를 열어 줍니다.
 
@@ -115,7 +115,7 @@ netstat -ano
 ```
 
 해당 명령어를 치고 위로올리면 8888번 포트가 Listening 중이라는 문구를 볼 수 있습니다.
-![8888Port Listening](/images/Pasted%20image%2020240416123340.png)
+![8888Port Listening](/assets/images/posts/Pasted%20image%2020240416123340.png)
 
 이제 VMWare 통해 8888 -> 80 포트로 포트포워딩을 해줍시다.
 
@@ -123,11 +123,11 @@ netstat -ano
 
 Eidt->Virtual Network Editor 로 들어가시면 `VMnet8`이라는 속성이 있습니다. 아래의 `Nat Setting`을 열어줍니다.
 
-![vmware portForwarding](/images/Pasted%20image%2020240416123943.png)
+![vmware portForwarding](/assets/images/posts/Pasted%20image%2020240416123943.png)
 
 `Add`를 눌러 VMWare 안의 운영체제의 포트번호를 넣고, 80포트로 설정해주면됩니다.
 
 이렇게하면 외부에서 접근이 가능합니다.
 
 
-![iis 접속 성공](/images/Pasted%20image%2020240416124304.png)
+![iis 접속 성공](/assets/images/posts/Pasted%20image%2020240416124304.png)

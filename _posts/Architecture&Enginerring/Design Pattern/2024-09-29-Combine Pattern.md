@@ -141,7 +141,7 @@ public class DuckSimulator {
 }
 ```
 
-![](/images/Pasted%20image%2020240929013431.png)
+![](/assets/images/posts/Pasted%20image%2020240929013431.png)
 
 전략 패턴을 적용해서 `Quackable`이라는 공통 인터페이스를 만들고, Duck 들에게 상속시켜 각각의 Duck 마다의 행동을 재정의하여 호출하였습니다.
 
@@ -222,7 +222,7 @@ public class DuckSimulator {
 }
 ```
 
-![](/images/Pasted%20image%2020240929014421.png)
+![](/assets/images/posts/Pasted%20image%2020240929014421.png)
 
 여기까지, Goose 를 Duck 처럼 실행할 수 있도록 만들었습니다.
 
@@ -305,7 +305,7 @@ public class DuckSimulator {
 }
 ```
 
-![](/images/Pasted%20image%2020240929015454.png)
+![](/assets/images/posts/Pasted%20image%2020240929015454.png)
 
 맨 마지막에 거위를 제외하고, 오리는 4번 울었습니다. 데코레이터를 활용해 성공적으로 기능을 추가하였습니다.
 
@@ -413,7 +413,7 @@ public class DuckSimulator {
 }
 ```
 
-![](/images/Pasted%20image%2020240929020530.png)
+![](/assets/images/posts/Pasted%20image%2020240929020530.png)
 
 같은 결과가 반환 됩니다.
 
@@ -538,7 +538,7 @@ public class DuckSimulator {
 ```
 
 
-![](/images/Pasted%20image%2020240929022135.png)
+![](/assets/images/posts/Pasted%20image%2020240929022135.png)
 
 CountingDuckFactory 로 만든 객체로 이루어져서, 거위가 꽥 한거 빼고 15번 모두 정확하게 세어졌네요.
 
@@ -745,7 +745,7 @@ public class DuckSimulator {
 }
 ```
 
-![](/images/Pasted%20image%2020240929024941.png)
+![](/assets/images/posts/Pasted%20image%2020240929024941.png)
 
 ## 정리
 

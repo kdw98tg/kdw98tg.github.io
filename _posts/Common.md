@@ -41,7 +41,7 @@ last_modified_at: 2024-00-00
 
 ````
 
-![](Pasted%20image%2020240302132108.png)
+![](/assets/images/posts/Pasted%20image%2020240302132108.png)
 
 ### 형광펜
 
@@ -54,7 +54,7 @@ last_modified_at: 2024-00-00
 <span style='background-color: #f5f0ff'>보라형광펜</span>
 <span style='background-color: #F7DDBE'>주황형광펜</span>
 ````
-![](Pasted%20image%2020240302132137.png)
+![](/assets/images/posts/Pasted%20image%2020240302132137.png)
 
 ## Image Size
 

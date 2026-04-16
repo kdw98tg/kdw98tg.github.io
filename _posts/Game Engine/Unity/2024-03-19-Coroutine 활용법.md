@@ -109,7 +109,7 @@ public class Test : MonoBehaviour
 }
 ```
 
-![실행결과](/images/Pasted%20image%2020240319152309.png)
+![실행결과](/assets/images/posts/Pasted%20image%2020240319152309.png)
 
 이것을 잘 활용하면 코루틴을 Update() 처럼 사용할 수 있습니다.
 

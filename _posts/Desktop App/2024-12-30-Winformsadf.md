@@ -200,7 +200,7 @@ public class Client {
 }
 ```
 
-![](/images/Pasted%20image%2020241012233002.png)
+![](/assets/images/posts/Pasted%20image%2020241012233002.png)
 
 ### 정리
 

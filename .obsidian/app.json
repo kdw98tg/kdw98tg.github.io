@@ -3,6 +3,6 @@
   "propertiesInDocument": "source",
   "useMarkdownLinks": true,
   "newLinkFormat": "absolute",
-  "alwaysUpdateLinks": false,
-  "attachmentFolderPath": "./images"
+  "alwaysUpdateLinks": true,
+  "attachmentFolderPath": "/assets/images/posts"
 }

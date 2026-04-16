@@ -25,7 +25,7 @@ last_modified_at: 2024-03-25
 
 또한, `Newtonsoft.Json`패키지를 사용하였습니다. 해당 패키지는 Window - PackageManager 에서 이름으로 검색을 선택 한 후, `com.unity.nuget.newtonsoft-json` 을 입력하면 됩니다.
 
-![package Manager](/images/Pasted%20image%2020240325132253.png)
+![package Manager](/assets/images/posts/Pasted%20image%2020240325132253.png)
 
 ## Model 클래스 만들기
 

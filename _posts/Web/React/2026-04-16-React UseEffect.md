@@ -81,11 +81,11 @@ export default UseEffect1;
 
 ```
 
-![](images/Pasted%20image%2020260416093153.png)
+![](/assets/images/posts/Pasted%20image%2020260416101509.png)
 
 위 이미지를 보면, 컴포넌트가 렌더링 되자 마자, console.log가 3개가 뜨는것을 확인할 수 있습니다. 이러면 비효율이 발생하고, `alert`같은 동작이 일어난다고 하면, 컴포넌트가 마운트 되자마자, 사용자는 팝업창을 3개를 보게 됩니다.
 
-![](images/Pasted%20image%2020260416093425.png)
+![](/assets/images/posts/Pasted%20image%2020260416093425.png)
 
 또한, 숫자만 변경했는데, 계속 로그가 3개씩 찍히는것을 볼 수 있습니다.
 
@@ -137,7 +137,7 @@ export default UseEffect1;
 
 지금 조금 이상한 것이 제일 처음 마운팅 되었을 때, 모든 로그가 다 뜬다는 점인데, 이것은 `UseRef`라는 훅을 사용하여 동작을 수정할 수 있습니다. 해당 내용은 `UseRef`에 대한 포스팅에서 다루겠습니다.
 
-![](images/Pasted%20image%2020260416093746.png)
+![](/assets/images/posts/Pasted%20image%2020260416093746.png)
 
 ### Clean Up 함수 사용
 
@@ -181,7 +181,7 @@ export default UseEffect2;
 
 ```
 
-![](images/Pasted%20image%2020260416095320.png)
+![](/assets/images/posts/Pasted%20image%2020260416095320.png)
 
 위처럼 코드를 짜고, Timer를 돌려보면, 첫번째 타이머를 돌릴때는 정상작동을 하나, 버튼을 여러번 누르면 Timer의 setInterval 이 중복이 되어 엄청 빠르게 로그가 찍히는것을 볼 수 있습니다.
 
@@ -205,4 +205,4 @@ export default Timer;
 
 이런식으로 컴포넌트가 언마운트될 때, Interval을 해제해주면 됩니다. 그러면 정상작동을 하게 됩니다.
 
-![](_posts/Web/React/images/Pasted%20image%2020260416100345.png)
+![](/assets/images/posts/Pasted%20image%2020260416102912.png)

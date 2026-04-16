@@ -243,7 +243,7 @@ public class Main {
 }
 ```
 
-![](/images/Pasted%20image%2020240302010538.png)
+![](/assets/images/posts/Pasted%20image%2020240302010538.png)
 
 다음과 같이 각`Observers`를 등록하고 난 후, `Subject`클래스의 `setMeasurements` 함수가 호출되고, 출력값이 정상적으로 나오는것을 확인할 수 있습니다.
 
@@ -316,7 +316,7 @@ public class Main {
 }
 ```
 
-![실행결과](/images/Pasted%20image%2020240302131201.png)
+![실행결과](/assets/images/posts/Pasted%20image%2020240302131201.png)
 
 정상적으로 정보를 가져오는것을 확인할 수 있습니다.
 

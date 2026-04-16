@@ -22,15 +22,15 @@ last_modified_at: 2026-02-12
 
 Steam Link : [Steam 페이지 바로가기](https://store.steampowered.com/app/4343170/Just_Patrol/)
 
-![](/images/just%20patrol%20icon.png)
+![](/assets/images/posts/just%20patrol%20icon.png)
 
-![](/images/TitleScene.png)
+![](/assets/images/posts/TitleScene.png)
 
-![](/images/SecurityRoom.png)
+![](/assets/images/posts/SecurityRoom.png)
 
-![](/images/Opend%20Window.png)
+![](/assets/images/posts/Opend%20Window.png)
 
-![](/images/First%20Floor.png)
+![](/assets/images/posts/First%20Floor.png)
 
 ## 1. 프로젝트 개요
 * 성격: 인디 게임 상용 출시작

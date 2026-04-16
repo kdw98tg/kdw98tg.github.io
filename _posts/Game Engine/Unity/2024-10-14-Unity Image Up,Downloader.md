@@ -201,7 +201,7 @@ public class ImageController : ControllerBase
 
 이렇게 하면, `/wwwroot/uploads` 경로에 이미지가 들어가는것을 볼 수 있습니다.
 
-![](/images/Pasted%20image%2020241015000229.png)
+![](/assets/images/posts/Pasted%20image%2020241015000229.png)
 
 여기서, 제가 지정한 이름이 아니라 알아볼 수 없는 문자가 들어가는 것은 중복방지를 위해 UUID 를 생성하는 코드를 썼기 때문입니다. 
 
@@ -313,7 +313,7 @@ public class ImageController : ControllerBase
 
 코드를 실행시키면, 잘 동작하는것을 볼 수 있습니다.
 
-![](/images/Pasted%20image%2020241015001915.png)
+![](/assets/images/posts/Pasted%20image%2020241015001915.png)
 
 
 

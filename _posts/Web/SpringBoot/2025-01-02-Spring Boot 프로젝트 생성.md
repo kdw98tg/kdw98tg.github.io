@@ -23,7 +23,7 @@ Java 17, Gradle, SpringBoot 등등이 대표적인 예 입니다.
 
 해당 사이트에 들어가서 필요한 의존성들을 추가한 뒤, 아래의 Generate를 선택해주면 기본적인 스프링 프로젝트가 다운로드 되게 됩니다.
 
-![](/images/Pasted%20image%2020250606201119.png)
+![](/assets/images/posts/Pasted%20image%2020250606201119.png)
 
 기본적으로 `Spring Web`, `Lombok`, `MySqlDriver`을 설치하고, 추가로 템플릿 엔진이 필요하다면 `Thymleaf` 패키지를 설치해 줍니다.
 

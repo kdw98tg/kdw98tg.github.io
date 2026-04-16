@@ -368,7 +368,7 @@ public class Main {
 }
 ```
 
-![](/images/Pasted%20image%2020241005222940.png)
+![](/assets/images/posts/Pasted%20image%2020241005222940.png)
 
 ## 정리
 

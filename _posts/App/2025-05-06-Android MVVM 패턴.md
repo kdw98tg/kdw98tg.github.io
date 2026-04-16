@@ -83,7 +83,7 @@ MVVM 패턴 예제로는 `+`, `-` 버튼을 활용하여 숫자를 올리고 내
 ```
 
 
-![](/images/Pasted%20image%2020250506200632.png)
+![](/assets/images/posts/Pasted%20image%2020250506200632.png)
 
 간단하게 버튼 2개와 텍스트 1개로 구성하였습니다.
 
@@ -243,7 +243,7 @@ class MainActivity : AppCompatActivity()
 ```
 
 
-![](/images/Pasted%20image%2020250506203519.png)
+![](/assets/images/posts/Pasted%20image%2020250506203519.png)
 
 정상적으로 잘 작동합니다.
 

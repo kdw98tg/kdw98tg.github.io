@@ -29,7 +29,7 @@ last_modified_at: 2024-04-03
 
 구조는 아래와 같습니다.
 
-![SoundManager 구조도](/images/Pasted%20image%2020240403141632.png)
+![SoundManager 구조도](/assets/images/posts/Pasted%20image%2020240403141632.png)
 
 `GameManager`는 `StageManager` 에게 씬을 변경하라고 지시하고, 그때에 SoundManager를 사용하여 음악을 재생하는 방식입니다.
 

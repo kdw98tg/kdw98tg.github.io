@@ -20,7 +20,7 @@ last_modified_at: 2024-08-23
 ## Drag 기능 구현하기
 
 이번 프로젝트를 진행하면서, Tilemap 안의 오브젝트를 움직이는 기능이 있었습니다. 해당 기능은 `아이러브커피`에도 존재하는 기능입니다.
-![Drag 기능](/images/Pasted%20image%2020240823134546.png)
+![Drag 기능](/assets/images/posts/Pasted%20image%2020240823134546.png)
 
 `Remove`버튼과 `Confirm`버튼은 단순히 클릭이벤트가 일어날 때 로직이 발동되면 되지만, `Move`의 경우에는 다릅니다.
 
@@ -142,4 +142,4 @@ Drag가 되어야 하는 객체에 `IDragable`인터페이스를 상속시키고
 
 원래는 코루틴을 막 섞어서 구현을 했는데, 이게 훨씬 간단하게 구현되는것 같습니다. 또한, Drag 중이 아닐때는 불필요하게 매 프레임 연산을 하지 않아도 되기 때문에 더 좋은 것 같습니다.
 
-![move 구현](/images/Pasted%20image%2020240823140230.png)
+![move 구현](/assets/images/posts/Pasted%20image%2020240823140230.png)

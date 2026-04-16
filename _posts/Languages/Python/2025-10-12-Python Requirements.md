@@ -24,7 +24,7 @@ last_modified_at: 2024-10-12
 
 현재 임시로 만든 폴더의 가상환경에서는 다음과 같은 의존성들이 있습니다.
 
-![](/images/Pasted%20image%2020251012230135.png)
+![](/assets/images/posts/Pasted%20image%2020251012230135.png)
 
 이제, requirements를 가지고 해당 numpy 라이브러리의 버전을 어떤 환경에서도 설치할 수 있도록 명시하겠습니다.
 
@@ -36,11 +36,11 @@ pip freeze > requirements.txt
 
 해당 명령어를 사용하면 프로젝트 목록에 `requirements.txt`가 추가 됩니다.
 
-![](/images/Pasted%20image%2020251012230323.png)
+![](/assets/images/posts/Pasted%20image%2020251012230323.png)
 
 그리고 해당 파일을 열어보면 제가 설치한 라이브러의 목록이 나타나게 됩니다.
 
-![](/images/Pasted%20image%2020251012230422.png)
+![](/assets/images/posts/Pasted%20image%2020251012230422.png)
 
 여기까지하면 requirements.txt 파일을 만들고, 의존성 목록을 저장하는 것이 되었습니다.
 
@@ -55,7 +55,7 @@ pip install -r requirements.txt
 
 위 명령어를 치게 되면, `requirements.txt`에 있는 패키지들이 설치되는것을 알 수 있습니다.
 
-![](/images/Pasted%20image%2020251012230704.png)
+![](/assets/images/posts/Pasted%20image%2020251012230704.png)
 
 이미 설치가 되어 있기 때문에, 설치가 되어 있다는 알림이 뜨며 마무리가 되었습니다.
 

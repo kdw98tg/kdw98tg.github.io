@@ -41,7 +41,7 @@ State Pattern은 AI 말고도 복잡한 행동을 수행해야 하는 Player Con
 
 실제로 포트폴리오를 만들 때, 복잡한 행동을 수행하는 Player를 State Pattern으로 구현하였습니다. 아래 이미지는 StatePattern으로 구현한 Player의 상태도 입니다. 이걸 `if`문으로 전부 처리한다고 생각하니까 벌써 머리가 아파오는군요.
 
-![복잡한 행동을 하는 Player의 상태도](/images/Pasted%20image%2020240819213815.png)
+![복잡한 행동을 하는 Player의 상태도](/assets/images/posts/Pasted%20image%2020240819213815.png)
 
 ## StatePattern 구현
 
@@ -49,13 +49,13 @@ State Pattern은 AI 말고도 복잡한 행동을 수행해야 하는 Player Con
 
 해당 예제는 플레이어의 `Idle`, `Walk`, `Jump` 상태를 전환하는 StateMachine 입니다. 각각의 조건은 다음과 같습니다.
 
-![State 구성도](/images/Pasted%20image%2020240819222223.png)
+![State 구성도](/assets/images/posts/Pasted%20image%2020240819222223.png)
 
 해당 조건으로 각 상태들을 왔다갔다 합니다.
 
 이 그림을 보아하니, 유니티의 어떤 기능과 많이 닮아 있습니다. 바로 Animatior Controller 입니다. 
 
-![Unity Animator Controller](/images/Pasted%20image%2020240819222408.png)
+![Unity Animator Controller](/assets/images/posts/Pasted%20image%2020240819222408.png)
 
 네 맞습니다. 유니티의 Animator Controller 역시 StatePattern으로 구현되었습니다. 그렇다면 이러한 기능을 직접 구현해보도록 하겠습니다.
 

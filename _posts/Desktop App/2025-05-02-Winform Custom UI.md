@@ -68,9 +68,9 @@ namespace CustomUI.UIs
 
 Form에 CustomButton을 넣는 과정은 일반 Button과 같습니다.
 
-![](/images/Pasted%20image%2020250502141303.png)
+![](/assets/images/posts/Pasted%20image%2020250502141303.png)
 
-![](/images/Pasted%20image%2020250502141321.png)
+![](/assets/images/posts/Pasted%20image%2020250502141321.png)
 
 그리고, Button 클래스를 상속받았기 때문에 제가 조절할 수 있는 프로퍼티는 일반 Button 클래스와 같고, 확장을 한다면 더 많아질 수 있게 되는것 입니다.
 

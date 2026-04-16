@@ -29,7 +29,7 @@ last_modified_at: 2024-09-22
 > 즉, Composite 패턴은 그릇과, 내용물을 동일시해서 재귀적인 구조를 만들기 위한 패턴 입니다.
 
 ### 구조 및 용어
-![](/images/Pasted%20image%2020240922223628.png)
+![](/assets/images/posts/Pasted%20image%2020240922223628.png)
 
 - Component : Leaf와 Compsite를 묶는 공통적인 상위 인터페이스
 - Composite : 복합 객체로서, Leaf 역할이나 Composite 역할을 넣어 관리하는 역할을 함
@@ -367,9 +367,9 @@ public class Main {
 }
 ```
 
-![](/images/Pasted%20image%2020240922230235.png)
+![](/assets/images/posts/Pasted%20image%2020240922230235.png)
 
-![](/images/Pasted%20image%2020240922230255.png)
+![](/assets/images/posts/Pasted%20image%2020240922230255.png)
 
 위 사진과 같이 모든 자식의 노드까지 순회한 것을 알 수 있습니다.
 

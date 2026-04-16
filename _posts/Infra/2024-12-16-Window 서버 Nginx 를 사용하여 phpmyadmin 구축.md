@@ -22,7 +22,7 @@ last_modified_at: 2024-12-16
 
 ## phpMyAdmin 이란?
 
-![](/images/Pasted%20image%2020241216154516.png)
+![](/assets/images/posts/Pasted%20image%2020241216154516.png)
 
 서버의 데이터베이스에 접근하려면, mysql client 를 열어 서버 데이터베이스에 원격 접속하는 방법이 있습니다. 하지만 이 방식에는 단점이 존재합니다. 바로 mysql client를 설치해야 한다는 것입니다.
 
@@ -38,17 +38,17 @@ https://nginx.org/en/download.html
 
 해당 링크로 접속하여 Window Stable 버전을 다운받아 줍니다.
 
-![](/images/Pasted%20image%2020241216155320.png)
+![](/assets/images/posts/Pasted%20image%2020241216155320.png)
 
 그 뒤에, 압축을 해제하고, nginx.exe 실행파일을 실행해 줍니다.
 
-![](/images/Pasted%20image%2020241216155426.png)
+![](/assets/images/posts/Pasted%20image%2020241216155426.png)
 
 Nginx 를 실행할 때, 사용자가 원하는 설정대로 돌리게 할 수 있습니다. conf - nginx.conf 파일을 열어서 설정을 조작할 수 있습니다. (일단 기본으로 두고, phpmyadmin이 설치되면 다시 만집니다.)
 
 Nginx 가 잘 돌아가고 있는지 확인하기 위해서, 브라우저를 열고 localhost로 접근 해봅니다. 다음과 같은 화면이 나온다면, 정상적으로 작동하고 있는것 입니다.
 
-![](/images/Pasted%20image%2020241216155735.png)
+![](/assets/images/posts/Pasted%20image%2020241216155735.png)
 
 
 ## PHP 설치하기
@@ -79,35 +79,35 @@ date.timezone = Asia/Seoul
 
 파일탐색기의 보기 - 확장 파일명을 체크하고 이름을 바꿔줍니다.
 
-![](/images/Pasted%20image%2020241216161232.png)
+![](/assets/images/posts/Pasted%20image%2020241216161232.png)
 
 위의 php.ini 처럼 아이콘이 바뀐다면 성공입니다.
 
 이제, cmd 창을 켜서 `php -v`명령어를 쳐봅니다. 제대로 설정되었다면, php의 버전이 출력되어야 합니다. 하지만 다음과 같은 문구가 뜹니다.
 
-![](/images/Pasted%20image%2020241216161348.png)
+![](/assets/images/posts/Pasted%20image%2020241216161348.png)
 
 이는 환경변수가 지정되어 있지 않아서 발생하는 문제입니다.
 
 시작화면 검색창에 `시스템 환경 변수 편집` 을 검색하여 다음 창을 열어줍니다.
 
-![](/images/Pasted%20image%2020241216161459.png)
+![](/assets/images/posts/Pasted%20image%2020241216161459.png)
 
-![](/images/Pasted%20image%2020241216161546.png)
+![](/assets/images/posts/Pasted%20image%2020241216161546.png)
 
 여기서 오른쪽 아래의 환경변수 버튼을 클릭합니다.
 
-![](/images/Pasted%20image%2020241216161806.png)
+![](/assets/images/posts/Pasted%20image%2020241216161806.png)
 
 Path 변수를 선택하고 편집 버튼을 누릅니다.
 
-![](/images/Pasted%20image%2020241216161847.png)
+![](/assets/images/posts/Pasted%20image%2020241216161847.png)
 
 새로 만들기를 선택하여, php가 설치되어있는 경로를 넣습니다. 저의 경우는 `C:/php` 로 지정하였습니다.
 
 여기까지 하고 cmd를 다시 켜서 `php -v` 를 입력하면 버전정보가 나타납니다.
 
-![](/images/Pasted%20image%2020241216161957.png)
+![](/assets/images/posts/Pasted%20image%2020241216161957.png)
 
 ## phpMyAdmin 설치하기
 
@@ -115,13 +115,13 @@ Path 변수를 선택하고 편집 버튼을 누릅니다.
 
 https://www.phpmyadmin.net/
 
-![](/images/Pasted%20image%2020241216162204.png)
+![](/assets/images/posts/Pasted%20image%2020241216162204.png)
 
 저는 최신버전인 5.2.1 버전을 설치하였습니다.
 
 압축을 풀고, 해당 파일을 Nginx 폴더의 html 폴더 안에 위치시킵니다.
 
-![](/images/Pasted%20image%2020241216162314.png)
+![](/assets/images/posts/Pasted%20image%2020241216162314.png)
 
 이렇게 하면 설치 완료 입니다.
 
@@ -197,30 +197,30 @@ TCP    127.0.0.1:9000     0.0.0.0:0     LISTENING       1234
 
 하지만, 위 코드가 출력되지 않는다면, 방화벽을 열어줘야 합니다.
 
-![](/images/Pasted%20image%2020241216163548.png)
+![](/assets/images/posts/Pasted%20image%2020241216163548.png)
 
 `방화벽 상태 확인`을 검색하여 들어가줍니다.
 
-![](/images/Pasted%20image%2020241216163622.png)
+![](/assets/images/posts/Pasted%20image%2020241216163622.png)
 
 고급 설정을 열어줍니다.
 
-![](/images/Pasted%20image%2020241216163652.png)
+![](/assets/images/posts/Pasted%20image%2020241216163652.png)
 
-![](/images/Pasted%20image%2020241216163705.png)
+![](/assets/images/posts/Pasted%20image%2020241216163705.png)
 
 인바운드 규칙 - 새 규칙을 눌러줍니다.
 
 
-![](/images/Pasted%20image%2020241216163727.png)
+![](/assets/images/posts/Pasted%20image%2020241216163727.png)
 
-![](/images/Pasted%20image%2020241216163744.png)
+![](/assets/images/posts/Pasted%20image%2020241216163744.png)
 
-![](/images/Pasted%20image%2020241216163759.png)
+![](/assets/images/posts/Pasted%20image%2020241216163759.png)
 
-![](/images/Pasted%20image%2020241216163811.png)
+![](/assets/images/posts/Pasted%20image%2020241216163811.png)
 
-![](/images/Pasted%20image%2020241216163829.png)
+![](/assets/images/posts/Pasted%20image%2020241216163829.png)
 
 위와같이 설정을 마무리 하면, 방화벽이 열리게 됩니다. 그 다음 다시 아래 명령어를 수행하면, php-cgi가 정상작동하는것을 확인할 수 있습니다.
 
@@ -232,5 +232,5 @@ netstat -ano | findstr :9000
 
 이제, 브라우저 주소란에 `localhost/phpmyadmin`을 치게 되면, 다음과 같은 화면이 열리게 되고, phpmyadmin 구축이 완료되었습니다.
 
-![](/images/Pasted%20image%2020241216164034.png)
+![](/assets/images/posts/Pasted%20image%2020241216164034.png)
 

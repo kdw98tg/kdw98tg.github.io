@@ -24,7 +24,7 @@ last_modified_at: 2025-08-01
 
 저도 처음에 Spring Boot를 시작하면서 Controller-Service-Repository 구조를 따라서 설계하였습니다. 그리고 다른 추가적인 기능이 생기면, 큰 분류로 나누고, 그 안에 엔티티를 기준으로 패키지를 만들어서 관리하였습니다.
 
-![](/images/Pasted%20image%2020250801165714.png)
+![](/assets/images/posts/Pasted%20image%2020250801165714.png)
 
 위와 같이 Controller-Service-Controller 구조로 설계를 하게 되면, 간단한 프로젝트는 별 영향이 없겠지만, 기능이 많아지고, Entity들이 많아지게 되면, 어떤 상위 폴더 (ex) controller)를 열었을 때, 아래에 Entity 의 개수만큼 패키지가 생기게 되고, 특정 파일을 찾는데 시간이 많이 소요되게 됩니다. 따라서, 해당 패키지 구조에서 `기능중심 패키지 구조`로 변경하였습니다.
 
@@ -40,7 +40,7 @@ last_modified_at: 2025-08-01
 
 위와같이 나누게 되면 패키지 구조가 다음과 같이 형성됩니다. (User의 하위 패키지만 열어놓았음)
 
-![](/images/Pasted%20image%2020250801170558.png)
+![](/assets/images/posts/Pasted%20image%2020250801170558.png)
 
 위와같이 구성할 수 있습니다. 이 구조의 장점은, 하나의 기능단위 패키지로 이루어져 있기 때문에, 작업을 할 때, 다른 패키지를 건들일이 거의 없게 됩니다. 또한 기능의 확장의 경우, User가 Admin 페이지를 가지게 될 때, Admin 이라는 패키지를 따로 만들 필요 없이 User 안에 있는 controller 에 AdminController 를 추가해도 어색하지 않게 됩니다.
 

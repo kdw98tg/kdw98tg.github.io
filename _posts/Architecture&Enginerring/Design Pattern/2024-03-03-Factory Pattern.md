@@ -83,7 +83,7 @@ last_modified_at: 2024-03-03
 그렇기 때문에, **추상 팩토리 패턴이 팩토리 메서드 패턴의 상위 호환은 아닙니다. 두 패턴의 차이는 명확하기 때문에, 상황에 따라 적절한 선택을 해야 합니다.**
 
 
-![팩토리 메서드 vs 추상 팩토리](/images/Pasted%20image%2020240303180907.png)
+![팩토리 메서드 vs 추상 팩토리](/assets/images/posts/Pasted%20image%2020240303180907.png)
 
 표 출처: [https://inpa.tistory.com/entry/GOF-💠-추상-팩토리Abstract-Factory-패턴-제대로-배워보자#abstract_factory_vs_factory_method](https://inpa.tistory.com/entry/GOF-%F0%9F%92%A0-%EC%B6%94%EC%83%81-%ED%8C%A9%ED%86%A0%EB%A6%ACAbstract-Factory-%ED%8C%A8%ED%84%B4-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%B0%B0%EC%9B%8C%EB%B3%B4%EC%9E%90#abstract_factory_vs_factory_method) [Inpa Dev 👨‍💻:티스토리]
 
@@ -263,7 +263,7 @@ public class PizzaTestDrive {
 }
 ```
 
-![실행결과](/images/Pasted%20image%2020240303183928.png)
+![실행결과](/assets/images/posts/Pasted%20image%2020240303183928.png)
 
 요구 사항에 맞게 피자가 잘 만들어진 것을 볼 수 있습니다.
 
@@ -488,7 +488,7 @@ public class Main {
 }
 ```
 
-![](/images/Pasted%20image%2020240303210052.png)
+![](/assets/images/posts/Pasted%20image%2020240303210052.png)
 
 각기 다른 사람이 주문한 각기 다른 스타일의 피자가 나온것을 볼 수 있습니다.
 
@@ -749,4 +749,4 @@ public class Main {
 }
 ```
 
-![](/images/Pasted%20image%2020240303213744.png)
+![](/assets/images/posts/Pasted%20image%2020240303213744.png)
