@@ -1,7 +1,7 @@
 ---
 layout: post
 
-title: "[React/Js] Vite로 React 앱 생성하기"
+title: "[React/Js] useSWR을 사용해서 통신 최적화 하기"
 
 categories:
   -  Web
