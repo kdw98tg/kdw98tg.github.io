@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Web/React/2026-02-02- 일단 정리.md",
+                "file": "_posts/Web/React/2026-04-17-React recoil.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-02-02- 일단 정리"
+              "title": "2026-04-17-React recoil"
             }
           }
         ]
@@ -185,12 +185,20 @@
   },
   "active": "885191f21a038b49",
   "lastOpenFiles": [
+    "assets/images/posts/2026-04-17-React recoil/file-20260417155509812.png",
+    "assets/images/posts/2026-04-17-React recoil/file-20260417155133692.png",
+    "assets/images/posts/2026-04-17-React recoil/file-20260417154847079.png",
+    "assets/images/posts/2026-04-17-React recoil/file-20260417154827877.png",
+    "assets/images/posts/2026-04-17-React recoil/file-20260417152421936.png",
+    "assets/images/posts/2026-04-17-React recoil",
+    "_posts/Web/React/2026-04-16-Vite로 React 프로젝트 생성하기.md",
+    "_posts/Web/React/2026-04-17-React recoil.md",
+    "_posts/Web/React/2026-02-02- 일단 정리.md",
     "_posts/Web/React/2026-04-17-React useSWR.md",
     "assets/images/posts/2026-04-17-React useSWR/file-20260417150924934.png",
     "assets/images/posts/2026-04-17-React useSWR/file-20260417150828770.png",
     "assets/images/posts/2026-04-17-React useSWR/file-20260417143911966.png",
     "assets/images/posts/2026-04-17-React useSWR",
-    "_posts/Web/React/2026-04-16-Vite로 React 프로젝트 생성하기.md",
     "_posts/Portfolio/2026-02-12-포트폴리오_비트코인예측연구.md",
     "_posts/Web/React/assets/images/posts/2026-04-16-React UseEffect/file-20260416104326313.png",
     "_posts/Portfolio/2026-02-12-포트폴리오_송도 케이블카 KIOSK,POS.md",
@@ -205,10 +213,6 @@
     "_posts/Web/React/2026-04-16-React UseEffect.md",
     "_posts/Web/React/2026-04-16-UseMemo.md",
     "assets/images/posts/2026-04-16-UseMemo/file-20260416121244229.png",
-    "assets/images/posts/2026-04-16-UseMemo/file-20260416121231514.png",
-    "assets/images/posts/2026-04-16-UseMemo/file-20260416120851614.png",
-    "assets/images/posts/2026-04-16-UseMemo/file-20260416115728618.png",
-    "assets/images/posts/2026-04-16-UseMemo/file-20260416114922761.png",
     "assets/images/posts/2026-04-16-UseMemo",
     "_site/web/2026/04/16/UseMemo.html",
     "_site/2026/04/16/UseMemo.html",
@@ -216,7 +220,6 @@
     "_site/2026/04",
     "_site/2026",
     "_posts/Web/React/assets/images/posts/2026-04-16-React UseEffect",
-    "_posts/Web/React/assets/images/posts",
     "_posts/Web/React/2026-01-06-React Hooks.md",
     "_posts/Web/React/2026-01-06-React 컴포넌트.md",
     "_site/assets/images/posts/Pasted.md",
@@ -224,11 +227,9 @@
     "_site/images/Pasted.md",
     "_posts/Web/React/2026-04-16-React StrictMode란.md",
     "assets/images/posts/Pasted.md",
-    "_posts/Web/React/2026-02-02- 일단 정리.md",
     "_site/README.md",
     "_posts/Architecture&Enginerring/ReadableCode/2026-01-12-루프와 논리를 단순하게 만들기.md",
     "_posts/Architecture&Enginerring/ReadableCode/2026-01-07-표면적 수준에서의 코드 개선.md",
-    "_posts/Architecture&Enginerring/CodeComplete2/2025-09-21-Code Complete2 소프트웨어 선행조건.md",
-    "_posts/Architecture&Enginerring/CodeComplete2/2025-09-21-Code Complete2 비유의 힘.md"
+    "_posts/Architecture&Enginerring/CodeComplete2/2025-09-21-Code Complete2 소프트웨어 선행조건.md"
   ]
 }
