@@ -3,6 +3,8 @@ layout: post
 
 title: "[포트폴리오] Just Patrol 게임 제작 및 출시"
 
+excerpt_image: /assets/images/posts/just%20patrol%20icon.png
+
 categories:
   -  Portfolio
   
