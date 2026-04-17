@@ -82,16 +82,24 @@ function UseSWR1() {
   const { data, error, isLoading, mutate } = useSWR(
     "https://jsonplaceholder.typicode.com/users/1",
     fetcher,
-    {
-    revalidateOnFocus: false, 
-    dedupingInterval: 50000, 
-    refreshInterval: 3000, // 3초(3000ms)마다 백그라운드에서 새 데이터를 가져옴  
-    refreshWhenHidden: false, // 브라우저 탭이 숨겨져 있을 땐(다른 탭 볼 때) 갱신 일시정지(선택)
-    shouldRetryOnError: true, // 에러 발생 시 재시도 할지 말지 (기본값: true) 
-    errorRetryCount: 3, // 최대 3번까지만 재시도 
-    errorRetryInterval: 5000, // 재시도 간격을 5초(5000ms)로 설정
-    keepPreviousData: true // 새 데이터가 로드될 때까지 이전 캐시 데이터를 화면에 유지
-    }
+{
+  // 화면을 다시 볼 때(다른 탭을 보다가 돌아오거나 창을 클릭할 때) 자동으로 데이터를 새로고침 하지 않음
+  revalidateOnFocus: false, 
+  // 50초(50000ms) 안에는 같은 API 요청이 여러 번 발생해도 중복해서 서버로 보내지 않고 캐시를 씀
+  dedupingInterval: 50000, 
+  // 3초(3000ms)마다 백그라운드에서 새 데이터를 가져옴  
+  refreshInterval: 3000, 
+  // 브라우저 탭이 숨겨져 있을 땐(다른 탭 볼 때) 갱신 일시정지 (선택)
+  refreshWhenHidden: false, 
+  // 에러 발생 시 재시도 할지 말지 (기본값: true) 
+  shouldRetryOnError: true, 
+  // 최대 3번까지만 재시도 
+  errorRetryCount: 3, 
+  // 재시도 간격을 5초(5000ms)로 설정
+  errorRetryInterval: 5000,
+  // 새 데이터가 로드될 때까지 이전 캐시 데이터를 화면에 유지 
+  keepPreviousData: true 
+}
   );
   
   //로그를 통해 확인
