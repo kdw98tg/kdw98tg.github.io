@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Portfolio/2026-02-12-포트폴리오_비트코인예측연구.md",
+                "file": "_posts/Web/React/2026-04-17-React useSWR.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-02-12-포트폴리오_비트코인예측연구"
+              "title": "2026-04-17-React useSWR"
             }
           }
         ]
@@ -185,6 +185,14 @@
   },
   "active": "885191f21a038b49",
   "lastOpenFiles": [
+    "assets/images/posts/2026-04-17-React useSWR/file-20260417150924934.png",
+    "assets/images/posts/2026-04-17-React useSWR/file-20260417150828770.png",
+    "assets/images/posts/2026-04-17-React useSWR/file-20260417143911966.png",
+    "assets/images/posts/2026-04-17-React useSWR",
+    "_posts/Web/React/2026-04-16-Vite로 React 프로젝트 생성하기.md",
+    "_posts/Web/React/2026-04-17-React useSWR.md",
+    "_posts/Portfolio/2026-02-12-포트폴리오_비트코인예측연구.md",
+    "_posts/Web/React/assets/images/posts/2026-04-16-React UseEffect/file-20260416104326313.png",
     "_posts/Portfolio/2026-02-12-포트폴리오_송도 케이블카 KIOSK,POS.md",
     "_posts/Portfolio/2026-02-12-포트폴리오_은재팜 게임.md",
     "_posts/Portfolio/2026-02-12-포트폴리오_JustPatrol.md",
@@ -192,8 +200,6 @@
     "_posts/Portfolio/2026-02-12-포트폴리오_지휘봉프로그램.md",
     "_posts/Portfolio/2026-02-12-포트폴리오_RDC.md",
     "_posts/Portfolio/2026-04-14-ENOMONT 홈페이지 제작.md",
-    "_posts/Portfolio/2026-02-12-포트폴리오_비트코인예측연구.md",
-    "_posts/Web/React/2026-04-16-Vite로 React 프로젝트 생성하기.md",
     "assets/images/posts/2026-04-16-Vite로 React 프로젝트 생성하기/file-20260416124916878.png",
     "assets/images/posts/2026-04-16-Vite로 React 프로젝트 생성하기",
     "_posts/Web/React/2026-04-16-React UseEffect.md",
@@ -210,12 +216,8 @@
     "_site/2026/04/16",
     "_site/2026/04",
     "_site/2026",
-    "_site/assets/images/posts/Pasted image 20240819222408.png",
-    "_site/assets/images/posts/Pasted image 20240819222223.png",
-    "_site/assets/images/posts/Pasted image 20240819213815.png",
     "_posts/Web/React/assets/images/posts/2026-04-16-React UseEffect",
     "_posts/Web/React/assets/images/posts",
-    "_posts/Web/React/assets/images",
     "_posts/Web/React/2026-01-06-React Hooks.md",
     "_posts/Web/React/2026-01-06-React 컴포넌트.md",
     "_site/assets/images/posts/Pasted.md",
@@ -228,7 +230,6 @@
     "_posts/Architecture&Enginerring/ReadableCode/2026-01-12-루프와 논리를 단순하게 만들기.md",
     "_posts/Architecture&Enginerring/ReadableCode/2026-01-07-표면적 수준에서의 코드 개선.md",
     "_posts/Architecture&Enginerring/CodeComplete2/2025-09-21-Code Complete2 소프트웨어 선행조건.md",
-    "_posts/Architecture&Enginerring/CodeComplete2/2025-09-21-Code Complete2 비유의 힘.md",
-    "_posts/Web/React/2026-01-05-React JSX 간단 예제.md"
+    "_posts/Architecture&Enginerring/CodeComplete2/2025-09-21-Code Complete2 비유의 힘.md"
   ]
 }
