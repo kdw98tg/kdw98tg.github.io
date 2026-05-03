@@ -6,7 +6,7 @@ title: "[React/Js] custom hook 으로 useSWR 사용하기"
 categories:
   - Web
 
-excerpt_image: /assets/images/posts/2026-04-17-React%20useSWR/file-20260417143911966.png
+excerpt_image: /assets/images/posts/2026-05-03-React%20Custom%20Hook%20With%20React/file-20260503224045029.png
 
 tags:
   - React
@@ -24,6 +24,8 @@ last_modified_at: 2026-04-17
 
 
 ## Custom Hook 과 useSWR 를 사용하여 네트워크 통신하기
+
+![](/assets/images/posts/2026-05-03-React%20Custom%20Hook%20With%20React/file-20260503224045029.png)
 
 React 에서는 함수형 컴포넌트를 사용하면서, 상태를 저장하기 위해 hook 이라는 개념을 도입하였습니다. 이 hook 은 React에서 만들어놓은것을 사용할 수 있고, 사용자가 여러 hook 들을 조합하여 custom hook 을 만들어 사용할 수 있습니다.
 
