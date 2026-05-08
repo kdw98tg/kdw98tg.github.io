@@ -4,8 +4,8 @@ title: "[SpringBoot] Controller 계층 이란?"
 categories:
   - Web
 tags:
-  - - Java
-    - Spring Boot
+  - Java
+  - Spring Boot
 toc: true
 toc_sticky: true
 published: true
