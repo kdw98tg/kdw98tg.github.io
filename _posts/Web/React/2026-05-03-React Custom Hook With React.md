@@ -151,7 +151,7 @@ function useProjectMutations() {
 export default useProjectMutations;
 ```
 
-## custom hook 을 componet 에서 사용하기
+## custom hook 을 component 에서 사용하기
 
 목록을 렌더링하고, 새로운 프로젝트를 추가하거나 기존 프로젝트를 삭제하는 UI 컴포넌트를 작성해 보겠습니다.
 
