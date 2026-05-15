@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Web/FrontEnd/2026-05-08-CSR, SSR.md",
+                "file": "_posts/Languages/C#/2024-03-11-C-sharp 코딩 컨벤션.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-05-08-CSR, SSR"
+              "title": "2024-03-11-C-sharp 코딩 컨벤션"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "브라우저느",
+                "query": "컨벤션",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -186,10 +186,10 @@
   },
   "active": "885191f21a038b49",
   "lastOpenFiles": [
+    "_posts/Web/FrontEnd/2026-05-08-CSR, SSR.md",
     "_posts/Web/React/2026-01-06-React 컴포넌트.md",
     "_posts/Web/React/2026-01-05-React JSX 간단 예제.md",
     "_posts/Architecture&Enginerring/Clean Architecture/2025-03-02-Clean Architecture DIP.md",
-    "_posts/Web/FrontEnd/2026-05-08-CSR, SSR.md",
     "_posts/Web/Vue/2025-05-15-Vue 공식문서 Watchers.md",
     "_posts/Web/Vue/2026-05-15-Vue 공식문서 라이프사이클.md",
     "_posts/Web/Vue/2026-05-15-Vue 공식문서 Component Props.md",
