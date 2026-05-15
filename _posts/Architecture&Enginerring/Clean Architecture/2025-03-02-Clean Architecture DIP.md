@@ -38,7 +38,7 @@ last_modified_at: 2025-03-02
 
 ## DIP 위반 사례
 
-우선 DIP 위반 사례를 하나 살펴봅니다. Client에서 OS를 판별한 후에, 라디오 버튼을 랜더링 한다고 가정합니다. 
+우선 DIP 위반 사례를 하나 살펴봅니다. Client에서 OS를 판별한 후에, 라디오 버튼을 렌더링 한다고 가정합니다. 
 
 ```cs
 namespace DIP.BadExample

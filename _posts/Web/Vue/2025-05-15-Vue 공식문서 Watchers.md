@@ -28,7 +28,7 @@ last_modified_at: 2026-05-15
 
 react 에서는 해당 기능을 수행하는 hook 인 `useEffect()`를 사용합니다. vue 에서는 `watch()` 또는 `watcher()`를 사용하여 해당 기능을 구현합니다.
 
-react에서의 `useEffect()`는 어떤 값이 바뀔 때, 다시 특정 동작을 수행하도록 `dependenct array`를 넣도록 되어 있습니다. 또한, 컴포넌트가 마운트 될 때, 반드시 한번 `useEffect()`의 인자로 받은 함수가 한번 실행이 됩니다.
+react에서의 `useEffect()`는 어떤 값이 바뀔 때, 다시 특정 동작을 수행하도록 `dependency array`를 넣도록 되어 있습니다. 또한, 컴포넌트가 마운트 될 때, 반드시 한번 `useEffect()`의 인자로 받은 함수가 한번 실행이 됩니다.
 
 vue 에서 사용하는 `watch()`함수는 따로 `dependency array`를 넣을 필요 없이, 함수의 인자로 반응형 변수와 실행할 함수를 넣어주면 됩니다.
 
