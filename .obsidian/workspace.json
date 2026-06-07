@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 337.5
+    "width": 331.5
   },
   "right": {
     "id": "471b93de1b600014",
@@ -185,8 +185,11 @@
   },
   "active": "885191f21a038b49",
   "lastOpenFiles": [
-    "_posts/Game Engine/Unity/2026-02-12-Unity 로컬, 월드 포지션.md",
+    "_posts/Portfolio/2026-02-12-포트폴리오_비트코인예측연구.md",
     "_posts/Game Engine/Unity/2026-06-02-Unity Fusion2 기초.md",
+    "assets/images/posts/2026-06-02-Unity Fusion2 기초/file-20260607233025830.png",
+    "assets/images/posts/2026-06-02-Unity Fusion2 기초",
+    "_posts/Game Engine/Unity/2026-02-12-Unity 로컬, 월드 포지션.md",
     "_posts/Web/BackEnd/2026-05-24-AES와 Base64를 사용한 암호화.md",
     "assets/images/posts/2026-05-24-AES와 Base64를 사용한 암호화",
     "assets/images/posts/2026-05-24-AES와 Base64를 사용한 암호화/file-20260524220725296.png",
@@ -227,9 +230,6 @@
     "_posts/Web/Vue/2026-05-13-Vue 공식문서 v-if.md",
     "_posts/Web/Vue/2026-05-13-Vue 공식문서 폼 바인딩.md",
     "assets/images/posts/2026-05-13-Vue 공식문서 List Rendering/file-20260513233706798.png",
-    "assets/images/posts/2026-05-13-Vue 공식문서 List Rendering/file-20260513233649790.png",
-    "assets/images/posts/2026-05-13-Vue 공식문서 List Rendering",
-    "assets/images/posts/2026-05-13-Vue 공식문서 Mustache",
-    "_posts/Web/Vue/2026-05-13-Vite로 Vue 애플리케이션 생성.md"
+    "assets/images/posts/2026-05-13-Vue 공식문서 List Rendering"
   ]
 }

@@ -3,6 +3,8 @@ layout: post
 
 title: "[Unity] Unity Fusion2 기초"
 
+excerpt_image: /assets/images/posts/2026-06-02-Unity%20Fusion2%20기초/file-20260607233025830.png
+
 categories:
   -  Game Engine
   
@@ -17,7 +19,7 @@ published: true
 date: 2026-06-07
 last_modified_at: 2025-06-07
 ---
-
+![](/assets/images/posts/2026-06-02-Unity%20Fusion2%20기초/file-20260607233025830.png)
 ## NetworRunner
 
 Fusion2를 사용할 때, 네트워크 기능들을 모두 관리하는 객체임. Fusion2의 핵심 컴포넌트이고, Tick 시뮬레이션, 서버 연결, 콜백 수신 등 모두 담당하고 있습니다.
