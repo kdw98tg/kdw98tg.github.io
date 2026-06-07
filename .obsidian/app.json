@@ -4,5 +4,11 @@
   "useMarkdownLinks": true,
   "newLinkFormat": "absolute",
   "alwaysUpdateLinks": true,
-  "attachmentFolderPath": "/assets/images/posts"
+  "attachmentFolderPath": "/assets/images/posts",
+  "pdfExportSettings": {
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
 }
