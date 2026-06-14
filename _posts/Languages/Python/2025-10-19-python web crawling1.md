@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "[python] python 웹 크롤링 기초"
+excerpt_image: /assets/images/posts/2026-06-14-QR%20코드%20외주%20관련%20python%20문법%20정리/file-20260614233247232.png
 categories:
   - Languages
 tags:
@@ -12,6 +13,7 @@ date: 2025-10-19
 last_modified_at: 2024-10-19
 ---
 
+![](/assets/images/posts/2026-06-14-QR%20코드%20외주%20관련%20python%20문법%20정리/file-20260614233247232.png)
 ## 웹 크롤링 이란?
 
 웹 크롤링(Crawling)이란 말 그대로 “기어다니듯” 웹페이지를 돌아다니며 데이터를 모으는 작업을 말합니다. 이와 유사한 개념으로 웹 스크래핑(Scraping)이 있는데, 이는 “긁어모으다”라는 의미로 원하는 데이터를 추출하는 행위에 가깝습니다. 실무에서는 두 용어를 거의 같은 의미로 사용합니다.

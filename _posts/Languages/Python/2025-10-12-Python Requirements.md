@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "[python] python requirements 파일 만들기"
+excerpt_image: /assets/images/posts/2026-06-14-QR%20코드%20외주%20관련%20python%20문법%20정리/file-20260614233247232.png
 categories:
   - Languages
 tags:
@@ -11,6 +12,8 @@ published: true
 date: 2025-10-12
 last_modified_at: 2024-10-12
 ---
+
+![](/assets/images/posts/2026-06-14-QR%20코드%20외주%20관련%20python%20문법%20정리/file-20260614233247232.png)
 
 파이썬(python)이라는 언어는 라이브러리가 아주 잘 되어 있다는 특징이 있습니다. 하지만 라이브러리가 많은 만큼 단점으로는 의존성을 관리하는것이 어렵습니다.
 

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Game Engine/Unity/2026-06-02-Unity Fusion2 기초.md",
+                "file": "_posts/Languages/Python/2024-08-13-python venv.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-06-02-Unity Fusion2 기초"
+              "title": "2024-08-13-python venv"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "컨벤션",
+                "query": "excerpt",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -185,7 +185,14 @@
   },
   "active": "885191f21a038b49",
   "lastOpenFiles": [
+    "_posts/Languages/Python/2025-10-12-Python Requirements.md",
+    "_posts/Languages/Python/2025-10-19-python web crawling1.md",
+    "_posts/Languages/Python/2026-06-14-QR 코드 외주 관련 python 문법 정리.md",
+    "_posts/Languages/Python/2024-08-13-python venv.md",
     "_posts/Portfolio/2026-02-12-포트폴리오_비트코인예측연구.md",
+    "assets/images/posts/2026-06-14-QR 코드 외주 관련 python 문법 정리/file-20260614233247232.png",
+    "assets/images/posts/2026-06-14-QR 코드 외주 관련 python 문법 정리",
+    "_posts/Game Engine/Unity/20260610_QR외주 관련 작업 로그.md",
     "_posts/Game Engine/Unity/2026-06-02-Unity Fusion2 기초.md",
     "assets/images/posts/2026-06-02-Unity Fusion2 기초/file-20260607233025830.png",
     "assets/images/posts/2026-06-02-Unity Fusion2 기초",
@@ -202,8 +209,6 @@
     "_posts/Languages/C#/2025-05-02-Test 구축.md",
     "_posts/Languages/TypeScript/2026-05-18-TypeScript.md",
     "_posts/Web/Vue/2025-05-15-Vue 공식문서 Watchers.md",
-    "_posts/Languages/Python/2025-10-19-python web crawling1.md",
-    "_posts/Languages/Python/2025-10-12-Python Requirements.md",
     "assets/images/posts/2026-05-18-TypeScript/file-20260518163050428.png",
     "assets/images/posts/2026-05-18-TypeScript",
     "_posts/Web/Vue/2026-05-15-Vue 공식문서 Component 심화.md",
@@ -225,11 +230,6 @@
     "assets/images/posts/2026-05-14-Vue 공식문서 Computed/file-20260514233554983.png",
     "assets/images/posts/2026-05-14-Vue 공식문서 Computed/file-20260514233544216.png",
     "assets/images/posts/2026-05-14-Vue 공식문서 Computed",
-    "_posts/Web/Vue/2026-05-13-Vue 공식문서-bind.md",
-    "_posts/Web/Vue/2026-05-13-Vue 공식문서 List Rendering.md",
-    "_posts/Web/Vue/2026-05-13-Vue 공식문서 v-if.md",
-    "_posts/Web/Vue/2026-05-13-Vue 공식문서 폼 바인딩.md",
-    "assets/images/posts/2026-05-13-Vue 공식문서 List Rendering/file-20260513233706798.png",
-    "assets/images/posts/2026-05-13-Vue 공식문서 List Rendering"
+    "_posts/Web/Vue/2026-05-13-Vue 공식문서-bind.md"
   ]
 }

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "[python] Python 가상환경 설정하기"
+excerpt_image: /assets/images/posts/2026-06-14-QR%20코드%20외주%20관련%20python%20문법%20정리/file-20260614233247232.png
 categories:
   - Languages
 tags:
@@ -13,6 +14,7 @@ date: 2024-01-16
 last_modified_at: 2024-01-16
 ---
 
+![](/assets/images/posts/2026-06-14-QR%20코드%20외주%20관련%20python%20문법%20정리/file-20260614233247232.png)
 
 ## 가상환경이 필요한 이유
 
