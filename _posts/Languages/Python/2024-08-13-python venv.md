@@ -6,7 +6,6 @@ categories:
   - Languages
 tags:
   - Python
-  - venv
 toc: true
 toc_sticky: true
 published: true

@@ -4,7 +4,7 @@ layout: post
 title: "[Clean Architecture] 크고 작은 모든 서비스들"
 
 categories:
-  -  Architecture&Engineering
+  - Architecture&Engineering
   
 tags:
   - Clean-Architecture

@@ -4,10 +4,9 @@ title: "[ASP.NET Core] EF Core에서 Repository Pattern을 사용하지 말아�
 categories:
   - Web
 tags:
-  - - Web
-    - ASP.NET Core
-    - Unity
-    - C#
+  - Unity
+  - ASP.NET-Core
+  - C#
 toc: true
 toc_sticky: true
 published: false

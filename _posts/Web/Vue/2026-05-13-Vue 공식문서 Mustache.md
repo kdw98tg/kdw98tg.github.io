@@ -5,9 +5,8 @@ excerpt_image: assets/images/posts/2026-05-13-Vue%20공식문서%20Mustache/file
 categories:
   - Web
 tags:
-  - vue
-  - javascript
-  - vite
+  - Vue
+  - JavaScript
 toc: true
 toc_sticky: true
 published: true

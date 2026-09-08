@@ -4,7 +4,7 @@ title: "[C#] C# Custom Exception 만들기"
 categories:
   - Languages
 tags:
-  - csharp
+  - C#
 toc: true
 toc_sticky: true
 published: true

@@ -4,10 +4,8 @@ title: "[ASP.NET Core] ASP.Net Core 에서 RawQuery로 데이터 조회하기"
 categories:
   - Web
 tags:
-  - - Web
-    - ASP.NET Core
-    - C#
-    - RawQuery
+  - ASP.NET-Core
+  - C#
 toc: true
 toc_sticky: true
 published: true

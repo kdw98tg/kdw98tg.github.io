@@ -7,7 +7,8 @@ categories:
   - Etc
 
 tags:
-  - [CodeLines, Window, Mac]
+  - Windows
+  - Mac
 
 toc: true
 toc_sticky: true

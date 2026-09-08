@@ -7,8 +7,8 @@ excerpt_image: /assets/images/posts/2026-05-13-Vue%20공식문서-bind/file-2026
 categories:
   - Web
 tags:
-  - vue
-  - javascript
+  - Vue
+  - JavaScript
 toc: true
 toc_sticky: true
 published: true

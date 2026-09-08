@@ -4,10 +4,12 @@ layout: post
 title: "[Ubuntu] Ubuntu Server에 Asp.net 호스팅 설정하기"
 
 categories:
-  -  Infra
+  - Infra
   
 tags:
-  - [Ubuntu, Server, nginx, phpmyadmin]
+  - Server
+  - Nginx
+  - Ubuntu
 
 toc: true
 toc_sticky: true

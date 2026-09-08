@@ -4,7 +4,7 @@ title: "[C#] String Builder 를 사용하여 가비지 줄이기"
 categories:
   - Languages
 tags:
-  - csharp
+  - C#
 toc: true
 toc_sticky: true
 published: true

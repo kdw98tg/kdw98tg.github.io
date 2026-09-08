@@ -4,10 +4,8 @@ title: "[Unity] UnityWebRequest를 사용한 통신 로직 구현"
 categories:
   - Game Engine
 tags:
-  - - Unity
-    - C#
-    - UnityWebRequest
-    - Coroutine
+  - Unity
+  - C#
 toc: true
 toc_sticky: true
 published: true

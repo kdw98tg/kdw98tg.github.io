@@ -4,7 +4,7 @@ layout: post
 title: "[Clean Architecture] Clean Architecture chap 3 정리"
 
 categories:
-  -  Architecture&Engineering
+  - Architecture&Engineering
   
 tags:
   - Clean-Architecture

@@ -4,10 +4,11 @@ layout: post
 title: "[Unity] Unity 빌드시 멈추는 현상 해결"
 
 categories:
-  -  Game Engine
+  - Game Engine
   
 tags:
-  - [Unity, Error, Build]
+  - Unity
+  - C#
 
 toc: true
 toc_sticky: true

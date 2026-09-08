@@ -4,10 +4,12 @@ layout: post
 title: "[Design Principle] 객체지향 디자인 원칙"
 
 categories:
-  -  Architecture&Engineering
+  - Architecture&Engineering
   
 tags:
-  - [Design Pattern]
+  - Java
+  - Design-Pattern
+  - Book
 
 toc: true
 toc_sticky: true

@@ -4,7 +4,7 @@ layout: post
 title: "[Clean Architecture] 경계 해부학 및 업무 규칙"
 
 categories:
-  -  Architecture&Engineering
+  - Architecture&Engineering
   
 tags:
   - Clean-Architecture

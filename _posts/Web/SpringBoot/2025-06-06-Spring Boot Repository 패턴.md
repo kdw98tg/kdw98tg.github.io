@@ -4,8 +4,8 @@ title: "[SpringBoot] 기본적인 Repository 패턴"
 categories:
   - Web
 tags:
-  - - Java
-    - Spring Boot
+  - Spring-Boot
+  - Java
 toc: true
 toc_sticky: true
 published: false

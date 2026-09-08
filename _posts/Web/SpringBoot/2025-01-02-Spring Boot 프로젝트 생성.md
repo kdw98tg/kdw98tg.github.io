@@ -4,8 +4,8 @@ title: "[SpringBoot] Spring Boot 프로젝트 생성"
 categories:
   - Web
 tags:
-  - - Java
-    - Spring Boot
+  - Spring-Boot
+  - Java
 toc: true
 toc_sticky: true
 published: false

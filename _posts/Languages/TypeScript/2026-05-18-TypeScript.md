@@ -7,7 +7,7 @@ categories:
 excerpt_image: /assets/images/posts/2026-05-18-TypeScript/file-20260518163050428.png
 
 tags:
-  - typescript
+  - TypeScript
 
 toc: true
 toc_sticky: true

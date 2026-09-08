@@ -4,8 +4,8 @@ title: "[SpringBoot] Model "
 categories:
   - Web
 tags:
-  - - Java
-    - Spring Boot
+  - Spring-Boot
+  - Java
 toc: true
 toc_sticky: true
 published: false

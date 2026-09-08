@@ -4,11 +4,11 @@ layout: post
 title: "[Design Pattern] 팩토리 패턴 (Factory Pattern)"
 
 categories:
-  -  Architecture&Engineering
+  - Architecture&Engineering
   
 tags:
   - Java
-  - Head-First-Design-Pattern
+  - Design-Pattern
   - Book
 
 toc: true

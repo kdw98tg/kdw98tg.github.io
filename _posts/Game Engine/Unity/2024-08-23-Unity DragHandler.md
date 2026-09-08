@@ -4,10 +4,11 @@ layout: post
 title: "[Unity] DragHandler를 이용하여 오브젝트 옮기기"
 
 categories:
-  -  Game Engine
+  - Game Engine
   
 tags:
-  - [Unity, Drag]
+  - Unity
+  - C#
 
 toc: true
 toc_sticky: true

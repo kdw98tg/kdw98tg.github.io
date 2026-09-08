@@ -10,8 +10,8 @@ excerpt_image: /assets/images/posts/2026-05-03-React%20Custom%20Hook%20With%20Re
 
 tags:
   - React
-  - hooks
-  - network
+  - Hooks
+  - Network
 
 toc: true
 toc_sticky: true

@@ -4,10 +4,12 @@ layout: post
 title: "[Bluetooth] Bluetooth 통신 방식 정리 (Classic/LowEnergy)"
 
 categories:
-  -  Infra
+  - Infra
   
 tags:
-  - [Raspberrypi, Window, Bluetooth]
+  - Bluetooth
+  - Windows
+  - Raspberry-Pi
 
 toc: true
 toc_sticky: true

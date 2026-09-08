@@ -6,10 +6,11 @@ title: "[Unity] Unity Fusion2 기초"
 excerpt_image: /assets/images/posts/2026-06-02-Unity%20Fusion2%20기초/file-20260607233025830.png
 
 categories:
-  -  Game Engine
+  - Game Engine
   
 tags:
-  - [Unity, Fusion2, Photon]
+  - Unity
+  - C#
 
 toc: true
 toc_sticky: true

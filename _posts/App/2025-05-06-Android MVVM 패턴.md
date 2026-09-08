@@ -2,12 +2,12 @@
 layout: post
 title: "[Android/Kotlin] Android MVVM 패턴 적용하기"
 categories:
-  - Mobile App
+  - App
 tags:
   - Android
-  - Architecture
-  - MVVM
+  - Kotlin
   - Java
+  - Architecture
 toc: true
 toc_sticky: true
 date: 2025-05-16

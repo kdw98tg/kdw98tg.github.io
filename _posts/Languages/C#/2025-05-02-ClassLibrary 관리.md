@@ -4,7 +4,7 @@ title: "[C#] C# ClassLibrary로 재사용 가능한 모듈 만들기"
 categories:
   - Languages
 tags:
-  - csharp
+  - C#
 toc: true
 toc_sticky: true
 published: true

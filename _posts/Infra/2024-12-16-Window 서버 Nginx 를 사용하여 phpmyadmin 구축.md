@@ -4,10 +4,12 @@ layout: post
 title: "[Server] Window 서버에 Nginx를 사용하여 phpmyadmin 구축하기"
 
 categories:
-  -  Infra
+  - Infra
   
 tags:
-  - [Window, Server, Nginx, phpmyadmin]
+  - Server
+  - Nginx
+  - Windows
 
 toc: true
 toc_sticky: true

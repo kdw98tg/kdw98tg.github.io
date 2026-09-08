@@ -4,10 +4,12 @@ layout: post
 title: "[react/js] React Hooks 살펴보기"
 
 categories:
-  -  Web
+  - Web
   
 tags:
-  - [react, javascript, hooks]
+  - React
+  - JavaScript
+  - Hooks
 
 toc: true
 toc_sticky: true

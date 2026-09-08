@@ -4,7 +4,7 @@ layout: post
 title: "[Clean Architecture] Clean Architecture DIP(Dependency Inversion Principle 의존성 역전의 원칙ㅔ)"
 
 categories:
-  -  Architecture&Engineering
+  - Architecture&Engineering
   
 tags:
   - Clean-Architecture

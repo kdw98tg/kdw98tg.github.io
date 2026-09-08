@@ -4,11 +4,11 @@ layout: post
 title: "[Design Pattern] 브릿지 패턴 (Bridge Pattern)"
 
 categories:
-  -  Architecture&Engineering
+  - Architecture&Engineering
   
 tags:
   - Java
-  - Head-First-Design-Pattern
+  - Design-Pattern
   - Book
 
 toc: true

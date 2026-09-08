@@ -4,10 +4,11 @@ layout: post
 title: "[Unity] 코루틴 관리를 도와주는 CoroutineCashManager"
 
 categories:
-  -  Game Engine
+  - Game Engine
   
 tags:
-  - [Unity, Coroutine, cash]
+  - Unity
+  - C#
 
 toc: true
 toc_sticky: true

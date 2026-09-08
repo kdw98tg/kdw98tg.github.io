@@ -6,11 +6,10 @@ excerpt_image: assets/images/posts/2026-04-16-Vite로%20React%20프로젝트%20�
 title: "[React/Js] Vite로 React 앱 생성하기"
 
 categories:
-  -  Web
+  - Web
   
 tags:
   - React
-  - Vite
 
 toc: true
 toc_sticky: true

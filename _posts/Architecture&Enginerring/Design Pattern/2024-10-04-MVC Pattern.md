@@ -4,11 +4,11 @@ layout: post
 title: "[Design Pattern] MVC 패턴 (MVC Pattern)"
 
 categories:
-  -  Architecture&Engineering
+  - Architecture&Engineering
   
 tags:
   - Java
-  - Head-First-Design-Pattern
+  - Design-Pattern
   - Book
 
 toc: true

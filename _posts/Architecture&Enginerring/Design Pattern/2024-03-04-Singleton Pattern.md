@@ -4,11 +4,11 @@ layout: post
 title: "[Design Pattern] 싱글턴 패턴 (Singleton Pattern)"
 
 categories:
-  -  Architecture&Engineering
+  - Architecture&Engineering
   
 tags:
   - Java
-  - Head-First-Design-Pattern
+  - Design-Pattern
   - Book
 
 toc: true

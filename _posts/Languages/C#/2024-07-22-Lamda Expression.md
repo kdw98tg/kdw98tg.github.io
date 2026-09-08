@@ -4,7 +4,7 @@ title: "[C#] 람다식 이란?"
 categories:
   - Languages
 tags:
-  - csharp
+  - C#
 toc: true
 toc_sticky: true
 published: true

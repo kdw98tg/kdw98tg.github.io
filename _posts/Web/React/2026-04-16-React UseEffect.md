@@ -6,13 +6,12 @@ title: "[React/Js] React Useffect 살펴보기"
 excerpt_image: /assets/images/posts/Pasted%20image%2020260416101509.png
 
 categories:
-  -  Web
+  - Web
   
 tags:
   - React
   - JavaScript
   - Hooks
-  - UseEffect
 
 toc: true
 toc_sticky: true

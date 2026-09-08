@@ -4,9 +4,8 @@ title: "[SpringBoot] Transactional 과 Lazy Loading"
 categories:
   - Web
 tags:
-    - Java
-    - Transactional
-    - LazyLoading
+  - Spring-Boot
+  - Java
 toc: true
 toc_sticky: true
 published: true

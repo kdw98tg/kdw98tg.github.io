@@ -4,7 +4,7 @@ layout: post
 title: "[Clean Architecture] 컴포넌트 원칙(ADP, SDP, SAP)"
 
 categories:
-  -  Architecture&Engineering
+  - Architecture&Engineering
   
 tags:
   - Clean-Architecture

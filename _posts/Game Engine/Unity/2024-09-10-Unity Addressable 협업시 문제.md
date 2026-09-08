@@ -4,10 +4,11 @@ layout: post
 title: "[Unity] Unity에서 협업 시 Addressable 관리 문제"
 
 categories:
-  -  Game Engine
+  - Game Engine
   
 tags:
-  - [Unity, Addressable, Git]
+  - Unity
+  - Git
 
 toc: true
 toc_sticky: true

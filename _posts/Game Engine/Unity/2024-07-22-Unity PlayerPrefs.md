@@ -4,10 +4,11 @@ layout: post
 title: "[Unity] Unity PlayerPrefs 관리법"
 
 categories:
-  -  Game Engine
+  - Game Engine
   
 tags:
-  - [Unity, PlayerPrefs]
+  - Unity
+  - C#
 
 toc: true
 toc_sticky: true

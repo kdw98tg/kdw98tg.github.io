@@ -7,8 +7,8 @@ categories:
   - Architecture&Engineering
   
 tags:
-  - Refactoring
   - JavaScript
+  - Refactoring
   - Book
 
 toc: true

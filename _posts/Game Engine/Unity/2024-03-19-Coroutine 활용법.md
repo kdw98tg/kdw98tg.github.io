@@ -4,8 +4,8 @@ title: "[Unity] Coroutine 이란? Coroutine 의 활용법"
 categories:
   - Game Engine
 tags:
-  - - Unity
-    - C#
+  - Unity
+  - C#
 toc: true
 toc_sticky: true
 published: true

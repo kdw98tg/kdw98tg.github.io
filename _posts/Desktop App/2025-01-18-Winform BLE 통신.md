@@ -4,10 +4,12 @@ layout: post
 title: "[Winform] 블루투스 저전력(BLE) 통신 예제"
 
 categories:
-  -  Desktop App
+  - Desktop App
   
 tags:
-  - [Winform, C#, BluetoothLE]
+  - WinForm
+  - C#
+  - Bluetooth
 
 toc: true
 toc_sticky: true

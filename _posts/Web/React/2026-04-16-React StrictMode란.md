@@ -4,13 +4,12 @@ layout: post
 title: "[React/Js] React Useffect 살펴보기"
 
 categories:
-  -  Web
+  - Web
   
 tags:
   - React
   - JavaScript
   - Hooks
-  - UseEffect
 
 toc: true
 toc_sticky: true

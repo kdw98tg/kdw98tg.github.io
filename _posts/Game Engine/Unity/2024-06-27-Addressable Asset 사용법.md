@@ -4,8 +4,8 @@ title: "[Unity] Addressable Asset 활용법"
 categories:
   - Game Engine
 tags:
-  - - Unity
-    - Addressable
+  - Unity
+  - C#
 toc: true
 toc_sticky: true
 published: true

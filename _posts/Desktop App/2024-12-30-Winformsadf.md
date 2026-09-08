@@ -4,10 +4,11 @@ layout: post
 title: "[Winform] UI 커스터마이징"
 
 categories:
-  -  Desktop App
+  - Desktop App
   
 tags:
-  - [Winform, C#]
+  - WinForm
+  - C#
 
 toc: true
 toc_sticky: true

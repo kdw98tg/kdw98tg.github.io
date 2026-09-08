@@ -4,10 +4,12 @@ layout: post
 title: "[Winform] Winform Custom UI 만들기"
 
 categories:
-  -  Desktop App
+  - Desktop App
   
 tags:
-  - [Winform, C#, UI]
+  - WinForm
+  - C#
+  - UI
 
 toc: true
 toc_sticky: true

@@ -6,11 +6,10 @@ excerpt_image: /assets/images/posts/2026-04-17-React%20recoil/file-2026041715242
 title: "[React/Js] Recoil을 활용해서 전역 상태 관리하기"
 
 categories:
-  -  Web
+  - Web
   
 tags:
   - React
-  - recoil
 
 toc: true
 toc_sticky: true

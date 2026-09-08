@@ -4,8 +4,8 @@ title: "[AI] 앙상블(Ensemble)기법과 배깅(Bagging), 부스팅(Boosting), 
 categories:
   - AI
 tags:
-  - AI
   - Python
+  - AI
 toc: true
 toc_sticky: true
 published: true

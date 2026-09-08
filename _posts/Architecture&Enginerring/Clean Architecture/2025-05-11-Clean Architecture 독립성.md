@@ -4,7 +4,7 @@ layout: post
 title: "[Clean Architecture] 독립성"
 
 categories:
-  -  Architecture&Engineering
+  - Architecture&Engineering
   
 tags:
   - Clean-Architecture

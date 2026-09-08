@@ -4,10 +4,11 @@ layout: post
 title: "[Unity] Unity Addressable 서버로 이관하기"
 
 categories:
-  -  Game Engine
+  - Game Engine
   
 tags:
-  - [Unity, Addressable, Server]
+  - Unity
+  - Server
 
 toc: true
 toc_sticky: true

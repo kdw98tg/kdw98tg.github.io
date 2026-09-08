@@ -4,10 +4,12 @@ layout: post
 title: "[Unity] Unity의 GameObject와 행동의 분리"
 
 categories:
-  -  Game Engine
+  - Game Engine
   
 tags:
-  - [Unity, Design Pattern]
+  - Unity
+  - Design-Pattern
+  - Book
 
 toc: true
 toc_sticky: true

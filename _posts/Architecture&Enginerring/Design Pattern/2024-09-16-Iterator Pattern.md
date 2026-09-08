@@ -4,11 +4,11 @@ layout: post
 title: "[Design Pattern] 이터레이터 패턴 (Iterator Pattern)"
 
 categories:
-  -  Architecture&Engineering
+  - Architecture&Engineering
   
 tags:
   - Java
-  - Head-First-Design-Pattern
+  - Design-Pattern
   - Book
 
 toc: true

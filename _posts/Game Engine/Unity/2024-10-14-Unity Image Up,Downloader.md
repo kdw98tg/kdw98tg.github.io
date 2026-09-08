@@ -4,10 +4,11 @@ layout: post
 title: "[Unity] Unity Image 업로드/다운로드 (Upload/Download) 하기"
 
 categories:
-  -  Game Engine
+  - Game Engine
   
 tags:
-  - [Unity, Image, Upload, Download]
+  - Unity
+  - C#
 
 toc: true
 toc_sticky: true

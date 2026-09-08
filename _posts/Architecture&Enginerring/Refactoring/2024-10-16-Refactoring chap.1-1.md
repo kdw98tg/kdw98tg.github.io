@@ -4,8 +4,8 @@ title: "[Refactoring] 리팩터링 2판 Chapter.01 (함수 추출하기, 변수 
 categories:
   - Architecture&Engineering
 tags:
-  - Refactoring
   - JavaScript
+  - Refactoring
   - Book
 toc: true
 toc_sticky: true

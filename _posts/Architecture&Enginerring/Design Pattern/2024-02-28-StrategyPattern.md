@@ -4,11 +4,11 @@ layout: post
 title: "[Design Pattern] 전략 패턴 (Strategy Pattern)"
 
 categories:
-  -  Architecture&Engineering
+  - Architecture&Engineering
   
 tags:
   - Java
-  - Head-First-Design-Pattern
+  - Design-Pattern
   - Book
 
 toc: true

@@ -4,11 +4,11 @@ layout: post
 title: "[Design Pattern] 템플릿 메소드 패턴 (Templete Method Pattern)"
 
 categories:
-  -  Architecture&Engineering
+  - Architecture&Engineering
   
 tags:
   - Java
-  - Head-First-Design-Pattern
+  - Design-Pattern
   - Book
 
 toc: true

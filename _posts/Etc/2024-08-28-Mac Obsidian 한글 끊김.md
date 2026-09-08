@@ -4,10 +4,11 @@ layout: post
 title: "[Mac] 맥에서 Obsidian 에디터 한글 작성 시 끊기는 현상 해결"
 
 categories:
-  -  Etc
+  - Etc
   
 tags:
-  - [Obsidian, Electron]
+  - Electron
+  - Obsidian
 
 toc: true
 toc_sticky: true

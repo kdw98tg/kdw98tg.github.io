@@ -4,7 +4,7 @@ layout: post
 title: "[Clean Architecture] 아키텍처란?"
 
 categories:
-  -  Architecture&Engineering
+  - Architecture&Engineering
   
 tags:
   - Clean-Architecture

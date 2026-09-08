@@ -4,8 +4,8 @@ title: "[SpringBoot] SpringBoot 패키지 구조"
 categories:
   - Web
 tags:
-  - - Java
-    - Spring Boot
+  - Spring-Boot
+  - Java
 toc: true
 toc_sticky: true
 published: true

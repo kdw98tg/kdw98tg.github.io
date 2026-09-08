@@ -4,10 +4,12 @@ layout: post
 title: "[Unity] Unity에서 CommandPattern 구현하기"
 
 categories:
-  -  Game Engine
+  - Game Engine
   
 tags:
-  - [Unity, DesignPattern, CommandPattern]
+  - Unity
+  - Design-Pattern
+  - Book
 
 toc: true
 toc_sticky: true

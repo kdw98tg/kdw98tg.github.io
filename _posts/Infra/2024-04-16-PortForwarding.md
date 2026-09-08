@@ -4,10 +4,11 @@ layout: post
 title: "[Server] 포트포워딩이란? 포트포워딩 하는 법"
 
 categories:
-  -  Infra
+  - Infra
   
 tags:
-  - [Server, IIS, Port Forwarding]
+  - Network
+  - Server
 
 toc: true
 toc_sticky: true

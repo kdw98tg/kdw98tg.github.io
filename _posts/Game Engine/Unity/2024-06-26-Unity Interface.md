@@ -4,9 +4,8 @@ title: "[Unity] Interface를 활용하여 느슨한 결합 만들기"
 categories:
   - Game Engine
 tags:
-  - - Unity
-    - Interface
-    - 다형성
+  - Unity
+  - Architecture
 toc: true
 toc_sticky: true
 published: true

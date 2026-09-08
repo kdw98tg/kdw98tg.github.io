@@ -4,9 +4,8 @@ title: "[Unity] SoundPool을 활용하여 간단하게 SoundManager 구현하기
 categories:
   - Game Engine
 tags:
-  - - Unity
-    - C#
-    - SoundManager
+  - Unity
+  - C#
 toc: true
 toc_sticky: true
 published: true

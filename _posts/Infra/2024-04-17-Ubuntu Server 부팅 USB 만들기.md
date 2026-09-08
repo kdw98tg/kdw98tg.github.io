@@ -4,10 +4,11 @@ layout: post
 title: "[Ubuntu] Ubuntu Server 디스크 만들기"
 
 categories:
-  -  Infra
+  - Infra
   
 tags:
-  - [Ubuntu, Server, Disk, ISO]
+  - Server
+  - Ubuntu
 
 toc: true
 toc_sticky: true

@@ -4,14 +4,14 @@ layout: post
 title: "[React/Js] useSWR을 사용해서 통신 최적화 하기"
 
 categories:
-  -  Web
+  - Web
 
 excerpt_image: /assets/images/posts/2026-04-17-React%20useSWR/file-20260417143911966.png
 
 tags:
   - React
-  - hooks
-  - network
+  - Hooks
+  - Network
 
 toc: true
 toc_sticky: true

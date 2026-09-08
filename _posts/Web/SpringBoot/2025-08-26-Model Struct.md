@@ -4,9 +4,8 @@ title: "[SpringBoot] Model Struct 사용하여 Model, Dto간 매핑하기"
 categories:
   - Web
 tags:
-  - - Java
-    - Spring Boot
-    - Model Struct
+  - Spring-Boot
+  - Java
 toc: true
 toc_sticky: true
 published: true

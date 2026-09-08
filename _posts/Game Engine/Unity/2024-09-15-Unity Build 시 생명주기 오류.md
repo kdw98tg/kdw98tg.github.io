@@ -4,10 +4,11 @@ layout: post
 title: "[Unity] Unity 빌드시 Editor 에서는 작동하는데, Build 하면 Null 이 되는 오류"
 
 categories:
-  -  Game Engine
+  - Game Engine
   
 tags:
-  - [Unity, Error, Build, LifeCycle]
+  - Unity
+  - C#
 
 toc: true
 toc_sticky: true

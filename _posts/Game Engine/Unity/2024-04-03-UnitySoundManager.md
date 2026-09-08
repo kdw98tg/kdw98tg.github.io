@@ -4,9 +4,8 @@ title: "[Unity] SoundPooling 과 Resource 관리를 통한 SoundManager 만들�
 categories:
   - Game Engine
 tags:
-  - - Unity
-    - C#
-    - SoundManager
+  - Unity
+  - C#
 toc: true
 toc_sticky: true
 published: true

@@ -4,10 +4,11 @@ layout: post
 title: "[Unity] Reset() 사용법 및 컴포넌트 초기화 방법"
 
 categories:
-  -  Game Engine
+  - Game Engine
   
 tags:
-  - [Unity, Init, Reset]
+  - Unity
+  - C#
 
 toc: true
 toc_sticky: true

@@ -4,11 +4,11 @@ layout: post
 title: "[Design Pattern] 플라이웨이트 (Flyweight) 패턴"
 
 categories:
-  -  Architecture&Engineering
+  - Architecture&Engineering
   
 tags:
   - Java
-  - Head-First-Design-Pattern
+  - Design-Pattern
   - Book
 
 toc: true

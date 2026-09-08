@@ -4,10 +4,12 @@ layout: post
 title: "[Winform] Winform MVP 패턴 구축"
 
 categories:
-  -  Desktop App
+  - Desktop App
   
 tags:
-  - [Winform, C#, MVP]
+  - WinForm
+  - C#
+  - Architecture
 
 toc: true
 toc_sticky: true
