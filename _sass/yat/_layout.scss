@@ -773,6 +773,10 @@ html {
       left: -1em;
       position: absolute;
     }
+
+    .segment-title {
+      font-size: calc(1em - 2px);
+    }
   }
 
   .post-meta {
@@ -796,7 +800,7 @@ html {
 .category-icon {
   flex: 0 0 auto;
   width: 1em;
-  margin-right: 6px;
+  margin-right: 12px;
   text-align: center;
   opacity: 0.85;
 }
