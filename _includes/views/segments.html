@@ -13,7 +13,7 @@
       {%- if field == 'categories' -%}
         {%- include views/category-icon.html name=key -%}
       {%- endif -%}
-      {{ key }}
+      <span class="segment-title">{{ key }}</span>
     </h2>
       {% assign items = site.posts | where: field, key %}
       {% for item in items %}
