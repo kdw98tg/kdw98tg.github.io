@@ -9,7 +9,12 @@
 <div class="page-segments">
   <ul class="page-segments-list">
     {% for key in keys %}
-    <h2 id="{{ key }}" class="segment-name">{{ key }}</h2>
+    <h2 id="{{ key }}" class="segment-name">
+      {%- if field == 'categories' -%}
+        {%- include views/category-icon.html name=key -%}
+      {%- endif -%}
+      {{ key }}
+    </h2>
       {% assign items = site.posts | where: field, key %}
       {% for item in items %}
         {% if item != nil %}

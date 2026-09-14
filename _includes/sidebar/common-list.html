@@ -10,14 +10,26 @@
   <ul>
     <li>
       <a href="{{ '/index.html' | relative_url }}">
-        All<span>{{ site.posts.size }}</span>
+        <span class="common-list-label">
+          {%- if field == 'categories' -%}
+            {%- include views/category-icon.html name='All' -%}
+          {%- endif -%}
+          All
+        </span>
+        <span>{{ site.posts.size }}</span>
       </a>
     </li>
 
     {% for key in  keys %}
       <li>
         <a href="{{ url }}#h-{{ key }}">
-          {{ key }} <span>{{ site.posts | where: field, key | size }}</span>
+          <span class="common-list-label">
+            {%- if field == 'categories' -%}
+              {%- include views/category-icon.html name=key -%}
+            {%- endif -%}
+            {{ key }}
+          </span>
+          <span>{{ site.posts | where: field, key | size }}</span>
         </a>
       </li>
     {% endfor %}
