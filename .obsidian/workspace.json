@@ -11,14 +11,12 @@
             "id": "885191f21a038b49",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "_posts/Architecture&Enginerring/Minimalism Programmer/2026-09-23-미니멀리즘 프로그래머.md",
-                "mode": "source",
-                "source": false
+                "file": "assets/images/posts/2026-05-08-CSR, SSR/file-20260508212547795.png"
               },
-              "icon": "lucide-file",
-              "title": "2026-09-23-미니멀리즘 프로그래머"
+              "icon": "lucide-image",
+              "title": "file-20260508212547795"
             }
           }
         ]
@@ -187,12 +185,17 @@
   },
   "active": "885191f21a038b49",
   "lastOpenFiles": [
+    "_posts/Portfolio/2026-02-12-포트폴리오_은재팜 게임.md",
+    "_tmp_v.py",
+    "_tmp_fix_slash.py",
+    "_tmp_imgcheck.py",
+    "_posts/Portfolio/2026-02-12-포트폴리오_송도 케이블카 KIOSK,POS.md",
+    "_posts/Architecture&Enginerring/Minimalism Programmer/2026-09-23-미니멀리즘 프로그래머.md",
     "assets/images/posts/2026-09-23-미니멀리즘 프로그래머",
     "_posts/Architecture&Enginerring/Design Pattern/2024-03-02-Decorator Pattern.md",
     "_posts/Architecture&Enginerring/Clean Architecture/2025-02-16-Clean Architecture chap.2.md",
     "_posts/Architecture&Enginerring/CodeComplete2/2025-09-21-Code Complete2 비유의 힘.md",
     "_posts/Architecture&Enginerring/Design Pattern/2024-10-04-MVC Pattern.md",
-    "_posts/Architecture&Enginerring/Minimalism Programmer/2026-09-23-미니멀리즘 프로그래머.md",
     "_posts/Architecture&Enginerring/Design Pattern/2024-10-12-FlyWeight Pattern.md",
     "assets/images/posts/2026-09-23-미니멀리즘 프로그래머/file-20260923173015471.png",
     "assets/images/posts/2024-02-28-미니멀리즘 프로그래머",
@@ -215,19 +218,13 @@
     "_posts/Game Engine/Unity/20260610_QR외주 관련 작업 로그.md",
     "_posts/Game Engine/Unity/2026-06-02-Unity Fusion2 기초.md",
     "assets/images/posts/2026-06-02-Unity Fusion2 기초/file-20260607233025830.png",
-    "assets/images/posts/2026-06-02-Unity Fusion2 기초",
     "_posts/Game Engine/Unity/2026-02-12-Unity 로컬, 월드 포지션.md",
     "_posts/Web/BackEnd/2026-05-24-AES와 Base64를 사용한 암호화.md",
-    "assets/images/posts/2026-05-24-AES와 Base64를 사용한 암호화",
     "assets/images/posts/2026-05-24-AES와 Base64를 사용한 암호화/file-20260524220725296.png",
     "assets/images/posts/2026-05-24-AES와 Base64를 사용한 암호화/file-20260524220720537.png",
-    "assets/images/posts/2026-05-24-암호화",
     "_posts/Web/FrontEnd/2026-05-08-CSR, SSR.md",
     "_posts/Languages/C#/2024-03-01-Linq.md",
     "_posts/Common.md",
-    "_posts/Web/BackEnd",
-    "_posts/Languages/C#/2025-05-02-Test 구축.md",
-    "_posts/Web/Vue/2025-05-15-Vue 공식문서 Watchers.md",
     "assets/images/posts/2026-05-18-TypeScript/file-20260518163050428.png",
     "assets/images/posts/2025-05-15-Vue 공식문서 Watchers/file-20260515214138160.png",
     "assets/images/posts/2025-05-15-Vue 공식문서 Watchers/file-20260515214126806.png",

@@ -1,7 +1,7 @@
 ---
 layout: post
 
-excerpt_image: assets/images/posts/2026-04-16-Vite로%20React%20프로젝트%20생성하기/file-20260416124916878.png
+excerpt_image: /assets/images/posts/2026-04-16-Vite로%20React%20프로젝트%20생성하기/file-20260416124916878.png
 
 title: "[React/Js] Vite로 React 앱 생성하기"
 

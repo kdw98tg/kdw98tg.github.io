@@ -2,7 +2,7 @@
 layout: post
 title: "[vue/js] Vue 의 Computed 속성"
 
-excerpt_image: assets/images/posts/2026-05-13-Vue%20공식문서-bind/file-20260513223652607.png
+excerpt_image: /assets/images/posts/2026-05-13-Vue%20공식문서-bind/file-20260513223652607.png
 
 categories:
   - Web
