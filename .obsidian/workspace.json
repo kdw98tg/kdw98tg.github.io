@@ -4,37 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "165fdc05464a9ab9",
+        "id": "1c8b5bf2e40db627",
         "type": "tabs",
         "children": [
           {
-            "id": "885191f21a038b49",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "assets/images/posts/2026-05-08-CSR, SSR/file-20260508212547795.png"
-              },
-              "icon": "lucide-image",
-              "title": "file-20260508212547795"
-            }
-          },
-          {
-            "id": "a69c2e401d2afc76",
+            "id": "53b3630d80470c1c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Game Engine/Unity/2026-10-20-Unity Mcp 서버 연결.md",
+                "file": "_posts/Portfolio/2026-04-14-ENOMONT 홈페이지 제작.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-10-20-Unity Mcp 서버 연결"
+              "title": "2026-04-14-ENOMONT 홈페이지 제작"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -198,21 +185,22 @@
       "bases:새 베이스 생성하기": false
     }
   },
-  "active": "a69c2e401d2afc76",
+  "active": "53b3630d80470c1c",
   "lastOpenFiles": [
-    "assets/images/posts/2026-10-20-Unity Mcp 서버 연결/file-20261020215417069.png",
-    "assets/images/posts/2026-10-20-Unity Mcp 서버 연결/file-20261020215315803.png",
-    "assets/images/posts/2026-10-20-Unity Mcp 서버 연결/file-20261020215300667.png",
-    "assets/images/posts/2026-10-20-Unity Mcp 서버 연결/file-20261020215211504.png",
-    "assets/images/posts/2026-10-20-Unity Mcp 서버 연결/file-20261020215154666.png",
-    "assets/images/posts/2026-10-20-Unity Mcp 서버 연결/file-20261020215004183.png",
-    "assets/images/posts/2026-10-20-Unity Mcp 서버 연결/file-20261020214835031.png",
-    "assets/images/posts/2026-10-20-Unity Mcp 서버 연결/file-20261020214805463.png",
-    "assets/images/posts/2026-10-20-Unity Mcp 서버 연결/file-20261020214738276.png",
-    "assets/images/posts/2026-10-20-Unity Mcp 서버 연결/file-20261020214543316.png",
-    "assets/images/posts/2026-10-20-Unity Mcp 서버 연결/file-20261020214254166.png",
-    "_posts/Game Engine/Unity/2026-06-02-Unity Fusion2 기초.md",
+    "_posts/Portfolio/2026-02-12-포트폴리오_RDC.md",
+    "assets/images/posts/2026-05-08-CSR, SSR/file-20260508212547795.png",
+    "_posts/Portfolio/2026-04-14-ENOMONT 홈페이지 제작.md",
+    "assets/images/posts/enomont-home-mobile.png",
+    "assets/images/posts/enomont-home-lightbox.png",
+    "assets/images/posts/enomont-home-software.png",
+    "assets/images/posts/enomont-home-history.png",
+    "assets/images/posts/enomont-home-hero.png",
+    "assets/images/posts/enomont-report-filter.png",
+    "assets/images/posts/enomont-report-body.png",
+    "assets/images/posts/enomont-report-full.png",
     "_posts/Game Engine/Unity/2026-10-20-Unity Mcp 서버 연결.md",
+    "assets/images/posts/2026-10-20-Unity Mcp 서버 연결/file-20261020215417069.png",
+    "_posts/Game Engine/Unity/2026-06-02-Unity Fusion2 기초.md",
     "assets/images/posts/2026-10-20-Unity Mcp 서버 연결",
     "_posts/Portfolio/2026-02-12-포트폴리오_은재팜 게임.md",
     "_tmp_v.py",
@@ -243,8 +231,6 @@
     "_posts/Languages/Python/2025-10-19-python web crawling1.md",
     "_posts/Game Engine/Unity/20260610_QR외주 관련 작업 로그.md",
     "_posts/Game Engine/Unity/2026-02-12-Unity 로컬, 월드 포지션.md",
-    "_posts/Web/BackEnd/2026-05-24-AES와 Base64를 사용한 암호화.md",
-    "_posts/Web/FrontEnd/2026-05-08-CSR, SSR.md",
-    "_posts/Languages/C#/2024-03-01-Linq.md"
+    "_posts/Web/BackEnd/2026-05-24-AES와 Base64를 사용한 암호화.md"
   ]
 }
