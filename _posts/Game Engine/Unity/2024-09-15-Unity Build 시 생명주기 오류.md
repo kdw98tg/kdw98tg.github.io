@@ -3,6 +3,8 @@ layout: post
 
 title: "[Unity] Unity 빌드시 Editor 에서는 작동하는데, Build 하면 Null 이 되는 오류"
 
+excerpt_image: /assets/images/thumbnails/unity.png
+
 categories:
   - Game Engine
   
@@ -18,6 +20,8 @@ published: true
 date: 2024-09-15
 last_modified_at: 2024-09-15
 ---
+
+![](/assets/images/thumbnails/unity.png)
 
 ## 생명주기 오류
 

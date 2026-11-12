@@ -3,6 +3,8 @@ layout: post
 
 title: "[Refactoring] 리팩터링 2판 Chapter.11 part 2 (API 리팩터링)"
 
+excerpt_image: /assets/images/thumbnails/book-refactoring.png
+
 categories:
   - Architecture&Engineering
   
@@ -19,6 +21,8 @@ published: true
 date: 2025-02-02
 last_modified_at: 2025-02-02
 ---
+
+![](/assets/images/thumbnails/book-refactoring.png)
 
 ## 세터 제거하기
 

@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "[SpringBoot] Controller 계층 이란?"
+
+excerpt_image: /assets/images/thumbnails/spring-boot.png
 categories:
   - Web
 tags:
@@ -12,6 +14,8 @@ published: true
 date: 2025-01-02
 last_modified_at: 2025-01-02
 ---
+
+![](/assets/images/thumbnails/spring-boot.png)
 
 ## Spring Boot의 Controller 계층이란?
 

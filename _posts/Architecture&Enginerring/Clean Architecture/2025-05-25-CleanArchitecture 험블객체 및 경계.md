@@ -3,6 +3,8 @@ layout: post
 
 title: "[Clean Architecture] 프레젠터와 험블 객체"
 
+excerpt_image: /assets/images/thumbnails/book-clean-architecture.png
+
 categories:
   - Architecture&Engineering
   
@@ -18,6 +20,8 @@ published: true
 date: 2025-05-25
 last_modified_at: 2025-05-25
 ---
+
+![](/assets/images/thumbnails/book-clean-architecture.png)
 
 ## 험블 객체 패턴
 

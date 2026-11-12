@@ -3,6 +3,8 @@ layout: post
 
 title: "[Refactoring] 리팩터링 2판 Chapter.06 part 4 (기본적인 리팩터링)"
 
+excerpt_image: /assets/images/thumbnails/book-refactoring.png
+
 categories:
   - Architecture&Engineering
   
@@ -19,6 +21,8 @@ published: true
 date: 2024-11-24
 last_modified_at: 2024-11-24
 ---
+
+![](/assets/images/thumbnails/book-refactoring.png)
 
 ## 단계 쪼개기
 

@@ -3,6 +3,8 @@ layout: post
 
 title: "[Clean Architecture] 소리치는 아키텍처, 클린 아키텍쳐 소개"
 
+excerpt_image: /assets/images/thumbnails/book-clean-architecture.png
+
 categories:
   - Architecture&Engineering
   
@@ -18,6 +20,8 @@ published: true
 date: 2025-05-16
 last_modified_at: 2025-05-16
 ---
+
+![](/assets/images/thumbnails/book-clean-architecture.png)
 
 ## 소리치는 아키텍처
 

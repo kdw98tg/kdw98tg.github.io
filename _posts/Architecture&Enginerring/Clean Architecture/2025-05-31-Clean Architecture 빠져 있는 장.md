@@ -3,6 +3,8 @@ layout: post
 
 title: "[Clean Architecture] 빠져 있는 장"
 
+excerpt_image: /assets/images/thumbnails/book-clean-architecture.png
+
 categories:
   - Architecture&Engineering
   
@@ -18,6 +20,8 @@ published: true
 date: 2025-05-31
 last_modified_at: 2025-05-31
 ---
+
+![](/assets/images/thumbnails/book-clean-architecture.png)
 
 이번 장에서는 클린 아키텍처는 잠시 한쪽으로 제쳐놓고, 설계나 코드 조직화와 관련된 몇 가지 접근법을 알아봅니다.
 

@@ -3,6 +3,8 @@ layout: post
 
 title: "[Design Pattern] 플라이웨이트 (Flyweight) 패턴"
 
+excerpt_image: /assets/images/thumbnails/book-design-pattern.png
+
 categories:
   - Architecture&Engineering
   
@@ -17,6 +19,8 @@ toc_sticky: true
 date: 2024-10-12
 last_modified_at: 2024-10-12
 ---
+
+![](/assets/images/thumbnails/book-design-pattern.png)
 
 ## 플라이웨이트 패턴이란?
 

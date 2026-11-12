@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "[Unity] Coroutine 이란? Coroutine 의 활용법"
+
+excerpt_image: /assets/images/thumbnails/unity.png
 categories:
   - Game Engine
 tags:
@@ -12,6 +14,8 @@ published: true
 date: 2024-03-19
 last_modified_at: 2024-03-19
 ---
+
+![](/assets/images/thumbnails/unity.png)
 
 ## 코루틴 이란?
 

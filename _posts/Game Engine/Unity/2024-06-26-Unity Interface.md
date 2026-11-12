@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "[Unity] Interface를 활용하여 느슨한 결합 만들기"
+
+excerpt_image: /assets/images/thumbnails/unity.png
 categories:
   - Game Engine
 tags:
@@ -12,6 +14,8 @@ published: true
 date: 2024-06-26
 last_modified_at: 2024-06-26
 ---
+
+![](/assets/images/thumbnails/unity.png)
 
 interface, inherit  등등 객체지향에서 등장하는 개념들은 처음에 이해하기는 어렵지만, '객체지향의 꽃' 이라고 할 만큼 중요한 개념입니다.
 

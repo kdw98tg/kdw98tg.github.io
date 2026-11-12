@@ -3,6 +3,8 @@ layout: post
 
 title: "[Refactoring] 리팩터링 2판 Chapter.01 (다형성을 활용해 계산 코드 재구성하기)"
 
+excerpt_image: /assets/images/thumbnails/book-refactoring.png
+
 categories:
   - Architecture&Engineering
   
@@ -19,6 +21,8 @@ published: true
 date: 2024-10-27
 last_modified_at: 2024-10-27
 ---
+
+![](/assets/images/thumbnails/book-refactoring.png)
 
 이번 포스팅에서는 연극 장르를 추가하고, 장르마다 공연료와 적립 포인트 계산법을 다르게 지정하도록 기능을 수정 합니다. 
 

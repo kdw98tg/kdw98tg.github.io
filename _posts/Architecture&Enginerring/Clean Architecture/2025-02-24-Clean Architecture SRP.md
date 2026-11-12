@@ -3,6 +3,8 @@ layout: post
 
 title: "[Clean Architecture] Clean Architecture SRP(Single Responsibility Principle단일책임의 원칙)"
 
+excerpt_image: /assets/images/thumbnails/book-clean-architecture.png
+
 categories:
   - Architecture&Engineering
   
@@ -18,6 +20,8 @@ published: true
 date: 2025-02-24
 last_modified_at: 2025-02-24
 ---
+
+![](/assets/images/thumbnails/book-clean-architecture.png)
 
 ## SRP 의 오해와 정의
 단일책임의 원칙이라고 하면 보통 이렇게 이야기를 합니다. "모듈은 단 하나의 일만 해야 한다."

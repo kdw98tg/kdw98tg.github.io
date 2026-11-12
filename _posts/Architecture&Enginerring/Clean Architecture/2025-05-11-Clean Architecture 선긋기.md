@@ -3,6 +3,8 @@ layout: post
 
 title: "[Clean Architecture] 선긋기"
 
+excerpt_image: /assets/images/thumbnails/book-clean-architecture.png
+
 categories:
   - Architecture&Engineering
   
@@ -18,6 +20,8 @@ published: true
 date: 2025-05-11
 last_modified_at: 2025-05-11
 ---
+
+![](/assets/images/thumbnails/book-clean-architecture.png)
 
 ## 소프트웨어 아키텍쳐란
 

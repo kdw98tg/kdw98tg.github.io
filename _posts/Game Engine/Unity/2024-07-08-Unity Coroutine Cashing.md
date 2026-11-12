@@ -3,6 +3,8 @@ layout: post
 
 title: "[Unity] 코루틴 관리를 도와주는 CoroutineCashManager"
 
+excerpt_image: /assets/images/thumbnails/unity.png
+
 categories:
   - Game Engine
   
@@ -18,6 +20,8 @@ published: true
 date: 2024-07-08
 last_modified_at: 2024-07-08
 ---
+
+![](/assets/images/thumbnails/unity.png)
 
 Unity 에서 작업을 하시다 보면 `Coroutine`이라는 녀석을 많이 사용합니다.
 

@@ -3,6 +3,8 @@ layout: post
 
 title: "[Design Pattern] 싱글턴 패턴 (Singleton Pattern)"
 
+excerpt_image: /assets/images/thumbnails/book-design-pattern.png
+
 categories:
   - Architecture&Engineering
   
@@ -17,6 +19,8 @@ toc_sticky: true
 date: 2024-03-04
 last_modified_at: 2024-03-04
 ---
+
+![](/assets/images/thumbnails/book-design-pattern.png)
 
 ## 싱글톤 패턴이란?
 

@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "[C#] 람다식 이란?"
+
+excerpt_image: /assets/images/thumbnails/csharp.png
 categories:
   - Languages
 tags:
@@ -11,6 +13,8 @@ published: true
 date: 2020-07-22
 last_modified_at: 2020-07-22
 ---
+
+![](/assets/images/thumbnails/csharp.png)
 
 ## 람다식이란?
 

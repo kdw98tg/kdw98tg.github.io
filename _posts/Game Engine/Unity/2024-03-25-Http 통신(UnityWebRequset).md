@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "[Unity] UnityWebRequest를 사용한 통신 로직 구현"
+
+excerpt_image: /assets/images/thumbnails/unity.png
 categories:
   - Game Engine
 tags:
@@ -13,6 +15,7 @@ date: 2024-03-25
 last_modified_at: 2024-03-25
 ---
 
+![](/assets/images/thumbnails/unity.png)
 
 상용화가 목적인 프로젝트에서 클라이언트와 서버가 통신을 하는 것은 필수적입니다.
 

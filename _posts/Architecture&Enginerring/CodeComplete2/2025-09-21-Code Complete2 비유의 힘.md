@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "[Code Complete 2] 소프트웨어에서의 비유"
+
+excerpt_image: /assets/images/thumbnails/book-code-complete.png
 categories:
   - Architecture&Engineering
 tags:
@@ -12,6 +14,8 @@ published: true
 date: 2025-09-21
 last_modified_at: 2025-09-21
 ---
+
+![](/assets/images/thumbnails/book-code-complete.png)
 
 소프트웨어를 포함해 특정 학문을 배울 때 어려운 이론을 쉽게 이해할 수 있는 방법으로 `비유`가 있습니다. 하지만, `비유`는 완벽하지 않고, 어떨때는 비유 때문에 정답에 가까워질 수 없게 될 수도 있습니다. 하지만 그러면서도 비유를 하는 이유는 단점보다는 장점이 훨씬 많기 때문입니다. 이번 포스팅에서는 `Code Complete2` 의 저자가 소프트웨어를 만드는 것에 대한 비유와 해당 비유의 한계를 이야기 합니다.
 

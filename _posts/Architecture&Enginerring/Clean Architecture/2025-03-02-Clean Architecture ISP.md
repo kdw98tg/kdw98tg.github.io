@@ -3,6 +3,8 @@ layout: post
 
 title: "[Clean Architecture] Clean Architecture ISP(Interface Segregation Principle 인터페이스 분리의 원칙)"
 
+excerpt_image: /assets/images/thumbnails/book-clean-architecture.png
+
 categories:
   - Architecture&Engineering
   
@@ -18,6 +20,8 @@ published: true
 date: 2025-03-02
 last_modified_at: 2025-03-02
 ---
+
+![](/assets/images/thumbnails/book-clean-architecture.png)
 
 ## ISP 원칙
 

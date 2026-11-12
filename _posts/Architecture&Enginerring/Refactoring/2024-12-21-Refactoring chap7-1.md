@@ -3,6 +3,8 @@ layout: post
 
 title: "[Refactoring] 리팩터링 2판 Chapter.07 part 1 (캡슐화)"
 
+excerpt_image: /assets/images/thumbnails/book-refactoring.png
+
 categories:
   - Architecture&Engineering
   
@@ -19,6 +21,8 @@ published: true
 date: 2024-12-21
 last_modified_at: 2024-12-21
 ---
+
+![](/assets/images/thumbnails/book-refactoring.png)
 
 모듈을 분리하는 가장 중요한 기준은 아마도 시스템에서 각 모듈이 자신을 제외한 다른 부분에 드러내지 않아야 할 비밀을 얼마나 잘 숨기느냐에 있습니다. 객체지향에서 모듈이란 아주 중요한 개념을 가집니다. 모듈을 만드는 가장 기본적인 방법은 클래스 입니다. 이번 챕터에서는 모듈을 만들면서 리팩터링 하는 방법을 설명합니다.
 

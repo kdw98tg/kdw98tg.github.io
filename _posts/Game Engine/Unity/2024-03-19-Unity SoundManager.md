@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "[Unity] SoundPool을 활용하여 간단하게 SoundManager 구현하기"
+
+excerpt_image: /assets/images/thumbnails/unity.png
 categories:
   - Game Engine
 tags:
@@ -12,6 +14,8 @@ published: true
 date: 2024-03-19
 last_modified_at: 2024-03-19
 ---
+
+![](/assets/images/thumbnails/unity.png)
 
 프로젝트를 하면서 사운드를 넣는 것은 필수적입니다.
 

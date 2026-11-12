@@ -3,6 +3,8 @@ layout: post
 
 title: "[Design Pattern] 브릿지 패턴 (Bridge Pattern)"
 
+excerpt_image: /assets/images/thumbnails/book-design-pattern.png
+
 categories:
   - Architecture&Engineering
   
@@ -17,6 +19,8 @@ toc_sticky: true
 date: 2024-10-04
 last_modified_at: 2024-10-04
 ---
+
+![](/assets/images/thumbnails/book-design-pattern.png)
 
 ## 브릿지 패턴이란?
 

@@ -3,6 +3,8 @@ layout: post
 
 title: "[Winform] Winform MVP 패턴 구축"
 
+excerpt_image: /assets/images/thumbnails/winform.png
+
 categories:
   - Desktop App
   
@@ -19,6 +21,8 @@ published: true
 date: 2025-05-02
 last_modified_at: 2025-05-02
 ---
+
+![](/assets/images/thumbnails/winform.png)
 
 이번에 Winform 프레임워크를 사용하여 지휘봉을 움직이면 그에따라 음악의 볼륨, 템포를 조절하는 외주를 하였습니다. 외주를 하면서 프로그램적으로 느낀것은 크게 2가지가 있습니다.
 

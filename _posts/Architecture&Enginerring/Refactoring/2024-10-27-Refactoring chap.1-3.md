@@ -3,6 +3,8 @@ layout: post
 
 title: "[Refactoring] 리팩터링 2판 Chapter.01 (단계 쪼개기)"
 
+excerpt_image: /assets/images/thumbnails/book-refactoring.png
+
 categories:
   - Architecture&Engineering
   
@@ -19,6 +21,8 @@ published: true
 date: 2024-10-27
 last_modified_at: 2024-10-27
 ---
+
+![](/assets/images/thumbnails/book-refactoring.png)
 
 지난 포스팅에서 리펙토링 한 코드 입니다.
 

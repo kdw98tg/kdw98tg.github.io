@@ -3,6 +3,8 @@ layout: post
 
 title: "[Refactoring] 리팩터링 2판 Chapter.03 (코드에서 나는 악취)"
 
+excerpt_image: /assets/images/thumbnails/book-refactoring.png
+
 categories:
   - Architecture&Engineering
   
@@ -19,6 +21,8 @@ published: true
 date: 2024-11-12
 last_modified_at: 2024-11-12
 ---
+
+![](/assets/images/thumbnails/book-refactoring.png)
 
 이번 포스팅은 3장 입니다. 3장의 제목은 `코드에서 나는 악취` 입니다. 아주 강렬한 제목이죠.
 

@@ -3,6 +3,8 @@ layout: post
 
 title: "[Unity] Unity의 GameObject와 행동의 분리"
 
+excerpt_image: /assets/images/thumbnails/unity.png
+
 categories:
   - Game Engine
   
@@ -19,6 +21,8 @@ published: true
 date: 2026-02-12
 last_modified_at: 2025-02-12
 ---
+
+![](/assets/images/thumbnails/unity.png)
 
 이번에 공포게임을 만들고, 리팩터링을 고민하다가 선배 개발자로부터 피드백을 받은 내용을 바탕으로 간단한 예제를 만들었습니다.
 

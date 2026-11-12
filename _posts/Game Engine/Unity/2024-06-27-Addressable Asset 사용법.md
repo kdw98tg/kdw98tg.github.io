@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "[Unity] Addressable Asset 활용법"
+
+excerpt_image: /assets/images/thumbnails/unity.png
 categories:
   - Game Engine
 tags:
@@ -12,6 +14,9 @@ published: true
 date: 2024-06-27
 last_modified_at: 2024-06-27
 ---
+
+![](/assets/images/thumbnails/unity.png)
+
 ## 에셋 관리 방법
 
 에셋을 관리하는 방법에는 여러가지가 있습니다.

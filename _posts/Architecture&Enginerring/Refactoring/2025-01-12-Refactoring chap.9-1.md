@@ -3,6 +3,8 @@ layout: post
 
 title: "[Refactoring] 리팩터링 2판 Chapter.09 part 1 (데이터 조직화)"
 
+excerpt_image: /assets/images/thumbnails/book-refactoring.png
+
 categories:
   - Architecture&Engineering
   
@@ -19,6 +21,8 @@ published: true
 date: 2025-01-12
 last_modified_at: 2025-01-12
 ---
+
+![](/assets/images/thumbnails/book-refactoring.png)
 
 이번 챕터는 변수와 관련된 내용입니다. 이번 파트도 마찬가지로, 새로운 개념보다는 이미 사용하고 있는 개념들을 점검하는 파트 입니다. (예제는 생략했습니다.)
 

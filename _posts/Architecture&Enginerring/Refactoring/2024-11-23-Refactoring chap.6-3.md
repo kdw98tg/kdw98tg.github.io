@@ -3,6 +3,8 @@ layout: post
 
 title: "[Refactoring] 리팩터링 2판 Chapter.06 part 3 (기본적인 리팩터링)"
 
+excerpt_image: /assets/images/thumbnails/book-refactoring.png
+
 categories:
   - Architecture&Engineering
   
@@ -19,6 +21,8 @@ published: true
 date: 2024-11-23
 last_modified_at: 2024-11-23
 ---
+
+![](/assets/images/thumbnails/book-refactoring.png)
 
 ## 변수 캡슐화 하기
 

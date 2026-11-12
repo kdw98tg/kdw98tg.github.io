@@ -3,6 +3,8 @@ layout: post
 
 title: "[Design Pattern] 복합 패턴 (Combine Pattern)"
 
+excerpt_image: /assets/images/thumbnails/book-design-pattern.png
+
 categories:
   - Architecture&Engineering
   
@@ -17,6 +19,8 @@ toc_sticky: true
 date: 2024-09-29
 last_modified_at: 2024-09-29
 ---
+
+![](/assets/images/thumbnails/book-design-pattern.png)
 
 ## 복합패턴으로 Duck 구현하기
 

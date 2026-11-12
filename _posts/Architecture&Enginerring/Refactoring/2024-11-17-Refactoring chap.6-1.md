@@ -3,6 +3,8 @@ layout: post
 
 title: "[Refactoring] 리팩터링 2판 Chapter.06 part 1 (기본적인 리팩터링)"
 
+excerpt_image: /assets/images/thumbnails/book-refactoring.png
+
 categories:
   - Architecture&Engineering
   
@@ -19,6 +21,8 @@ published: true
 date: 2024-11-17
 last_modified_at: 2024-11-17
 ---
+
+![](/assets/images/thumbnails/book-refactoring.png)
 
 이번 챕터에서는 리팩터링의 기법에 대해 설명 합니다. 이 기법들은 `chap.1`에서 간단하게 다루었던 내용 입니다. 해당 내용들을 좀더 깊게 설명해놓은 챕터라고 보면 될것 같습니다.
 

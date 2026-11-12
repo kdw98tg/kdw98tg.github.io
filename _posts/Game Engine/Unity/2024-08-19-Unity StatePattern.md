@@ -3,6 +3,8 @@ layout: post
 
 title: "[Unity] Unity에서 StatePattern 구현하기"
 
+excerpt_image: /assets/images/thumbnails/unity.png
+
 categories:
   - Game Engine
   
@@ -19,6 +21,8 @@ published: true
 date: 2024-08-19
 last_modified_at: 2024-08-19
 ---
+
+![](/assets/images/thumbnails/unity.png)
 
 ## StatePattern 이란?
 

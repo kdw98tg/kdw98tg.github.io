@@ -3,6 +3,8 @@ layout: post
 
 title: "[Design Pattern] 상태 패턴 (State Pattern)"
 
+excerpt_image: /assets/images/thumbnails/book-design-pattern.png
+
 categories:
   - Architecture&Engineering
   
@@ -17,6 +19,8 @@ toc_sticky: true
 date: 2024-09-28
 last_modified_at: 2024-09-28
 ---
+
+![](/assets/images/thumbnails/book-design-pattern.png)
 
 ## State Pattern 이란?
 

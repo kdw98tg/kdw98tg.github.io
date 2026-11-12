@@ -3,6 +3,8 @@ layout: post
 
 title: "[Clean Architecture] 컴포넌트 원칙(ADP, SDP, SAP)"
 
+excerpt_image: /assets/images/thumbnails/book-clean-architecture.png
+
 categories:
   - Architecture&Engineering
   
@@ -18,6 +20,8 @@ published: true
 date: 2025-03-17
 last_modified_at: 2025-03-17
 ---
+
+![](/assets/images/thumbnails/book-clean-architecture.png)
 
 저자는 컴포넌트 구조와 관련된 아키텍쳐를 침범하는 힘은 기술적이며, 정치적이고, 가변적이라고 하였습니다. 여기서 `정치적이다`라는 말이 상당히 인상깊었습니다. 기술적이며, 가변적인것은 그럴 수 있다고 생각했는데, 일적인 부분에서 정치가 개입되면 안된다고 생각했기 때문입니다. 하지만, 실제로 일을 시작해보니 입김이 쎈 고참들이 하는 이야기가 곧 정답이 되는 경우가 많기 때문에 내가 더 좋은 아이디어가 있다고 하더라도 묵살될 수 있음을 느꼈습니다. 즉, 좋은 구조를 만들기 위해서는 결국 기술적인 요소와 함게 `참여`가 필요하다고 느꼈습니다.
 

@@ -3,6 +3,8 @@ layout: post
 
 title: "[Unity] DragHandler를 이용하여 오브젝트 옮기기"
 
+excerpt_image: /assets/images/thumbnails/unity.png
+
 categories:
   - Game Engine
   
@@ -18,6 +20,9 @@ published: true
 date: 2024-08-23
 last_modified_at: 2024-08-23
 ---
+
+![](/assets/images/thumbnails/unity.png)
+
 ## Drag 기능 구현하기
 
 이번 프로젝트를 진행하면서, Tilemap 안의 오브젝트를 움직이는 기능이 있었습니다. 해당 기능은 `아이러브커피`에도 존재하는 기능입니다.

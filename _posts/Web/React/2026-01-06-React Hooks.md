@@ -3,6 +3,8 @@ layout: post
 
 title: "[react/js] React Hooks 살펴보기"
 
+excerpt_image: /assets/images/thumbnails/react.png
+
 categories:
   - Web
   
@@ -19,6 +21,8 @@ published: true
 date: 2026-01-06
 last_modified_at: 2026-01-06
 ---
+
+![](/assets/images/thumbnails/react.png)
 
 ## 리액트 Hooks
 

@@ -3,6 +3,8 @@ layout: post
 
 title: "[Refactoring] 리팩터링 2판 Chapter.10 part 2 (조건부 로직 간소화)"
 
+excerpt_image: /assets/images/thumbnails/book-refactoring.png
+
 categories:
   - Architecture&Engineering
   
@@ -19,6 +21,8 @@ published: true
 date: 2025-01-25
 last_modified_at: 2025-01-25
 ---
+
+![](/assets/images/thumbnails/book-refactoring.png)
 
 ## 조건부 로직을 다형성으로 바꾸기
 

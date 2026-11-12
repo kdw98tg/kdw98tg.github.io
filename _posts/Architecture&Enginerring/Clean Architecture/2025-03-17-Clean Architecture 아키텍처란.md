@@ -3,6 +3,8 @@ layout: post
 
 title: "[Clean Architecture] 아키텍처란?"
 
+excerpt_image: /assets/images/thumbnails/book-clean-architecture.png
+
 categories:
   - Architecture&Engineering
   
@@ -18,6 +20,8 @@ published: true
 date: 2025-03-17
 last_modified_at: 2025-03-17
 ---
+
+![](/assets/images/thumbnails/book-clean-architecture.png)
 
 아키텍처라는 단어는 권력과 신비로움을 연상케 합니다. 소프트웨어 아키텍처는 기술적 성취의 정점에 서 있습니다. 저도 처음에는 알고리즘을 짜는 개발자가 제일 최고인줄 알았는데 뭔가를 배울수록 소프트웨어 아키텍처를 만드는 사람들이 존경스러워 집니다. 제가 생각하는 아키텍처란 어떤 기능을 고치는데 드는 비용을 최소화 하게할 수 있는 사람입니다. 많은 경험으로 쌓인 노하우들을 적용하는 과정이라고 생각합니다. 제가 요즘 Clean Architecture를 비롯하여 Refactoring, Design Pattern 등에 관심을 가지는것이 이 때문입니다. 제가 소프트웨어를 만들면 유지보수하는데 걸리는 비용이 너무 커서 그것을 줄이는 방법이 무엇일까?를 계속 고민하기 때문입니다.
 

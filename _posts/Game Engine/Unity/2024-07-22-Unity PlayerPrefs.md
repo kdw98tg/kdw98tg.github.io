@@ -3,6 +3,8 @@ layout: post
 
 title: "[Unity] Unity PlayerPrefs 관리법"
 
+excerpt_image: /assets/images/thumbnails/unity.png
+
 categories:
   - Game Engine
   
@@ -18,6 +20,8 @@ published: true
 date: 2024-07-22
 last_modified_at: 2024-07-22
 ---
+
+![](/assets/images/thumbnails/unity.png)
 
 ## PlayerPrefs 란?
 

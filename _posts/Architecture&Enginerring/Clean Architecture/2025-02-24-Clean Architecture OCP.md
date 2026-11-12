@@ -3,6 +3,8 @@ layout: post
 
 title: "[Clean Architecture] Clean Architecture OCP(Open-Closed Principle 개방-폐쇄 원칙)"
 
+excerpt_image: /assets/images/thumbnails/book-clean-architecture.png
+
 categories:
   - Architecture&Engineering
   
@@ -18,6 +20,8 @@ published: true
 date: 2025-02-24
 last_modified_at: 2025-02-24
 ---
+
+![](/assets/images/thumbnails/book-clean-architecture.png)
 
 ## OCP의 정의
 

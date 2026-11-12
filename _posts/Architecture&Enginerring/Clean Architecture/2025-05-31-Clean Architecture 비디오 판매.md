@@ -3,6 +3,8 @@ layout: post
 
 title: "[Clean Architecture] 사례 연구 : 비디오 판매"
 
+excerpt_image: /assets/images/thumbnails/book-clean-architecture.png
+
 categories:
   - Architecture&Engineering
   
@@ -18,6 +20,8 @@ published: true
 date: 2025-05-31
 last_modified_at: 2025-05-31
 ---
+
+![](/assets/images/thumbnails/book-clean-architecture.png)
 
 저자가 아키텍트가 되어 일을 처리하는 과정과 결정을 내리는 모습을 담은 챕터 입니다.
 

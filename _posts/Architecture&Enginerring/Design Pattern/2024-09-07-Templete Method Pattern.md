@@ -3,6 +3,8 @@ layout: post
 
 title: "[Design Pattern] 템플릿 메소드 패턴 (Template Method Pattern)"
 
+excerpt_image: /assets/images/thumbnails/book-design-pattern.png
+
 categories:
   - Architecture&Engineering
   
@@ -17,6 +19,9 @@ toc_sticky: true
 date: 2024-09-07
 last_modified_at: 2024-09-07
 ---
+
+![](/assets/images/thumbnails/book-design-pattern.png)
+
 ## 템플릿 메소드 패턴(Template Method Pattern) 이란?
 
 > 템플릿 메소드 패턴이란, 여러 클래스에서 공통으로 사용하는 메서드를 템플릿화 하여 상위 클래스에서 정의하고, 하위클래스마다 세부 동작을 구현하는 패턴입니다.

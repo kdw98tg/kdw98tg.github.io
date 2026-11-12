@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "[C#] C# ClassLibrary로 재사용 가능한 모듈 만들기"
+
+excerpt_image: /assets/images/thumbnails/csharp.png
 categories:
   - Languages
 tags:
@@ -11,6 +13,8 @@ published: true
 date: 2025-05-02
 last_modified_at: 2025-05-02
 ---
+
+![](/assets/images/thumbnails/csharp.png)
 
 프로그램을 제작할 때에는 공용으로 필요한 기능들이 있습니다. 예를들어 더하기, 뺴기, 자료형 파싱하기 등의 기능입니다. 해당 기능들은 부수효과를 일으키지 않고, 프로젝트를 할때 자주 필요한 기능들입니다.
 

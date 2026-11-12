@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "[ASP.NET Core] ASP.Net Core 에서 RawQuery로 데이터 조회하기"
+
+excerpt_image: /assets/images/thumbnails/aspnet-core.png
 categories:
   - Web
 tags:
@@ -12,6 +14,8 @@ published: true
 date: 2024-10-28
 last_modified_at: 2024-10-28
 ---
+
+![](/assets/images/thumbnails/aspnet-core.png)
 
 ## EntityFrameWorkCore 의 ORM
 

@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "[SpringBoot] Model Struct 사용하여 Model, Dto간 매핑하기"
+
+excerpt_image: /assets/images/thumbnails/spring-boot.png
 categories:
   - Web
 tags:
@@ -12,6 +14,8 @@ published: true
 date: 2025-08-26
 last_modified_at: 2025-08-26
 ---
+
+![](/assets/images/thumbnails/spring-boot.png)
 
 Spring Boot와 같은 백엔드 프로젝트에서 클라이언트와 서버 간 데이터를 주고받을 때는 보통 순수 Entity를 그대로 사용하지 않고 DTO(Data Transfer Object)를 활용합니다.  
 이는 관심사의 분리, 보안 강화, 서버 호출 최소화 등의 이유 때문으로, 제대로 된 프로젝트에서는 DTO 사용이 사실상 필수적입니다. 

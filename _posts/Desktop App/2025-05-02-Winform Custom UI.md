@@ -3,6 +3,8 @@ layout: post
 
 title: "[Winform] Winform Custom UI 만들기"
 
+excerpt_image: /assets/images/thumbnails/winform.png
+
 categories:
   - Desktop App
   
@@ -19,6 +21,8 @@ published: true
 date: 2025-05-02
 last_modified_at: 2025-05-02
 ---
+
+![](/assets/images/thumbnails/winform.png)
 
 Winform은 2000년 7월 첫 릴리즈 되었습니다. 즉, 2025년인 지금부터 약 25년전 프레임워크 인것이죠. Designer가 C#으로 이루어진 코드로 되어있어서 커스텀하기가 참 불편합니다. 그리고 기본 제공되는 UI들의 디자인도 모두 구립니다.. 이러한 점을 개선하여 xaml로 Design 할 수 있도록 나온 WPF가 나오긴 했습니다만, Winform의 단순한 프레임워크 구조는 무시할 수 없기 때문에, Winform 에서도 방법을 찾아야 합니다.
 

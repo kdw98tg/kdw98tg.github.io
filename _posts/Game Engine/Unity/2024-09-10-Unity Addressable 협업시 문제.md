@@ -3,6 +3,8 @@ layout: post
 
 title: "[Unity] Unity에서 협업 시 Addressable 관리 문제"
 
+excerpt_image: /assets/images/thumbnails/unity.png
+
 categories:
   - Game Engine
   
@@ -18,6 +20,8 @@ published: true
 date: 2024-09-10
 last_modified_at: 2024-09-10
 ---
+
+![](/assets/images/thumbnails/unity.png)
 
 ## Git 을 통해 협업 시 Addressable 에서 발생하는 문제
 

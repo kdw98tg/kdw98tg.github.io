@@ -3,6 +3,8 @@ layout: post
 
 title: "[Refactoring] 리팩터링 2판 Chapter.07 part 4 (캡슐화)"
 
+excerpt_image: /assets/images/thumbnails/book-refactoring.png
+
 categories:
   - Architecture&Engineering
   
@@ -19,6 +21,8 @@ published: true
 date: 2025-01-04
 last_modified_at: 2025-01-04
 ---
+
+![](/assets/images/thumbnails/book-refactoring.png)
 
 ## 중재자 제거하기
 

@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "[Refactoring] 리팩터링 2판 Chapter.01 (함수 추출하기, 변수 인라인하기)"
+
+excerpt_image: /assets/images/thumbnails/book-refactoring.png
 categories:
   - Architecture&Engineering
 tags:
@@ -13,6 +15,8 @@ published: true
 date: 2024-10-17
 last_modified_at: 2024-10-17
 ---
+
+![](/assets/images/thumbnails/book-refactoring.png)
 
 ## 리팩터링 서론
 

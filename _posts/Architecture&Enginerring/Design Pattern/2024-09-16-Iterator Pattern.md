@@ -3,6 +3,8 @@ layout: post
 
 title: "[Design Pattern] 이터레이터 패턴 (Iterator Pattern)"
 
+excerpt_image: /assets/images/thumbnails/book-design-pattern.png
+
 categories:
   - Architecture&Engineering
   
@@ -17,6 +19,8 @@ toc_sticky: true
 date: 2024-09-16
 last_modified_at: 2024-09-16
 ---
+
+![](/assets/images/thumbnails/book-design-pattern.png)
 
 ## 반복자 패턴 (Iterator Pattern) 이란?
 

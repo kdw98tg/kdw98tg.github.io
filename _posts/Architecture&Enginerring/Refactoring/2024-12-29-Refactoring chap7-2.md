@@ -3,6 +3,8 @@ layout: post
 
 title: "[Refactoring] 리팩터링 2판 Chapter.07 part 2 (캡슐화)"
 
+excerpt_image: /assets/images/thumbnails/book-refactoring.png
+
 categories:
   - Architecture&Engineering
   
@@ -19,6 +21,8 @@ published: true
 date: 2024-12-29
 last_modified_at: 2024-12-29
 ---
+
+![](/assets/images/thumbnails/book-refactoring.png)
 
 ## 기본형을 객체로 바꾸기
 

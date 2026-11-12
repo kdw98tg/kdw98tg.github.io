@@ -3,6 +3,8 @@ layout: post
 
 title: "[Clean Architecture] 경계 해부학 및 업무 규칙"
 
+excerpt_image: /assets/images/thumbnails/book-clean-architecture.png
+
 categories:
   - Architecture&Engineering
   
@@ -18,6 +20,8 @@ published: true
 date: 2025-05-16
 last_modified_at: 2025-05-16
 ---
+
+![](/assets/images/thumbnails/book-clean-architecture.png)
 
 ## 경계 해부학
 

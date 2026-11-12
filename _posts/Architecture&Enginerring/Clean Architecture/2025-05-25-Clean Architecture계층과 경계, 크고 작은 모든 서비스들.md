@@ -3,6 +3,8 @@ layout: post
 
 title: "[Clean Architecture] 크고 작은 모든 서비스들"
 
+excerpt_image: /assets/images/thumbnails/book-clean-architecture.png
+
 categories:
   - Architecture&Engineering
   
@@ -18,6 +20,8 @@ published: true
 date: 2025-05-25
 last_modified_at: 2025-05-25
 ---
+
+![](/assets/images/thumbnails/book-clean-architecture.png)
 
 ## 계층과 경계
 

@@ -3,6 +3,8 @@ layout: post
 
 title: "[Refactoring] 리팩터링 2판 Chapter.01 (반복문 쪼개기, 문장 슬라이드하기)"
 
+excerpt_image: /assets/images/thumbnails/book-refactoring.png
+
 categories:
   - Architecture&Engineering
   
@@ -19,6 +21,8 @@ published: true
 date: 2024-10-20
 last_modified_at: 2024-10-20
 ---
+
+![](/assets/images/thumbnails/book-refactoring.png)
 
 ## 함수 추출하기, 변수 인라인 하기
 

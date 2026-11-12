@@ -3,6 +3,8 @@ layout: post
 
 title: "[Refactoring] 리팩터링 2판 Chapter.08 part 1 (기능 이동)"
 
+excerpt_image: /assets/images/thumbnails/book-refactoring.png
+
 categories:
   - Architecture&Engineering
   
@@ -19,6 +21,8 @@ published: true
 date: 2025-01-12
 last_modified_at: 2025-01-12
 ---
+
+![](/assets/images/thumbnails/book-refactoring.png)
 
 코드 리팩터링에서 중요한 요소는 단순히 코드를 개선하는 것뿐만 아니라 기능을 다른 컨텍스트로 옮기는 작업도 포함됩니다. 이번 챕터는 이러한 기능 이동에 초점을 맞추고 있습니다. 이 과정에서 특별한 새로운 기술이 요구되기보다는, 이미 익숙하게 사용 중인 개념들을 다시 점검하는 데 의의가 있습니다. (앞서 소개된 리팩터링 기술들이 일부 중복되어 언급되기도 합니다.) 따라서 이 문서에서는 새롭게 배운 내용이나 중요하다고 생각되는 부분만 간략히 정리하였으며, 예제는 생략한 경우가 많습니다.
 

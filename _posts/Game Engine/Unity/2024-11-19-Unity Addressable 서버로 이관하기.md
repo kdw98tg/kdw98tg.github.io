@@ -3,6 +3,8 @@ layout: post
 
 title: "[Unity] Unity Addressable 서버로 이관하기"
 
+excerpt_image: /assets/images/thumbnails/unity.png
+
 categories:
   - Game Engine
   
@@ -18,6 +20,8 @@ published: true
 date: 2024-11-19
 last_modified_at: 2024-11-19
 ---
+
+![](/assets/images/thumbnails/unity.png)
 
 [이전 글](/game%20engine/2024/06/27/Addressable-Asset-%EC%82%AC%EC%9A%A9%EB%B2%95.html)에서는 Addressable 에셋을 로컬에 두고 불러오는 방법을 정리했습니다. 이번에는 Addressable 번들을 서버에서 내려받도록 설정을 바꾸는 과정을 정리해 보겠습니다.
 

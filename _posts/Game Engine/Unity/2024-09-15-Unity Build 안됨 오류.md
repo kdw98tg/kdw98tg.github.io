@@ -3,6 +3,8 @@ layout: post
 
 title: "[Unity] Unity 빌드시 멈추는 현상 해결"
 
+excerpt_image: /assets/images/thumbnails/unity.png
+
 categories:
   - Game Engine
   
@@ -18,6 +20,8 @@ published: true
 date: 2024-09-15
 last_modified_at: 2024-09-15
 ---
+
+![](/assets/images/thumbnails/unity.png)
 
 빌드 테스트를 하다가, 빌드 세팅을 완료하고 빌드가 시작됐을 때, 갑자기 유니티가 뻗어버리는 현상이 있었습니다.
 

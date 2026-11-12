@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "[AI] 앙상블(Ensemble)기법과 배깅(Bagging), 부스팅(Boosting), 스태킹(Stacking) 기법"
+
+excerpt_image: /assets/images/thumbnails/ai.png
 categories:
   - AI
 tags:
@@ -12,6 +14,8 @@ published: true
 date: 2025-10-24
 last_modified_at: 2025-10-24
 ---
+
+![](/assets/images/thumbnails/ai.png)
 
 ## 앙상블이란?
 

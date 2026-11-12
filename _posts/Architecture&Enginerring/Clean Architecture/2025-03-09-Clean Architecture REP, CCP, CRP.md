@@ -3,6 +3,8 @@ layout: post
 
 title: "[Clean Architecture] 컴포넌트 원칙(REP, CCP, CRP)"
 
+excerpt_image: /assets/images/thumbnails/book-clean-architecture.png
+
 categories:
   - Architecture&Engineering
   
@@ -18,6 +20,9 @@ published: true
 date: 2025-03-09
 last_modified_at: 2025-03-09
 ---
+
+![](/assets/images/thumbnails/book-clean-architecture.png)
+
 ## 컴포넌트
 
 SOLID 원칙이 벽과 방에 벽돌을 배치하는 방법을 알려준다면, 컴포넌트 원칙은 빌딩에 방을 배치하는 방법을 설명해줍니다. 즉, 컴포넌트 원칙은 SOLID 원칙이 기반이 되어 큰 덩어리를 만드는 원칙이라고 보면 될것 같습니다.

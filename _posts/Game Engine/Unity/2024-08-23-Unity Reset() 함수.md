@@ -3,6 +3,8 @@ layout: post
 
 title: "[Unity] Reset() 사용법 및 컴포넌트 초기화 방법"
 
+excerpt_image: /assets/images/thumbnails/unity.png
+
 categories:
   - Game Engine
   
@@ -18,6 +20,8 @@ published: true
 date: 2024-08-23
 last_modified_at: 2024-08-23
 ---
+
+![](/assets/images/thumbnails/unity.png)
 
 ## Unity LifeCycle
 

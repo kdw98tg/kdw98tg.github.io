@@ -3,6 +3,8 @@ layout: post
 
 title: "[Clean Architecture] 독립성"
 
+excerpt_image: /assets/images/thumbnails/book-clean-architecture.png
+
 categories:
   - Architecture&Engineering
   
@@ -18,6 +20,8 @@ published: true
 date: 2025-05-11
 last_modified_at: 2025-05-11
 ---
+
+![](/assets/images/thumbnails/book-clean-architecture.png)
 
 소프트웨어에서 가장 중요한 것은 무엇일까요? 소프트웨어 구조, 디자인 패턴, 구조, 데이터베이스 등등 많은 요소들을 떠올릴 수 있습니다. 클린 아키텍쳐에서는 `유즈케이스` 라고 답합니다. 즉, 사용자에게 제공되는 서비스가 가장 중요한 요소라는것입니다. 위의 구조, 패턴, 데이터베이스 등등은 유즈케이스를 구성하기 위한 `세부사항`일 뿐입니다. 구조를 어떻게 짜든, 어떤 패턴을 쓰던, 어떤 데이터베이스를 쓰던 사용자의 입장에서는 소프트웨어의 품질을 결정하는 요소가 아닐 뿐더러, 해당 용어나 개념 자체를 모르는 가능성이 높습니다.
 

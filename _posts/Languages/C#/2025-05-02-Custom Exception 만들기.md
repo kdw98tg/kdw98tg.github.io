@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "[C#] C# Custom Exception 만들기"
+
+excerpt_image: /assets/images/thumbnails/csharp.png
 categories:
   - Languages
 tags:
@@ -11,6 +13,8 @@ published: true
 date: 2025-05-02
 last_modified_at: 2025-05-02
 ---
+
+![](/assets/images/thumbnails/csharp.png)
 
 예외를 처리하는것은 프로그램에서 아주 중요한 사항입니다. 라이브러리를 만들어서 배포할때, 또는 디버깅을 위해서 등등 여러곳에서 사용하게 됩니다.
 

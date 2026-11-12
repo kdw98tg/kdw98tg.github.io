@@ -3,6 +3,8 @@ layout: post
 
 title: "[Refactoring] 리팩터링 2판 Chapter.12 (상속 다루기)"
 
+excerpt_image: /assets/images/thumbnails/book-refactoring.png
+
 categories:
   - Architecture&Engineering
   
@@ -19,6 +21,8 @@ published: true
 date: 2025-02-09
 last_modified_at: 2025-02-09
 ---
+
+![](/assets/images/thumbnails/book-refactoring.png)
 
 리팩터링의 마지막 장입니다. 이번 장에서는 객체지향 프로그래밍에서 가장 유명한 특성인 상속을 다룹니다. 다른 강력한 메커니즘처럼 이 역시 아주 유용한 동시에 오용하기 쉽습니다. 더욱이 상속은 발등에 불이 떨어져서야 비로소 잘못 사용했음을 알아차리는 경우가 많습니다.
 

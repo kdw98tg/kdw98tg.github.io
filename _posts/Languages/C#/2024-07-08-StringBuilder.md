@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "[C#] String Builder 를 사용하여 가비지 줄이기"
+
+excerpt_image: /assets/images/thumbnails/csharp.png
 categories:
   - Languages
 tags:
@@ -11,6 +13,8 @@ published: true
 date: 2024-07-08
 last_modified_at: 2024-07-08
 ---
+
+![](/assets/images/thumbnails/csharp.png)
 
 처음 프로그래밍을 시작할 때, C 언어를 배워보신 분들이라면 `string`이라는 녀석의 정체를 알 수 있습니다.
 `string`은 사실 `char[]` 라는 것 입니다.

@@ -3,6 +3,8 @@ layout: post
 
 title: "[Clean Architecture] Clean Architecture chap 2 정리"
 
+excerpt_image: /assets/images/thumbnails/book-clean-architecture.png
+
 categories:
   - Architecture&Engineering
   
@@ -18,6 +20,8 @@ published: true
 date: 2025-02-16
 last_modified_at: 2025-02-16
 ---
+
+![](/assets/images/thumbnails/book-clean-architecture.png)
 
 3장과 4장은 프로그래밍의 패러다임에 대해서 설명합니다. 구조적 프로그래밍, 객체지향 프로그래밍, 함수형 프로그래밍을 설명하며 이야기를 합니다.
 

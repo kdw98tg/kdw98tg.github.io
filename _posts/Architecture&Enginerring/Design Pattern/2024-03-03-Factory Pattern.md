@@ -3,6 +3,8 @@ layout: post
 
 title: "[Design Pattern] 팩토리 패턴 (Factory Pattern)"
 
+excerpt_image: /assets/images/thumbnails/book-design-pattern.png
+
 categories:
   - Architecture&Engineering
   
@@ -17,6 +19,8 @@ toc_sticky: true
 date: 2023-03-02
 last_modified_at: 2024-03-03
 ---
+
+![](/assets/images/thumbnails/book-design-pattern.png)
 
 ## 팩토리 패턴이란?
 

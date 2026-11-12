@@ -3,6 +3,8 @@ layout: post
 
 title: "[Refactoring] 리팩터링 2판 Chapter.02 (리펙터링 원칙)"
 
+excerpt_image: /assets/images/thumbnails/book-refactoring.png
+
 categories:
   - Architecture&Engineering
   
@@ -19,6 +21,8 @@ published: true
 date: 2024-11-11
 last_modified_at: 2024-11-11
 ---
+
+![](/assets/images/thumbnails/book-refactoring.png)
 
 이번 챕터는 리펙터링의 원칙입니다. 챕터 2는 리팩터링을 정의하고, 원칙에 대해서 생각해보는 챕터 입니다. 
 

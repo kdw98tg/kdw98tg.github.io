@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "[Code Complete 2] 소프트웨어에 선행 조건"
+
+excerpt_image: /assets/images/thumbnails/book-code-complete.png
 categories:
   - Architecture&Engineering
 tags:
@@ -12,6 +14,8 @@ published: true
 date: 2025-10-05
 last_modified_at: 2025-10-05
 ---
+
+![](/assets/images/thumbnails/book-code-complete.png)
 
 품질이 좋은 소프트웨어를 개발하는 개발자들은 공통적으로 자신만의 고급 실천법이 있습니다. 그러한 실천법은 프로젝트의 시작과 중간, 끝 단계에서 품질을 중요시 한다는 것입니다.
 

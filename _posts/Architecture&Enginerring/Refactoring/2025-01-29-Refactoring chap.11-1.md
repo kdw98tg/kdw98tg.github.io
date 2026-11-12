@@ -3,6 +3,8 @@ layout: post
 
 title: "[Refactoring] 리팩터링 2판 Chapter.11 part 1 (API 리팩터링)"
 
+excerpt_image: /assets/images/thumbnails/book-refactoring.png
+
 categories:
   - Architecture&Engineering
   
@@ -19,6 +21,8 @@ published: true
 date: 2025-01-29
 last_modified_at: 2025-01-29
 ---
+
+![](/assets/images/thumbnails/book-refactoring.png)
 
 이번 챕터는 API 를 리팩터링 하는 챕터 입니다. 개발을 하면서 반복적으로 사용하는 모듈들이 있습니다. 그것들을 사용하기 쉽게 만드는것을 API 라고 합니다. 저의 API를 만들 때 철학은, 사용하는 쪽에서 쉽게 사용할 수 있어야 한다 입니다. 
 

@@ -3,6 +3,8 @@ layout: post
 
 title: "[Unity] Unity에서 CommandPattern 구현하기"
 
+excerpt_image: /assets/images/thumbnails/unity.png
+
 categories:
   - Game Engine
   
@@ -19,6 +21,8 @@ published: true
 date: 2024-09-01
 last_modified_at: 2024-09-01
 ---
+
+![](/assets/images/thumbnails/unity.png)
 
 ## Command 패턴 이란?
 

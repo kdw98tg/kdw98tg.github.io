@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "[SpringBoot] SpringBoot 패키지 구조"
+
+excerpt_image: /assets/images/thumbnails/spring-boot.png
 categories:
   - Web
 tags:
@@ -12,6 +14,9 @@ published: true
 date: 2025-08-01
 last_modified_at: 2025-08-01
 ---
+
+![](/assets/images/thumbnails/spring-boot.png)
+
 ## Spring Boot의 패키지 구조
 
 개발 프로젝트를 하다보면 프로젝트가 커질수록, 또는 기능이 많아질수록 코드의 구조화는 더욱 중요해집니다. SpringBoot를 예로들면 처음에는 단순한 컨트롤러 하나와 서비스 하나로 시작했던 프로젝트도, 기능이 늘어나고 팀원이 늘어나면 금세 복잡해지고 유지보수가 어려워집니다.

@@ -3,6 +3,8 @@ layout: post
 
 title: "[Design Pattern] 옵저버 패턴 (Observer Pattern)"
 
+excerpt_image: /assets/images/thumbnails/book-design-pattern.png
+
 categories:
   - Architecture&Engineering
   
@@ -17,6 +19,8 @@ toc_sticky: true
 date: 2023-05-13
 last_modified_at: 2024-03-02
 ---
+
+![](/assets/images/thumbnails/book-design-pattern.png)
 
 ## 옵저버 패턴이란?
 

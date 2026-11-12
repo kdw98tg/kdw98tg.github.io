@@ -3,6 +3,8 @@ layout: post
 
 title: "[Design Pattern] 빌더 패턴(Builder Pattern)"
 
+excerpt_image: /assets/images/thumbnails/book-design-pattern.png
+
 categories:
   - Architecture&Engineering
   
@@ -17,6 +19,8 @@ toc_sticky: true
 date: 2024-10-05
 last_modified_at: 2024-10-05
 ---
+
+![](/assets/images/thumbnails/book-design-pattern.png)
 
 ## 빌더 패턴 이란?
 

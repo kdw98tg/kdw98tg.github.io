@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "[Unity] SoundPooling 과 Resource 관리를 통한 SoundManager 만들기"
+
+excerpt_image: /assets/images/thumbnails/unity.png
 categories:
   - Game Engine
 tags:
@@ -12,6 +14,8 @@ published: true
 date: 2024-04-03
 last_modified_at: 2024-04-03
 ---
+
+![](/assets/images/thumbnails/unity.png)
 
 이전 `SoundManager` 를 만들었을 때의 문제점을 보완해서 다시 만들게 되었습니다.
 

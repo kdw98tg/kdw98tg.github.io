@@ -3,6 +3,8 @@ layout: post
 
 title: "[Unity] Unity Image 업로드/다운로드 (Upload/Download) 하기"
 
+excerpt_image: /assets/images/thumbnails/unity.png
+
 categories:
   - Game Engine
   
@@ -18,6 +20,8 @@ published: true
 date: 2024-10-14
 last_modified_at: 2024-10-14
 ---
+
+![](/assets/images/thumbnails/unity.png)
 
 유니티에서 게임을 만들다 보면, 이미지를 업로드, 다운로드 해야하는 상황이 생깁니다. 일반적으로 프로필 사진 같은게 있습니다.
 

@@ -3,6 +3,8 @@ layout: post
 
 title: "[Winform] 블루투스 저전력(BLE) 통신 예제"
 
+excerpt_image: /assets/images/thumbnails/winform.png
+
 categories:
   - Desktop App
   
@@ -19,6 +21,8 @@ published: true
 date: 2025-01-18
 last_modified_at: 2025-01-18
 ---
+
+![](/assets/images/thumbnails/winform.png)
 
 서버 코드(Linux 계열의 python 코드)가 궁금하신 분들은 다음 링크를 참고하시기 바랍니다.
 

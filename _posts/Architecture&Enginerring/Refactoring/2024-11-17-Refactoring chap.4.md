@@ -3,6 +3,8 @@ layout: post
 
 title: "[Refactoring] 리팩터링 2판 Chapter.04 (테스트 구축하기)"
 
+excerpt_image: /assets/images/thumbnails/book-refactoring.png
+
 categories:
   - Architecture&Engineering
   
@@ -19,6 +21,8 @@ published: true
 date: 2024-11-17
 last_modified_at: 2024-11-17
 ---
+
+![](/assets/images/thumbnails/book-refactoring.png)
 
 리펙터링에서 저자가 가장 강조하는 것 중 하나가 바로 `테스트`입니다. 견고한 리펙토링에는 견고한 `테스트 스위트(test suite)`가 뒷받침 되어야 합니다.
 

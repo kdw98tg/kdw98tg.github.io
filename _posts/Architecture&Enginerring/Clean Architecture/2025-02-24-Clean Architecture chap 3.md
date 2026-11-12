@@ -3,6 +3,8 @@ layout: post
 
 title: "[Clean Architecture] Clean Architecture chap 3 정리"
 
+excerpt_image: /assets/images/thumbnails/book-clean-architecture.png
+
 categories:
   - Architecture&Engineering
   
@@ -18,6 +20,8 @@ published: true
 date: 2025-02-24
 last_modified_at: 2025-02-24
 ---
+
+![](/assets/images/thumbnails/book-clean-architecture.png)
 
 좋은 소프트웨어 시스템은 깔끔한 코드로부터 시작합니다. 좋은 벽돌을 사용하지 않는다면, 좋은 빌딩이 나올 수 없기 때문입니다. 반대로 좋은 벽돌을 사용하더라도, 건물의 설계가 엉망이라면 좋은 건물이 탄생할 수 없습니다. 그래서 좋은 벽돌로 좋은 설계를 정의하는 원칙이 필요한데, 그것을 SOLID 원칙이라고 합니다.
 
