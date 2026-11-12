@@ -1,7 +1,7 @@
 ---
 layout: post
 
-title: "[Clean Architecture] Clean Architecture OCP(Open-Closed Principle 개방-페쇄 원칙)"
+title: "[Clean Architecture] Clean Architecture OCP(Open-Closed Principle 개방-폐쇄 원칙)"
 
 categories:
   - Architecture&Engineering

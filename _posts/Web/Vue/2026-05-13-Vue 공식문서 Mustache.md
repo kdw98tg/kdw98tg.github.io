@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[vue/js] Vite의 Mustahce를 사용하여 html에 값 표현하기"
+title: "[vue/js] Vue의 Mustache를 사용하여 html에 값 표현하기"
 excerpt_image: /assets/images/posts/2026-05-13-Vue%20공식문서%20Mustache/file-20260513222057351.png
 categories:
   - Web

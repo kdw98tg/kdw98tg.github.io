@@ -1,7 +1,7 @@
 ---
 layout: post
 
-title: "[React/Js] React Useffect 살펴보기"
+title: "[React/Js] React UseEffect 살펴보기"
 
 excerpt_image: /assets/images/posts/Pasted%20image%2020260416101509.png
 

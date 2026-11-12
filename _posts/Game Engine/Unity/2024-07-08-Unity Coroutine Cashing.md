@@ -23,7 +23,7 @@ Unity 에서 작업을 하시다 보면 `Coroutine`이라는 녀석을 많이 �
 
 Coroutine 에 관한 내용은 아래를 참조 하시면 됩니다.
 
-[👉👉👉  Unity Coroutine 게시글](https://kdw98tg.github.io/unity/Coroutine-%ED%99%9C%EC%9A%A9%EB%B2%95/)
+[👉👉👉  Unity Coroutine 게시글](/game%20engine/2024/03/19/Coroutine-%ED%99%9C%EC%9A%A9%EB%B2%95.html)
 
 
 (본 게시글은 구름고래님의 블로그를 참조하였습니다.)
