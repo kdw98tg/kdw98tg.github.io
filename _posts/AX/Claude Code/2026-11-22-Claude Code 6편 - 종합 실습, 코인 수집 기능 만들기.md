@@ -6,7 +6,7 @@ title: "[Claude Code] 6편 - 종합 실습, Unity MCP로 코인 수집 기능 �
 # excerpt_image: /assets/images/posts/2026-11-22-Claude Code 6편/
 
 categories:
-  - AI
+  - AX
 
 tags:
   - Claude Code
@@ -29,11 +29,11 @@ last_modified_at: 2026-11-22
 
 | 편 | 내용 | 만든 것 |
 |---|---|---|
-| [1편](/ai/2026/11/22/Claude-Code-1%ED%8E%B8-%EC%9D%BC-%EC%9E%98-%EC%8B%9C%ED%82%A4%EB%8A%94-%EB%B2%95.html) | 일 잘 시키는 법 | Plan mode, 구체적인 프롬프트 |
-| [2편](/ai/2026/11/22/Claude-Code-2%ED%8E%B8-CLAUDE.md%EC%99%80-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B4%80%EB%A6%AC.html) | CLAUDE.md, 컨텍스트 | 프로젝트 설명서 |
-| [3편](/ai/2026/11/22/Claude-Code-3%ED%8E%B8-Skill%EA%B3%BC-Plugin-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0.html) | Skill 활용 | PonyTail 설치 |
-| [4편](/ai/2026/11/22/Claude-Code-4%ED%8E%B8-Skill-%EC%A7%81%EC%A0%91-%EB%A7%8C%EB%93%A4%EA%B8%B0.html) | Skill 만들기 | commit-message, new-enemy Skill |
-| [5편](/ai/2026/11/22/Claude-Code-5%ED%8E%B8-Hook%EA%B3%BC-Subagent.html) | Hook, Subagent | 폴더 보호 Hook, unity-reviewer |
+| [1편](/ax/2026/11/22/Claude-Code-1%ED%8E%B8-%EC%9D%BC-%EC%9E%98-%EC%8B%9C%ED%82%A4%EB%8A%94-%EB%B2%95.html) | 일 잘 시키는 법 | Plan mode, 구체적인 프롬프트 |
+| [2편](/ax/2026/11/22/Claude-Code-2%ED%8E%B8-CLAUDE.md%EC%99%80-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B4%80%EB%A6%AC.html) | CLAUDE.md, 컨텍스트 | 프로젝트 설명서 |
+| [3편](/ax/2026/11/22/Claude-Code-3%ED%8E%B8-Skill%EA%B3%BC-Plugin-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0.html) | Skill 활용 | PonyTail 설치 |
+| [4편](/ax/2026/11/22/Claude-Code-4%ED%8E%B8-Skill-%EC%A7%81%EC%A0%91-%EB%A7%8C%EB%93%A4%EA%B8%B0.html) | Skill 만들기 | commit-message, new-enemy Skill |
+| [5편](/ax/2026/11/22/Claude-Code-5%ED%8E%B8-Hook%EA%B3%BC-Subagent.html) | Hook, Subagent | 폴더 보호 Hook, unity-reviewer |
 
 이번 글에서는 이 도구들을 **모두** 써서 게임 기능 하나를 처음부터 끝까지 만들어 보겠습니다. 그리고 Unity MCP를 이용해서, Claude가 스크립트만 쓰는 것이 아니라 **유니티 에디터를 직접 조작해서** 씬까지 구성하게 해보겠습니다.
 
@@ -50,11 +50,11 @@ last_modified_at: 2026-11-22
 
 이전 글들을 따라왔다면 다음이 준비되어 있어야 합니다.
 
-* [ ] `Ground`(Plane)와 `Player`(Capsule + Rigidbody + PlayerController)가 있는 씬 ([1편](/ai/2026/11/22/Claude-Code-1%ED%8E%B8-%EC%9D%BC-%EC%9E%98-%EC%8B%9C%ED%82%A4%EB%8A%94-%EB%B2%95.html))
-* [ ] 프로젝트 루트의 `CLAUDE.md` ([2편](/ai/2026/11/22/Claude-Code-2%ED%8E%B8-CLAUDE.md%EC%99%80-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B4%80%EB%A6%AC.html))
-* [ ] `.claude/skills/commit-message/`, `.claude/skills/unity-script-convention/` ([4편](/ai/2026/11/22/Claude-Code-4%ED%8E%B8-Skill-%EC%A7%81%EC%A0%91-%EB%A7%8C%EB%93%A4%EA%B8%B0.html))
-* [ ] `.claude/settings.json`의 Hook ([5편](/ai/2026/11/22/Claude-Code-5%ED%8E%B8-Hook%EA%B3%BC-Subagent.html))
-* [ ] `.claude/agents/unity-reviewer.md` ([5편](/ai/2026/11/22/Claude-Code-5%ED%8E%B8-Hook%EA%B3%BC-Subagent.html))
+* [ ] `Ground`(Plane)와 `Player`(Capsule + Rigidbody + PlayerController)가 있는 씬 ([1편](/ax/2026/11/22/Claude-Code-1%ED%8E%B8-%EC%9D%BC-%EC%9E%98-%EC%8B%9C%ED%82%A4%EB%8A%94-%EB%B2%95.html))
+* [ ] 프로젝트 루트의 `CLAUDE.md` ([2편](/ax/2026/11/22/Claude-Code-2%ED%8E%B8-CLAUDE.md%EC%99%80-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B4%80%EB%A6%AC.html))
+* [ ] `.claude/skills/commit-message/`, `.claude/skills/unity-script-convention/` ([4편](/ax/2026/11/22/Claude-Code-4%ED%8E%B8-Skill-%EC%A7%81%EC%A0%91-%EB%A7%8C%EB%93%A4%EA%B8%B0.html))
+* [ ] `.claude/settings.json`의 Hook ([5편](/ax/2026/11/22/Claude-Code-5%ED%8E%B8-Hook%EA%B3%BC-Subagent.html))
+* [ ] `.claude/agents/unity-reviewer.md` ([5편](/ax/2026/11/22/Claude-Code-5%ED%8E%B8-Hook%EA%B3%BC-Subagent.html))
 
 `Player` 오브젝트의 Tag를 `Player`로 바꿔줍니다. 코인이 플레이어를 알아보는 데 사용합니다.
 
@@ -88,11 +88,11 @@ Claude Code에서 연결이 잘 되었는지 확인해 봅니다.
 지금 상태 커밋해줘
 ```
 
-[4편](/ai/2026/11/22/Claude-Code-4%ED%8E%B8-Skill-%EC%A7%81%EC%A0%91-%EB%A7%8C%EB%93%A4%EA%B8%B0.html)에서 만든 `commit-message` Skill이 불려서 `[기능] ...` 같은 형식으로 커밋되는지도 함께 확인해 봅니다.
+[4편](/ax/2026/11/22/Claude-Code-4%ED%8E%B8-Skill-%EC%A7%81%EC%A0%91-%EB%A7%8C%EB%93%A4%EA%B8%B0.html)에서 만든 `commit-message` Skill이 불려서 `[기능] ...` 같은 형식으로 커밋되는지도 함께 확인해 봅니다.
 
 ## 2. 1단계 - 계획 세우기 (Plan mode)
 
-[1편](/ai/2026/11/22/Claude-Code-1%ED%8E%B8-%EC%9D%BC-%EC%9E%98-%EC%8B%9C%ED%82%A4%EB%8A%94-%EB%B2%95.html)에서 배운 대로, 큰 작업은 계획부터 받습니다. Plan mode를 켜고 요청합니다.
+[1편](/ax/2026/11/22/Claude-Code-1%ED%8E%B8-%EC%9D%BC-%EC%9E%98-%EC%8B%9C%ED%82%A4%EB%8A%94-%EB%B2%95.html)에서 배운 대로, 큰 작업은 계획부터 받습니다. Plan mode를 켜고 요청합니다.
 
 ```
 코인 수집 기능을 만들고 싶어.
@@ -207,7 +207,7 @@ Play 버튼을 누르고 직접 테스트합니다.
 
 <!-- 📷 스크린샷: Play 모드에서 Clear! 화면 -->
 
-문제가 있다면 [1편](/ai/2026/11/22/Claude-Code-1%ED%8E%B8-%EC%9D%BC-%EC%9E%98-%EC%8B%9C%ED%82%A4%EB%8A%94-%EB%B2%95.html)에서 배운 대로 **증상을 구체적으로** 말합니다.
+문제가 있다면 [1편](/ax/2026/11/22/Claude-Code-1%ED%8E%B8-%EC%9D%BC-%EC%9E%98-%EC%8B%9C%ED%82%A4%EB%8A%94-%EB%B2%95.html)에서 배운 대로 **증상을 구체적으로** 말합니다.
 
 | 나쁜 예 | 좋은 예 |
 |---|---|
@@ -225,7 +225,7 @@ Unity MCP로 Player랑 Coin 오브젝트의 컴포넌트 설정을 확인해서 
 
 ### Subagent로 리뷰
 
-기능이 동작하면 [5편](/ai/2026/11/22/Claude-Code-5%ED%8E%B8-Hook%EA%B3%BC-Subagent.html)에서 만든 리뷰어에게 맡깁니다.
+기능이 동작하면 [5편](/ax/2026/11/22/Claude-Code-5%ED%8E%B8-Hook%EA%B3%BC-Subagent.html)에서 만든 리뷰어에게 맡깁니다.
 
 ```
 unity-reviewer로 이번에 만든 코인 관련 스크립트 리뷰해줘
@@ -302,7 +302,7 @@ claude -p "Assets/Scripts 폴더의 스크립트 중 Update에서 GetComponent�
 | Sonnet | 일반적인 기능 구현, 리뷰 |
 | Haiku | 단순 반복 작업, 빠른 검색 |
 
-[5편](/ai/2026/11/22/Claude-Code-5%ED%8E%B8-Hook%EA%B3%BC-Subagent.html)의 unity-reviewer처럼 Subagent마다 다른 모델을 지정하는 것도 좋은 방법입니다.
+[5편](/ax/2026/11/22/Claude-Code-5%ED%8E%B8-Hook%EA%B3%BC-Subagent.html)의 unity-reviewer처럼 Subagent마다 다른 모델을 지정하는 것도 좋은 방법입니다.
 
 ## 마치며
 

@@ -6,7 +6,7 @@ title: "[Claude Code] 3편 - Skill과 Plugin 활용하기 (PonyTail)"
 # excerpt_image: /assets/images/posts/2026-11-22-Claude Code 3편/
 
 categories:
-  - AI
+  - AX
 
 tags:
   - Claude Code
@@ -24,7 +24,7 @@ last_modified_at: 2026-11-22
 
 ## 들어가며
 
-[2편](/ai/2026/11/22/Claude-Code-2%ED%8E%B8-CLAUDE.md%EC%99%80-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B4%80%EB%A6%AC.html)에서는 CLAUDE.md로 프로젝트 규칙을 알려주는 방법을 다뤘습니다. CLAUDE.md는 편리하지만 **항상** 읽힌다는 한계가 있습니다. "UI 만들 때 규칙", "적 만들 때 규칙", "커밋할 때 규칙"을 전부 넣으면 금방 길어지고, 지금 하는 작업과 상관없는 내용까지 매번 컨텍스트를 차지합니다.
+[2편](/ax/2026/11/22/Claude-Code-2%ED%8E%B8-CLAUDE.md%EC%99%80-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B4%80%EB%A6%AC.html)에서는 CLAUDE.md로 프로젝트 규칙을 알려주는 방법을 다뤘습니다. CLAUDE.md는 편리하지만 **항상** 읽힌다는 한계가 있습니다. "UI 만들 때 규칙", "적 만들 때 규칙", "커밋할 때 규칙"을 전부 넣으면 금방 길어지고, 지금 하는 작업과 상관없는 내용까지 매번 컨텍스트를 차지합니다.
 
 이럴 때 쓰는 것이 **Skill**입니다. Skill은 특정 작업에 대한 지침서로, **필요할 때만** 꺼내 읽힙니다.
 

@@ -6,7 +6,7 @@ title: "[Claude Code] 4편 - Skill 직접 만들기"
 # excerpt_image: /assets/images/posts/2026-11-22-Claude Code 4편/
 
 categories:
-  - AI
+  - AX
 
 tags:
   - Claude Code
@@ -25,7 +25,7 @@ last_modified_at: 2026-11-22
 
 ## 들어가며
 
-[3편](/ai/2026/11/22/Claude-Code-3%ED%8E%B8-Skill%EA%B3%BC-Plugin-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0.html)에서는 PonyTail을 설치해서, Skill 하나로 Claude의 작업 방식이 바뀌는 것을 확인했습니다. 이번에는 **우리 팀 전용 Skill**을 직접 만들어 보겠습니다.
+[3편](/ax/2026/11/22/Claude-Code-3%ED%8E%B8-Skill%EA%B3%BC-Plugin-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0.html)에서는 PonyTail을 설치해서, Skill 하나로 Claude의 작업 방식이 바뀌는 것을 확인했습니다. 이번에는 **우리 팀 전용 Skill**을 직접 만들어 보겠습니다.
 
 Skill로 만들 만한 것을 찾는 방법은 간단합니다. **Claude에게 같은 설명을 두 번 이상 하고 있다면, 그게 Skill 후보입니다.** "커밋 메시지는 이 형식으로 써줘", "적 만들 때는 EnemyBase를 상속해줘" 같은 설명을 매번 반복하고 있다면 Skill로 만들어 두면 됩니다.
 
@@ -133,7 +133,7 @@ Claude가 `commit-message` Skill을 불러오고, `[수정] ...` 형식으로 �
 
 ## 3. 예제 B - Unity 스크립트 컨벤션 (보통)
 
-[2편](/ai/2026/11/22/Claude-Code-2%ED%8E%B8-CLAUDE.md%EC%99%80-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B4%80%EB%A6%AC.html)에서 CLAUDE.md에 코딩 컨벤션을 적었습니다. 이 내용을 Skill로 옮겨보겠습니다.
+[2편](/ax/2026/11/22/Claude-Code-2%ED%8E%B8-CLAUDE.md%EC%99%80-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B4%80%EB%A6%AC.html)에서 CLAUDE.md에 코딩 컨벤션을 적었습니다. 이 내용을 Skill로 옮겨보겠습니다.
 
 ### 왜 옮기나?
 

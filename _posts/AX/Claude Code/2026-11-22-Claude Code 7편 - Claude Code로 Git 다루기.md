@@ -6,7 +6,7 @@ title: "[Claude Code] 7편 - Claude Code로 Git 다루기 (커밋, 브랜치, PR
 # excerpt_image: /assets/images/posts/2026-11-22-Claude Code 7편/
 
 categories:
-  - AI
+  - AX
 
 tags:
   - Claude Code
@@ -106,7 +106,7 @@ Claude는 보통 다음 순서로 진행합니다.
 
 <!-- 📷 스크린샷: Claude가 커밋하는 과정 -->
 
-[4편](/ai/2026/11/22/Claude-Code-4%ED%8E%B8-Skill-%EC%A7%81%EC%A0%91-%EB%A7%8C%EB%93%A4%EA%B8%B0.html)에서 만든 `commit-message` Skill이 있다면 `[기능]`, `[수정]` 같은 팀 형식으로 메시지가 작성됩니다.
+[4편](/ax/2026/11/22/Claude-Code-4%ED%8E%B8-Skill-%EC%A7%81%EC%A0%91-%EB%A7%8C%EB%93%A4%EA%B8%B0.html)에서 만든 `commit-message` Skill이 있다면 `[기능]`, `[수정]` 같은 팀 형식으로 메시지가 작성됩니다.
 
 > Claude Code가 만든 커밋에는 메시지 끝에 `Co-Authored-By: Claude ...` 줄이 붙습니다. Claude가 함께 작업했다는 표시입니다. GitHub에서는 공동 작성자로 표시됩니다.
 
@@ -194,7 +194,7 @@ PR 설명에는 변경 요약, 테스트 방법, 유니티에서 따로 설정�
 PR 12번 내용 보고 리뷰해줘. 버그 가능성 위주로.
 ```
 
-Claude가 `gh pr view`, `gh pr diff`로 PR을 읽고 리뷰합니다. [5편](/ai/2026/11/22/Claude-Code-5%ED%8E%B8-Hook%EA%B3%BC-Subagent.html)에서 만든 `unity-reviewer` Subagent에게 맡겨도 됩니다.
+Claude가 `gh pr view`, `gh pr diff`로 PR을 읽고 리뷰합니다. [5편](/ax/2026/11/22/Claude-Code-5%ED%8E%B8-Hook%EA%B3%BC-Subagent.html)에서 만든 `unity-reviewer` Subagent에게 맡겨도 됩니다.
 
 ```
 unity-reviewer로 PR 12번 리뷰해줘
@@ -225,7 +225,7 @@ main 최신으로 받아줘
 
 **스크립트(.cs) 충돌**은 Claude가 잘 해결합니다. 양쪽 브랜치의 커밋을 읽고 "한쪽은 속도를 바꿨고, 다른 쪽은 점프를 추가했으니 둘 다 살린다"는 식으로 판단합니다. 해결한 뒤에는 꼭 유니티에서 컴파일 에러가 없는지, Play 모드에서 잘 동작하는지 확인합니다.
 
-**씬(.unity), 프리팹(.prefab) 충돌**은 Claude에게 텍스트로 고치게 하면 안 됩니다. [2편](/ai/2026/11/22/Claude-Code-2%ED%8E%B8-CLAUDE.md%EC%99%80-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B4%80%EB%A6%AC.html)에서 CLAUDE.md에 "씬 파일을 텍스트로 직접 편집하지 말 것"이라고 적어둔 이유입니다. 이런 파일은 어느 쪽을 쓸지만 정하게 합니다.
+**씬(.unity), 프리팹(.prefab) 충돌**은 Claude에게 텍스트로 고치게 하면 안 됩니다. [2편](/ax/2026/11/22/Claude-Code-2%ED%8E%B8-CLAUDE.md%EC%99%80-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B4%80%EB%A6%AC.html)에서 CLAUDE.md에 "씬 파일을 텍스트로 직접 편집하지 말 것"이라고 적어둔 이유입니다. 이런 파일은 어느 쪽을 쓸지만 정하게 합니다.
 
 ```
 Main.unity 충돌은 main 쪽 버전으로 해결해줘
@@ -247,7 +247,7 @@ PlayerController.cs의 점프 코드가 언제, 어떤 커밋에서 바뀌었는
 지난주 금요일 이후 커밋들을 요약해줘. 팀 회의 때 공유할 거야.
 ```
 
-Claude가 `git log`, `git blame`, `git diff`를 조합해서 찾아줍니다. 커밋 메시지를 잘 써둘수록 이 작업이 정확해집니다. [4편](/ai/2026/11/22/Claude-Code-4%ED%8E%B8-Skill-%EC%A7%81%EC%A0%91-%EB%A7%8C%EB%93%A4%EA%B8%B0.html)의 `commit-message` Skill에서 "왜 바꿨는지"를 적도록 한 이유가 여기에 있습니다.
+Claude가 `git log`, `git blame`, `git diff`를 조합해서 찾아줍니다. 커밋 메시지를 잘 써둘수록 이 작업이 정확해집니다. [4편](/ax/2026/11/22/Claude-Code-4%ED%8E%B8-Skill-%EC%A7%81%EC%A0%91-%EB%A7%8C%EB%93%A4%EA%B8%B0.html)의 `commit-message` Skill에서 "왜 바꿨는지"를 적도록 한 이유가 여기에 있습니다.
 
 ## 7. 사고를 막는 방법
 
@@ -260,7 +260,7 @@ Claude에게 Git을 맡길 때 가장 조심해야 할 것은 **되돌리기 어
 | `git clean -fd` | Git이 관리하지 않는 파일을 지웁니다 |
 | `git branch -D` | 병합하지 않은 브랜치를 강제로 지웁니다 |
 
-Claude Code는 기본적으로 이런 명령을 쓰기 전에 확인을 구하지만, 확실하게 막고 싶다면 [5편](/ai/2026/11/22/Claude-Code-5%ED%8E%B8-Hook%EA%B3%BC-Subagent.html)에서 배운 **Hook**을 씁니다.
+Claude Code는 기본적으로 이런 명령을 쓰기 전에 확인을 구하지만, 확실하게 막고 싶다면 [5편](/ax/2026/11/22/Claude-Code-5%ED%8E%B8-Hook%EA%B3%BC-Subagent.html)에서 배운 **Hook**을 씁니다.
 
 ### force push 막는 Hook
 

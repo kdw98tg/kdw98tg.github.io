@@ -6,7 +6,7 @@ title: "[Claude Code] 5편 - Hook과 Subagent"
 # excerpt_image: /assets/images/posts/2026-11-22-Claude Code 5편/
 
 categories:
-  - AI
+  - AX
 
 tags:
   - Claude Code
@@ -52,7 +52,7 @@ Hook은 **정해진 시점에 무조건 실행되는 명령**입니다. Claude�
 | `PostToolUse` | 도구를 쓴 **후** | 파일 수정 후 자동 포맷 |
 | `Stop` | Claude가 응답을 마쳤을 때 | 작업 완료 알림 |
 
-사실 우리는 이미 Hook을 써봤습니다. [3편](/ai/2026/11/22/Claude-Code-3%ED%8E%B8-Skill%EA%B3%BC-Plugin-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0.html)에서 PonyTail을 설치하고 새 세션을 열었을 때 `PONYTAIL MODE ACTIVE`라는 안내가 떴습니다. 이게 PonyTail에 들어 있는 `SessionStart` Hook입니다.
+사실 우리는 이미 Hook을 써봤습니다. [3편](/ax/2026/11/22/Claude-Code-3%ED%8E%B8-Skill%EA%B3%BC-Plugin-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0.html)에서 PonyTail을 설치하고 새 세션을 열었을 때 `PONYTAIL MODE ACTIVE`라는 안내가 떴습니다. 이게 PonyTail에 들어 있는 `SessionStart` Hook입니다.
 
 ### 설정 위치
 
@@ -105,7 +105,7 @@ Claude에게 긴 작업을 맡기고 다른 일을 하다 보면, 언제 끝났�
 
 ## 3. 실습 2 - 중요한 폴더 수정 막기
 
-[2편](/ai/2026/11/22/Claude-Code-2%ED%8E%B8-CLAUDE.md%EC%99%80-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B4%80%EB%A6%AC.html)에서 CLAUDE.md에 "ProjectSettings 폴더는 수정하지 말 것"이라고 적었습니다. 하지만 이건 부탁일 뿐입니다. 이번에는 Hook으로 아예 **막아보겠습니다.**
+[2편](/ax/2026/11/22/Claude-Code-2%ED%8E%B8-CLAUDE.md%EC%99%80-%EC%BB%A8%ED%85%8D%EC%8A%A4%ED%8A%B8-%EA%B4%80%EB%A6%AC.html)에서 CLAUDE.md에 "ProjectSettings 폴더는 수정하지 말 것"이라고 적었습니다. 하지만 이건 부탁일 뿐입니다. 이번에는 Hook으로 아예 **막아보겠습니다.**
 
 ### 동작 원리
 
@@ -265,7 +265,7 @@ Skill과 모양이 비슷하지만 frontmatter에 두 가지가 더 있습니다
 unity-reviewer로 Assets/Scripts 전체 리뷰해줘
 ```
 
-[3편](/ai/2026/11/22/Claude-Code-3%ED%8E%B8-Skill%EA%B3%BC-Plugin-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0.html)에서 만든 체력 시스템이나 [4편](/ai/2026/11/22/Claude-Code-4%ED%8E%B8-Skill-%EC%A7%81%EC%A0%91-%EB%A7%8C%EB%93%A4%EA%B8%B0.html)에서 만든 적 스크립트가 있다면 좋은 리뷰 대상이 됩니다. 1편의 버그 있는 `PlayerController.cs` 원본을 다시 넣어두고 리뷰를 맡겨 보는 것도 좋습니다.
+[3편](/ax/2026/11/22/Claude-Code-3%ED%8E%B8-Skill%EA%B3%BC-Plugin-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0.html)에서 만든 체력 시스템이나 [4편](/ax/2026/11/22/Claude-Code-4%ED%8E%B8-Skill-%EC%A7%81%EC%A0%91-%EB%A7%8C%EB%93%A4%EA%B8%B0.html)에서 만든 적 스크립트가 있다면 좋은 리뷰 대상이 됩니다. 1편의 버그 있는 `PlayerController.cs` 원본을 다시 넣어두고 리뷰를 맡겨 보는 것도 좋습니다.
 
 <!-- 📷 스크린샷: unity-reviewer의 리뷰 결과 -->
 

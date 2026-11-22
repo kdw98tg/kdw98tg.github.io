@@ -6,7 +6,7 @@ title: "[Claude Code] 2편 - CLAUDE.md와 컨텍스트 관리"
 # excerpt_image: /assets/images/posts/2026-11-22-Claude Code 2편/
 
 categories:
-  - AI
+  - AX
 
 tags:
   - Claude Code
@@ -24,7 +24,7 @@ last_modified_at: 2026-11-22
 
 ## 들어가며
 
-[1편](/ai/2026/11/22/Claude-Code-1%ED%8E%B8-%EC%9D%BC-%EC%9E%98-%EC%8B%9C%ED%82%A4%EB%8A%94-%EB%B2%95.html)에서는 구체적으로 요청할수록 결과가 좋아진다는 것을 확인했습니다. 그런데 매번 "Unity 6 프로젝트고, 새 Input System을 쓰고, 물리는 FixedUpdate에서 처리하고..."라고 설명하기는 번거롭습니다.
+[1편](/ax/2026/11/22/Claude-Code-1%ED%8E%B8-%EC%9D%BC-%EC%9E%98-%EC%8B%9C%ED%82%A4%EB%8A%94-%EB%B2%95.html)에서는 구체적으로 요청할수록 결과가 좋아진다는 것을 확인했습니다. 그런데 매번 "Unity 6 프로젝트고, 새 Input System을 쓰고, 물리는 FixedUpdate에서 처리하고..."라고 설명하기는 번거롭습니다.
 
 Claude Code는 세션을 시작할 때마다 이전 대화를 기억하지 못합니다. 새 세션의 Claude는 우리 프로젝트를 처음 보는 신입 개발자와 같습니다. 그래서 신입에게 온보딩 문서를 건네주듯, Claude에게도 프로젝트 설명서를 건네줘야 합니다. 그 역할을 하는 파일이 **CLAUDE.md**입니다.
 

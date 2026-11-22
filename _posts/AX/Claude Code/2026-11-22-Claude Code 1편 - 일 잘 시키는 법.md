@@ -6,7 +6,7 @@ title: "[Claude Code] 1편 - 일 잘 시키는 법 (Plan mode, 프롬프트, 권
 # excerpt_image: /assets/images/posts/2026-11-22-Claude Code 1편/
 
 categories:
-  - AI
+  - AX
 
 tags:
   - Claude Code
