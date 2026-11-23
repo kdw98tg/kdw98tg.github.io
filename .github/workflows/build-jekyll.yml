@@ -26,6 +26,8 @@ jobs:
           bundler-cache: true
       - name: Build with Jekyll
         run: bundle exec jekyll build
+        env:
+          TZ: Asia/Seoul # 러너는 UTC라 한국 날짜 글이 미래 글로 빠지는 것 방지
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
