@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_posts/Portfolio/2026-04-14-ENOMONT 홈페이지 제작.md",
+                "file": "_posts/AX/무제.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-04-14-ENOMONT 홈페이지 제작"
+              "title": "무제"
             }
           }
         ]
@@ -187,8 +187,23 @@
   },
   "active": "53b3630d80470c1c",
   "lastOpenFiles": [
-    "_posts/Portfolio/2026-02-12-포트폴리오_RDC.md",
+    "file:/Users/kdw98tg/.claude/plugins/cache/ponytail/ponytail/5.3.3/skills/ponytail/SKILL.md",
+    "_posts/AX/무제.md",
+    "_posts/Infra/Git/2026-11-23-Git - 브랜치 병합과 충돌 해결 실습.md",
+    "_posts/Infra/Git/2026-11-22-Git - Unity 프로젝트 Git 시작하기 (Sourcetree).md",
+    "_posts/AX/Claude Code/2026-11-22-Claude Code 7편 - Claude Code로 Git 다루기.md",
+    "_posts/AX/Claude Code/2026-11-22-Claude Code 6편 - 종합 실습, 코인 수집 기능 만들기.md",
+    "_posts/AX/Claude Code/2026-11-22-Claude Code 5편 - Hook과 Subagent.md",
+    "_posts/AX/Claude Code/2026-11-22-Claude Code 4편 - Skill 직접 만들기.md",
+    "_posts/AX/Claude Code/2026-11-22-Claude Code 3편 - Skill과 Plugin 활용하기.md",
+    "_posts/AX/Claude Code/2026-11-22-Claude Code 2편 - CLAUDE.md와 컨텍스트 관리.md",
+    "_posts/AX/Claude Code/2026-11-22-Claude Code 1편 - 일 잘 시키는 법.md",
+    "_posts/AX/Claude Code",
+    "_posts/AX",
+    "_posts/Infra/Docker/20261113.md",
     "_posts/Portfolio/2026-04-14-ENOMONT 홈페이지 제작.md",
+    "_posts/Infra/Docker",
+    "_posts/Portfolio/2026-02-12-포트폴리오_RDC.md",
     "assets/images/posts/2026-05-08-CSR, SSR/file-20260508212547795.png",
     "assets/images/posts/enomont-home-mobile.png",
     "assets/images/posts/enomont-home-lightbox.png",
@@ -217,20 +232,6 @@
     "assets/images/posts/2024-02-28-미니멀리즘 프로그래머",
     "_posts/Portfolio/2026-02-12-포트폴리오_비트코인예측연구.md",
     "_posts/Architecture&Enginerring/ReadableCode/2026-01-07-표면적 수준에서의 코드 개선.md",
-    "_posts/Architecture&Enginerring/Design Pattern/2024-02-28-StrategyPattern.md",
-    "_posts/Languages/TypeScript/무제.md",
-    "_posts/Architecture&Enginerring/Minimalism Programmer",
-    "_posts/Product Analysis/2026-09-20-Product Analysis 카테고리.md",
-    "_posts/Product Analysis",
-    "_includes/views/category-icon.html",
-    "_data/category_icons.yml",
-    "_posts/Languages/TypeScript/2026-05-18-TypeScript.md",
-    "_posts/Languages/Python/2026-06-14-QR 코드 외주 관련 python 문법 정리.md",
-    "_posts/Languages/Python/2024-08-13-python venv.md",
-    "_posts/Languages/Python/2025-10-12-Python Requirements.md",
-    "_posts/Languages/Python/2025-10-19-python web crawling1.md",
-    "_posts/Game Engine/Unity/20260610_QR외주 관련 작업 로그.md",
-    "_posts/Game Engine/Unity/2026-02-12-Unity 로컬, 월드 포지션.md",
-    "_posts/Web/BackEnd/2026-05-24-AES와 Base64를 사용한 암호화.md"
+    "_posts/Architecture&Enginerring/Minimalism Programmer"
   ]
 }
